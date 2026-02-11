@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>De la pasiune la profit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+    :root {
+      --bg-main: #f3f6fb;
+      --bg-hero: #ffffff;
+      --bg-card: #ffffff;
+      --bg-badge: #e0edff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent-blue: #1d4ed8;
+      --accent-blue-dark: #1e3a8a;
+      --accent-orange: #f97316;
+      --accent-orange-dark: #ea580c;
+      --border-light: #d1d5db;
+      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .dlpp-landing {
+      background: radial-gradient(circle at top, #e5edff 0, #f3f6fb 45%, #eef2ff 100%);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .dlpp-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .dlpp-section {
+      margin-bottom: 42px;
+    }
+
+    .dlpp-hero {
+      background: var(--bg-hero);
+      border-radius: 20px;
+      padding: 24px 22px 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(209, 213, 219, 0.7);
+      margin-bottom: 34px;
+    }
+
+    .dlpp-title {
+      font-family: "Playfair Display", serif;
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin: 0 0 10px;
+      color: var(--accent-blue-dark);
+    }
+
+    .dlpp-title span {
+      background: linear-gradient(120deg, var(--accent-blue), var(--accent-orange));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .dlpp-subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 650px;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .dlpp-start-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-badge);
+      border-radius: 999px;
+      padding: 8px 16px;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      font-size: 14px;
+      color: var(--accent-blue-dark);
+      margin-bottom: 10px;
+    }
+
+    .dlpp-start-badge-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .dlpp-start-badge strong {
+      color: var(--accent-orange-dark);
+    }
+
+    .dlpp-urgency {
+      font-size: 13px;
+      color: var(--accent-orange-dark);
+      font-weight: 500;
+    }
+
+    .dlpp-section-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: var(--accent-blue-dark);
+      font-family: "Playfair Display", serif;
+    }
+
+    .dlpp-section-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    .dlpp-pack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .dlpp-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      border: 1px solid var(--border-light);
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .dlpp-card h3 {
+      font-size: 20px;
+      margin: 0 0 4px;
+      color: var(--accent-blue-dark);
+      font-family: "Playfair Display", serif;
+    }
+
+    .dlpp-card-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .dlpp-price {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent-orange-dark);
+      margin-bottom: 10px;
+    }
+
+    .dlpp-benefits {
+      font-size: 14px;
+      color: var(--text-main);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .dlpp-benefits p {
+      margin: 2px 0;
+    }
+
+    .dlpp-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--accent-orange), var(--accent-orange-dark));
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      box-shadow: 0 10px 24px rgba(249, 115, 22, 0.35);
+    }
+
+    .dlpp-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(249, 115, 22, 0.45);
+    }
+
+    .dlpp-pack-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .dlpp-bio-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .dlpp-bio-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .dlpp-bio-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-blue-dark);
+      margin-bottom: 10px;
+      font-family: "Playfair Display", serif;
+    }
+
+    .dlpp-bio-text {
+      font-size: 14px;
+      color: var(--text-main);
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .dlpp-form-wrapper {
+      background: var(--bg-card);
+      border-radius: 18px;
+      border: 1px solid var(--border-light);
+      padding: 16px 16px 12px;
+      box-shadow: var(--shadow-soft);
+      max-width: 900px;
+    }
+
+    .dlpp-form-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .dlpp-iframe {
+      width: 100%;
+      border: 0;
+      min-height: 750px;
+    }
+
+    @media (max-width: 640px) {
+      .dlpp-title { font-size: 34px; }
+      .dlpp-iframe { min-height: 900px; }
+    }
+  </style>
+</head>
+<body>
+<div class="dlpp-landing">
+  <div class="dlpp-container">
+
+    <!-- HERO -->
+    <section class="dlpp-section">
+      <div class="dlpp-hero">
+        <h1 class="dlpp-title"><span>De la pasiune la profit</span></h1>
+
+        <p class="dlpp-subtitle">
+          Program de mentorat care te ajuta sa transformi un hobby intr-o sursa reala de venit, cu pasi clari, aplicati si sustinere pe parcurs.
+        </p>
+
+        <div class="dlpp-start-badge">
+          <div class="dlpp-start-badge-icon">⏰</div>
+          <div>
+            <div><strong>Incepem pe 04.03.2026</strong></div>
+            <div class="dlpp-urgency">Locuri limitate, perioada de inscriere este scurta.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACHETE -->
+    <section class="dlpp-section" id="pachete">
+      <h2 class="dlpp-section-title">Alege pachetul potrivit pentru tine</h2>
+
+      <div class="dlpp-pack-grid">
+
+        <!-- Essentials -->
+        <div class="dlpp-card">
+          <h3>Pachet Essentials</h3>
+          <div class="dlpp-card-tagline">Incep serios</div>
+          <div class="dlpp-price">1.230 lei</div>
+
+          <div class="dlpp-benefits">
+            <p>6 sesiuni live de grup</p>
+            <p>Acces la inregistrari</p>
+            <p>Workbook De la pasiune la profit</p>
+            <p>Template-uri de baza pentru oferta, preturi si mesaje</p>
+            <p>Acces la comunitatea de pe WhatsApp</p>
+          </div>
+
+          <a href="#formular-inscriere" class="dlpp-btn">Inscrie-te acum</a>
+
+          <div class="dlpp-pack-desc">
+            Pachet Essentials este pentru tine daca vrei sa incepi serios, sa intelegi baza si sa ai un parcurs clar, fara sa te simti coplesit.
+          </div>
+        </div>
+
+        <!-- Pro -->
+        <div class="dlpp-card">
+          <h3>Pachet Pro</h3>
+          <div class="dlpp-card-tagline">Vreau sa accelerez</div>
+          <div class="dlpp-price">1.970 lei</div>
+
+          <div class="dlpp-benefits">
+            <p>Tot ce este in pachetul Essentials</p>
+            <p>O sesiune 1 la 1 de 45 de minute pentru claritate si strategie</p>
+            <p>Audit pe oferta ta</p>
+            <p>Mini-audit pe profilul tau de social media</p>
+            <p>Zece idei de continut personalizat pentru tine</p>
+          </div>
+
+          <a href="#formular-inscriere" class="dlpp-btn">Inscrie-te acum</a>
+
+          <div class="dlpp-pack-desc">
+            Pachet Pro este pentru tine daca vrei accelerare, feedback aplicat si ajustari pe concretul tau, nu doar informatie generala.
+          </div>
+        </div>
+
+        <!-- VIP -->
+        <div class="dlpp-card">
+          <h3>Pachet VIP</h3>
+          <div class="dlpp-card-tagline">Full focus pe mine</div>
+          <div class="dlpp-price">3.460 lei</div>
+
+          <div class="dlpp-benefits">
+            <p>Tot ce este in pachetul Pro</p>
+            <p>Patru sesiuni 1 la 1 in puncte cheie ale programului</p>
+            <p>Plan personalizat de monetizare</p>
+            <p>Strategia ta de lansare, pas cu pas</p>
+            <p>Suport extins trei luni si prioritate la raspuns</p>
+          </div>
+
+          <a href="#formular-inscriere" class="dlpp-btn">Inscrie-te acum</a>
+
+          <div class="dlpp-pack-desc">
+            Pachet VIP este pentru tine daca vrei sa mergem in profunzime pe business-ul tau, cu suport intens si focus maxim pe rezultatele tale.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DESPRE NOI -->
+    <section class="dlpp-section">
+      <h2 class="dlpp-section-title">Cine suntem noi</h2>
+
+      <div class="dlpp-bio-wrapper">
+        <div class="dlpp-bio-card">
+          <div class="dlpp-bio-name">Georgiana Rotaru</div>
+          <div class="dlpp-bio-text">
+Sunt Georgiana Rotaru, mentor in cadrul programului De la pasiune la profit si om care a trait multi ani cu un picior in vanzari, unul in marketing si ambele in online.
+
+Am peste 10 ani de experienta in vanzari, unde am invatat cum gandesc oamenii atunci cand spun da sau nu unei oferte. Am trecut apoi prin marketing si social media, unde am inteles cum sa transform un mesaj bun intr-un mesaj care si vinde, nu doar da like-uri.
+
+M-am specializat si in coaching, ca sa pot sa te sustin nu doar cu strategii si planuri, ci si cu partea de mindset, frici, blocaje, sindromul cine sunt eu sa.
+
+In acest program, rolul meu este sa te ajut sa iti iei hobby-ul in serios, sa il impachetezi intr-o oferta clara si sa faci primii pasi catre un business care chiar produce bani, nu doar idei frumoase in agenda.
+          </div>
+        </div>
+
+        <div class="dlpp-bio-card">
+          <div class="dlpp-bio-name">Diana Patulea</div>
+          <div class="dlpp-bio-text">
+Sunt Diana Patulea si lucrez cu oameni care au o idee, un hobby sau o pasiune, dar nu stiu cum sa o transforme intr-o sursa de bani.
+
+Vin dintr-o zona practica, contabilitate, vanzari si lucru cu oameni, care m-a invatat sa disting rapid intre ce are potential si ce nu.
+
+In De la pasiune la profit, rolul meu este sa te ajut sa iti clarifici ideea, sa intelegi cum poate sa iti aduca bani si ce te blocheaza cand vine vorba de pret, expunere sau decizie.
+
+Lucram aplicat, pas cu pas, ca sa stii exact ce ai de facut.
+
+Daca vii cu pasiunea, eu te ajut sa o pui in practica.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FORMULAR GOOGLE FORMS -->
+    <section class="dlpp-section" id="formular-inscriere">
+      <h2 class="dlpp-section-title">Formular de inscriere</h2>
+      <p class="dlpp-section-text" style="margin-bottom:16px;">
+        Completeaza formularul de mai jos pentru a-ti rezerva locul in program. Te vom contacta pentru confirmare si detalii de plata.
+      </p>
+
+      <div class="dlpp-form-wrapper">
+        <p class="dlpp-form-note">
+          Formularul este conectat direct la Google Forms, iar raspunsurile tale ajung in siguranta la noi.
+        </p>
+
+        <iframe 
+          class="dlpp-iframe"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSc-WEQjkZFN5lpK-h7heWqF4IUKlcJwLdgS5MerzRANzM79Fw/viewform?embedded=true">
+          Se incarca formularul de inscriere...
+        </iframe>
+      </div>
+    </section>
+
+  </div>
+</div>
+</body>
+</html>

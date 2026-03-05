@@ -1707,3 +1707,580 @@ setTimeout(initFI, 200);
 </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cumpără Manualele 3C · De la Pasiune la Profit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #0F2A44;
+  --navy-mid:  #1B4268;
+  --navy-lite: #243B55;
+  --orange:    #F47B20;
+  --orange-dk: #D9660F;
+  --orange-lt: #FFF4EC;
+  --white:     #FFFFFF;
+  --off:       #FAFAF8;
+  --gray:      #4A4A4A;
+  --gray-lt:   #8A8A8A;
+  --border:    #E6E2D8;
+  --green:     #1A7A4A;
+  --green-lt:  #EAF7F0;
+  --shadow:    0 2px 12px rgba(15,42,68,0.07), 0 1px 3px rgba(15,42,68,0.05);
+  --shadow-lg: 0 8px 40px rgba(15,42,68,0.12), 0 2px 8px rgba(15,42,68,0.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--gray);
+  background: var(--off);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4 { font-family: 'Playfair Display', Georgia, serif; color: var(--navy); line-height: 1.15; }
+
+/* ══ HEADER ══ */
+.site-header {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 200;
+  padding: 0 5%;
+  height: 62px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+.logo-sub { font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 2px; }
+.logo-main { font-family: 'Playfair Display', serif; font-size: 0.88rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.03em; }
+.header-secure { display: flex; align-items: center; gap: 6px; font-size: 0.74rem; color: var(--gray-lt); font-weight: 500; }
+
+/* ══ HERO ══ */
+.checkout-hero {
+  background: linear-gradient(140deg, var(--navy) 0%, var(--navy-mid) 100%);
+  padding: 52px 5% 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.checkout-hero::before {
+  content: '∞';
+  position: absolute; top: -40px; right: 4%;
+  font-size: 260px; color: rgba(255,255,255,0.03);
+  font-family: 'Playfair Display', serif;
+  pointer-events: none; line-height: 1; user-select: none;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.67rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--orange); font-weight: 700; margin-bottom: 14px;
+  background: rgba(244,123,32,0.12);
+  padding: 5px 14px; border-radius: 20px;
+}
+.checkout-hero h1 { color: var(--white); font-size: clamp(1.6rem, 3.5vw, 2.4rem); margin-bottom: 12px; }
+.checkout-hero p { color: rgba(255,255,255,0.6); font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
+
+/* ══ MAIN ══ */
+.main-container { max-width: 980px; margin: 0 auto; padding: 44px 5% 60px; }
+
+.section-label {
+  font-size: 0.67rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 20px; display: block;
+}
+
+/* ══ PRODUCT GRID ══ */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.product-bundle { grid-column: 1 / -1; }
+
+.product-card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 26px 22px 22px;
+  transition: all .22s cubic-bezier(.4,0,.2,1);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.product-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--border); transition: background .22s;
+}
+.product-card:hover {
+  border-color: rgba(244,123,32,0.4);
+  transform: translateY(-3px); box-shadow: var(--shadow-lg);
+}
+.product-card:hover::after { background: var(--orange); }
+
+.bundle-card {
+  background: linear-gradient(135deg, #0F2A44 0%, #1B4268 100%);
+  border: 2px solid rgba(244,123,32,0.25);
+  border-radius: 16px;
+  padding: 28px 28px 24px;
+  transition: all .22s cubic-bezier(.4,0,.2,1);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: space-between; gap: 28px;
+  flex-wrap: wrap;
+}
+.bundle-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--orange), #ffa566);
+}
+.bundle-card:hover { transform: translateY(-3px); box-shadow: 0 12px 48px rgba(15,42,68,0.25); border-color: var(--orange); }
+
+.bundle-left { flex: 1; min-width: 200px; }
+.bundle-eyebrow { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,123,32,0.9); margin-bottom: 8px; }
+.bundle-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+.bundle-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.55; margin-bottom: 12px; }
+.bundle-volumes { display: flex; gap: 8px; flex-wrap: wrap; }
+.bundle-vol { font-size: 0.72rem; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); padding: 4px 10px; border-radius: 20px; font-weight: 500; }
+
+.bundle-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.bundle-old { font-size: 0.82rem; color: rgba(255,255,255,0.35); text-decoration: line-through; }
+.bundle-price-row { display: flex; align-items: baseline; gap: 4px; }
+.bundle-price { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--orange); line-height: 1; }
+.bundle-currency { font-size: 0.9rem; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--orange); }
+.bundle-saving { font-size: 0.72rem; background: rgba(26,122,74,0.3); color: #5edb9a; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+
+.card-volume { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-lt); margin-bottom: 6px; }
+.card-title { font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.card-desc { font-size: 0.81rem; color: var(--gray-lt); line-height: 1.55; margin-bottom: 14px; flex: 1; }
+.card-list { margin-bottom: 18px; list-style: none; }
+.card-list li { font-size: 0.78rem; color: var(--gray); display: flex; gap: 7px; align-items: flex-start; margin-bottom: 5px; }
+.card-list li::before { content: '→'; color: var(--orange); font-weight: 700; flex-shrink: 0; font-size: 0.74rem; margin-top: 1px; }
+.card-price { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.card-price-sub { font-size: 0.73rem; color: var(--gray-lt); margin-top: 3px; }
+
+/* ══ BUTTONS ══ */
+.buy-btn {
+  display: block; width: 100%;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dk) 100%);
+  color: var(--white) !important;
+  text-align: center; text-decoration: none !important;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem;
+  padding: 15px 24px;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: all .2s;
+  box-shadow: 0 4px 16px rgba(244,123,32,0.22);
+  letter-spacing: 0.01em;
+}
+.buy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(244,123,32,0.38);
+}
+
+.buy-btn-bundle {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dk) 100%);
+  color: var(--white) !important; text-decoration: none !important;
+  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.95rem;
+  padding: 14px 26px; border-radius: 10px;
+  transition: all .2s;
+  box-shadow: 0 4px 20px rgba(244,123,32,0.35);
+  white-space: nowrap; margin-top: 16px;
+}
+.buy-btn-bundle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(244,123,32,0.5);
+}
+
+/* ══ TRUST STRIP ══ */
+.trust-strip {
+  display: flex; align-items: center; justify-content: center; gap: 28px;
+  padding: 20px 0; flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 36px 0;
+}
+.trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--gray-lt); font-weight: 500; }
+.trust-icon { color: var(--green); width: 15px; height: 15px; flex-shrink: 0; }
+
+/* ══ COMPARE TABLE ══ */
+.compare-section { margin-bottom: 36px; }
+.compare-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--white);
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.compare-table th {
+  background: var(--navy); color: var(--white);
+  padding: 14px 16px;
+  font-family: 'Inter', sans-serif; font-weight: 600; text-align: left;
+  font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.compare-table th:not(:first-child) { text-align: center; }
+.compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:not(:first-child) { text-align: center; }
+.compare-table tr:nth-child(even) td { background: var(--off); }
+.check-yes { color: var(--green); font-weight: 700; font-size: 1rem; }
+.check-no { color: var(--border); font-size: 1rem; }
+.compare-price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+.highlight-col { background: rgba(244,123,32,0.06) !important; }
+.compare-table th.highlight-col { background: var(--orange); }
+
+/* ══ FAQ ══ */
+.faq-section { margin-bottom: 36px; }
+.faq-item {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; margin-bottom: 8px; overflow: hidden;
+}
+.faq-q {
+  padding: 16px 20px; font-weight: 600; font-size: 0.9rem; color: var(--navy);
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  user-select: none;
+}
+.faq-q:hover { color: var(--orange); }
+.faq-arrow { font-size: 1rem; color: var(--orange); transition: transform .25s; flex-shrink: 0; }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s ease, padding .3s;
+  font-size: 0.85rem; color: var(--gray); line-height: 1.75; padding: 0 20px;
+}
+.faq-item.open .faq-a { max-height: 200px; padding: 0 20px 16px; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+/* ══ FOOTER ══ */
+.site-footer {
+  border-top: 1px solid var(--border); background: var(--white);
+  padding: 22px 5%; text-align: center;
+  font-size: 0.77rem; color: var(--gray-lt);
+}
+.site-footer a { color: var(--gray-lt); text-decoration: none; }
+.site-footer a:hover { color: var(--orange); }
+.f-sep { margin: 0 10px; opacity: 0.4; }
+
+/* ══ ANIMATIONS ══ */
+.fade-up { opacity: 0; transform: translateY(18px); animation: fadeUp .45s ease forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.fade-up:nth-child(1) { animation-delay: .05s; }
+.fade-up:nth-child(2) { animation-delay: .13s; }
+.fade-up:nth-child(3) { animation-delay: .21s; }
+.fade-up:nth-child(4) { animation-delay: .29s; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 700px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .product-bundle { grid-column: 1; }
+  .bundle-card { flex-direction: column; }
+  .bundle-right { align-items: flex-start; text-align: left; }
+  .trust-strip { gap: 14px; }
+  .compare-table { font-size: 0.77rem; }
+  .compare-table th, .compare-table td { padding: 9px 10px; }
+  .main-container { padding: 28px 4% 44px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://pasiune-profit.ro/" class="logo">
+    <span class="logo-sub">Academia</span>
+    <span class="logo-main">De la Pasiune la Profit</span>
+  </a>
+  <div class="header-secure">
+    <svg style="width:13px;height:13px;color:var(--green);flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <rect x="3" y="11" width="18" height="11" rx="2"/>
+      <path d="M7 11V7a5 5 0 0110 0v4"/>
+    </svg>
+    Plată securizată prin Stripe
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="checkout-hero">
+  <span class="hero-eyebrow">Trilogia 3C · Seria educațională</span>
+  <h1>Alege manualul tău</h1>
+  <p>Fiecare volum acoperă o etapă completă din Metoda 3C. Sau ia toate trei la preț redus.</p>
+</div>
+
+<!-- MAIN -->
+<div class="main-container">
+
+  <span class="section-label">Selectează produsul</span>
+
+  <div class="products-grid">
+
+    <!-- VOL 1 -->
+    <div class="product-card fade-up">
+      <div class="card-volume">Volumul 1</div>
+      <div class="card-title">Claritate</div>
+      <div class="card-desc">Știi exact ce vinzi, cui vinzi și de ce ești relevant. Fundamentul oricărui sistem de venit funcțional.</div>
+      <ul class="card-list">
+        <li>Cum îți definești oferta clară</li>
+        <li>Identificarea publicului potrivit</li>
+        <li>Poziționarea ta pe piață</li>
+      </ul>
+      <div class="card-price">33 lei</div>
+      <div class="card-price-sub">Manual digital · livrare imediată</div>
+      <a class="buy-btn" href="https://buy.stripe.com/dRm8wP1DFfAlcIy2FZ7EQ01" target="_blank" rel="noopener">
+        Cumpără Volumul 1 →
+      </a>
+    </div>
+
+    <!-- VOL 2 -->
+    <div class="product-card fade-up">
+      <div class="card-volume">Volumul 2</div>
+      <div class="card-title">Construcție</div>
+      <div class="card-desc">Construiești oferta, sistemul de promovare și structura care susține vânzările fără haos.</div>
+      <ul class="card-list">
+        <li>Structura ofertei tale</li>
+        <li>Strategia de promovare</li>
+        <li>Sistematizarea fără haos</li>
+      </ul>
+      <div class="card-price">77 lei</div>
+      <div class="card-price-sub">Manual digital · livrare imediată</div>
+      <a class="buy-btn" href="https://buy.stripe.com/3cIdR91DFdsd8si94n7EQ02" target="_blank" rel="noopener">
+        Cumpără Volumul 2 →
+      </a>
+    </div>
+
+    <!-- VOL 3 -->
+    <div class="product-card fade-up">
+      <div class="card-volume">Volumul 3</div>
+      <div class="card-title">Conversie</div>
+      <div class="card-desc">Testezi, optimizezi și construiești un model de vânzare repetabil care funcționează consistent.</div>
+      <ul class="card-list">
+        <li>Cum apare decizia de cumpărare</li>
+        <li>Cum funcționează vânzarea</li>
+        <li>Cum optimizezi conversia</li>
+      </ul>
+      <div class="card-price">97 lei</div>
+      <div class="card-price-sub">Manual digital · livrare imediată</div>
+      <a class="buy-btn" href="https://buy.stripe.com/dRm6oH1DFfAlbEu94n7EQ03" target="_blank" rel="noopener">
+        Cumpără Volumul 3 →
+      </a>
+    </div>
+
+    <!-- BUNDLE TRILOGIE -->
+    <div class="product-bundle fade-up">
+      <div class="bundle-card">
+        <div class="bundle-left">
+          <div class="bundle-eyebrow">Cea mai bună valoare · Ofertă completă</div>
+          <div class="bundle-title">Trilogia 3C</div>
+          <div class="bundle-desc">Toate cele trei volume — de la claritate până la conversie. Procesul complet, de la pasiune la venit stabil.</div>
+          <div class="bundle-volumes">
+            <span class="bundle-vol">Vol. 1 · Claritate</span>
+            <span class="bundle-vol">Vol. 2 · Construcție</span>
+            <span class="bundle-vol">Vol. 3 · Conversie</span>
+          </div>
+        </div>
+        <div class="bundle-right">
+          <div class="bundle-old">207 lei separat</div>
+          <div class="bundle-price-row">
+            <div class="bundle-price">177</div>
+            <div class="bundle-currency">lei</div>
+          </div>
+          <div class="bundle-saving">Economisești 30 lei</div>
+          <a class="buy-btn-bundle" href="https://buy.stripe.com/4gM9AT967fAldMC1BV7EQ04" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Cumpără Trilogia 3C
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /products-grid -->
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Plată securizată SSL
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Procesare prin Stripe
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Livrare imediată după plată
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Factură pe email
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Garanție 14 zile
+    </div>
+  </div>
+
+  <!-- COMPARE TABLE -->
+  <div class="compare-section">
+    <span class="section-label">Compară volumele</span>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Ce vei ști</th>
+          <th>Vol. 1<br><span style="font-size:.72rem;font-weight:400;text-transform:none;letter-spacing:0;opacity:.8;">33 lei</span></th>
+          <th>Vol. 2<br><span style="font-size:.72rem;font-weight:400;text-transform:none;letter-spacing:0;opacity:.8;">77 lei</span></th>
+          <th>Vol. 3<br><span style="font-size:.72rem;font-weight:400;text-transform:none;letter-spacing:0;opacity:.8;">97 lei</span></th>
+          <th class="highlight-col">Trilogie<br><span style="font-size:.72rem;font-weight:400;text-transform:none;letter-spacing:0;opacity:.9;">177 lei</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cum îți definești oferta</td>
+          <td><span class="check-yes">✓</span></td>
+          <td><span class="check-no">—</span></td>
+          <td><span class="check-no">—</span></td>
+          <td class="highlight-col"><span class="check-yes">✓</span></td>
+        </tr>
+        <tr>
+          <td>Identificarea publicului potrivit</td>
+          <td><span class="check-yes">✓</span></td>
+          <td><span class="check-no">—</span></td>
+          <td><span class="check-no">—</span></td>
+          <td class="highlight-col"><span class="check-yes">✓</span></td>
+        </tr>
+        <tr>
+          <td>Structura ofertei tale</td>
+          <td><span class="check-no">—</span></td>
+          <td><span class="check-yes">✓</span></td>
+          <td><span class="check-no">—</span></td>
+          <td class="highlight-col"><span class="check-yes">✓</span></td>
+        </tr>
+        <tr>
+          <td>Strategia de promovare</td>
+          <td><span class="check-no">—</span></td>
+          <td><span class="check-yes">✓</span></td>
+          <td><span class="check-no">—</span></td>
+          <td class="highlight-col"><span class="check-yes">✓</span></td>
+        </tr>
+        <tr>
+          <td>Cum funcționează vânzarea</td>
+          <td><span class="check-no">—</span></td>
+          <td><span class="check-no">—</span></td>
+          <td><span class="check-yes">✓</span></td>
+          <td class="highlight-col"><span class="check-yes">✓</span></td>
+        </tr>
+        <tr>
+          <td>Optimizarea conversiei</td>
+          <td><span class="check-no">—</span></td>
+          <td><span class="check-no">—</span></td>
+          <td><span class="check-yes">✓</span></td>
+          <td class="highlight-col"><span class="check-yes">✓</span></td>
+        </tr>
+        <tr style="font-weight:700;">
+          <td style="color:var(--navy);">Total</td>
+          <td><span class="compare-price">33 lei</span></td>
+          <td><span class="compare-price">77 lei</span></td>
+          <td><span class="compare-price">97 lei</span></td>
+          <td class="highlight-col"><span class="compare-price" style="color:var(--orange);">177 lei</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <span class="section-label">Întrebări frecvente</span>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Cum primesc manualul după plată?
+        <span class="faq-arrow">↓</span>
+      </div>
+      <div class="faq-a">
+        Imediat după confirmarea plății, vei primi un email cu linkul de descărcare. Livrarea este automată și instantanee prin sistemul Stripe.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Pot cumpăra volumele separat și mai târziu trilogia?
+        <span class="faq-arrow">↓</span>
+      </div>
+      <div class="faq-a">
+        Da, poți cumpăra orice volum individual oricând. Dacă dorești ulterior trilogia completă, prețul este 177 lei indiferent de achizițiile anterioare.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Ce metode de plată sunt acceptate?
+        <span class="faq-arrow">↓</span>
+      </div>
+      <div class="faq-a">
+        Plata se face prin Stripe — platformă securizată care acceptă toate cardurile Visa, Mastercard și alte metode locale. Datele tale financiare nu ajung niciodată la noi.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Manualele sunt în format digital sau fizic?
+        <span class="faq-arrow">↓</span>
+      </div>
+      <div class="faq-a">
+        Manualele sunt în format digital (PDF). Le poți descărca și citi pe orice dispozitiv — telefon, tabletă sau laptop.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Există garanție de returnare?
+        <span class="faq-arrow">↓</span>
+      </div>
+      <div class="faq-a">
+        Da. Dacă după parcurgerea manualului consideri că nu ți-a adus valoare, ne poți contacta în 14 zile și procesăm rambursarea fără întrebări.
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /main-container -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>
+    <strong style="color:var(--navy);">Academia De la Pasiune la Profit</strong>
+    <span class="f-sep">·</span>
+    Metoda 3C
+    <span class="f-sep">·</span>
+    <a href="https://pasiune-profit.ro/">pasiune-profit.ro</a>
+    <span class="f-sep">·</span>
+    © 2025
+  </p>
+  <p style="margin-top:7px;">
+    Plăți procesate securizat prin Stripe
+    <span class="f-sep">·</span>
+    <a href="#">Termeni și condiții</a>
+    <span class="f-sep">·</span>
+    <a href="#">Politica de confidențialitate</a>
+  </p>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>

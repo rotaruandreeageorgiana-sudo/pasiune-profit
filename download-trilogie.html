@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
 <meta charset="UTF-8">
-<title>Descarcă Trilogia 3C</title>
+<title>Trilogia ta este gata</title>
 
 <style>
 
 body{
 font-family:Inter,Arial;
 background:#0F2A44;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
 margin:0;
+color:white;
 }
 
-.box{
-background:white;
-color:#0F2A44;
-padding:50px;
-border-radius:12px;
+.container{
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
 text-align:center;
-max-width:600px;
-box-shadow:0 20px 60px rgba(0,0,0,0.25);
 }
 
 h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.subtitle{
+opacity:0.8;
+margin-bottom:50px;
+}
+
+.books{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.book{
+background:white;
+color:#0F2A44;
+border-radius:10px;
+padding:30px;
+box-shadow:0 10px 40px rgba(0,0,0,0.25);
+}
+
+.book h3{
 margin-top:0;
 }
 
 .btn{
-display:block;
-margin:15px auto;
-padding:16px;
-width:260px;
+display:inline-block;
+margin-top:20px;
+padding:14px 24px;
 background:#F47B20;
 color:white;
 text-decoration:none;
 font-weight:bold;
 border-radius:6px;
-font-size:18px;
 }
 
 .btn:hover{
 background:#d96813;
 }
 
-.small{
-margin-top:25px;
+.footer{
+margin-top:60px;
+opacity:0.7;
 font-size:14px;
-color:#777;
 }
 
 </style>
@@ -60,35 +76,63 @@ color:#777;
 
 <body>
 
-<div class="box">
+<div class="container">
 
 <h1>Mulțumim pentru achiziție 🎉</h1>
 
-<p>Poți descărca toate manualele din trilogie:</p>
+<p class="subtitle">
+Trilogia ta este pregătită. Descarcă fiecare manual mai jos.
+</p>
+
+<div class="books">
+
+<div class="book">
+<h3>Volumul 1</h3>
+<p>De la idee la ofertă clară</p>
 
 <a class="btn"
 href="https://pasiune-profit.ro/De%20la%20Idee%20la%20Oferta%20Clara.pdf"
 download>
-Descarcă Volumul 1
+
+Descarcă
+
 </a>
+</div>
+
+<div class="book">
+<h3>Volumul 2</h3>
+<p>De la pasiune la profit</p>
 
 <a class="btn"
 href="https://pasiune-profit.ro/DePasiunelaProfit%20Vol2.pdf"
 download>
-Descarcă Volumul 2
+
+Descarcă
+
 </a>
+</div>
+
+<div class="book">
+<h3>Volumul 3</h3>
+<p>Conversie și creștere</p>
 
 <a class="btn"
 href="https://pasiune-profit.ro/DePasiunelaProfit%20Vol3%20Conversie.pdf"
 download>
-Descarcă Volumul 3
-</a>
 
-<p class="small">
-Salvează manualele pe calculator pentru acces permanent.
-</p>
+Descarcă
+
+</a>
+</div>
+
+</div>
+
+<div class="footer">
+Salvează manualele pe dispozitivul tău pentru acces permanent.
+</div>
 
 </div>
 
 </body>
+
 </html>

@@ -642,6 +642,59 @@ footer strong { color: rgba(255,255,255,0.7); }
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 
+/* ══════════════════════════════════
+   BOOK PREVIEW ANIMATIONS
+══════════════════════════════════ */
+.vol-cover-wrap{ position: relative; }
+.vol-gif{
+  will-change: transform;
+  transform: translateZ(0);
+  animation: bookFloat 4.5s ease-in-out infinite;
+}
+@keyframes bookFloat{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-8px); }
+}
+/* Subtle 3D tilt + pause float on hover */
+.vol-card:hover .vol-gif{
+  animation-play-state: paused;
+  transform: rotate(-1.5deg) scale(1.04);
+}
+
+/* Light sweep on hover */
+.vol-cover-wrap::after{
+  content:'';
+  position:absolute;
+  inset:-40%;
+  background: linear-gradient(115deg,
+    transparent 0%,
+    rgba(255,255,255,0.00) 35%,
+    rgba(255,255,255,0.18) 48%,
+    rgba(255,255,255,0.06) 56%,
+    transparent 70%
+  );
+  transform: translateX(-70%) rotate(8deg);
+  opacity:0;
+  pointer-events:none;
+}
+.vol-card:hover .vol-cover-wrap::after{
+  opacity:1;
+  animation: coverSheen 1.1s ease forwards;
+}
+@keyframes coverSheen{
+  from{ transform: translateX(-70%) rotate(8deg); }
+  to{ transform: translateX(70%) rotate(8deg); }
+}
+
+/* Respect accessibility */
+@media (prefers-reduced-motion: reduce){
+  .vol-gif{ animation: none !important; }
+  .vol-card:hover .vol-gif{ transform:none !important; }
+  .vol-cover-wrap::after, .vol-card:hover .vol-cover-wrap::after{ animation:none !important; opacity:0 !important; }
+}
+
+
+
 .vol-body { padding: 24px 24px 28px; display: flex; flex-direction: column; flex-grow: 1; }
 
 .vol-tag {

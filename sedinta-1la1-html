@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ședință 1:1 — Checkout</title>
+  <meta name="robots" content="noindex" />
+  <style>
+    :root{
+      --bg:#0F2A44;
+      --card:#ffffff;
+      --text:#0F2A44;
+      --muted:#5b6b7a;
+      --cta:#F47B20;
+      --cta2:#d96813;
+      --ring: rgba(244,123,32,.25);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,.08), transparent 60%),
+                  radial-gradient(1000px 700px at 90% 30%, rgba(244,123,32,.12), transparent 55%),
+                  var(--bg);
+      color:#fff;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 16px;
+    }
+    .wrap{width:min(980px, 100%); display:grid; gap:18px; grid-template-columns: 1.1fr .9fr;}
+    @media (max-width: 860px){ .wrap{grid-template-columns:1fr; } }
+    .hero{
+      padding:22px 22px 10px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      font-size:13px;
+      opacity:.95;
+    }
+    .badge span.dot{width:8px;height:8px;border-radius:50%;background:var(--cta); box-shadow:0 0 0 6px var(--ring);}
+    h1{margin:14px 0 8px; font-size:38px; line-height:1.05;}
+    p{margin:0 0 12px; color:rgba(255,255,255,.86); font-size:16px; line-height:1.6;}
+    .bullets{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px;}
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      background: rgba(255,255,255,.05);
+    }
+    .check{
+      width:18px;height:18px; border-radius:6px;
+      background: rgba(244,123,32,.18);
+      border:1px solid rgba(244,123,32,.35);
+      display:inline-flex; align-items:center; justify-content:center;
+      flex:0 0 auto; margin-top:2px;
+    }
+    .check:before{content:"✓"; font-weight:700; color:#fff; font-size:12px; line-height:1;}
+    .card{
+      background: var(--card);
+      color: var(--text);
+      border-radius:18px;
+      box-shadow: 0 22px 70px rgba(0,0,0,.35);
+      padding:20px;
+      border:1px solid rgba(255,255,255,.14);
+      overflow:hidden;
+      position:relative;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(244,123,32,.18), transparent 55%),
+                  radial-gradient(circle at 80% 10%, rgba(15,42,68,.16), transparent 55%);
+      transform: rotate(12deg);
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+    .price{
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:10px;
+      padding:14px 14px 12px;
+      border-radius:14px;
+      background: #f6f8fb;
+      border:1px solid #e6edf5;
+    }
+    .price .label{font-weight:700}
+    .price .sub{color:var(--muted); font-size:13px; margin-top:2px}
+    .cta{
+      display:block;
+      width:100%;
+      margin-top:14px;
+      padding:14px 16px;
+      border-radius:12px;
+      background: var(--cta);
+      color:#fff;
+      text-decoration:none;
+      text-align:center;
+      font-weight:800;
+      letter-spacing:.2px;
+      box-shadow: 0 10px 30px rgba(244,123,32,.28);
+      border:1px solid rgba(255,255,255,.18);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .cta:hover{background: var(--cta2); transform: translateY(-1px);}
+    .fine{
+      margin-top:12px;
+      font-size:12.5px;
+      color:#6a7b8a;
+      line-height:1.5;
+    }
+    .fine a{color:#2b6cb0; text-decoration:none}
+    .fine a:hover{text-decoration:underline}
+    .toplink{
+      display:inline-block;
+      margin-top:12px;
+      color:rgba(255,255,255,.78);
+      text-decoration:none;
+      font-size:13px;
+    }
+    .toplink:hover{color:#fff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="badge"><span class="dot"></span> Ședință 1:1 — rezervare și plată</div>
+      <h1>Ședință 1:1 (consultare)</h1>
+      <p>
+        După confirmarea plății, revenim pentru a stabili <strong>de comun acord</strong> data și ora întâlnirii.
+      </p>
+
+      <ul class="bullets">
+        <li><span class="check"></span><div><strong>Clarificăm obiectivul</strong><br><span style="color:rgba(255,255,255,.82)">Ce vrei să obții concret după ședință.</span></div></li>
+        <li><span class="check"></span><div><strong>Plan de acțiune</strong><br><span style="color:rgba(255,255,255,.82)">Pași clari, prioritizați, aplicabili imediat.</span></div></li>
+        <li><span class="check"></span><div><strong>Următorii pași</strong><br><span style="color:rgba(255,255,255,.82)">Recomandări și resurse potrivite pentru cazul tău.</span></div></li>
+      </ul>
+
+      <a class="toplink" href="/">← Înapoi pe site</a>
+    </section>
+
+    <aside class="card" aria-label="Checkout">
+      <div class="price">
+        <div>
+          <div class="label">Plată securizată prin Stripe</div>
+          <div class="sub">Primești confirmarea imediat după plată</div>
+        </div>
+      </div>
+
+      <a class="cta" href="https://buy.stripe.com/7sY00jbef87T0ZQbcv7EQ00">
+        Continuă către plată
+      </a>
+
+      <div class="fine">
+        După plată vei fi redirecționat(ă) către o pagină de confirmare.
+        <br/>Dacă ai întrebări, poți răspunde la emailul de confirmare.
+      </div>
+    </aside>
+  </div>
+</body>
+</html>

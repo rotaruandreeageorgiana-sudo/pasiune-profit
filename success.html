@@ -1,0 +1,15 @@
+<h1>Plata confirmată</h1>
+
+<p>Apasă pentru a descărca manualul.</p>
+
+<a id="downloadBtn">Descarcă</a>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+
+document.getElementById("downloadBtn").href =
+/api/download?token=${token};
+
+</script>

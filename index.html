@@ -1669,65 +1669,87 @@ footer strong { color: rgba(255,255,255,0.7); }
         <p style="font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:36px;font-family:'Inter',sans-serif;">Formular de aplicare, Mentoratul 3C</p>
         <div class="form-group">
           <div class="form-group">
-<label><span class="q-n">00.</span>Numele tău complet</label>
+<label><span class="q-n">01.</span>Numele tău complet</label>
+<input type="text" name="nume" placeholder="Numele tău complet" required>
+</div>
+
+<section class="sec sec-bg">
+  <div class="container">
+    <div class="form-wrap fi">
+
+<form action="https://formspree.io/f/xvzwpdbv" method="POST">
+
+<div class="form-group">
+<label><span class="q-n">01.</span>Numele tău complet</label>
 <input type="text" name="nume" placeholder="Numele tău complet" required>
 </div>
 
 <div class="form-group">
-<label><span class="q-n">00.</span>Emailul tău</label>
+<label><span class="q-n">02.</span>Emailul tău</label>
 <input type="email" name="email" placeholder="emailul tau@email.com" required>
 </div>
 
 <div class="form-group">
-<label><span class="q-n">00.</span>Telefon </label>
-<input type="text" name="contact" placeholder="@instagram sau telefon">
+<label><span class="q-n">03.</span>Telefon</label>
+<input type="text" name="telefon" placeholder="Numărul tău de telefon">
 </div>
-          <label><span class="q-n">01.</span>Numele tau </label>
-          <input type="text" placeholder="Domeniul de activitate">
-        </div>
-        <div class="form-group">
-          <label><span class="q-n">02.</span>Care este oferta ta actuală (sau ideea de ofertă)?</label>
-          <textarea placeholder="Descrie pe scurt ce vrei să vinzi sau ce vinzi deja..."></textarea>
-        </div>
-        <div class="form-group">
-          <label><span class="q-n">03.</span>Câți urmăritori ai în prezent?</label>
-          <select>
-            <option value="">Selectează intervalul</option>
-            <option>Sub 500</option>
-            <option>500, 1.000</option>
-            <option>1.000, 5.000</option>
-            <option>5.000, 20.000</option>
-            <option>Peste 20.000</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label><span class="q-n">04.</span>Ai vândut vreodată un produs sau serviciu online?</label>
-          <select>
-            <option value="">Selectează răspunsul</option>
-            <option>Da, am vândut de mai multe ori</option>
-            <option>Da, o singură dată sau de câteva ori</option>
-            <option>Nu am vândut încă, dar am primit interes</option>
-            <option>Nu am vândut niciodată</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label><span class="q-n">05.</span>Care este cel mai mare obstacol în momentul de față?</label>
-          <textarea placeholder="Ce te blochează să ajungi la venitul pe care ți-l dorești?"></textarea>
-        </div>
-        <div class="form-group">
-          <label><span class="q-n">06.</span>De ce vrei să aplici acum, și nu mai târziu?</label>
-          <textarea placeholder="Ce face ca acest moment să fie relevant pentru tine?"></textarea>
-        </div>
-        <button class="btn btn-orange" style="width:100%;text-align:center;padding:16px;font-size:0.85rem;" onclick="submitForm(this)">Trimite aplicația</button>
-        <p style="margin-top:14px;font-size:0.78rem;color:var(--gray-lt);text-align:center;">Răspundem în 48 de ore lucrătoare.</p>
-      </div>
-    </div>
-  </section>
-  <footer><p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p></footer>
+
+<div class="form-group">
+<label><span class="q-n">04.</span>Domeniul tău de activitate</label>
+<input type="text" name="domeniu" placeholder="Ex: coaching, design, fitness">
 </div>
-<button type="submit" class="btn btn-orange">
+
+<div class="form-group">
+<label><span class="q-n">05.</span>Care este oferta ta actuală (sau ideea de ofertă)?</label>
+<textarea name="oferta" placeholder="Descrie pe scurt ce vrei să vinzi sau ce vinzi deja..." required></textarea>
+</div>
+
+<div class="form-group">
+<label><span class="q-n">06.</span>Câți urmăritori ai în prezent?</label>
+<select name="urmaritori" required>
+<option value="">Selectează intervalul</option>
+<option>Sub 500</option>
+<option>500 - 1.000</option>
+<option>1.000 - 5.000</option>
+<option>5.000 - 20.000</option>
+<option>Peste 20.000</option>
+</select>
+</div>
+
+<div class="form-group">
+<label><span class="q-n">07.</span>Ai vândut vreodată un produs sau serviciu online?</label>
+<select name="vanzari" required>
+<option value="">Selectează răspunsul</option>
+<option>Da, am vândut de mai multe ori</option>
+<option>Da, o singură dată sau de câteva ori</option>
+<option>Nu am vândut încă, dar am primit interes</option>
+<option>Nu am vândut niciodată</option>
+</select>
+</div>
+
+<div class="form-group">
+<label><span class="q-n">08.</span>Care este cel mai mare obstacol în momentul de față?</label>
+<textarea name="obstacol" placeholder="Ce te blochează să ajungi la venitul pe care ți-l dorești?" required></textarea>
+</div>
+
+<div class="form-group">
+<label><span class="q-n">09.</span>De ce vrei să aplici acum și nu mai târziu?</label>
+<textarea name="motiv" placeholder="Ce face ca acest moment să fie relevant pentru tine?" required></textarea>
+</div>
+
+<button type="submit" class="btn btn-orange" style="width:100%;padding:16px;font-size:0.85rem;">
 Trimite aplicația
 </button>
+
+<p style="margin-top:14px;font-size:0.78rem;color:var(--gray-lt);text-align:center;">
+Răspundem în maximum 48 de ore lucrătoare.
+</p>
+
+</form>
+
+    </div>
+  </div>
+</section>
 
 </form>
 <!-- ══ SCRIPT ══ -->

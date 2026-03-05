@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Pasiune Profit</title>
+  <meta name="description" content="Contactează-ne pentru întrebări despre mentorat, manuale sau sesiuni 1:1." />
+
+  <style>
+    :root{
+      --bg:#0F2A44;
+      --card:#ffffff;
+      --text:#0F2A44;
+      --muted:#6b7b8a;
+      --orange:#F47B20;
+      --orange2:#d96813;
+      --border:#e6edf5;
+      --shadow: 0 22px 70px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      background:
+        radial-gradient(1200px 600px at 15% 0%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(1000px 700px at 90% 30%, rgba(244,123,32,.12), transparent 55%),
+        var(--bg);
+      color:#fff;
+      min-height:100vh;
+    }
+
+    /* Top bar simplu */
+    .top{
+      padding:18px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(6px);
+    }
+    .top .inner{
+      width:min(980px, 100%);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      font-weight:900;
+      letter-spacing:.3px;
+      text-decoration:none;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .brand .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--orange);
+      box-shadow:0 0 0 6px rgba(244,123,32,.22);
+    }
+    .nav a{
+      color: rgba(255,255,255,.8);
+      text-decoration:none;
+      font-size:14px;
+      margin-left:14px;
+    }
+    .nav a:hover{color:#fff}
+
+    .wrap{
+      width:min(980px, 100%);
+      margin:0 auto;
+      padding:26px 16px 40px;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 860px){ .wrap{grid-template-columns:1fr;} }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      font-size:13px;
+      opacity:.95;
+    }
+    h1{margin:14px 0 8px; font-size:40px; line-height:1.05;}
+    p{margin:0 0 12px; color:rgba(255,255,255,.86); font-size:16px; line-height:1.6;}
+
+    .card{
+      background: var(--card);
+      color: var(--text);
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      padding:20px;
+      border:1px solid rgba(255,255,255,.14);
+      overflow:hidden;
+      position:relative;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-45%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(244,123,32,.16), transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(15,42,68,.12), transparent 55%);
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 520px){ .grid{grid-template-columns:1fr;} }
+
+    label{
+      display:block;
+      font-size:13px;
+      color:#334155;
+      font-weight:700;
+      margin:0 0 6px;
+    }
+    input, textarea, select{
+      width:100%;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px 12px;
+      font: inherit;
+      outline:none;
+      background:#fff;
+    }
+    textarea{min-height:120px; resize:vertical;}
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(244,123,32,.6);
+      box-shadow: 0 0 0 5px rgba(244,123,32,.15);
+    }
+
+    .btn{
+      display:inline-block;
+      width:100%;
+      margin-top:12px;
+      padding:14px 16px;
+      border-radius:12px;
+      background: var(--orange);
+      color:#fff;
+      text-decoration:none;
+      text-align:center;
+      font-weight:800;
+      letter-spacing:.2px;
+      border:1px solid rgba(255,255,255,.18);
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn:hover{background: var(--orange2); transform: translateY(-1px);}
+    .fine{
+      margin-top:10px;
+      font-size:12.5px;
+      color: var(--muted);
+      line-height:1.5;
+      text-align:center;
+    }
+
+    .info{
+      display:grid;
+      gap:12px;
+    }
+    .infoBox{
+      padding:14px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .infoBox strong{display:block; margin-bottom:6px;}
+    .infoBox a{color:#fff; text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.35)}
+    .infoBox a:hover{border-bottom-color:#fff}
+
+    footer{
+      width:min(980px, 100%);
+      margin:0 auto;
+      padding:18px 16px 28px;
+      color: rgba(255,255,255,.72);
+      font-size:13px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="inner">
+      <a class="brand" href="/"><span class="dot"></span> Pasiune Profit</a>
+      <nav class="nav">
+        <a href="/">Acasă</a>
+        <a href="/sedinta-1la1.html">Ședință 1:1</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <div class="badge">Contact</div>
+      <h1>Hai să vorbim</h1>
+      <p>
+        Scrie-ne și revenim cât mai repede. Pentru mentorat, poți folosi și formularul de aplicare din site.
+      </p>
+
+      <div class="info">
+        <div class="infoBox">
+          <strong>Email</strong>
+          <a href="mailto:contact@pasiune-profit.ro">contact@pasiune-profit.ro</a>
+        </div>
+        <div class="infoBox">
+          <strong>Răspuns</strong>
+          <span>De obicei în 24–48h lucrătoare.</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h2 style="margin:0 0 10px;">Formular contact</h2>
+
+      <form action="https://formspree.io/f/XXXXXXX" method="POST">
+        <input type="hidden" name="_subject" value="Mesaj nou — Contact Pasiune Profit">
+        <input type="hidden" name="_next" value="https://pasiune-profit.ro/multumim-contact.html">
+
+        <div class="grid">
+          <div>
+            <label>Nume</label>
+            <input type="text" name="nume" placeholder="Numele tău" required>
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="emailul tau@email.com" required>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label>Subiect (opțional)</label>
+          <input type="text" name="subiect" placeholder="Ex: întrebări despre mentorat">
+        </div>
+
+        <div style="margin-top:12px;">
+          <label>Mesaj</label>
+          <textarea name="mesaj" placeholder="Scrie mesajul tău aici..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn">Trimite mesajul</button>
+
+        <div class="fine">
+          Prin trimitere, ești de acord să te contactăm în legătură cu solicitarea ta.
+        </div>
+      </form>
+    </aside>
+  </main>
+
+  <footer>
+    <strong>Academia De la Pasiune la Profit</strong> · Metoda 3C · © 2025
+  </footer>
+</body>
+</html>

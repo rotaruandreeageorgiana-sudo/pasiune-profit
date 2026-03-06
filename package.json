@@ -1,0 +1,8 @@
+{
+  "name": "pasiune-profit",
+  "version": "1.0.0",
+  "description": "Academia De la Pasiune la Profit",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

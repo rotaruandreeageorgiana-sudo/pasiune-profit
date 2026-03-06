@@ -782,7 +782,9 @@
                 <li>structura unei oferte clare</li>
               </ul>
               <div class="card-actions">
-                <span class="btn-card btn-card-primary">Cumpără acum →</span>
+                <button class="btn-card btn-card-primary" onclick="cumpara('claritate')">
+  Cumpără acum →
+</button>
                 <span class="btn-card btn-card-secondary">Vezi toate detaliile</span>
               </div>
             </article>
@@ -807,7 +809,9 @@
                 <li>testarea ofertei</li>
               </ul>
               <div class="card-actions">
-                <span class="btn-card btn-card-primary">Cumpără acum →</span>
+                <button class="btn-card btn-card-primary" onclick="cumpara('constructie')">
+  Cumpără acum →
+</button>
                 <span class="btn-card btn-card-secondary">Vezi toate detaliile</span>
               </div>
             </article>
@@ -832,7 +836,9 @@
                 <li>optimizarea conversiei</li>
               </ul>
               <div class="card-actions">
-                <span class="btn-card btn-card-primary">Cumpără acum →</span>
+                <button class="btn-card btn-card-primary" onclick="cumpara('conversie')">
+  Cumpără acum →
+</button>
                 <span class="btn-card btn-card-secondary">Vezi toate detaliile</span>
               </div>
             </article>
@@ -857,7 +863,9 @@
                 <li>economisești față de achiziția separată</li>
               </ul>
               <div class="card-actions">
-                <span class="btn-card btn-card-primary">Cumpără acum →</span>
+                <button class="btn-card btn-card-primary" onclick="cumpara('trilogie')">
+  Cumpără acum →
+</button>
                 <span class="btn-card btn-card-secondary">Vezi toate detaliile</span>
               </div>
             </article>
@@ -1230,6 +1238,32 @@
       if (e.key === 'ArrowLeft')  flipPage(-1);
     });
   </script>
+<script>
+async function cumpara(produs) {
+  const btn = event.currentTarget;
+  btn.disabled = true;
+  btn.textContent = 'Se procesează...';
 
+  try {
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ product: produs })
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert('Eroare: ' + (data.error || 'Necunoscută'));
+      btn.disabled = false;
+      btn.textContent = 'Cumpără acum →';
+    }
+  } catch (err) {
+    alert('Eroare de conexiune. Încearcă din nou.');
+    btn.disabled = false;
+    btn.textContent = 'Cumpără acum →';
+  }
+}
+</script>
 </body>
 </html>

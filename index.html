@@ -1337,7 +1337,7 @@ footer strong { color: rgba(255,255,255,0.7); }
               <li>structura unei oferte clare</li>
             </ul>
             <div class="manuale-merge-actions">
-              <button class="btn-card btn-card-primary" onclick="cumpara(event,'claritate')">Cumpără acum →</button>
+              <a class="btn-card btn-card-primary" href="https://buy.stripe.com/dRm8wP1DFfAlcIy2FZ7EQ01" target="_blank" rel="noopener">Cumpără acum →</a>
               <button class="btn-card btn-card-secondary" onclick="openModal('claritate')">Vezi detalii</button>
             </div>
           </div>
@@ -1357,7 +1357,7 @@ footer strong { color: rgba(255,255,255,0.7); }
               <li>testarea ofertei</li>
             </ul>
             <div class="manuale-merge-actions">
-              <button class="btn-card btn-card-primary" onclick="cumpara(event,'constructie')">Cumpără acum →</button>
+              <a class="btn-card btn-card-primary" href="https://buy.stripe.com/3cIdR91DFdsd8si94n7EQ02" target="_blank" rel="noopener">Cumpără acum →</a>
               <button class="btn-card btn-card-secondary" onclick="openModal('constructie')">Vezi detalii</button>
             </div>
           </div>
@@ -1377,7 +1377,7 @@ footer strong { color: rgba(255,255,255,0.7); }
               <li>optimizarea conversiei</li>
             </ul>
             <div class="manuale-merge-actions">
-              <button class="btn-card btn-card-primary" onclick="cumpara(event,'conversie')">Cumpără acum →</button>
+              <a class="btn-card btn-card-primary" href="https://buy.stripe.com/dRm6oH1DFfAlbEu94n7EQ03" target="_blank" rel="noopener">Cumpără acum →</a>
               <button class="btn-card btn-card-secondary" onclick="openModal('conversie')">Vezi detalii</button>
             </div>
           </div>
@@ -1397,11 +1397,16 @@ footer strong { color: rgba(255,255,255,0.7); }
               <li>economisești față de achiziția separată</li>
             </ul>
             <div class="manuale-merge-actions">
-              <button class="btn-card btn-card-primary" onclick="cumpara(event,'trilogie')">Cumpără acum →</button>
+              <a class="btn-card btn-card-primary" href="https://buy.stripe.com/4gM9AT967fAldMC1BV7EQ04" target="_blank" rel="noopener">Cumpără acum →</a>
               <button class="btn-card btn-card-secondary" onclick="openModal('trilogie')">Vezi detalii</button>
             </div>
           </div>
         </article>
+      </div>
+
+      <div class="merge-note fi">
+        <h3>Ce am păstrat din varianta nouă</h3>
+        <p>Butonul <strong>Vezi detalii</strong> deschide preview-ul fiecărui manual în aceeași pagină, iar <strong>Cumpără acum</strong> trimite direct către linkul de plată Stripe potrivit fiecărui volum.</p>
       </div>
     </div>
   </section>
@@ -1441,7 +1446,7 @@ footer strong { color: rgba(255,255,255,0.7); }
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-orange" id="modalBuyBtn" onclick="cumpara(event, currentBook)">Cumpără acum</button>
+        <button type="button" class="btn btn-orange" id="modalBuyBtn" onclick="buyBook(currentBook)">Cumpără acum</button>
         <span style="font-size:0.82rem;color:var(--gray-lt);">Preview-ul este orientativ și te ajută să alegi volumul potrivit.</span>
       </div>
     </div>
@@ -1644,8 +1649,9 @@ footer strong { color: rgba(255,255,255,0.7); }
           <span class="res-badge">Sesiune 1:1</span>
           <h3>Sesiune individuală de claritate</h3>
           <p>O întâlnire privată în care analizăm situația ta specifică și identificăm pașii concreți pentru a-ți transforma oferta în venit stabil.</p>
+          <p style="margin-top:10px;font-size:0.84rem;color:var(--gray-lt);">După plată, vei fi contactată pentru stabilirea datei și a orei întâlnirii 1:1.</p>
           <span class="res-price">111 lei</span>
-          <a class="btn btn-orange" onclick="gotoPage('aplica')">Rezervă sesiunea</a>
+          <a class="btn btn-orange" href="https://buy.stripe.com/7sY00jbef87T0ZQbcv7EQ00" target="_blank" rel="noopener">Plătește și rezervă sesiunea</a>
         </div>
       </div>
     </div>
@@ -1745,7 +1751,7 @@ footer strong { color: rgba(255,255,255,0.7); }
 const books = {
   claritate: {
     vol: 'Volumul 1', title: 'Claritate', subtitle: 'De la Pasiune la Profit', price: '33 lei',
-    buyUrl: '#', detailUrl: '#',
+    buyUrl: 'https://buy.stripe.com/dRm8wP1DFfAlcIy2FZ7EQ01', detailUrl: '#',
     pages: [
       {chapter:'Introducere', heading:'De ce nu e de ajuns să fii pasionat', preview:'Pasiunea e punctul de plecare, nu destinația. Această secțiune îți arată ce se întâmplă când nu există claritate și de ce cei mai dedicați creatori nu reușesc să vândă.'},
       {chapter:'Capitolul 1', heading:'Diferența dintre pasiune și poziționare', preview:'Cum transformi ceea ce știi să faci într-o ofertă pe care cineva o înțelege în 10 secunde și simte că este exact pentru el.'},
@@ -1755,7 +1761,7 @@ const books = {
   },
   constructie: {
     vol: 'Volumul 2', title: 'Construcție', subtitle: 'De la Pasiune la Profit', price: '77 lei',
-    buyUrl: '#', detailUrl: '#',
+    buyUrl: 'https://buy.stripe.com/3cIdR91DFdsd8si94n7EQ02', detailUrl: '#',
     pages: [
       {chapter:'Introducere', heading:'De la ofertă la sistem vizibil', preview:'Claritatea fără vizibilitate rămâne un secret. Volumul te ghidează prin sistemul minim prin care oferta ta ajunge la oamenii potriviți.'},
       {chapter:'Capitolul 1', heading:'Mesajul central', preview:'Cum formulezi ideea principală astfel încât să fie imediat ușor de înțeles și de reținut.'},
@@ -1765,7 +1771,7 @@ const books = {
   },
   conversie: {
     vol: 'Volumul 3', title: 'Conversie', subtitle: 'De la Pasiune la Profit', price: '97 lei',
-    buyUrl: '#', detailUrl: '#',
+    buyUrl: 'https://buy.stripe.com/dRm6oH1DFfAlbEu94n7EQ03', detailUrl: '#',
     pages: [
       {chapter:'Introducere', heading:'De la interes la decizie', preview:'Acest volum transformă interesul în decizie și decizia în venit.'},
       {chapter:'Capitolul 1', heading:'Psihologia deciziei de cumpărare', preview:'De ce cumpără oamenii și cum aliniez oferta ta la modul real în care ei iau decizii.'},
@@ -1775,7 +1781,7 @@ const books = {
   },
   trilogie: {
     vol: 'Pachet complet', title: 'Trilogia 3C', subtitle: 'Claritate · Construcție · Conversie', price: '177 lei',
-    buyUrl: '#', detailUrl: '#',
+    buyUrl: 'https://buy.stripe.com/4gM9AT967fAldMC1BV7EQ04', detailUrl: '#',
     pages: [
       {chapter:'Ce conține trilogia', heading:'Metoda completă în 3 volume', preview:'Toate cele trei manuale într-un singur pachet: Claritate, Construcție și Conversie.'},
       {chapter:'Volumul 1 — Claritate', heading:'Știi ce vinzi și pentru cine', preview:'Diferența dintre pasiune și poziționare, identificarea publicului real și structura unei oferte clare.'},
@@ -1832,30 +1838,10 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') flipPage(1);
   if (e.key === 'ArrowLeft') flipPage(-1);
 });
-async function cumpara(event, produs) {
-  event.preventDefault();
-  event.stopPropagation();
-  const btn = event.currentTarget;
-  const originalText = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = 'Se procesează...';
-  try {
-    const res = await fetch('/api/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ product: produs })
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-      return;
-    }
-    alert('Eroare: ' + (data.error || 'Necunoscută'));
-  } catch (err) {
-    alert('Eroare de conexiune. Încearcă din nou.');
-  }
-  btn.disabled = false;
-  btn.textContent = originalText;
+function buyBook(bookKey) {
+  const book = books[bookKey];
+  if (!book || !book.buyUrl || book.buyUrl === '#') return;
+  window.open(book.buyUrl, '_blank', 'noopener');
 }
 
 function gotoPage(id) {

@@ -1,65 +1,4 @@
-[12:29, 06.03.2026] Georgiana R: <!doctype html>
-<html lang="ro">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Trilogia 3C | De la Pasiune la Profit</title>
-
-<meta name="description" content="Metoda completă 3C: Claritate, Construcție, Conversie. Transformă pasiunea într-un sistem real de venit." />
-
-.card-link{
-  text-decoration:none;
-  color:inherit;
-  display:block;
-}
-
-.card-link .card{
-  transition:0.25s ease;
-}
-
-.card-link:hover .card{
-  transform:translateY(-4px);
-  box-shadow:0 14px 28px rgba(15,42,68,0.08);
-}
-
-body{
-font-family:Arial, sans-serif;
-margin:0;
-background:#f7f7f7;
-color:#0F2A44;
-line-height:1.6;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-}
-
-.hero{
-background:white;
-padding:50px;
-border-radius:20px;
-margin-bottom:40px;
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-}
-
-h1{
-font-size:42px;
-margin-bottom:10px;
-}
-
-.subtitle{
-font-size:20px;
-color:#555;
-margin-bottom:25px;
-}
-
-.price{
-font…
-[12:43, 06.03.2026] Georgiana R: <!doctype html>
+<!doctype html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
@@ -80,9 +19,13 @@ font…
       --border:#e7edf3;
     }
 
-    *{box-sizing:border-box}
+    *{
+      box-sizing:border-box;
+    }
 
-    html{scroll-behavior:smooth}
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
@@ -276,6 +219,13 @@ font…
       gap:20px;
     }
 
+    .card-link{
+      text-decoration:none;
+      color:inherit;
+      display:block;
+      height:100%;
+    }
+
     .card{
       background:var(--card);
       border:1px solid var(--border);
@@ -285,6 +235,14 @@ font…
       display:flex;
       flex-direction:column;
       gap:14px;
+      height:100%;
+      transition:0.25s ease;
+      cursor:pointer;
+    }
+
+    .card-link:hover .card{
+      transform:translateY(-4px);
+      box-shadow:0 14px 28px rgba(15,42,68,0.08);
     }
 
     .card .tag{
@@ -337,11 +295,7 @@ font…
       padding:12px 16px;
       border-radius:10px;
       font-weight:700;
-    }
-
-    .btn-card-primary{
-      background:var(--orange);
-      color:#fff;
+      display:block;
     }
 
     .btn-card-secondary{
@@ -488,8 +442,8 @@ font…
         <a href="#manuale">Manuale</a>
         <a href="#metoda">Metoda 3C</a>
         <a href="#resurse">Resurse</a>
-        <a href="/mentorat.html">Mentorat</a>
-        <a href="/contact.html">Contact</a>
+        <a href="mentorat.html">Mentorat</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -506,7 +460,7 @@ font…
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#manuale">Începe cu manualele</a>
-          <a class="btn btn-secondary" href="/mentorat.html">Aplică pentru mentorat</a>
+          <a class="btn btn-secondary" href="mentorat.html">Aplică pentru mentorat</a>
         </div>
       </div>
 
@@ -538,81 +492,83 @@ font…
         metoda completă prin care o pasiune sau competență poate deveni un sistem real de monetizare.
       </p>
 
-      <a href="manual-1-claritate.html" class="card-link">
-  <article class="card">
-    <span class="tag">Volumul 1</span>
-    <h3>Claritate</h3>
-    <p>Cum transformi o idee într-o ofertă clară și ușor de înțeles.</p>
-    <div class="price">33 lei</div>
+      <div class="cards">
 
-    <ul class="list">
-      <li>diferența dintre pasiune și poziționare</li>
-      <li>publicul real</li>
-      <li>structura unei oferte clare</li>
-    </ul>
+        <a href="manual-1-claritate.html" class="card-link">
+          <article class="card">
+            <span class="tag">Volumul 1</span>
+            <h3>Claritate</h3>
+            <p>Cum transformi o idee într-o ofertă clară și ușor de înțeles.</p>
+            <div class="price">33 lei</div>
 
-    <div class="card-actions">
-      <span class="btn-card btn-card-secondary">Vezi detalii</span>
-    </div>
-  </article>
-</a>
+            <ul class="list">
+              <li>diferența dintre pasiune și poziționare</li>
+              <li>publicul real</li>
+              <li>structura unei oferte clare</li>
+            </ul>
+
+            <div class="card-actions">
+              <span class="btn-card btn-card-secondary">Vezi detalii</span>
+            </div>
+          </article>
+        </a>
 
         <a href="manual-2-constructie.html" class="card-link">
-  <article class="card">
-    <span class="tag">Volumul 2</span>
-    <h3>Construcție</h3>
-    <p>Cum transformi o ofertă clară într-un sistem real de promovare și vânzare.</p>
-    <div class="price">77 lei</div>
+          <article class="card">
+            <span class="tag">Volumul 2</span>
+            <h3>Construcție</h3>
+            <p>Cum transformi o ofertă clară într-un sistem real de promovare și vânzare.</p>
+            <div class="price">77 lei</div>
 
-    <ul class="list">
-      <li>mesajul central</li>
-      <li>sistemul minim de promovare</li>
-      <li>testarea ofertei</li>
-    </ul>
+            <ul class="list">
+              <li>mesajul central</li>
+              <li>sistemul minim de promovare</li>
+              <li>testarea ofertei</li>
+            </ul>
 
-    <div class="card-actions">
-      <span class="btn-card btn-card-secondary">Vezi detalii</span>
-    </div>
-  </article>
-</a>
+            <div class="card-actions">
+              <span class="btn-card btn-card-secondary">Vezi detalii</span>
+            </div>
+          </article>
+        </a>
 
-       <a href="manual-3-conversie.html" class="card-link">
-  <article class="card">
-    <span class="tag">Volumul 3</span>
-    <h3>Conversie</h3>
-    <p>Cum transformi un sistem clar într-un flux constant de vânzări.</p>
-    <div class="price">97 lei</div>
+        <a href="manual-3-conversie.html" class="card-link">
+          <article class="card">
+            <span class="tag">Volumul 3</span>
+            <h3>Conversie</h3>
+            <p>Cum transformi un sistem clar într-un flux constant de vânzări.</p>
+            <div class="price">97 lei</div>
 
-    <ul class="list">
-      <li>psihologia deciziei de cumpărare</li>
-      <li>conversația de vânzare</li>
-      <li>optimizarea conversiei</li>
-    </ul>
+            <ul class="list">
+              <li>psihologia deciziei de cumpărare</li>
+              <li>conversația de vânzare</li>
+              <li>optimizarea conversiei</li>
+            </ul>
 
-    <div class="card-actions">
-      <span class="btn-card btn-card-secondary">Vezi detalii</span>
-    </div>
-  </article>
-</a>
+            <div class="card-actions">
+              <span class="btn-card btn-card-secondary">Vezi detalii</span>
+            </div>
+          </article>
+        </a>
 
         <a href="trilogia-3c.html" class="card-link">
-  <article class="card">
-    <span class="tag">Pachet</span>
-    <h3>Trilogia 3C</h3>
-    <p>Metoda completă: Claritate, Construcție și Conversie.</p>
-    <div class="price">177 lei</div>
+          <article class="card">
+            <span class="tag">Pachet complet</span>
+            <h3>Trilogia 3C</h3>
+            <p>Metoda completă: Claritate, Construcție și Conversie.</p>
+            <div class="price">177 lei</div>
 
-    <ul class="list">
-      <li>3 manuale complete</li>
-      <li>metoda integrală</li>
-      <li>economisești față de achiziția separată</li>
-    </ul>
+            <ul class="list">
+              <li>3 manuale complete</li>
+              <li>metoda integrală</li>
+              <li>economisești față de achiziția separată</li>
+            </ul>
 
-    <div class="card-actions">
-      <span class="btn-card btn-card-secondary">Vezi detalii</span>
-    </div>
-  </article>
-</a>
+            <div class="card-actions">
+              <span class="btn-card btn-card-secondary">Vezi detalii</span>
+            </div>
+          </article>
+        </a>
 
       </div>
     </div>
@@ -633,7 +589,7 @@ font…
           <li>ce rezultat oferi</li>
         </ul>
         <p style="margin-top:18px;">
-          <a class="btn btn-primary" href="/resurse.html">Descarcă ghidul</a>
+          <a class="btn btn-primary" href="resurse.html">Descarcă ghidul</a>
         </p>
       </div>
 
@@ -649,7 +605,7 @@ font…
           <li>conversie</li>
         </ul>
         <p style="margin-top:18px;">
-          <a class="btn btn-outline" href="/mentorat.html">Vezi mentoratul</a>
+          <a class="btn btn-outline" href="mentorat.html">Vezi mentoratul</a>
         </p>
       </div>
 
@@ -694,12 +650,12 @@ font…
       </div>
 
       <div class="footer-links">
-        <a href="/manual-1-claritate.html">Volumul 1</a>
-        <a href="/manual-2-constructie.html">Volumul 2</a>
-        <a href="/manual-3-conversie.html">Volumul 3</a>
-        <a href="/trilogia-3c.html">Trilogia</a>
-        <a href="/mentorat.html">Mentorat</a>
-        <a href="/contact.html">Contact</a>
+        <a href="manual-1-claritate.html">Volumul 1</a>
+        <a href="manual-2-constructie.html">Volumul 2</a>
+        <a href="manual-3-conversie.html">Volumul 3</a>
+        <a href="trilogia-3c.html">Trilogia</a>
+        <a href="mentorat.html">Mentorat</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
   </footer>

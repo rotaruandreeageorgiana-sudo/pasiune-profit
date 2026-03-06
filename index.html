@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>De la Pasiune la Profit</title>
   <meta name="description" content="Transformă pasiunea într-un sistem de venit. Metoda 3C: Claritate, Construcție, Conversie." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --blue:#0F2A44;
       --blue-2:#17395b;
       --orange:#F47B20;
+      --orange-light:#fff0e6;
       --bg:#f7f7f7;
       --white:#ffffff;
       --text:#10283f;
@@ -19,39 +21,32 @@
       --border:#e7edf3;
     }
 
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
-      font-family:Arial, sans-serif;
+      font-family:'DM Sans', sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.6;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
+    a{ text-decoration:none; color:inherit; }
 
     .container{
       width:min(1120px, calc(100% - 32px));
       margin:0 auto;
     }
 
+    /* ── TOPBAR ── */
     .topbar{
       background:var(--blue);
       color:#fff;
       position:sticky;
       top:0;
       z-index:20;
-      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
     }
 
     .nav{
@@ -63,14 +58,13 @@
     }
 
     .brand{
+      font-family:'Playfair Display', serif;
       font-weight:700;
       font-size:20px;
       letter-spacing:.02em;
     }
 
-    .brand span{
-      color:var(--orange);
-    }
+    .brand span{ color:var(--orange); }
 
     .nav-links{
       display:flex;
@@ -82,14 +76,13 @@
     .nav-links a{
       color:#fff;
       font-size:14px;
-      opacity:.95;
+      opacity:.85;
+      transition:.15s;
     }
 
-    .nav-links a:hover{
-      opacity:1;
-      text-decoration:underline;
-    }
+    .nav-links a:hover{ opacity:1; text-decoration:underline; }
 
+    /* ── BUTTONS ── */
     .btn{
       display:inline-block;
       padding:14px 22px;
@@ -97,28 +90,12 @@
       font-weight:700;
       transition:.2s ease;
     }
+    .btn:hover{ transform:translateY(-2px); }
+    .btn-primary{ background:var(--orange); color:#fff; }
+    .btn-secondary{ background:transparent; border:1px solid rgba(255,255,255,.35); color:#fff; }
+    .btn-outline{ border:1px solid var(--orange); color:var(--orange); background:#fff; }
 
-    .btn:hover{
-      transform:translateY(-1px);
-    }
-
-    .btn-primary{
-      background:var(--orange);
-      color:#fff;
-    }
-
-    .btn-secondary{
-      background:transparent;
-      border:1px solid rgba(255,255,255,.35);
-      color:#fff;
-    }
-
-    .btn-outline{
-      border:1px solid var(--orange);
-      color:var(--orange);
-      background:#fff;
-    }
-
+    /* ── HERO ── */
     .hero{
       padding:72px 0 40px;
       background:linear-gradient(135deg, var(--blue), var(--blue-2));
@@ -143,15 +120,14 @@
     }
 
     .hero h1{
+      font-family:'Playfair Display', serif;
       font-size:54px;
       line-height:1.05;
       margin:0 0 18px;
       max-width:700px;
     }
 
-    .hero h1 span{
-      color:var(--orange);
-    }
+    .hero h1 span{ color:var(--orange); }
 
     .hero p{
       max-width:640px;
@@ -160,11 +136,7 @@
       margin:0 0 26px;
     }
 
-    .hero-actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
+    .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
 
     .method-box{
       background:rgba(255,255,255,.08);
@@ -174,15 +146,9 @@
       backdrop-filter:blur(6px);
     }
 
-    .method-box h3{
-      margin:0 0 14px;
-      color:#fff;
-    }
+    .method-box h3{ margin:0 0 14px; color:#fff; font-family:'Playfair Display', serif; }
 
-    .method-steps{
-      display:grid;
-      gap:10px;
-    }
+    .method-steps{ display:grid; gap:10px; }
 
     .method-step{
       background:rgba(255,255,255,.08);
@@ -198,11 +164,10 @@
       margin-top:3px;
     }
 
-    section{
-      padding:56px 0;
-    }
+    section{ padding:56px 0; }
 
     .section-title{
+      font-family:'Playfair Display', serif;
       font-size:36px;
       margin:0 0 10px;
     }
@@ -213,12 +178,20 @@
       margin:0 0 28px;
     }
 
+    /* ── CARDS GRID ── */
     .cards{
       display:grid;
-      grid-template-columns:repeat(4, 1fr);
+      grid-template-columns:repeat(4,1fr);
       gap:20px;
     }
 
+    .card-wrapper{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+    }
+
+    /* Clickable card link wraps the whole card */
     .card-link{
       text-decoration:none;
       color:inherit;
@@ -236,13 +209,29 @@
       flex-direction:column;
       gap:14px;
       height:100%;
-      transition:0.25s ease;
+      transition:.25s ease;
       cursor:pointer;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      border:2px solid transparent;
+      transition:.25s;
+      pointer-events:none;
     }
 
     .card-link:hover .card{
-      transform:translateY(-4px);
-      box-shadow:0 14px 28px rgba(15,42,68,0.08);
+      transform:translateY(-6px);
+      box-shadow:0 20px 40px rgba(15,42,68,0.12);
+    }
+
+    .card-link:hover .card::after{
+      border-color:var(--orange);
     }
 
     .card .tag{
@@ -255,16 +244,13 @@
     }
 
     .card h3{
+      font-family:'Playfair Display', serif;
       margin:0;
       font-size:26px;
       line-height:1.15;
     }
 
-    .card p{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-    }
+    .card p{ margin:0; color:var(--muted); font-size:15px; }
 
     .price{
       font-size:28px;
@@ -279,9 +265,7 @@
       color:var(--text);
     }
 
-    .list li{
-      margin-bottom:8px;
-    }
+    .list li{ margin-bottom:8px; }
 
     .card-actions{
       margin-top:auto;
@@ -296,7 +280,16 @@
       border-radius:10px;
       font-weight:700;
       display:block;
+      font-size:14px;
+      transition:.15s;
     }
+
+    .btn-card-primary{
+      background:var(--orange);
+      color:#fff;
+    }
+
+    .btn-card-primary:hover{ background:#d96b14; }
 
     .btn-card-secondary{
       background:#f6f8fb;
@@ -304,6 +297,38 @@
       border:1px solid var(--border);
     }
 
+    .btn-card-secondary:hover{
+      background:#eef2f7;
+    }
+
+    /* ── BOOK FLIP BUTTON ── */
+    .preview-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 16px;
+      background:var(--orange-light);
+      border:1px solid #ffd0a8;
+      border-radius:10px;
+      color:var(--orange);
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:.15s;
+      width:100%;
+      margin-top:6px;
+    }
+
+    .preview-btn:hover{
+      background:#ffe0c5;
+    }
+
+    .preview-btn svg{
+      flex-shrink:0;
+    }
+
+    /* ── TWO-COL ── */
     .two-col{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -319,36 +344,27 @@
     }
 
     .info-box h3{
+      font-family:'Playfair Display', serif;
       margin-top:0;
       font-size:26px;
     }
 
     .resource-box{
-      background:linear-gradient(135deg, #fff7f1, #ffffff);
+      background:linear-gradient(135deg,#fff7f1,#ffffff);
       border:1px solid #ffe0c7;
     }
 
     .mentor-box{
-      background:linear-gradient(135deg, var(--blue), var(--blue-2));
+      background:linear-gradient(135deg,var(--blue),var(--blue-2));
       color:#fff;
       border:none;
     }
 
-    .mentor-box p,
-    .mentor-box li{
-      color:#e0eaf4;
-    }
+    .mentor-box p, .mentor-box li{ color:#e0eaf4; }
+    .mentor-box .btn-outline{ background:#fff; color:var(--blue); border:none; }
 
-    .mentor-box .btn-outline{
-      background:#fff;
-      color:var(--blue);
-      border:none;
-    }
-
-    .faq{
-      display:grid;
-      gap:16px;
-    }
+    /* ── FAQ ── */
+    .faq{ display:grid; gap:16px; }
 
     .faq-item{
       background:#fff;
@@ -357,16 +373,10 @@
       padding:22px;
     }
 
-    .faq-item h4{
-      margin:0 0 8px;
-      font-size:20px;
-    }
+    .faq-item h4{ margin:0 0 8px; font-size:20px; font-family:'Playfair Display', serif; }
+    .faq-item p{ margin:0; color:var(--muted); }
 
-    .faq-item p{
-      margin:0;
-      color:var(--muted);
-    }
-
+    /* ── FOOTER ── */
     footer{
       background:var(--blue);
       color:#fff;
@@ -382,53 +392,330 @@
       align-items:center;
     }
 
-    .footer-links{
+    .footer-links{ display:flex; gap:16px; flex-wrap:wrap; }
+    .footer-links a{ color:#dfe8f3; font-size:14px; }
+
+    /* ════════════════════════════════════════
+       BOOK FLIP MODAL
+    ════════════════════════════════════════ */
+
+    .modal-overlay{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(10,22,38,.72);
+      backdrop-filter:blur(8px);
+      z-index:100;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .modal-overlay.open{ display:flex; }
+
+    .modal{
+      background:#fff;
+      border-radius:24px;
+      max-width:760px;
+      width:100%;
+      padding:0;
+      overflow:hidden;
+      box-shadow:0 40px 80px rgba(0,0,0,.3);
+      animation:slideUp .35s cubic-bezier(.16,1,.3,1);
+    }
+
+    @keyframes slideUp{
+      from{ opacity:0; transform:translateY(40px) scale(.97); }
+      to  { opacity:1; transform:translateY(0) scale(1); }
+    }
+
+    .modal-header{
+      background:linear-gradient(135deg, var(--blue), var(--blue-2));
+      color:#fff;
+      padding:28px 32px 22px;
       display:flex;
-      gap:16px;
-      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:flex-start;
     }
 
-    .footer-links a{
-      color:#dfe8f3;
-      font-size:14px;
+    .modal-header h2{
+      font-family:'Playfair Display', serif;
+      margin:0 0 4px;
+      font-size:28px;
     }
 
-    @media (max-width: 1024px){
-      .cards{
-        grid-template-columns:repeat(2,1fr);
-      }
+    .modal-header p{ margin:0; color:#c8d9ed; font-size:14px; }
 
-      .hero h1{
-        font-size:46px;
-      }
+    .modal-close{
+      background:rgba(255,255,255,.12);
+      border:none;
+      color:#fff;
+      cursor:pointer;
+      border-radius:50%;
+      width:36px;
+      height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      margin-left:16px;
+      transition:.15s;
     }
 
-    @media (max-width: 780px){
-      .nav{
-        flex-direction:column;
-        align-items:flex-start;
-      }
+    .modal-close:hover{ background:rgba(255,255,255,.22); }
 
-      .hero-grid,
-      .two-col{
-        grid-template-columns:1fr;
-      }
+    .modal-body{
+      padding:32px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:28px;
+    }
 
-      .cards{
-        grid-template-columns:1fr;
-      }
+    /* ── BOOK 3D ── */
+    .book-scene{
+      perspective:1000px;
+      width:240px;
+      height:320px;
+      flex-shrink:0;
+    }
 
-      .hero{
-        padding-top:48px;
-      }
+    .book{
+      width:100%;
+      height:100%;
+      position:relative;
+      transform-style:preserve-3d;
+      transform:rotateY(-20deg) rotateX(4deg);
+      transition:transform .6s cubic-bezier(.16,1,.3,1);
+    }
 
-      .hero h1{
-        font-size:38px;
-      }
+    .book-scene:hover .book{
+      transform:rotateY(-30deg) rotateX(4deg);
+    }
 
-      .section-title{
-        font-size:30px;
-      }
+    .book-face{
+      position:absolute;
+      inset:0;
+      border-radius:4px 14px 14px 4px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      padding:24px;
+      backface-visibility:hidden;
+    }
+
+    .book-face.front{
+      background:linear-gradient(160deg, var(--blue), var(--blue-2));
+      color:#fff;
+      box-shadow:6px 6px 30px rgba(0,0,0,.3), inset -2px 0 6px rgba(0,0,0,.2);
+    }
+
+    .book-face.back{
+      background:#0a1e30;
+      transform:rotateY(180deg);
+    }
+
+    .book-spine{
+      position:absolute;
+      left:-18px;
+      top:0;
+      bottom:0;
+      width:18px;
+      background:linear-gradient(to right,#071929,#0e2640);
+      transform:rotateY(-90deg) translateX(-9px);
+      transform-origin:right center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:-4px 0 12px rgba(0,0,0,.4);
+    }
+
+    .spine-text{
+      writing-mode:vertical-rl;
+      text-orientation:mixed;
+      transform:rotate(180deg);
+      color:#aac4d8;
+      font-size:10px;
+      letter-spacing:.1em;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    .book-vol{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--orange);
+      font-weight:700;
+    }
+
+    .book-title{
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      text-align:center;
+      line-height:1.2;
+      color:#fff;
+    }
+
+    .book-subtitle{
+      font-size:12px;
+      color:#aac4d8;
+      text-align:center;
+    }
+
+    .book-deco{
+      width:60px;
+      height:2px;
+      background:linear-gradient(to right, transparent, var(--orange), transparent);
+      margin:4px 0;
+    }
+
+    /* ── PAGE FLIPPER ── */
+    .flipper-area{
+      width:100%;
+    }
+
+    .flipper-area h4{
+      margin:0 0 16px;
+      font-family:'Playfair Display', serif;
+      font-size:18px;
+      color:var(--text);
+    }
+
+    .pages-track{
+      position:relative;
+      height:180px;
+      overflow:hidden;
+      border-radius:14px;
+      background:#f9fafb;
+      border:1px solid var(--border);
+    }
+
+    .page{
+      position:absolute;
+      inset:0;
+      padding:24px 28px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      opacity:0;
+      transform:translateX(40px) rotateY(20deg);
+      transform-origin:left center;
+      transition:all .5s cubic-bezier(.16,1,.3,1);
+      pointer-events:none;
+    }
+
+    .page.active{
+      opacity:1;
+      transform:translateX(0) rotateY(0);
+      pointer-events:auto;
+    }
+
+    .page.prev{
+      opacity:0;
+      transform:translateX(-40px) rotateY(-20deg);
+    }
+
+    .page-chapter{
+      font-size:11px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      color:var(--orange);
+    }
+
+    .page-heading{
+      font-family:'Playfair Display', serif;
+      font-size:17px;
+      color:var(--text);
+      margin:0;
+    }
+
+    .page-preview{
+      font-size:13.5px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .page-indicator{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      margin-top:12px;
+    }
+
+    .dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--border);
+      transition:.2s;
+      cursor:pointer;
+    }
+
+    .dot.active{ background:var(--orange); }
+
+    .flip-controls{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:10px;
+    }
+
+    .flip-btn{
+      background:var(--blue);
+      color:#fff;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:13px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      transition:.15s;
+    }
+
+    .flip-btn:hover{ background:var(--blue-2); }
+    .flip-btn:disabled{ opacity:.3; cursor:default; }
+
+    .page-count{
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    /* ── MODAL CTA ── */
+    .modal-footer{
+      padding:0 32px 32px;
+      display:flex;
+      gap:12px;
+    }
+
+    .modal-footer .btn{
+      flex:1;
+      text-align:center;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){
+      .cards{ grid-template-columns:repeat(2,1fr); }
+      .hero h1{ font-size:46px; }
+    }
+
+    @media(max-width:780px){
+      .nav{ flex-direction:column; align-items:flex-start; }
+      .hero-grid, .two-col{ grid-template-columns:1fr; }
+      .cards{ grid-template-columns:1fr; }
+      .hero{ padding-top:48px; }
+      .hero h1{ font-size:38px; }
+      .section-title{ font-size:30px; }
+      .modal-body{ padding:20px; }
+      .modal-footer{ padding:0 20px 20px; flex-direction:column; }
+      .book-scene{ width:180px; height:240px; }
     }
   </style>
 </head>
@@ -437,7 +724,6 @@
   <header class="topbar">
     <div class="container nav">
       <div class="brand">De la Pasiune la <span>Profit</span></div>
-
       <nav class="nav-links">
         <a href="#manuale">Manuale</a>
         <a href="#metoda">Metoda 3C</a>
@@ -448,42 +734,30 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">Academia De la Pasiune la Profit</span>
         <h1>Transformă pasiunea într-un <span>sistem de venit.</span></h1>
-        <p>
-          O metodă practică pentru creatorii și antreprenorii care vor să treacă
-          de la idei, postări și confuzie la claritate, structură și conversie.
-        </p>
-
+        <p>O metodă practică pentru creatorii și antreprenorii care vor să treacă de la idei, postări și confuzie la claritate, structură și conversie.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#manuale">Începe cu manualele</a>
           <a class="btn btn-secondary" href="mentorat.html">Aplică pentru mentorat</a>
         </div>
       </div>
-
       <div class="method-box" id="metoda">
         <h3>Metoda 3C</h3>
         <div class="method-steps">
-          <div class="method-step">
-            Claritate
-            <small>știi ce vinzi și pentru cine</small>
-          </div>
-          <div class="method-step">
-            Construcție
-            <small>creezi sistemul prin care oferta devine vizibilă</small>
-          </div>
-          <div class="method-step">
-            Conversie
-            <small>transformi interesul în client și venit</small>
-          </div>
+          <div class="method-step">Claritate <small>știi ce vinzi și pentru cine</small></div>
+          <div class="method-step">Construcție <small>creezi sistemul prin care oferta devine vizibilă</small></div>
+          <div class="method-step">Conversie <small>transformi interesul în client și venit</small></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- MANUALE -->
   <section id="manuale">
     <div class="container">
       <h2 class="section-title">Manualele Academiei</h2>
@@ -494,149 +768,152 @@
 
       <div class="cards">
 
-        <a href="manual-1-claritate.html" class="card-link">
-          <article class="card">
-            <span class="tag">Volumul 1</span>
-            <h3>Claritate</h3>
-            <p>Cum transformi o idee într-o ofertă clară și ușor de înțeles.</p>
-            <div class="price">33 lei</div>
+        <!-- Vol 1 -->
+        <div class="card-wrapper">
+          <a href="manual-1-claritate.html" class="card-link">
+            <article class="card">
+              <span class="tag">Volumul 1</span>
+              <h3>Claritate</h3>
+              <p>Cum transformi o idee într-o ofertă clară și ușor de înțeles.</p>
+              <div class="price">33 lei</div>
+              <ul class="list">
+                <li>diferența dintre pasiune și poziționare</li>
+                <li>publicul real</li>
+                <li>structura unei oferte clare</li>
+              </ul>
+              <div class="card-actions">
+                <span class="btn-card btn-card-primary">Cumpără acum →</span>
+                <span class="btn-card btn-card-secondary">Vezi toate detaliile</span>
+              </div>
+            </article>
+          </a>
+          <button class="preview-btn" onclick="openModal('claritate')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Răsfoiește cartea
+          </button>
+        </div>
 
-            <ul class="list">
-              <li>diferența dintre pasiune și poziționare</li>
-              <li>publicul real</li>
-              <li>structura unei oferte clare</li>
-            </ul>
+        <!-- Vol 2 -->
+        <div class="card-wrapper">
+          <a href="manual-2-constructie.html" class="card-link">
+            <article class="card">
+              <span class="tag">Volumul 2</span>
+              <h3>Construcție</h3>
+              <p>Cum transformi o ofertă clară într-un sistem real de promovare și vânzare.</p>
+              <div class="price">77 lei</div>
+              <ul class="list">
+                <li>mesajul central</li>
+                <li>sistemul minim de promovare</li>
+                <li>testarea ofertei</li>
+              </ul>
+              <div class="card-actions">
+                <span class="btn-card btn-card-primary">Cumpără acum →</span>
+                <span class="btn-card btn-card-secondary">Vezi toate detaliile</span>
+              </div>
+            </article>
+          </a>
+          <button class="preview-btn" onclick="openModal('constructie')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Răsfoiește cartea
+          </button>
+        </div>
 
-            <div class="card-actions">
-              <span class="btn-card btn-card-secondary">Vezi detalii</span>
-            </div>
-          </article>
-        </a>
+        <!-- Vol 3 -->
+        <div class="card-wrapper">
+          <a href="manual-3-conversie.html" class="card-link">
+            <article class="card">
+              <span class="tag">Volumul 3</span>
+              <h3>Conversie</h3>
+              <p>Cum transformi un sistem clar într-un flux constant de vânzări.</p>
+              <div class="price">97 lei</div>
+              <ul class="list">
+                <li>psihologia deciziei de cumpărare</li>
+                <li>conversația de vânzare</li>
+                <li>optimizarea conversiei</li>
+              </ul>
+              <div class="card-actions">
+                <span class="btn-card btn-card-primary">Cumpără acum →</span>
+                <span class="btn-card btn-card-secondary">Vezi toate detaliile</span>
+              </div>
+            </article>
+          </a>
+          <button class="preview-btn" onclick="openModal('conversie')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Răsfoiește cartea
+          </button>
+        </div>
 
-        <a href="manual-2-constructie.html" class="card-link">
-          <article class="card">
-            <span class="tag">Volumul 2</span>
-            <h3>Construcție</h3>
-            <p>Cum transformi o ofertă clară într-un sistem real de promovare și vânzare.</p>
-            <div class="price">77 lei</div>
-
-            <ul class="list">
-              <li>mesajul central</li>
-              <li>sistemul minim de promovare</li>
-              <li>testarea ofertei</li>
-            </ul>
-
-            <div class="card-actions">
-              <span class="btn-card btn-card-secondary">Vezi detalii</span>
-            </div>
-          </article>
-        </a>
-
-        <a href="manual-3-conversie.html" class="card-link">
-          <article class="card">
-            <span class="tag">Volumul 3</span>
-            <h3>Conversie</h3>
-            <p>Cum transformi un sistem clar într-un flux constant de vânzări.</p>
-            <div class="price">97 lei</div>
-
-            <ul class="list">
-              <li>psihologia deciziei de cumpărare</li>
-              <li>conversația de vânzare</li>
-              <li>optimizarea conversiei</li>
-            </ul>
-
-            <div class="card-actions">
-              <span class="btn-card btn-card-secondary">Vezi detalii</span>
-            </div>
-          </article>
-        </a>
-
-        <a href="trilogia-3c.html" class="card-link">
-          <article class="card">
-            <span class="tag">Pachet complet</span>
-            <h3>Trilogia 3C</h3>
-            <p>Metoda completă: Claritate, Construcție și Conversie.</p>
-            <div class="price">177 lei</div>
-
-            <ul class="list">
-              <li>3 manuale complete</li>
-              <li>metoda integrală</li>
-              <li>economisești față de achiziția separată</li>
-            </ul>
-
-            <div class="card-actions">
-              <span class="btn-card btn-card-secondary">Vezi detalii</span>
-            </div>
-          </article>
-        </a>
+        <!-- Trilogie -->
+        <div class="card-wrapper">
+          <a href="trilogia-3c.html" class="card-link">
+            <article class="card">
+              <span class="tag">Pachet complet</span>
+              <h3>Trilogia 3C</h3>
+              <p>Metoda completă: Claritate, Construcție și Conversie.</p>
+              <div class="price">177 lei</div>
+              <ul class="list">
+                <li>3 manuale complete</li>
+                <li>metoda integrală</li>
+                <li>economisești față de achiziția separată</li>
+              </ul>
+              <div class="card-actions">
+                <span class="btn-card btn-card-primary">Cumpără acum →</span>
+                <span class="btn-card btn-card-secondary">Vezi toate detaliile</span>
+              </div>
+            </article>
+          </a>
+          <button class="preview-btn" onclick="openModal('trilogie')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Răsfoiește cartea
+          </button>
+        </div>
 
       </div>
     </div>
   </section>
 
+  <!-- RESURSE + MENTORAT -->
   <section>
     <div class="container two-col">
-
       <div class="info-box resource-box" id="resurse">
         <h3>Resursă gratuită</h3>
-        <p>
-          Descarcă ghidul <strong>Primele 3 întrebări</strong> și vezi dacă ideea ta are baza necesară
-          pentru a deveni o ofertă monetizabilă.
-        </p>
+        <p>Descarcă ghidul <strong>Primele 3 întrebări</strong> și vezi dacă ideea ta are baza necesară pentru a deveni o ofertă monetizabilă.</p>
         <ul class="list">
           <li>ce problemă rezolvi</li>
           <li>pentru cine este soluția</li>
           <li>ce rezultat oferi</li>
         </ul>
-        <p style="margin-top:18px;">
-          <a class="btn btn-primary" href="resurse.html">Descarcă ghidul</a>
-        </p>
+        <p style="margin-top:18px;"><a class="btn btn-primary" href="resurse.html">Descarcă ghidul</a></p>
       </div>
-
       <div class="info-box mentor-box">
         <h3>Mentoratul De la Pasiune la Profit</h3>
-        <p>
-          Pentru cei care nu vor doar să citească, ci să aplice metoda 3C ghidat,
-          cu structură, feedback și implementare reală.
-        </p>
+        <p>Pentru cei care nu vor doar să citească, ci să aplice metoda 3C ghidat, cu structură, feedback și implementare reală.</p>
         <ul class="list">
           <li>claritate</li>
           <li>construcție</li>
           <li>conversie</li>
         </ul>
-        <p style="margin-top:18px;">
-          <a class="btn btn-outline" href="mentorat.html">Vezi mentoratul</a>
-        </p>
+        <p style="margin-top:18px;"><a class="btn btn-outline" href="mentorat.html">Vezi mentoratul</a></p>
       </div>
-
     </div>
   </section>
 
+  <!-- FAQ -->
   <section>
     <div class="container">
       <h2 class="section-title">Întrebări frecvente</h2>
       <div class="faq">
         <div class="faq-item">
           <h4>Primesc manualul imediat după plată?</h4>
-          <p>
-            Da. După confirmarea plății, vei primi emailul automat cu manualul cumpărat.
-            După plată vei fi redirecționat(ă) și către pagina de mulțumire.
-          </p>
+          <p>Da. După confirmarea plății, vei primi emailul automat cu manualul cumpărat. După plată vei fi redirecționat(ă) și către pagina de mulțumire.</p>
         </div>
-
         <div class="faq-item">
           <h4>Pot cumpăra doar un singur volum?</h4>
-          <p>
-            Da. Fiecare volum poate fi cumpărat separat, iar dacă vrei metoda completă poți alege Trilogia 3C.
-          </p>
+          <p>Da. Fiecare volum poate fi cumpărat separat, iar dacă vrei metoda completă poți alege Trilogia 3C.</p>
         </div>
-
         <div class="faq-item">
           <h4>De unde încep?</h4>
-          <p>
-            Începe cu Volumul 1 — Claritate dacă ideea ta nu este încă bine definită.
-            Dacă ai deja claritate, poți continua cu Volumul 2 sau cu pachetul complet.
-          </p>
+          <p>Începe cu Volumul 1 — Claritate dacă ideea ta nu este încă bine definită. Dacă ai deja claritate, poți continua cu Volumul 2 sau cu pachetul complet.</p>
         </div>
       </div>
     </div>
@@ -645,10 +922,9 @@
   <footer>
     <div class="container footer-grid">
       <div>
-        <strong>Academia De la Pasiune la Profit</strong><br />
+        <strong>Academia De la Pasiune la Profit</strong><br/>
         <span style="color:#dfe8f3;">Metoda 3C: Claritate · Construcție · Conversie</span>
       </div>
-
       <div class="footer-links">
         <a href="manual-1-claritate.html">Volumul 1</a>
         <a href="manual-2-constructie.html">Volumul 2</a>
@@ -659,6 +935,301 @@
       </div>
     </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════
+       BOOK PREVIEW MODAL
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="bookModal" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modalInner">
+
+      <div class="modal-header">
+        <div>
+          <h2 id="modalTitle">Claritate</h2>
+          <p id="modalSub">Volumul 1 · De la Pasiune la Profit</p>
+        </div>
+        <button class="modal-close" onclick="closeModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- 3D Book -->
+        <div class="book-scene">
+          <div class="book" id="modalBook">
+            <div class="book-face front">
+              <div class="book-vol" id="bookVol">Volumul 1</div>
+              <div class="book-deco"></div>
+              <div class="book-title" id="bookTitle">Claritate</div>
+              <div class="book-deco"></div>
+              <div class="book-subtitle" id="bookSubtitle">De la Pasiune la Profit</div>
+            </div>
+            <div class="book-face back"></div>
+            <div class="book-spine">
+              <span class="spine-text" id="spineText">Claritate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Page Flipper -->
+        <div class="flipper-area">
+          <h4>Previzualizare capitole</h4>
+          <div class="pages-track" id="pagesTrack">
+            <!-- pages injected by JS -->
+          </div>
+          <div class="page-indicator" id="dotRow"></div>
+          <div class="flip-controls">
+            <button class="flip-btn" id="btnPrev" onclick="flipPage(-1)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              Pagina anterioară
+            </button>
+            <span class="page-count" id="pageCount">1 / 4</span>
+            <button class="flip-btn" id="btnNext" onclick="flipPage(1)">
+              Pagina următoare
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a href="#" class="btn btn-primary" id="modalBuyBtn">Cumpără acum</a>
+        <a href="#" class="btn btn-outline" id="modalDetailBtn">Vezi toate detaliile</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* ── Book data ── */
+    const books = {
+      claritate: {
+        vol: 'Volumul 1',
+        title: 'Claritate',
+        subtitle: 'De la Pasiune la Profit',
+        price: '33 lei',
+        buyUrl: 'manual-1-claritate.html',
+        detailUrl: 'manual-1-claritate.html',
+        pages: [
+          {
+            chapter: 'Introducere',
+            heading: 'De ce nu e de ajuns să fii pasionat',
+            preview: 'Pasiunea e punctul de plecare, nu destinația. Această secțiune îți arată ce se întâmplă când nu există claritate și de ce cei mai dedicați creatori nu reușesc să vândă.'
+          },
+          {
+            chapter: 'Capitolul 1',
+            heading: 'Diferența dintre pasiune și poziționare',
+            preview: 'Cum transformi ceea ce știi să faci într-o ofertă pe care cineva o înțelege în 10 secunde și simte că este exact pentru el. Exerciții practice incluse.'
+          },
+          {
+            chapter: 'Capitolul 2',
+            heading: 'Publicul tău real — nu cel imaginar',
+            preview: 'Metoda prin care identifici exact cine are problema pe care o rezolvi tu, cum gândește, ce limbaj folosește și unde se află. Fără presupuneri.'
+          },
+          {
+            chapter: 'Capitolul 3',
+            heading: 'Structura unei oferte clare',
+            preview: 'Cum construiești o ofertă care comunică valoarea înainte de a comunica prețul. Template complet de ofertă pe care îl poți folosi imediat.'
+          }
+        ]
+      },
+      constructie: {
+        vol: 'Volumul 2',
+        title: 'Construcție',
+        subtitle: 'De la Pasiune la Profit',
+        price: '77 lei',
+        buyUrl: 'manual-2-constructie.html',
+        detailUrl: 'manual-2-constructie.html',
+        pages: [
+          {
+            chapter: 'Introducere',
+            heading: 'De la ofertă la sistem vizibil',
+            preview: 'Claritatea fără vizibilitate rămâne un secret. Acest volum te ghidează prin construirea sistemului minim prin care oferta ta ajunge la oamenii potriviți.'
+          },
+          {
+            chapter: 'Capitolul 1',
+            heading: 'Mesajul central — ancora comunicării tale',
+            preview: 'Un singur mesaj, repetat consecvent, valorează mai mult decât zece mesaje diferite. Cum îl construiești și cum îl adaptezi pe fiecare canal.'
+          },
+          {
+            chapter: 'Capitolul 2',
+            heading: 'Sistemul minim de promovare',
+            preview: 'Nu ai nevoie de toate platformele. Ai nevoie de un sistem simplu care funcționează fără să te epuizeze. Structură clară, aplicabilă imediat.'
+          },
+          {
+            chapter: 'Capitolul 3',
+            heading: 'Testarea ofertei înainte de lansare',
+            preview: 'Cum validezi că oferta ta funcționează înainte să investești timp și bani în promovare la scară. Pași concreți, fără teorie.'
+          }
+        ]
+      },
+      conversie: {
+        vol: 'Volumul 3',
+        title: 'Conversie',
+        subtitle: 'De la Pasiune la Profit',
+        price: '97 lei',
+        buyUrl: 'manual-3-conversie.html',
+        detailUrl: 'manual-3-conversie.html',
+        pages: [
+          {
+            chapter: 'Introducere',
+            heading: 'Interesul fără vânzare e doar trafic',
+            preview: 'Ai oameni care urmăresc, apreciază, întreabă — dar nu cumpără. Acest volum transformă interesul în decizie și decizia în venit.'
+          },
+          {
+            chapter: 'Capitolul 1',
+            heading: 'Psihologia deciziei de cumpărare',
+            preview: 'De ce cumpără oamenii de fapt și cum poți să aliniezi oferta ta cu modul în care creierul uman ia decizii. Principii aplicabile direct în comunicare.'
+          },
+          {
+            chapter: 'Capitolul 2',
+            heading: 'Conversația de vânzare fără presiune',
+            preview: 'Un cadru simplu de conversație prin care înțelegi ce are nevoie omul din fața ta și îi prezinți soluția potrivită — fără script rigid, fără forțat.'
+          },
+          {
+            chapter: 'Capitolul 3',
+            heading: 'Optimizarea conversiei în timp',
+            preview: 'Cum urmărești ce funcționează, ce nu, și cum ajustezi sistemul tău pentru rezultate tot mai bune. Indicatori simpli, logică clară.'
+          }
+        ]
+      },
+      trilogie: {
+        vol: 'Pachet complet',
+        title: 'Trilogia 3C',
+        subtitle: 'Claritate · Construcție · Conversie',
+        price: '177 lei',
+        buyUrl: 'trilogia-3c.html',
+        detailUrl: 'trilogia-3c.html',
+        pages: [
+          {
+            chapter: 'Ce conține trilogia',
+            heading: 'Metoda completă în 3 volume',
+            preview: 'Toate cele trei manuale într-un singur pachet: Claritate (33 lei), Construcție (77 lei) și Conversie (97 lei). Economisești față de achiziția separată și primești metoda integrală.'
+          },
+          {
+            chapter: 'Volumul 1 — Claritate',
+            heading: 'Știi ce vinzi și pentru cine',
+            preview: 'Diferența dintre pasiune și poziționare, identificarea publicului real, structura unei oferte clare. Fundația fără de care celelalte nu funcționează.'
+          },
+          {
+            chapter: 'Volumul 2 — Construcție',
+            heading: 'Oferta ta devine vizibilă',
+            preview: 'Mesajul central, sistemul minim de promovare, testarea ofertei. Cum construiești prezența care aduce oameni la tine în mod constant.'
+          },
+          {
+            chapter: 'Volumul 3 — Conversie',
+            heading: 'Transformi interesul în venit',
+            preview: 'Psihologia deciziei, conversația de vânzare, optimizarea continuă. Ultimul pas din metodă — cel care face ca tot sistemul să aducă rezultate reale.'
+          }
+        ]
+      }
+    };
+
+    let currentBook = null;
+    let currentPage = 0;
+
+    function openModal(bookKey) {
+      currentBook = bookKey;
+      currentPage = 0;
+      const b = books[bookKey];
+
+      document.getElementById('modalTitle').textContent = b.title;
+      document.getElementById('modalSub').textContent = b.vol + ' · De la Pasiune la Profit';
+      document.getElementById('bookVol').textContent = b.vol;
+      document.getElementById('bookTitle').textContent = b.title;
+      document.getElementById('bookSubtitle').textContent = b.subtitle;
+      document.getElementById('spineText').textContent = b.title;
+      document.getElementById('modalBuyBtn').href = b.buyUrl;
+      document.getElementById('modalBuyBtn').textContent = 'Cumpără — ' + b.price;
+      document.getElementById('modalDetailBtn').href = b.detailUrl;
+
+      renderPages(b.pages);
+      document.getElementById('bookModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('bookModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('bookModal')) closeModal();
+    }
+
+    function renderPages(pages) {
+      const track = document.getElementById('pagesTrack');
+      const dots  = document.getElementById('dotRow');
+      track.innerHTML = '';
+      dots.innerHTML  = '';
+
+      pages.forEach((p, i) => {
+        const div = document.createElement('div');
+        div.className = 'page' + (i === 0 ? ' active' : '');
+        div.innerHTML = `
+          <div class="page-chapter">${p.chapter}</div>
+          <div class="page-heading">${p.heading}</div>
+          <div class="page-preview">${p.preview}</div>
+        `;
+        track.appendChild(div);
+
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goToPage(i);
+        dots.appendChild(dot);
+      });
+
+      updateControls(pages.length);
+    }
+
+    function flipPage(dir) {
+      const b = books[currentBook];
+      const total = b.pages.length;
+      const pages = document.querySelectorAll('#pagesTrack .page');
+      const dots  = document.querySelectorAll('#dotRow .dot');
+
+      pages[currentPage].classList.remove('active');
+      pages[currentPage].classList.add('prev');
+      dots[currentPage].classList.remove('active');
+
+      setTimeout(() => {
+        pages[currentPage].classList.remove('prev');
+      }, 500);
+
+      currentPage = Math.max(0, Math.min(total - 1, currentPage + dir));
+
+      pages[currentPage].classList.add('active');
+      dots[currentPage].classList.add('active');
+      updateControls(total);
+    }
+
+    function goToPage(i) {
+      const b = books[currentBook];
+      const total = b.pages.length;
+      const pages = document.querySelectorAll('#pagesTrack .page');
+      const dots  = document.querySelectorAll('#dotRow .dot');
+
+      pages[currentPage].classList.remove('active');
+      dots[currentPage].classList.remove('active');
+
+      currentPage = i;
+      pages[currentPage].classList.add('active');
+      dots[currentPage].classList.add('active');
+      updateControls(total);
+    }
+
+    function updateControls(total) {
+      document.getElementById('btnPrev').disabled = currentPage === 0;
+      document.getElementById('btnNext').disabled = currentPage === total - 1;
+      document.getElementById('pageCount').textContent = (currentPage + 1) + ' / ' + total;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('bookModal').classList.contains('open')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') flipPage(1);
+      if (e.key === 'ArrowLeft')  flipPage(-1);
+    });
+  </script>
 
 </body>
 </html>

@@ -2553,13 +2553,22 @@ function generateDownloadToken(bookKey) {
 }
 
 function checkDownloadPage() {
-  const params = new URLSearchParams(window.location.search);
-  const token = params.get('dl');
-  const manual = params.get('manual');
-  const session = params.get('session_id'); // Stripe success session
+  // Citește parametri atât din query string CÂT ȘI din hash (pentru Stripe success_url cu #)
+  const searchParams = new URLSearchParams(window.location.search);
+  const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+
+  // Funcție helper: caută param în query string, apoi în hash
+  function getParam(name) {
+    return searchParams.get(name) || hashParams.get(name);
+  }
+
+  const token = getParam('dl');
+  const manual = getParam('manual');
+  const session = getParam('session_id');
+  const success = getParam('success');
 
   // Caso 1: Redirect de la Stripe cu parametru manual
-  if ((session || params.get('success')) && manual && books[manual]) {
+  if ((session || success) && manual && books[manual]) {
     // Generează token și redirecționează la pagina de descărcare
     const dlToken = generateDownloadToken(manual);
     // Stochează tokenul ca valid
@@ -2660,7 +2669,10 @@ function performDownload() {
 }
 
 // Verifică la încărcarea paginii dacă există parametri de descărcare
-window.addEventListener('load', checkDownloadPage);
+window.addEventListener('load', function() {
+  // Mic delay pentru a lăsa pagina să se inițializeze complet
+  setTimeout(checkDownloadPage, 100);
+});
 
 function gotoPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));

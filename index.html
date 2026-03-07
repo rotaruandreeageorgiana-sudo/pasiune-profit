@@ -594,10 +594,20 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(15,42,68,0.08); }
 /* ══════════════════════════════════
    FOOTER
 ══════════════════════════════════ */
-footer { background: #091d30; padding: 40px 6%; text-align: center; }
+footer { background: #091d30; padding: 48px 6% 32px; text-align: center; }
 footer p { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.8; }
 footer strong { color: rgba(255,255,255,0.7); }
 .f-sep { margin: 0 12px; opacity: 0.3; }
+.footer-social { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
+.footer-social a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); text-decoration: none; transition: background .2s, color .2s; }
+.footer-social a:hover { background: var(--orange); color: #fff; }
+.footer-social svg { width: 18px; height: 18px; fill: currentColor; }
+.nav-social-sep { width: 1px; height: 18px; background: var(--border); margin: 0 4px; }
+.nav-social-icon { display: flex !important; align-items: center; justify-content: center; width: 34px !important; height: 34px; border-radius: 50% !important; background: var(--off) !important; color: var(--navy) !important; padding: 0 !important; transition: background .2s, color .2s !important; }
+.nav-social-icon:hover { background: var(--orange) !important; color: #fff !important; }
+.footer-firma { margin-top: 14px; font-size: 0.72rem; color: rgba(255,255,255,0.2); line-height: 1.9; }
+.footer-firma a { color: rgba(255,255,255,0.3); text-decoration: none; }
+.footer-firma a:hover { color: var(--orange); }
 
 /* ══════════════════════════════════
    DIVIDER
@@ -807,6 +817,99 @@ footer strong { color: rgba(255,255,255,0.7); }
 @media(max-width:960px){.manuale-merge-grid{grid-template-columns:1fr 1fr;}.modal-body{padding:24px;}}
 @media(max-width:640px){.manuale-merge-grid{grid-template-columns:1fr;}.manuale-merge-hero{padding:96px 5% 60px;}.modal-header,.modal-body,.modal-footer{padding-left:20px;padding-right:20px;}.book-scene{width:190px;height:260px;}.pages-track{height:220px;}.flip-controls{flex-wrap:wrap;justify-content:center;}}
 
+
+/* ═══════════════════════════════════════════════════════
+   TERMENI ȘI CONDIȚII — Styles
+═══════════════════════════════════════════════════════ */
+#page-tc { display: none; }
+#page-tc.active { display: block; }
+.tc-hero { background: linear-gradient(135deg, #091d30 0%, #0e2f4e 60%, #1a4a72 100%); padding: 100px 6% 60px; text-align: center; }
+.tc-hero-inner { max-width: 700px; margin: 0 auto; }
+.tc-badge { display: inline-block; background: rgba(244,123,32,0.15); color: #F47B20; border: 1px solid rgba(244,123,32,0.3); border-radius: 20px; padding: 5px 18px; font-size: 0.75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px; }
+.tc-hero h1 { font-size: clamp(2rem,4vw,3rem); color: #fff; margin-bottom: 14px; line-height: 1.2; }
+.tc-hero p { color: rgba(255,255,255,0.65); font-size: 1.1rem; margin-bottom: 18px; }
+.tc-meta { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+.tc-body { background: #f5f7fa; }
+.tc-container { max-width: 1200px; margin: 0 auto; padding: 50px 5%; display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+/* Sidebar */
+.tc-nav { position: sticky; top: 80px; }
+.tc-nav-sticky { background: #fff; border-radius: 14px; padding: 24px 20px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); border: 1px solid #e8ecf0; }
+.tc-nav-title { font-size: 0.7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #999; margin-bottom: 14px; }
+.tc-nav ul { list-style: none; padding: 0; margin: 0; }
+.tc-nav ul li { margin-bottom: 2px; }
+.tc-nav ul li a { display: block; padding: 6px 10px; font-size: 0.82rem; color: #556; border-radius: 6px; text-decoration: none; transition: background .15s, color .15s; }
+.tc-nav ul li a:hover { background: #f0f4f8; color: var(--navy); }
+.tc-nav-divider { height: 1px; background: #eee; margin: 10px 0; }
+.tc-nav-section { font-size: 0.68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #F47B20; padding: 6px 10px 2px; pointer-events: none; }
+.tc-nav-cta { display: block; margin-top: 18px; background: var(--navy); color: #fff; text-align: center; padding: 10px 16px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: background .2s; }
+.tc-nav-cta:hover { background: #F47B20; }
+/* Main content */
+.tc-main { min-width: 0; }
+.tc-main h2.tc-h2 { font-size: 1.7rem; color: var(--navy); margin: 0 0 6px; }
+.tc-main h3.tc-h3 { font-size: 1.18rem; color: var(--navy); margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 2px solid #e8ecf0; }
+.tc-main h4.tc-h4 { font-size: 1rem; color: #1a3a5c; margin: 22px 0 8px; font-weight: 700; }
+.tc-main p { color: #445; line-height: 1.75; margin-bottom: 12px; font-size: 0.95rem; }
+.tc-main a { color: #F47B20; text-decoration: none; }
+.tc-main a:hover { text-decoration: underline; }
+.tc-part-label { display: inline-block; background: #F47B20; color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 14px; border-radius: 4px; margin-bottom: 10px; margin-top: 8px; }
+.tc-subtitle-note { color: #888; font-size: 0.9rem; font-style: italic; margin-bottom: 24px; }
+.tc-part-divider { height: 2px; background: linear-gradient(90deg,#F47B20,transparent); margin: 50px 0 40px; border-radius: 2px; }
+/* Lists */
+.tc-list { padding-left: 1.4rem; margin: 12px 0 16px; }
+.tc-list li { color: #445; font-size: 0.95rem; line-height: 1.7; margin-bottom: 6px; }
+.tc-list-forbidden li { color: #b33; }
+.tc-list-forbidden li::marker { color: #e55; }
+/* Info cards */
+.tc-info-card { background: #fff; border: 1px solid #e0e6ed; border-radius: 12px; overflow: hidden; margin: 20px 0; box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+.tc-info-card-header { background: linear-gradient(90deg,#091d30,#0e3050); color: #fff; padding: 12px 20px; font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+.tc-ic-icon { font-size: 1.1rem; }
+.tc-info-card-grid { display: grid; grid-template-columns: 1fr 1fr; padding: 4px 0; }
+.tc-info-card-grid > div { display: flex; flex-direction: column; padding: 10px 20px; border-bottom: 1px solid #f0f3f6; gap: 2px; }
+.tc-info-card-grid > div strong { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: .06em; }
+.tc-info-card-grid > div span { font-size: 0.9rem; color: #334; }
+.tc-info-card-grid a { color: #F47B20; text-decoration: none; }
+/* Note and warning boxes */
+.tc-note { background: #f0faf5; border-left: 4px solid #2ecc71; border-radius: 0 8px 8px 0; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; color: #2d6a4f; margin: 16px 0; }
+.tc-note-icon { font-size: 1.1rem; flex-shrink: 0; }
+.tc-warning { background: #fff8f0; border-left: 4px solid #F47B20; border-radius: 0 8px 8px 0; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; color: #7a4010; margin: 16px 0; }
+/* Two column */
+.tc-col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.tc-col-box { background: #fff; border: 1px solid #e0e6ed; border-radius: 10px; padding: 18px 20px; }
+.tc-col-box h4 { margin: 0 0 10px; font-size: 0.9rem; color: var(--navy); }
+/* Table */
+.tc-table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 10px; border: 1px solid #e0e6ed; }
+.tc-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.tc-table thead tr { background: #091d30; color: #fff; }
+.tc-table thead th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.82rem; letter-spacing: .04em; }
+.tc-table tbody tr:nth-child(even) { background: #f8fafc; }
+.tc-table tbody td { padding: 10px 16px; color: #445; border-bottom: 1px solid #f0f3f6; }
+/* Rights grid */
+.tc-rights-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 16px 0; }
+.tc-right-item { background: #fff; border: 1px solid #e0e6ed; border-radius: 10px; padding: 16px; text-align: center; }
+.tc-right-icon { font-size: 1.6rem; display: block; margin-bottom: 8px; }
+.tc-right-item strong { display: block; font-size: 0.88rem; color: var(--navy); margin-bottom: 6px; }
+.tc-right-item p { font-size: 0.82rem; color: #667; margin: 0; line-height: 1.5; }
+/* Contact GDPR */
+.tc-contact-gdpr { background: linear-gradient(135deg,#f0f5ff,#e8f0f7); border: 1px solid #c5d8ea; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+.tc-contact-gdpr p { margin-bottom: 8px; font-size: 0.92rem; }
+.tc-contact-gdpr p:last-child { margin-bottom: 0; }
+/* Accept box */
+.tc-accept-box { background: #fff; border: 2px solid #F47B20; border-radius: 14px; padding: 28px 32px; margin: 40px 0 10px; display: flex; gap: 20px; align-items: flex-start; }
+.tc-accept-check { flex-shrink: 0; }
+.tc-accept-box strong { display: block; font-size: 1rem; color: var(--navy); margin-bottom: 8px; }
+.tc-accept-box p { font-size: 0.9rem; color: #556; line-height: 1.65; margin: 0; }
+/* Responsive */
+@media(max-width:900px){
+  .tc-container { grid-template-columns: 1fr; }
+  .tc-nav { position: static; }
+  .tc-info-card-grid { grid-template-columns: 1fr; }
+  .tc-col2 { grid-template-columns: 1fr; }
+  .tc-rights-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:600px){
+  .tc-rights-grid { grid-template-columns: 1fr; }
+  .tc-accept-box { flex-direction: column; }
+}
 </style>
 </head>
 <body>
@@ -826,6 +929,9 @@ footer strong { color: rgba(255,255,255,0.7); }
     <li><a onclick="gotoPage('comunitate')">Comunitate</a></li>
     <li><a onclick="gotoPage('resurse')">Resurse</a></li>
     <li><a class="nav-cta" onclick="gotoPage('aplica')">Aplică</a></li>
+    <li class="nav-social-sep"></li>
+    <li><a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" class="nav-social-icon" aria-label="Instagram" title="Instagram @pasiunelaprofit"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></li>
+    <li><a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" class="nav-social-icon" aria-label="Facebook" title="Facebook De la Pasiune la Profit"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></li>
   </ul>
   <div class="hamburger" id="ham" onclick="toggleNav()">
     <span></span><span></span><span></span>
@@ -1128,7 +1234,19 @@ footer strong { color: rgba(255,255,255,0.7); }
   </section>
 
   <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
     <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
   </footer>
 </div>
 
@@ -1212,7 +1330,19 @@ footer strong { color: rgba(255,255,255,0.7); }
     </div>
   </section>
   <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
     <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
   </footer>
 </div>
 
@@ -1301,18 +1431,107 @@ footer strong { color: rgba(255,255,255,0.7); }
       <a class="btn btn-orange" onclick="gotoPage('aplica')">Aplică acum</a>
     </div>
   </section>
-  <footer><p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p></footer>
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
+  </footer>
 </div>
 <!-- ══════════════════════════════════════════════════
-     PAGE: MANUALE
+     PAGE: MANUALE  (v2 — PDF viewer + one-time download)
 ══════════════════════════════════════════════════ -->
+<style>
+/* ── Book covers ── */
+.book-cover-claritate   { background: linear-gradient(145deg, #0a1e30 0%, #1a4a6b 60%, #f47b20 100%); }
+.book-cover-constructie { background: linear-gradient(145deg, #0f2d1f 0%, #1e5c38 60%, #f4a020 100%); }
+.book-cover-conversie   { background: linear-gradient(145deg, #1e0a30 0%, #4a1a6b 60%, #e83d82 100%); }
+.book-cover-trilogie    { background: linear-gradient(145deg, #1a1000 0%, #5c3a00 50%, #f47b20 80%, #e83d82 100%); }
+
+/* ── Card thumbnail ── */
+.manual-thumb {
+  width: 90px; height: 124px; border-radius: 4px 10px 10px 4px;
+  flex-shrink: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 8px; position: relative; overflow: hidden;
+  box-shadow: 4px 4px 16px rgba(0,0,0,.35), inset -2px 0 5px rgba(0,0,0,.2);
+}
+.manual-thumb::before {
+  content:''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 7px; background: rgba(0,0,0,.3);
+}
+.manual-thumb .th-vol { font-size: 8px; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.65); font-weight: 700; }
+.manual-thumb .th-line { width: 40px; height: 1px; background: rgba(255,255,255,.3); }
+.manual-thumb .th-title { font-family: 'Playfair Display', serif; font-size: 13px; color: #fff; text-align: center; line-height: 1.2; font-weight: 700; }
+.manual-thumb .th-sub { font-size: 7px; color: rgba(255,255,255,.5); text-align: center; }
+
+/* ── Card layout with thumbnail ── */
+.manuale-merge-card { display: flex !important; flex-direction: column; }
+.manual-card-top-row { display: flex; gap: 16px; align-items: flex-start; padding: 22px 22px 16px; }
+.manual-card-top-info { flex: 1; }
+.manual-card-top-info h3 { color: #fff; font-size: 1.35rem; margin-bottom: 6px; }
+.manual-card-top-info p { color: rgba(255,255,255,.72); font-size: .86rem; line-height: 1.6; }
+.manual-card-top-info .manuale-merge-badge { display: block; margin-bottom: 8px; }
+
+/* ── PDF Modal ── */
+.pdf-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(5,12,22,.88); backdrop-filter: blur(10px); z-index: 1500; align-items: center; justify-content: center; padding: 16px; }
+.pdf-modal-overlay.open { display: flex; }
+.pdf-modal { background: #0d1f2f; border-radius: 20px; width: 100%; max-width: 860px; max-height: 92vh; display: flex; flex-direction: column; box-shadow: 0 40px 100px rgba(0,0,0,.6); overflow: hidden; }
+.pdf-modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px 16px; border-bottom: 1px solid rgba(255,255,255,.08); flex-shrink: 0; }
+.pdf-modal-header-left { display: flex; align-items: center; gap: 16px; }
+.pdf-modal-title { color: #fff; font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 0; }
+.pdf-modal-sub { color: rgba(255,255,255,.5); font-size: .8rem; margin: 2px 0 0; }
+.pdf-modal-close { background: rgba(255,255,255,.1); border: none; color: #fff; cursor: pointer; border-radius: 50%; width: 36px; height: 36px; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s; }
+.pdf-modal-close:hover { background: rgba(255,255,255,.2); }
+.pdf-viewer-area { flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+.pdf-canvas-wrap { flex: 1; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start; padding: 16px; background: #1a2a3a; min-height: 0; }
+#pdfCanvas { max-width: 100%; border-radius: 6px; box-shadow: 0 8px 32px rgba(0,0,0,.4); display: block; }
+.pdf-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; background: #0d1f2f; border-top: 1px solid rgba(255,255,255,.08); flex-shrink: 0; flex-wrap: wrap; gap: 12px; }
+.pdf-nav-btns { display: flex; gap: 8px; }
+.pdf-nav-btn { background: rgba(255,255,255,.12); border: none; color: #fff; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: .2s; }
+.pdf-nav-btn:hover:not(:disabled) { background: rgba(255,255,255,.2); }
+.pdf-nav-btn:disabled { opacity: .3; cursor: not-allowed; }
+.pdf-page-info { color: rgba(255,255,255,.6); font-size: .85rem; font-weight: 600; }
+.pdf-buy-btn { background: var(--orange); color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 700; font-size: .88rem; cursor: pointer; transition: background .2s; }
+.pdf-buy-btn:hover { background: var(--orange-dk); }
+.pdf-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; height: 300px; color: rgba(255,255,255,.5); font-size: .9rem; }
+.pdf-spinner { width: 40px; height: 40px; border: 3px solid rgba(255,255,255,.1); border-top-color: var(--orange); border-radius: 50%; animation: pdfSpin .8s linear infinite; }
+@keyframes pdfSpin { to { transform: rotate(360deg); } }
+
+/* ── Download page ── */
+#page-descarcare { display: none; }
+#page-descarcare.active { display: block; }
+.dl-hero { background: linear-gradient(135deg, var(--navy) 0%, #0e3050 100%); padding: 100px 5% 80px; text-align: center; }
+.dl-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-bottom: 16px; }
+.dl-hero p { color: rgba(255,255,255,.7); font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+.dl-box { max-width: 560px; margin: -40px auto 0; background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,.15); text-align: center; }
+.dl-book-thumb { width: 110px; height: 150px; border-radius: 4px 12px 12px 4px; margin: 0 auto 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 14px; box-shadow: 6px 6px 24px rgba(0,0,0,.3); }
+.dl-book-thumb .th-title { font-family: 'Playfair Display', serif; font-size: 16px; color: #fff; text-align: center; font-weight: 700; }
+.dl-book-thumb .th-vol { font-size: 9px; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.6); font-weight: 700; }
+.dl-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 8px; }
+.dl-desc { color: var(--gray); font-size: .95rem; line-height: 1.6; margin-bottom: 28px; }
+.dl-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--orange); color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 1rem; text-decoration: none; border: none; cursor: pointer; transition: background .2s; }
+.dl-btn:hover { background: var(--orange-dk); }
+.dl-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+.dl-expired { background: #fff3f3; border: 1px solid #ffcdd2; border-radius: 12px; padding: 20px; color: #c62828; font-size: .92rem; margin-top: 20px; }
+.dl-used { background: #fff8e1; border: 1px solid #ffe082; border-radius: 12px; padding: 20px; color: #e65100; font-size: .92rem; }
+</style>
 
 <div id="page-manuale" class="page">
   <div class="manuale-merge-hero">
     <div class="inner">
       <span class="label label-white">Seria educațională</span>
       <h1>Manualele 3C</h1>
-      <p>Am păstrat restul site-ului din varianta veche, iar aici am integrat pagina de manuale și modul actual de răsfoire / cumpărare din versiunea nouă.</p>
+      <p>Trei volume care formează metoda completă de transformare a pasiunii în profit: Claritate, Construcție și Conversie.</p>
     </div>
   </div>
 
@@ -1320,14 +1539,25 @@ footer strong { color: rgba(255,255,255,0.7); }
     <div class="container">
       <span class="label">Trilogia 3C</span>
       <h2 class="sec-title">Alege volumul potrivit sau pachetul complet</h2>
-      <p class="sec-body" style="max-width:760px;">Fiecare manual poate fi cumpărat separat, iar împreună formează un sistem complet: Claritate, Construcție și Conversie.</p>
+      <p class="sec-body" style="max-width:760px;">Fiecare manual poate fi răsfoit înainte de cumpărare. Apasă <strong>Vezi detalii</strong> pentru a răsfoi PDF-ul manualului.</p>
 
       <div class="manuale-merge-grid fi">
+
+        <!-- Vol 1 -->
         <article class="manuale-merge-card">
-          <div class="manuale-merge-top">
-            <span class="manuale-merge-badge">Volumul 1</span>
-            <h3>Claritate</h3>
-            <p>Cum transformi o idee într-o ofertă clară și ușor de înțeles.</p>
+          <div class="manual-card-top-row manuale-merge-top">
+            <div class="manual-thumb book-cover-claritate">
+              <span class="th-vol">Vol. 1</span>
+              <div class="th-line"></div>
+              <span class="th-title">Claritate</span>
+              <div class="th-line"></div>
+              <span class="th-sub">De la Pasiune la Profit</span>
+            </div>
+            <div class="manual-card-top-info">
+              <span class="manuale-merge-badge">Volumul 1</span>
+              <h3>Claritate</h3>
+              <p>Cum transformi o idee într-o ofertă clară și ușor de înțeles.</p>
+            </div>
           </div>
           <div class="manuale-merge-body">
             <div class="manuale-merge-price">33 lei</div>
@@ -1338,16 +1568,26 @@ footer strong { color: rgba(255,255,255,0.7); }
             </ul>
             <div class="manuale-merge-actions">
               <a class="btn-card btn-card-primary" href="https://buy.stripe.com/dRm8wP1DFfAlcIy2FZ7EQ01" target="_blank" rel="noopener">Cumpără acum →</a>
-              <button class="btn-card btn-card-secondary" onclick="openModal('claritate')">Vezi detalii</button>
+              <button class="btn-card btn-card-secondary" onclick="openPdfModal('claritate')">📖 Vezi detalii & răsfoire</button>
             </div>
           </div>
         </article>
 
+        <!-- Vol 2 -->
         <article class="manuale-merge-card">
-          <div class="manuale-merge-top">
-            <span class="manuale-merge-badge">Volumul 2</span>
-            <h3>Construcție</h3>
-            <p>Cum transformi o ofertă clară într-un sistem real de promovare și vânzare.</p>
+          <div class="manual-card-top-row manuale-merge-top">
+            <div class="manual-thumb book-cover-constructie">
+              <span class="th-vol">Vol. 2</span>
+              <div class="th-line"></div>
+              <span class="th-title">Con&shy;strucție</span>
+              <div class="th-line"></div>
+              <span class="th-sub">De la Pasiune la Profit</span>
+            </div>
+            <div class="manual-card-top-info">
+              <span class="manuale-merge-badge">Volumul 2</span>
+              <h3>Construcție</h3>
+              <p>Cum transformi o ofertă clară într-un sistem real de promovare și vânzare.</p>
+            </div>
           </div>
           <div class="manuale-merge-body">
             <div class="manuale-merge-price">77 lei</div>
@@ -1358,16 +1598,26 @@ footer strong { color: rgba(255,255,255,0.7); }
             </ul>
             <div class="manuale-merge-actions">
               <a class="btn-card btn-card-primary" href="https://buy.stripe.com/3cIdR91DFdsd8si94n7EQ02" target="_blank" rel="noopener">Cumpără acum →</a>
-              <button class="btn-card btn-card-secondary" onclick="openModal('constructie')">Vezi detalii</button>
+              <button class="btn-card btn-card-secondary" onclick="openPdfModal('constructie')">📖 Vezi detalii & răsfoire</button>
             </div>
           </div>
         </article>
 
+        <!-- Vol 3 -->
         <article class="manuale-merge-card">
-          <div class="manuale-merge-top">
-            <span class="manuale-merge-badge">Volumul 3</span>
-            <h3>Conversie</h3>
-            <p>Cum transformi un sistem clar într-un flux constant de vânzări.</p>
+          <div class="manual-card-top-row manuale-merge-top">
+            <div class="manual-thumb book-cover-conversie">
+              <span class="th-vol">Vol. 3</span>
+              <div class="th-line"></div>
+              <span class="th-title">Conversie</span>
+              <div class="th-line"></div>
+              <span class="th-sub">De la Pasiune la Profit</span>
+            </div>
+            <div class="manual-card-top-info">
+              <span class="manuale-merge-badge">Volumul 3</span>
+              <h3>Conversie</h3>
+              <p>Cum transformi un sistem clar într-un flux constant de vânzări.</p>
+            </div>
           </div>
           <div class="manuale-merge-body">
             <div class="manuale-merge-price">97 lei</div>
@@ -1378,16 +1628,26 @@ footer strong { color: rgba(255,255,255,0.7); }
             </ul>
             <div class="manuale-merge-actions">
               <a class="btn-card btn-card-primary" href="https://buy.stripe.com/dRm6oH1DFfAlbEu94n7EQ03" target="_blank" rel="noopener">Cumpără acum →</a>
-              <button class="btn-card btn-card-secondary" onclick="openModal('conversie')">Vezi detalii</button>
+              <button class="btn-card btn-card-secondary" onclick="openPdfModal('conversie')">📖 Vezi detalii & răsfoire</button>
             </div>
           </div>
         </article>
 
+        <!-- Bundle -->
         <article class="manuale-merge-card">
-          <div class="manuale-merge-top bundle">
-            <span class="manuale-merge-badge">Pachet complet</span>
-            <h3>Trilogia 3C</h3>
-            <p>Metoda completă: Claritate, Construcție și Conversie.</p>
+          <div class="manual-card-top-row manuale-merge-top bundle">
+            <div class="manual-thumb book-cover-trilogie">
+              <span class="th-vol">Trilogia</span>
+              <div class="th-line"></div>
+              <span class="th-title">3C</span>
+              <div class="th-line"></div>
+              <span class="th-sub">Pachet complet</span>
+            </div>
+            <div class="manual-card-top-info">
+              <span class="manuale-merge-badge">Pachet complet</span>
+              <h3>Trilogia 3C</h3>
+              <p>Metoda completă: Claritate, Construcție și Conversie.</p>
+            </div>
           </div>
           <div class="manuale-merge-body">
             <div class="manuale-merge-price">177 lei</div>
@@ -1398,61 +1658,109 @@ footer strong { color: rgba(255,255,255,0.7); }
             </ul>
             <div class="manuale-merge-actions">
               <a class="btn-card btn-card-primary" href="https://buy.stripe.com/4gM9AT967fAldMC1BV7EQ04" target="_blank" rel="noopener">Cumpără acum →</a>
-              <button class="btn-card btn-card-secondary" onclick="openModal('trilogie')">Vezi detalii</button>
+              <button class="btn-card btn-card-secondary" onclick="openPdfModal('trilogie')">📖 Vezi detalii & răsfoire</button>
             </div>
           </div>
         </article>
       </div>
 
       <div class="merge-note fi">
-        <h3>Ce am păstrat din varianta nouă</h3>
-        <p>Butonul <strong>Vezi detalii</strong> deschide preview-ul fiecărui manual în aceeași pagină, iar <strong>Cumpără acum</strong> trimite direct către linkul de plată Stripe potrivit fiecărui volum.</p>
+        <h3>Cum funcționează</h3>
+        <p><strong>Răsfoiește</strong> fiecare manual înainte de a cumpăra — dai click pe <em>📖 Vezi detalii & răsfoire</em> și poți parcurge paginile PDF-ului de previzualizare. După ce <strong>cumperi</strong> și finalizezi plata prin Stripe, ești redirecționat automat la o pagină de descărcare cu link unic, valabil o singură dată.</p>
       </div>
     </div>
   </section>
 
-  <div class="modal-overlay" id="bookModal" onclick="handleOverlayClick(event)">
-    <div class="modal" id="modalInner">
-      <div class="modal-header">
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══ PDF MODAL ══ -->
+<div class="pdf-modal-overlay" id="pdfModal" onclick="handlePdfOverlayClick(event)">
+  <div class="pdf-modal" id="pdfModalInner">
+    <div class="pdf-modal-header">
+      <div class="pdf-modal-header-left">
+        <div id="pdfThumbSmall" class="manual-thumb" style="width:56px;height:76px;"></div>
         <div>
-          <h2 id="modalTitle">Claritate</h2>
-          <p id="modalSub">Volumul 1 · De la Pasiune la Profit</p>
-        </div>
-        <button class="modal-close" onclick="closeModal()" aria-label="Închide">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="book-scene">
-          <div class="book" id="modalBook">
-            <div class="book-face front">
-              <div class="book-vol" id="bookVol">Volumul 1</div>
-              <div class="book-deco"></div>
-              <div class="book-title" id="bookTitle">Claritate</div>
-              <div class="book-deco"></div>
-              <div class="book-subtitle" id="bookSubtitle">De la Pasiune la Profit</div>
-            </div>
-            <div class="book-face back"></div>
-            <div class="book-spine"><span class="spine-text" id="spineText">Claritate</span></div>
-          </div>
-        </div>
-        <div class="flipper-area">
-          <h4>Previzualizare capitole</h4>
-          <div class="pages-track" id="pagesTrack"></div>
-          <div class="page-indicator" id="dotRow"></div>
-          <div class="flip-controls">
-            <button class="flip-btn" id="btnPrev" onclick="flipPage(-1)">← Pagina anterioară</button>
-            <div class="flip-meta" id="pageCount">1 / 4</div>
-            <button class="flip-btn" id="btnNext" onclick="flipPage(1)">Pagina următoare →</button>
-          </div>
+          <h3 class="pdf-modal-title" id="pdfModalTitle">Claritate</h3>
+          <p class="pdf-modal-sub" id="pdfModalSub">Volumul 1 · De la Pasiune la Profit</p>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-orange" id="modalBuyBtn" onclick="buyBook(currentBook)">Cumpără acum</button>
-        <span style="font-size:0.82rem;color:var(--gray-lt);">Preview-ul este orientativ și te ajută să alegi volumul potrivit.</span>
+      <button class="pdf-modal-close" onclick="closePdfModal()" aria-label="Închide">✕</button>
+    </div>
+    <div class="pdf-viewer-area">
+      <div id="pdfLoadingMsg" class="pdf-loading">
+        <div class="pdf-spinner"></div>
+        <span>Se încarcă previzualizarea...</span>
+      </div>
+      <div class="pdf-canvas-wrap" id="pdfCanvasWrap" style="display:none;">
+        <canvas id="pdfCanvas"></canvas>
+      </div>
+    </div>
+    <div class="pdf-nav">
+      <div class="pdf-nav-btns">
+        <button class="pdf-nav-btn" id="pdfBtnPrev" onclick="changePdfPage(-1)">← Înapoi</button>
+        <button class="pdf-nav-btn" id="pdfBtnNext" onclick="changePdfPage(1)">Înainte →</button>
+      </div>
+      <span class="pdf-page-info" id="pdfPageInfo">Pagina 1 / ?</span>
+      <button class="pdf-buy-btn" id="pdfBuyBtn" onclick="buyFromPdfModal()">Cumpără acum →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: DESCARCARE (one-time download) ══ -->
+<div id="page-descarcare" class="page">
+  <div class="dl-hero">
+    <span class="label label-white">Descărcare securizată</span>
+    <h1>Mulțumim pentru achiziție! 🎉</h1>
+    <p>Manualul tău este gata. Poți descărca fișierul o singură dată folosind linkul de mai jos.</p>
+  </div>
+  <div style="padding: 60px 5% 80px; background: var(--off);">
+    <div class="dl-box fi">
+      <div id="dlBookThumb" class="dl-book-thumb book-cover-claritate">
+        <span class="th-vol" id="dlVol">Volumul 1</span>
+        <div class="th-line"></div>
+        <span class="th-title" id="dlTitle">Claritate</span>
+      </div>
+      <h2 class="dl-title" id="dlBookTitle">Manual Claritate</h2>
+      <p class="dl-desc" id="dlDesc">Linkul de descărcare este valid o singură dată și expiră după folosire. Salvează fișierul într-un loc sigur după descărcare.</p>
+      <div id="dlContent">
+        <button class="dl-btn" id="dlMainBtn" onclick="performDownload()">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descarcă manualul
+        </button>
+        <p style="margin-top:14px;font-size:.8rem;color:var(--gray-lt);">Format PDF · Acces imediat</p>
       </div>
     </div>
   </div>
-
-  <footer><p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p></footer>
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
+  </footer>
 </div>
 
 
@@ -1550,7 +1858,21 @@ footer strong { color: rgba(255,255,255,0.7); }
       <a class="btn btn-orange" onclick="gotoPage('aplica')">Aplică pentru mentorat</a>
     </div>
   </section>
-  <footer><p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p></footer>
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
+  </footer>
 </div>
 
 <!-- ══════════════════════════════════════════════════
@@ -1598,7 +1920,21 @@ footer strong { color: rgba(255,255,255,0.7); }
       <a class="btn btn-orange" onclick="gotoPage('aplica')">Aplică acum</a>
     </div>
   </section>
-  <footer><p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p></footer>
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
+  </footer>
 </div>
 
 <!-- ══════════════════════════════════════════════════
@@ -1656,7 +1992,21 @@ footer strong { color: rgba(255,255,255,0.7); }
       </div>
     </div>
   </section>
-  <footer><p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p></footer>
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
+  </footer>
 </div>
 
 <!-- ══════════════════════════════════════════════════
@@ -1742,107 +2092,357 @@ footer strong { color: rgba(255,255,255,0.7); }
       </div>
     </div>
   </section>
-  <footer><p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p></footer>
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
+  </footer>
 </div>
 
 <!-- ══ SCRIPT ══ -->
 <script>
 
+// ═══════════════════════════════════════════════════
+//  MANUALE DATA
+// ═══════════════════════════════════════════════════
 const books = {
   claritate: {
     vol: 'Volumul 1', title: 'Claritate', subtitle: 'De la Pasiune la Profit', price: '33 lei',
-    buyUrl: 'https://buy.stripe.com/dRm8wP1DFfAlcIy2FZ7EQ01', detailUrl: '#',
-    pages: [
-      {chapter:'Introducere', heading:'De ce nu e de ajuns să fii pasionat', preview:'Pasiunea e punctul de plecare, nu destinația. Această secțiune îți arată ce se întâmplă când nu există claritate și de ce cei mai dedicați creatori nu reușesc să vândă.'},
-      {chapter:'Capitolul 1', heading:'Diferența dintre pasiune și poziționare', preview:'Cum transformi ceea ce știi să faci într-o ofertă pe care cineva o înțelege în 10 secunde și simte că este exact pentru el.'},
-      {chapter:'Capitolul 2', heading:'Publicul tău real — nu cel imaginar', preview:'Metoda prin care identifici exact cine are problema pe care o rezolvi tu, cum gândește și ce limbaj folosește.'},
-      {chapter:'Capitolul 3', heading:'Structura unei oferte clare', preview:'Cum construiești o ofertă care comunică valoarea înainte de a comunica prețul.'}
-    ]
+    coverClass: 'book-cover-claritate',
+    buyUrl: 'https://buy.stripe.com/dRm8wP1DFfAlcIy2FZ7EQ01',
+    // PDF de previzualizare (primele pagini/capitol introductiv)
+    // Înlocuiești acest URL cu calea reală spre PDF-ul de previzualizare
+    previewPdf: 'previzualizare-claritate.pdf',
+    // PDF complet — servit doar după plată prin sistemul de token
+    fullPdf: 'manual-claritate-complet.pdf',
+    successParam: 'claritate'
   },
   constructie: {
     vol: 'Volumul 2', title: 'Construcție', subtitle: 'De la Pasiune la Profit', price: '77 lei',
-    buyUrl: 'https://buy.stripe.com/3cIdR91DFdsd8si94n7EQ02', detailUrl: '#',
-    pages: [
-      {chapter:'Introducere', heading:'De la ofertă la sistem vizibil', preview:'Claritatea fără vizibilitate rămâne un secret. Volumul te ghidează prin sistemul minim prin care oferta ta ajunge la oamenii potriviți.'},
-      {chapter:'Capitolul 1', heading:'Mesajul central', preview:'Cum formulezi ideea principală astfel încât să fie imediat ușor de înțeles și de reținut.'},
-      {chapter:'Capitolul 2', heading:'Sistemul minim de promovare', preview:'Ce canale folosești, în ce ordine și cu ce rol, fără să te pierzi în haosul tacticilor.'},
-      {chapter:'Capitolul 3', heading:'Testarea ofertei', preview:'Cum validezi rapid dacă mesajul și structura funcționează înainte să investești prea mult.'}
-    ]
+    coverClass: 'book-cover-constructie',
+    buyUrl: 'https://buy.stripe.com/3cIdR91DFdsd8si94n7EQ02',
+    previewPdf: 'previzualizare-constructie.pdf',
+    fullPdf: 'manual-constructie-complet.pdf',
+    successParam: 'constructie'
   },
   conversie: {
     vol: 'Volumul 3', title: 'Conversie', subtitle: 'De la Pasiune la Profit', price: '97 lei',
-    buyUrl: 'https://buy.stripe.com/dRm6oH1DFfAlbEu94n7EQ03', detailUrl: '#',
-    pages: [
-      {chapter:'Introducere', heading:'De la interes la decizie', preview:'Acest volum transformă interesul în decizie și decizia în venit.'},
-      {chapter:'Capitolul 1', heading:'Psihologia deciziei de cumpărare', preview:'De ce cumpără oamenii și cum aliniez oferta ta la modul real în care ei iau decizii.'},
-      {chapter:'Capitolul 2', heading:'Conversația de vânzare fără presiune', preview:'Un cadru simplu de conversație prin care înțelegi nevoia clientului și îi prezinți soluția potrivită.'},
-      {chapter:'Capitolul 3', heading:'Optimizarea conversiei în timp', preview:'Cum urmărești ce funcționează și ajustezi sistemul pentru rezultate tot mai bune.'}
-    ]
+    coverClass: 'book-cover-conversie',
+    buyUrl: 'https://buy.stripe.com/dRm6oH1DFfAlbEu94n7EQ03',
+    previewPdf: 'previzualizare-conversie.pdf',
+    fullPdf: 'manual-conversie-complet.pdf',
+    successParam: 'conversie'
   },
   trilogie: {
     vol: 'Pachet complet', title: 'Trilogia 3C', subtitle: 'Claritate · Construcție · Conversie', price: '177 lei',
-    buyUrl: 'https://buy.stripe.com/4gM9AT967fAldMC1BV7EQ04', detailUrl: '#',
-    pages: [
-      {chapter:'Ce conține trilogia', heading:'Metoda completă în 3 volume', preview:'Toate cele trei manuale într-un singur pachet: Claritate, Construcție și Conversie.'},
-      {chapter:'Volumul 1 — Claritate', heading:'Știi ce vinzi și pentru cine', preview:'Diferența dintre pasiune și poziționare, identificarea publicului real și structura unei oferte clare.'},
-      {chapter:'Volumul 2 — Construcție', heading:'Oferta ta devine vizibilă', preview:'Mesajul central, sistemul minim de promovare și testarea ofertei.'},
-      {chapter:'Volumul 3 — Conversie', heading:'Transformi interesul în venit', preview:'Psihologia deciziei, conversația de vânzare și optimizarea continuă.'}
-    ]
+    coverClass: 'book-cover-trilogie',
+    buyUrl: 'https://buy.stripe.com/4gM9AT967fAldMC1BV7EQ04',
+    previewPdf: 'previzualizare-trilogie.pdf',
+    fullPdf: 'manual-trilogie-complet.pdf',
+    successParam: 'trilogie'
   }
 };
-let currentBook = null;
-let currentPreviewPage = 0;
-function openModal(bookKey) {
-  currentBook = bookKey;
-  currentPreviewPage = 0;
+
+// ═══════════════════════════════════════════════════
+//  PDF.js VIEWER
+// ═══════════════════════════════════════════════════
+let pdfDoc = null, pdfCurrentPage = 1, pdfCurrentBook = null;
+
+// Încarcă PDF.js din CDN
+(function loadPdfJs() {
+  if (window.pdfjsLib) return;
+  const s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+  s.onload = () => {
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  };
+  document.head.appendChild(s);
+})();
+
+function openPdfModal(bookKey) {
   const b = books[bookKey];
   if (!b) return;
-  document.getElementById('modalTitle').textContent = b.title;
-  document.getElementById('modalSub').textContent = `${b.vol} · ${b.subtitle}`;
-  document.getElementById('bookVol').textContent = b.vol;
-  document.getElementById('bookTitle').textContent = b.title;
-  document.getElementById('bookSubtitle').textContent = b.subtitle;
-  document.getElementById('spineText').textContent = b.title;
-  renderPages();
-  document.getElementById('bookModal').classList.add('open');
+  pdfCurrentBook = bookKey;
+  pdfCurrentPage = 1;
+  pdfDoc = null;
+
+  // Actualizează header-ul modalului
+  document.getElementById('pdfModalTitle').textContent = b.title;
+  document.getElementById('pdfModalSub').textContent = `${b.vol} · ${b.subtitle}`;
+
+  // Copertă mică în header
+  const thumb = document.getElementById('pdfThumbSmall');
+  thumb.className = 'manual-thumb ' + b.coverClass;
+  thumb.innerHTML = `<span class="th-vol" style="font-size:7px;">${b.vol}</span><div class="th-line"></div><span class="th-title" style="font-size:10px;">${b.title}</span>`;
+
+  // Afișează modaleul
+  document.getElementById('pdfModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // Arată loading
+  document.getElementById('pdfLoadingMsg').style.display = 'flex';
+  document.getElementById('pdfCanvasWrap').style.display = 'none';
+
+  // Încearcă să încarce PDF-ul de previzualizare
+  loadPreviewPdf(b.previewPdf);
 }
-function closeModal(){
-  document.getElementById('bookModal').classList.remove('open');
+
+function loadPreviewPdf(pdfUrl) {
+  if (!window.pdfjsLib) {
+    // PDF.js nu e încă încărcat — arată previzualizare text
+    showPdfFallback();
+    return;
+  }
+  const loadingTask = window.pdfjsLib.getDocument(pdfUrl);
+  loadingTask.promise.then(pdf => {
+    pdfDoc = pdf;
+    document.getElementById('pdfLoadingMsg').style.display = 'none';
+    document.getElementById('pdfCanvasWrap').style.display = 'flex';
+    renderPdfPage(1);
+  }).catch(() => {
+    showPdfFallback();
+  });
+}
+
+function showPdfFallback() {
+  // Dacă PDF-ul nu e disponibil, afișează previzualizare cu capitole text
+  const b = books[pdfCurrentBook];
+  const fallbackChapters = {
+    claritate: ['Introducere: De ce nu e de ajuns să fii pasionat','Cap. 1: Diferența dintre pasiune și poziționare','Cap. 2: Publicul tău real — nu cel imaginar','Cap. 3: Structura unei oferte clare'],
+    constructie: ['Introducere: De la ofertă la sistem vizibil','Cap. 1: Mesajul central','Cap. 2: Sistemul minim de promovare','Cap. 3: Testarea ofertei'],
+    conversie: ['Introducere: De la interes la decizie','Cap. 1: Psihologia deciziei de cumpărare','Cap. 2: Conversația de vânzare fără presiune','Cap. 3: Optimizarea conversiei în timp'],
+    trilogie: ['Vol. 1 — Claritate: Știi ce vinzi și pentru cine','Vol. 2 — Construcție: Oferta ta devine vizibilă','Vol. 3 — Conversie: Transformi interesul în venit','Bonus: Ghidul de implementare integrală']
+  };
+  const chapters = fallbackChapters[pdfCurrentBook] || [];
+  const canvas = document.getElementById('pdfCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 595; canvas.height = 842;
+
+  // Desenează o pagina simplă
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,595,842);
+  ctx.fillStyle = '#0a1e30'; ctx.fillRect(0,0,595,120);
+  ctx.fillStyle = '#f47b20'; ctx.fillRect(0,118,595,4);
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 14px sans-serif';
+  ctx.fillText(b.vol.toUpperCase(), 40, 55);
+  ctx.font = 'bold 28px serif';
+  ctx.fillText(b.title, 40, 88);
+  ctx.font = '12px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.fillText('De la Pasiune la Profit — Previzualizare', 40, 108);
+
+  ctx.fillStyle = '#0a1e30';
+  ctx.font = 'bold 16px sans-serif';
+  ctx.fillText('Cuprins', 40, 175);
+  ctx.fillStyle = '#f47b20'; ctx.fillRect(40, 185, 40, 2);
+
+  ctx.fillStyle = '#333';
+  ctx.font = '13px sans-serif';
+  chapters.forEach((ch, i) => {
+    ctx.fillText('• ' + ch, 50, 220 + i * 36);
+  });
+
+  ctx.fillStyle = '#f5f5f5'; ctx.fillRect(40, 420, 515, 120);
+  ctx.fillStyle = '#666'; ctx.font = '12px sans-serif';
+  ctx.fillText('Aceasta este o previzualizare. Cumpără manualul pentru acces complet.', 60, 480);
+
+  document.getElementById('pdfLoadingMsg').style.display = 'none';
+  document.getElementById('pdfCanvasWrap').style.display = 'flex';
+  document.getElementById('pdfPageInfo').textContent = 'Previzualizare cuprins';
+  document.getElementById('pdfBtnPrev').disabled = true;
+  document.getElementById('pdfBtnNext').disabled = true;
+}
+
+function renderPdfPage(pageNum) {
+  if (!pdfDoc) return;
+  pdfDoc.getPage(pageNum).then(page => {
+    const canvas = document.getElementById('pdfCanvas');
+    const wrap = document.getElementById('pdfCanvasWrap');
+    const viewport = page.getViewport({ scale: Math.min((wrap.clientWidth - 32) / page.getViewport({scale:1}).width, 1.6) });
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise.then(() => {
+      pdfCurrentPage = pageNum;
+      document.getElementById('pdfPageInfo').textContent = `Pagina ${pageNum} / ${pdfDoc.numPages}`;
+      document.getElementById('pdfBtnPrev').disabled = pageNum <= 1;
+      document.getElementById('pdfBtnNext').disabled = pageNum >= pdfDoc.numPages;
+    });
+  });
+}
+
+function changePdfPage(dir) {
+  if (!pdfDoc) return;
+  const next = pdfCurrentPage + dir;
+  if (next < 1 || next > pdfDoc.numPages) return;
+  renderPdfPage(next);
+}
+
+function closePdfModal() {
+  document.getElementById('pdfModal').classList.remove('open');
   document.body.style.overflow = '';
 }
-function handleOverlayClick(event){ if (event.target.id === 'bookModal') closeModal(); }
-function renderPages(){
-  const track = document.getElementById('pagesTrack');
-  const dots = document.getElementById('dotRow');
-  const b = books[currentBook];
-  if (!b) return;
-  track.innerHTML = b.pages.map((p, i) => `<div class="page-slide ${i===currentPreviewPage?'active':i<currentPreviewPage?'prev':''}"><div class="page-chapter">${p.chapter}</div><h5 class="page-heading">${p.heading}</h5><div class="page-preview">${p.preview}</div></div>`).join('');
-  dots.innerHTML = b.pages.map((_, i) => `<span class="dot ${i===currentPreviewPage?'active':''}" onclick="goToPreviewPage(${i})"></span>`).join('');
-  document.getElementById('pageCount').textContent = `${currentPreviewPage + 1} / ${b.pages.length}`;
-  document.getElementById('btnPrev').disabled = currentPreviewPage === 0;
-  document.getElementById('btnNext').disabled = currentPreviewPage === b.pages.length - 1;
+
+function handlePdfOverlayClick(e) {
+  if (e.target.id === 'pdfModal') closePdfModal();
 }
-function flipPage(direction){
-  const b = books[currentBook];
-  if (!b) return;
-  const next = currentPreviewPage + direction;
-  if (next < 0 || next >= b.pages.length) return;
-  currentPreviewPage = next;
-  renderPages();
+
+function buyFromPdfModal() {
+  closePdfModal();
+  const b = books[pdfCurrentBook];
+  if (b && b.buyUrl) window.open(b.buyUrl, '_blank', 'noopener');
 }
-function goToPreviewPage(index){ currentPreviewPage = index; renderPages(); }
+
 document.addEventListener('keydown', e => {
-  if (!document.getElementById('bookModal') || !document.getElementById('bookModal').classList.contains('open')) return;
-  if (e.key === 'Escape') closeModal();
-  if (e.key === 'ArrowRight') flipPage(1);
-  if (e.key === 'ArrowLeft') flipPage(-1);
+  const modal = document.getElementById('pdfModal');
+  if (!modal || !modal.classList.contains('open')) return;
+  if (e.key === 'Escape') closePdfModal();
+  if (e.key === 'ArrowRight') changePdfPage(1);
+  if (e.key === 'ArrowLeft') changePdfPage(-1);
 });
-function buyBook(bookKey) {
-  const book = books[bookKey];
-  if (!book || !book.buyUrl || book.buyUrl === '#') return;
-  window.open(book.buyUrl, '_blank', 'noopener');
+
+// ═══════════════════════════════════════════════════
+//  ONE-TIME DOWNLOAD SYSTEM
+//  ─────────────────────────────────────────────────
+//  Cum funcționează:
+//  1. Stripe redirect_url = https://site.ro/index.html?dl=TOKEN&manual=claritate
+//  2. La încărcare, verificăm parametrii din URL
+//  3. Tokenul e stocat în localStorage ca "folosit" după download
+//  4. Un token folosit nu mai permite re-descărcarea
+//
+//  ⚠️ ATENȚIE: Aceasta e o implementare CLIENT-SIDE (fără server).
+//  Pentru securitate maximă în producție, tokenurile trebuie validate
+//  pe un server/backend (Netlify Functions, Supabase, etc.).
+//  Implementarea de față e potrivită pentru un MVP.
+// ═══════════════════════════════════════════════════
+
+const DOWNLOAD_KEY_PREFIX = 'dlToken_';
+
+function generateDownloadToken(bookKey) {
+  // Generează un token unic pentru descărcare
+  const token = btoa(bookKey + '_' + Date.now() + '_' + Math.random().toString(36).slice(2));
+  return token.replace(/[+/=]/g, c => ({ '+': '-', '/': '_', '=': '' }[c]));
 }
+
+function checkDownloadPage() {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('dl');
+  const manual = params.get('manual');
+  const session = params.get('session_id'); // Stripe success session
+
+  // Caso 1: Redirect de la Stripe cu parametru manual
+  if ((session || params.get('success')) && manual && books[manual]) {
+    // Generează token și redirecționează la pagina de descărcare
+    const dlToken = generateDownloadToken(manual);
+    // Stochează tokenul ca valid
+    localStorage.setItem(DOWNLOAD_KEY_PREFIX + dlToken, JSON.stringify({
+      manual, created: Date.now(), used: false
+    }));
+    // Redirecționează la URL curat cu tokenul
+    const cleanUrl = window.location.pathname + '?dl=' + dlToken + '&manual=' + manual;
+    window.history.replaceState({}, '', cleanUrl);
+    showDownloadPage(manual, dlToken);
+    return;
+  }
+
+  // Caso 2: Pagina de descărcare cu token
+  if (token && manual && books[manual]) {
+    showDownloadPage(manual, token);
+    return;
+  }
+}
+
+function showDownloadPage(bookKey, token) {
+  const b = books[bookKey];
+  if (!b) return;
+
+  // Navighează la pagina de descărcare
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const dlPage = document.getElementById('page-descarcare');
+  if (dlPage) { dlPage.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+
+  // Actualizează vizualul cărții
+  const thumb = document.getElementById('dlBookThumb');
+  if (thumb) { thumb.className = 'dl-book-thumb ' + b.coverClass; }
+  const dlVol = document.getElementById('dlVol');
+  const dlTitle = document.getElementById('dlTitle');
+  const dlBookTitle = document.getElementById('dlBookTitle');
+  if (dlVol) dlVol.textContent = b.vol;
+  if (dlTitle) dlTitle.textContent = b.title;
+  if (dlBookTitle) dlBookTitle.textContent = 'Manual ' + b.title + ' — ' + b.price;
+
+  // Verifică starea tokenului
+  const tokenData = localStorage.getItem(DOWNLOAD_KEY_PREFIX + token);
+  const dlContent = document.getElementById('dlContent');
+  const dlDesc = document.getElementById('dlDesc');
+
+  if (!tokenData) {
+    // Token necunoscut sau expirat
+    if (dlContent) dlContent.innerHTML = `<div class="dl-expired">⚠️ Linkul de descărcare nu este valid sau a expirat. Dacă ai o problemă, scrie-ne la <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a> cu dovada plății.</div>`;
+    return;
+  }
+
+  const data = JSON.parse(tokenData);
+
+  if (data.used) {
+    // Token deja folosit
+    if (dlDesc) dlDesc.textContent = 'Acest link de descărcare a fost deja folosit.';
+    if (dlContent) dlContent.innerHTML = `<div class="dl-used">📌 Ai descărcat deja acest manual. Dacă ai pierdut fișierul, contactează-ne la <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a> și îți trimitem din nou.</div>`;
+    return;
+  }
+
+  // Token valid — stochează tokenul curent pentru download
+  window._currentDlToken = token;
+  window._currentDlBook = bookKey;
+  if (dlDesc) dlDesc.textContent = 'Linkul este valid o singură dată. Descarcă fișierul și salvează-l într-un loc sigur.';
+}
+
+function performDownload() {
+  const token = window._currentDlToken;
+  const bookKey = window._currentDlBook;
+  if (!token || !bookKey) return;
+
+  const b = books[bookKey];
+  if (!b) return;
+
+  // Marchează tokenul ca folosit
+  const tokenData = localStorage.getItem(DOWNLOAD_KEY_PREFIX + token);
+  if (!tokenData) return;
+  const data = JSON.parse(tokenData);
+  data.used = true;
+  localStorage.setItem(DOWNLOAD_KEY_PREFIX + token, JSON.stringify(data));
+
+  // Actualizează UI
+  const dlContent = document.getElementById('dlContent');
+  if (dlContent) {
+    dlContent.innerHTML = `
+      <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:12px;padding:20px;color:#1b5e20;font-size:.92rem;">
+        ✅ Descărcarea a început! Manualul <strong>${b.title}</strong> se descarcă acum.<br>
+        <span style="font-size:.8rem;opacity:.7;margin-top:8px;display:block;">Linkul a fost marcat ca folosit. Dacă descărcarea nu a pornit, <a href="${b.fullPdf}" download style="color:#1b5e20;font-weight:700;">apasă aici</a>.</span>
+      </div>`;
+  }
+
+  // Pornește descărcarea
+  const link = document.createElement('a');
+  link.href = b.fullPdf;
+  link.download = 'Manual_' + b.title + '_3C.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// Verifică la încărcarea paginii dacă există parametri de descărcare
+window.addEventListener('load', checkDownloadPage);
 
 function gotoPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1885,6 +2485,409 @@ document.head.insertAdjacentHTML('beforeend','<style>@media(max-width:900px){.r-
 
 setTimeout(initFI, 200);
 </script>
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- PAGE: TERMENI ȘI CONDIȚII -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="page-tc" class="page">
+  <section class="tc-hero">
+    <div class="tc-hero-inner">
+      <span class="tc-badge">Document legal</span>
+      <h1>Termeni și Condiții</h1>
+      <p>Politica de Confidențialitate &amp; Acordul de Prelucrare a Datelor cu Caracter Personal</p>
+      <div class="tc-meta">
+        <span>Ultima actualizare: 7 martie 2026</span>
+        <span class="f-sep">·</span>
+        <span>Conform GDPR &amp; Legea 190/2018</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="tc-body">
+    <div class="tc-container">
+
+      <!-- Sidebar navigare -->
+      <aside class="tc-nav">
+        <div class="tc-nav-sticky">
+          <p class="tc-nav-title">Navigare rapidă</p>
+          <ul>
+            <li><a href="#tc-operator">Date firmă</a></li>
+            <li><a href="#tc-s1">Acceptarea termenilor</a></li>
+            <li><a href="#tc-s2">Produse și servicii</a></li>
+            <li><a href="#tc-s3">Prețuri și plată</a></li>
+            <li><a href="#tc-s4">Livrare digitală</a></li>
+            <li><a href="#tc-s5">Returnare</a></li>
+            <li><a href="#tc-s6">Proprietate intelectuală</a></li>
+            <li><a href="#tc-s7">Limitarea răspunderii</a></li>
+            <li class="tc-nav-divider"></li>
+            <li class="tc-nav-section">GDPR &amp; Date personale</li>
+            <li><a href="#tc-gdpr1">Operatorul de date</a></li>
+            <li><a href="#tc-gdpr2">Ce date colectăm</a></li>
+            <li><a href="#tc-gdpr3">Scopuri și temeiuri</a></li>
+            <li><a href="#tc-gdpr4">Destinatari</a></li>
+            <li><a href="#tc-gdpr5">Drepturile tale</a></li>
+            <li><a href="#tc-gdpr6">Cookie-uri</a></li>
+            <li class="tc-nav-divider"></li>
+            <li class="tc-nav-section">Acord prelucrare</li>
+            <li><a href="#tc-acord">Acordul complet</a></li>
+          </ul>
+          <a href="#tc-contact" class="tc-nav-cta">Contact GDPR</a>
+        </div>
+      </aside>
+
+      <!-- Conținut principal -->
+      <main class="tc-main">
+
+        <!-- Card firmă -->
+        <div id="tc-operator" class="tc-info-card tc-scroll-target">
+          <div class="tc-info-card-header">
+            <span class="tc-ic-icon">🏢</span>
+            <span>Date de identificare operator</span>
+          </div>
+          <div class="tc-info-card-grid">
+            <div><strong>Denumire</strong><span>D &amp; M TAP BENEFICII S.R.L.</span></div>
+            <div><strong>CUI</strong><span>39751305</span></div>
+            <div><strong>Reg. Comerțului</strong><span>J20/1171/3402</span></div>
+            <div><strong>Program</strong><span>Academia De la Pasiune la Profit — Seria 3C</span></div>
+            <div><strong>Email</strong><span><a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a></span></div>
+            <div><strong>Instagram</strong><span><a href="https://www.instagram.com/pasiunelaprofit" target="_blank">@pasiunelaprofit</a></span></div>
+          </div>
+        </div>
+
+        <!-- PARTEA I -->
+        <div class="tc-part-label">PARTEA I</div>
+        <h2 class="tc-h2">Termeni și Condiții Generale</h2>
+
+        <div id="tc-s1" class="tc-scroll-target">
+          <h3 class="tc-h3">1. Acceptarea termenilor</h3>
+          <p>Prin accesarea site-ului Academiei De la Pasiune la Profit și/sau prin achiziționarea oricărui produs sau serviciu oferit de D &amp; M TAP BENEFICII S.R.L. (denumită în continuare <strong>„Compania"</strong> sau <strong>„Academia"</strong>), confirmați că ați citit, înțeles și acceptat în totalitate prezentele Termeni și Condiții.</p>
+          <p>Dacă nu ești de acord cu oricare dintre prevederile prezentului document, te rugăm să nu utilizezi serviciile noastre.</p>
+        </div>
+
+        <div id="tc-s2" class="tc-scroll-target">
+          <h3 class="tc-h3">2. Produse și servicii oferite</h3>
+          <h4 class="tc-h4">2.1 Manualele 3C</h4>
+          <p>Academia oferă următoarele produse digitale:</p>
+          <ul class="tc-list">
+            <li><strong>Manual Vol. 1 — Claritate</strong> (33 lei) — cum transformi o idee într-o ofertă clară</li>
+            <li><strong>Manual Vol. 2 — Construcție</strong> (77 lei) — sistemul de promovare și vânzare</li>
+            <li><strong>Manual Vol. 3 — Conversie</strong> (97 lei) — transformarea interesului în vânzări reale</li>
+            <li><strong>Trilogia 3C — Pachet complet</strong> (177 lei) — toate cele 3 volume</li>
+          </ul>
+          <div class="tc-note">
+            <span class="tc-note-icon">ℹ️</span>
+            Toate manualele sunt produse <strong>exclusiv digitale (PDF)</strong>, livrate prin link securizat, cu acces imediat după confirmarea plății.
+          </div>
+          <h4 class="tc-h4">2.2 Alte servicii</h4>
+          <ul class="tc-list">
+            <li>Webinar educațional — participare online</li>
+            <li>Program de mentorat 3C — 90 de zile, grup restrâns (max. 5 participanți)</li>
+            <li>Comunitatea 3C — acces la grup și întâlniri regulate</li>
+          </ul>
+        </div>
+
+        <div id="tc-s3" class="tc-scroll-target">
+          <h3 class="tc-h3">3. Prețuri și plata</h3>
+          <p>Toate prețurile afișate sunt exprimate în <strong>lei (RON)</strong> și includ TVA acolo unde este aplicabil. Plata se realizează exclusiv online, prin platforma securizată <strong>Stripe</strong>. Academia nu stochează niciodată datele tale de card bancar.</p>
+          <div class="tc-warning">
+            <span>⚠️</span>
+            <span>Prin finalizarea plății, confirmi că ești titularul cardului folosit și că dispui de fondurile necesare. Orice tranzacție frauduloasă va fi raportată autorităților competente.</span>
+          </div>
+        </div>
+
+        <div id="tc-s4" class="tc-scroll-target">
+          <h3 class="tc-h3">4. Livrarea produselor digitale</h3>
+          <p>Imediat după confirmarea plății ești redirecționat către o pagină de descărcare securizată cu un <strong>link unic, valabil o singură utilizare</strong>. Recomandăm:</p>
+          <ul class="tc-list">
+            <li>Descarcă fișierul imediat — linkul este de unică folosință</li>
+            <li>Salvează fișierul PDF în siguranță (calculator, cloud personal)</li>
+            <li>Nu distribui linkul de descărcare unor terțe persoane</li>
+          </ul>
+          <p>În cazul unor probleme tehnice, ne poți contacta la <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a> cu dovada plății — vom retrimite accesul în termen de <strong>48 de ore lucrătoare</strong>.</p>
+        </div>
+
+        <div id="tc-s5" class="tc-scroll-target">
+          <h3 class="tc-h3">5. Politica de returnare și rambursare</h3>
+          <p>Produsele digitale (PDF) <strong>nu pot fi returnate</strong> odată descărcate, conform art. 16 lit. (m) din Directiva UE 2011/83/UE și legislației române în vigoare (OUG 34/2014).</p>
+          <p><strong>Excepții acceptate</strong> (în termen de 14 zile, DACĂ produsul nu a fost descărcat):</p>
+          <ul class="tc-list">
+            <li>Produs nefuncțional confirmat tehnic</li>
+            <li>Plată dublă (duplicat involuntar al aceleiași comenzi)</li>
+            <li>Neconcordanță majoră între descrierea produsului și conținutul livrat</li>
+          </ul>
+          <p>Solicitările se transmit la <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a> cu subiectul <em>„Solicitare rambursare"</em> și numărul comenzii. Rambursarea se procesează în <strong>5–10 zile lucrătoare</strong>.</p>
+        </div>
+
+        <div id="tc-s6" class="tc-scroll-target">
+          <h3 class="tc-h3">6. Proprietate intelectuală</h3>
+          <p>Toate materialele oferite de Academia De la Pasiune la Profit — manuale, texte, metodologii, logo-uri, grafice și conținut digital — sunt proprietatea exclusivă a <strong>D &amp; M TAP BENEFICII S.R.L.</strong> și sunt protejate de legile privind dreptul de autor.</p>
+          <p>Prin cumpărare, primești o <strong>licență neexclusivă, netransferabilă, pentru uz strict personal</strong>. Este interzis:</p>
+          <ul class="tc-list tc-list-forbidden">
+            <li>Copierea, distribuirea sau redistribuirea materialelor</li>
+            <li>Revânzarea sau sublicențierea conținutului</li>
+            <li>Publicarea online a unor extrase semnificative</li>
+            <li>Folosirea metodologiei în scopuri comerciale fără acord scris</li>
+          </ul>
+          <div class="tc-warning">
+            <span>⚠️</span>
+            <span>Încălcarea drepturilor de proprietate intelectuală atrage răspundere civilă și/sau penală, conform legislației române și europene aplicabile.</span>
+          </div>
+        </div>
+
+        <div id="tc-s7" class="tc-scroll-target">
+          <h3 class="tc-h3">7. Limitarea răspunderii</h3>
+          <p>Academia furnizează materiale educaționale bazate pe experiență practică. Nu garantăm rezultate financiare specifice, deoarece acestea depind de efortul, contextul și implementarea individuală a fiecărei persoane.</p>
+          <p>Răspunderea Companiei este limitată strict la valoarea produsului/serviciului achiziționat. Nu răspundem pentru: pierderi indirecte sau de profit, decizii de afaceri luate pe baza materialelor noastre, sau imposibilitatea de a accesa platforma din motive tehnice independente de noi.</p>
+        </div>
+
+        <div id="tc-s8">
+          <h3 class="tc-h3">8. Legea aplicabilă</h3>
+          <p>Prezentele Termeni și Condiții sunt guvernate de <strong>legislația română</strong>. Orice litigiu va fi soluționat, în primul rând, pe cale amiabilă. În caz de eșec, competența revine instanțelor judecătorești din România.</p>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="tc-part-divider"></div>
+
+        <!-- PARTEA II — GDPR -->
+        <div class="tc-part-label">PARTEA II</div>
+        <h2 class="tc-h2">Politica de Confidențialitate &amp; Protecția Datelor</h2>
+        <p class="tc-subtitle-note">Conformă cu Regulamentul (UE) 2016/679 (GDPR) și Legea nr. 190/2018</p>
+
+        <div id="tc-gdpr1" class="tc-scroll-target">
+          <h3 class="tc-h3">10. Cine suntem — Operatorul de date</h3>
+          <div class="tc-info-card">
+            <div class="tc-info-card-header">
+              <span class="tc-ic-icon">🛡️</span>
+              <span>Identificarea operatorului</span>
+            </div>
+            <div class="tc-info-card-grid">
+              <div><strong>Operator</strong><span>D &amp; M TAP BENEFICII S.R.L.</span></div>
+              <div><strong>CUI</strong><span>39751305</span></div>
+              <div><strong>Responsabil</strong><span>Diana — fondator Academia De la Pasiune la Profit</span></div>
+              <div><strong>Contact DPO</strong><span><a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a></span></div>
+              <div><strong>Baza legală</strong><span>Art. 6 alin. (1) lit. b), c), f) GDPR</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tc-gdpr2" class="tc-scroll-target">
+          <h3 class="tc-h3">11. Ce date colectăm</h3>
+          <div class="tc-col2">
+            <div class="tc-col-box">
+              <h4 class="tc-h4">Date furnizate direct</h4>
+              <ul class="tc-list">
+                <li>Nume și prenume</li>
+                <li>Adresă de email</li>
+                <li>Număr de telefon (opțional)</li>
+                <li>Date de facturare (dacă soliciți factură)</li>
+                <li>Mesaje trimise prin formulare de contact</li>
+              </ul>
+            </div>
+            <div class="tc-col-box">
+              <h4 class="tc-h4">Date colectate automat</h4>
+              <ul class="tc-list">
+                <li>Adresă IP</li>
+                <li>Tip browser și sistem de operare</li>
+                <li>Pagini accesate și timp petrecut</li>
+                <li>Sursă de trafic</li>
+                <li>Date de plată (procesate exclusiv de Stripe)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="tc-gdpr3" class="tc-scroll-target">
+          <h3 class="tc-h3">12. De ce prelucrăm datele — Scopuri și temei juridic</h3>
+          <div class="tc-table-wrap">
+            <table class="tc-table">
+              <thead>
+                <tr><th>Scop</th><th>Temei juridic</th><th>Perioadă retenție</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Procesarea comenzii și livrarea produsului</td><td>Executarea contractului (art. 6.1.b)</td><td>5 ani</td></tr>
+                <tr><td>Comunicare privind comanda ta</td><td>Executarea contractului (art. 6.1.b)</td><td>Durata relației</td></tr>
+                <tr><td>Emiterea facturii fiscale</td><td>Obligație legală (art. 6.1.c)</td><td>10 ani (Codul Fiscal)</td></tr>
+                <tr><td>Newsletter și oferte educaționale</td><td>Consimțământ (art. 6.1.a)</td><td>Până la dezabonare</td></tr>
+                <tr><td>Îmbunătățirea serviciilor</td><td>Interes legitim (art. 6.1.f)</td><td>2 ani (anonimizat)</td></tr>
+                <tr><td>Prevenirea fraudei</td><td>Interes legitim (art. 6.1.f)</td><td>3 ani</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="tc-gdpr4" class="tc-scroll-target">
+          <h3 class="tc-h3">13. Cui transmitem datele — Destinatari</h3>
+          <p>Nu vindem și nu închiriem datele tale. Pot fi partajate cu <strong>procesatori autorizați</strong>:</p>
+          <ul class="tc-list">
+            <li><strong>Stripe Inc.</strong> — procesare plăți (SUA, cu clauze contractuale standard UE)</li>
+            <li><strong>Netlify Inc.</strong> — găzduire website (SUA, cu clauze contractuale standard UE)</li>
+            <li><strong>Formspree</strong> — procesare formulare de contact</li>
+            <li><strong>Meta Platforms</strong> (Facebook/Instagram) — statistici pagini sociale</li>
+          </ul>
+          <p>Datele pot fi transmise <strong>obligatoriu</strong> autorităților fiscale sau instanțelor judecătorești, când legea impune.</p>
+          <div class="tc-note">
+            <span class="tc-note-icon">✅</span>
+            Toți procesatorii noștri au semnat acorduri DPA conforme GDPR și oferă garanții adecvate pentru transferurile internaționale.
+          </div>
+        </div>
+
+        <div id="tc-gdpr5" class="tc-scroll-target">
+          <h3 class="tc-h3">14. Drepturile tale — Conform GDPR</h3>
+          <div class="tc-rights-grid">
+            <div class="tc-right-item">
+              <span class="tc-right-icon">👁️</span>
+              <strong>Acces (art. 15)</strong>
+              <p>Solicită o copie a datelor pe care le deținem despre tine.</p>
+            </div>
+            <div class="tc-right-item">
+              <span class="tc-right-icon">✏️</span>
+              <strong>Rectificare (art. 16)</strong>
+              <p>Corectează date incorecte sau incomplete.</p>
+            </div>
+            <div class="tc-right-item">
+              <span class="tc-right-icon">🗑️</span>
+              <strong>Ștergere (art. 17)</strong>
+              <p>"Dreptul de a fi uitat" — solicită ștergerea datelor.</p>
+            </div>
+            <div class="tc-right-item">
+              <span class="tc-right-icon">⏸️</span>
+              <strong>Restricționare (art. 18)</strong>
+              <p>Limitează modul în care folosim datele tale.</p>
+            </div>
+            <div class="tc-right-item">
+              <span class="tc-right-icon">📦</span>
+              <strong>Portabilitate (art. 20)</strong>
+              <p>Primește datele în format structurat, lizibil.</p>
+            </div>
+            <div class="tc-right-item">
+              <span class="tc-right-icon">🚫</span>
+              <strong>Opoziție (art. 21)</strong>
+              <p>Inclusiv față de marketing direct sau prelucrare bazată pe interes legitim.</p>
+            </div>
+          </div>
+          <div id="tc-contact" class="tc-contact-gdpr tc-scroll-target">
+            <p>📧 Exercitarea drepturilor: <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a> — răspuns în <strong>30 de zile calendaristice</strong>, gratuit.</p>
+            <p>🏛️ Plângeri la <strong>ANSPDCP</strong>: <a href="https://www.dataprotection.ro" target="_blank">www.dataprotection.ro</a> — Tel: <a href="tel:+40318059211">+40.318.059.211</a></p>
+          </div>
+        </div>
+
+        <div id="tc-gdpr6" class="tc-scroll-target">
+          <h3 class="tc-h3">15. Cookie-uri</h3>
+          <p>Site-ul folosește cookie-uri pentru funcționarea corectă a platformei și analiza statistică anonimă:</p>
+          <ul class="tc-list">
+            <li><strong>Cookie-uri esențiale</strong> — necesare pentru funcționarea site-ului (nu pot fi dezactivate)</li>
+            <li><strong>Cookie-uri de performanță</strong> — statistici anonime privind utilizarea site-ului</li>
+            <li><strong>Cookie-uri de marketing</strong> — folosite de Meta (Facebook/Instagram Pixel)</li>
+          </ul>
+        </div>
+
+        <!-- DIVIDER -->
+        <div class="tc-part-divider"></div>
+
+        <!-- ACORD -->
+        <div class="tc-part-label">ANEXA 1</div>
+        <div id="tc-acord" class="tc-scroll-target">
+          <h2 class="tc-h2">Acord de Prelucrare a Datelor cu Caracter Personal</h2>
+          <p class="tc-subtitle-note">Conform art. 28 GDPR — între Operator și Persoana Vizată</p>
+
+          <div class="tc-info-card">
+            <div class="tc-info-card-header">
+              <span class="tc-ic-icon">📋</span>
+              <span>Identificarea Părților</span>
+            </div>
+            <div class="tc-info-card-grid">
+              <div><strong>Operatorul</strong><span>D &amp; M TAP BENEFICII S.R.L., CUI 39751305, J20/1171/3402</span></div>
+              <div><strong>Persoana vizată</strong><span>Orice persoană fizică care achiziționează produse/servicii sau transmite date prin intermediul site-ului Academiei De la Pasiune la Profit</span></div>
+              <div><strong>Data acordului</strong><span>La momentul primei interacțiuni cu site-ul sau la data cumpărăturii</span></div>
+            </div>
+          </div>
+
+          <h4 class="tc-h4">Art. 1 — Obiectul acordului</h4>
+          <p>Prezentul acord reglementează condițiile în care D &amp; M TAP BENEFICII S.R.L. prelucrează datele cu caracter personal ale persoanei vizate în contextul furnizării produselor și serviciilor educaționale din cadrul Academiei De la Pasiune la Profit.</p>
+
+          <h4 class="tc-h4">Art. 2 — Categorii de date prelucrate</h4>
+          <ul class="tc-list">
+            <li>Date de identificare: nume, prenume, email, număr de telefon (opțional)</li>
+            <li>Date de facturare: adresă, cod fiscal (dacă se solicită factură)</li>
+            <li>Date de navigare: IP, browser, pagini accesate (anonimizate)</li>
+            <li>Date de plată: tranzacționate exclusiv prin Stripe — operatorul nu stochează date de card</li>
+          </ul>
+
+          <h4 class="tc-h4">Art. 3 — Scopuri și temeiuri juridice</h4>
+          <ul class="tc-list">
+            <li>Executarea contractului de vânzare-cumpărare (art. 6.1.b GDPR)</li>
+            <li>Respectarea obligațiilor legale — contabilitate, facturare (art. 6.1.c GDPR)</li>
+            <li>Comunicări de marketing (numai cu consimțământ explicit) (art. 6.1.a GDPR)</li>
+            <li>Interese legitime — securitate, antifraudă (art. 6.1.f GDPR)</li>
+          </ul>
+
+          <h4 class="tc-h4">Art. 4 — Consimțământ și retragere</h4>
+          <p>Acolo unde prelucrarea se bazează pe consimțământ (ex: newsletter), îl poți retrage oricând, fără costuri, prin:</p>
+          <ul class="tc-list">
+            <li>Link de dezabonare din orice email primit</li>
+            <li>Cerere directă la <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a></li>
+          </ul>
+          <p>Retragerea consimțământului nu afectează legalitatea prelucrărilor anterioare.</p>
+
+          <h4 class="tc-h4">Art. 5 — Durata prelucrării</h4>
+          <ul class="tc-list">
+            <li>Date fiscale și contabile: <strong>10 ani</strong> (Codul Fiscal)</li>
+            <li>Date de comandă: <strong>5 ani</strong></li>
+            <li>Date de marketing: <strong>până la retragerea consimțământului</strong></li>
+            <li>Date de navigare (anonimizate): <strong>maximum 2 ani</strong></li>
+          </ul>
+
+          <h4 class="tc-h4">Art. 6 — Transferuri internaționale</h4>
+          <p>Unii procesatori (Stripe, Netlify) sunt stabiliți în SUA. Transferurile se efectuează pe baza <strong>clauzelor contractuale standard</strong> aprobate de Comisia Europeană (art. 46 GDPR).</p>
+
+          <h4 class="tc-h4">Art. 7 — Plângeri și autoritatea de supraveghere</h4>
+          <div class="tc-info-card">
+            <div class="tc-info-card-header">
+              <span class="tc-ic-icon">🏛️</span>
+              <span>ANSPDCP — Autoritatea Națională de Supraveghere</span>
+            </div>
+            <div class="tc-info-card-grid">
+              <div><strong>Website</strong><span><a href="https://www.dataprotection.ro" target="_blank">www.dataprotection.ro</a></span></div>
+              <div><strong>Email</strong><span><a href="mailto:anspdcp@dataprotection.ro">anspdcp@dataprotection.ro</a></span></div>
+              <div><strong>Telefon</strong><span>+40.318.059.211</span></div>
+              <div><strong>Adresă</strong><span>B-dul Magheru nr. 28–30, sector 1, București</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acceptare -->
+        <div class="tc-accept-box">
+          <div class="tc-accept-check">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#F47B20" opacity="0.12"/><path d="M10 16.5l4.5 4.5 8-9" stroke="#F47B20" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <strong>Acceptarea termenilor</strong>
+            <p>Prin utilizarea serviciilor Academiei și/sau prin bifarea căsuței de acceptare la finalizarea comenzii, declari că ai citit, înțeles și acceptat în totalitate prezentele Termeni și Condiții, Politica de Confidențialitate și Acordul de Prelucrare a Datelor.</p>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit?igsh=MXE5dTF0djN4YzV6cw==" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DUWspHa77/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@delapasiunelaprofit.ro">contact@delapasiunelaprofit.ro</a><span class="f-sep">·</span><a href="#" onclick="gotoPage('tc');return false;">Termeni &amp; Condiții</a>
+    </div>
+  </footer>
+</div>
+
 </body>
 </html>
 

@@ -2176,6 +2176,8 @@ function openPdfModal(bookKey) {
   pdfCurrentBook = bookKey;
   pdfCurrentPage = 1;
   pdfDoc = null;
+  isFallbackMode = false;
+  fallbackCurrentPage = 0;
 
   // Actualizează header-ul modalului
   document.getElementById('pdfModalTitle').textContent = b.title;
@@ -2215,53 +2217,216 @@ function loadPreviewPdf(pdfUrl) {
   });
 }
 
-function showPdfFallback() {
-  // Dacă PDF-ul nu e disponibil, afișează previzualizare cu capitole text
+// ── Fallback pages data (afișate când PDF-ul nu e încă pe server) ──
+const fallbackPages = {
+  claritate: [
+    { type: 'cover' },
+    { type: 'chapter', nr: 'Introducere', title: 'De ce nu e de ajuns să fii pasionat', text: 'Mulți creatori muncesc din greu și totuși nu vând. Nu pentru că produsul lor e slab — ci pentru că mesajul nu ajunge la omul potrivit. Această carte îți arată diferența.' },
+    { type: 'chapter', nr: 'Capitolul 1', title: 'Diferența dintre pasiune și poziționare', text: 'A iubi ceea ce faci nu înseamnă că piața te va găsi automat. Claritatea înseamnă să știi exact PENTRU CINE și CU CE problemă te adresezi — nu doar ce faci tu.' },
+    { type: 'chapter', nr: 'Capitolul 2', title: 'Publicul tău real — nu cel imaginar', text: 'Cel mai frecvent blocaj: creatorii vorbesc cu toată lumea și nu ajung la nimeni. Vei învăța să identifici cu precizie cumpărătorul potrivit pentru oferta ta.' },
+    { type: 'chapter', nr: 'Capitolul 3', title: 'Structura unei oferte clare', text: 'O ofertă clară nu descrie produsul — descrie transformarea. Vei construi prima ta ofertă care comunică valoare, nu doar caracteristici.' },
+    { type: 'cta' }
+  ],
+  constructie: [
+    { type: 'cover' },
+    { type: 'chapter', nr: 'Introducere', title: 'De la ofertă la sistem vizibil', text: 'Ai claritate — acum trebuie să construiești prezența. Construcția înseamnă sistemul minim care te face vizibil constant, fără epuizare.' },
+    { type: 'chapter', nr: 'Capitolul 1', title: 'Mesajul central al brandului tău', text: 'Un mesaj puternic se repetă. Vei defini nucleul comunicării tale — un mesaj care atrage clientul potrivit de fiecare dată când îl auzi.' },
+    { type: 'chapter', nr: 'Capitolul 2', title: 'Sistemul minim de promovare', text: 'Nu ai nevoie de toate rețelele sociale. Vei construi un sistem simplu, sustenabil, adaptat stilului tău de lucru — și îl vei menține.' },
+    { type: 'chapter', nr: 'Capitolul 3', title: 'Testarea ofertei pe piață', text: 'Înainte de a investi luni în promovare, validezi. Vei folosi metode simple și rapide să confirmi că oferta rezonează cu publicul real.' },
+    { type: 'cta' }
+  ],
+  conversie: [
+    { type: 'cover' },
+    { type: 'chapter', nr: 'Introducere', title: 'De la interes la decizie', text: 'Oamenii îți urmăresc conținutul, îți apreciază munca — dar nu cumpără. Conversia este arta de a transforma interesul în decizie, fără presiune.' },
+    { type: 'chapter', nr: 'Capitolul 1', title: 'Psihologia deciziei de cumpărare', text: 'Cumpărătorii nu iau decizii raționale — iau decizii emoționale pe care le justifică rațional. Vei înțelege mecanismul și vei comunica în consecință.' },
+    { type: 'chapter', nr: 'Capitolul 2', title: 'Conversația de vânzare fără presiune', text: 'Vânzarea nu înseamnă convingere — înseamnă claritate. Vei învăța structura unei conversații care ajută clientul să ia decizia potrivită pentru el.' },
+    { type: 'chapter', nr: 'Capitolul 3', title: 'Optimizarea conversiei în timp', text: 'Ce funcționează azi s-ar putea să nu funcționeze mâine. Vei construi un sistem de măsurare și ajustare care crește rata de conversie continuu.' },
+    { type: 'cta' }
+  ],
+  trilogie: [
+    { type: 'cover' },
+    { type: 'chapter', nr: 'Vol. 1 — Claritate', title: 'Știi exact ce vinzi și pentru cine', text: 'Primul volum te ajută să treci de la "fac lucruri frumoase" la o ofertă clară, adresată unui public real, cu un mesaj care rezonează.' },
+    { type: 'chapter', nr: 'Vol. 2 — Construcție', title: 'Oferta ta devine vizibilă sistematic', text: 'Al doilea volum construiește prezența — un sistem de comunicare sustenabil, adaptat tipului tău de business și energiei pe care o ai disponibilă.' },
+    { type: 'chapter', nr: 'Vol. 3 — Conversie', title: 'Transformi interesul în venit real', text: 'Al treilea volum închide cercul: de la atragerea atenției la decizia de cumpărare — fără tactici agresive, cu autenticitate.' },
+    { type: 'chapter', nr: 'Bonus inclus', title: 'Ghidul de implementare integrală 3C', text: 'Un ghid pas cu pas care integrează cele trei volume într-un plan de acțiune coerent. De la idee la primul (sau al zecelea) client.' },
+    { type: 'cta' }
+  ]
+};
+
+let fallbackCurrentPage = 1;
+let isFallbackMode = false;
+
+function drawFallbackPage(pageIndex) {
   const b = books[pdfCurrentBook];
-  const fallbackChapters = {
-    claritate: ['Introducere: De ce nu e de ajuns să fii pasionat','Cap. 1: Diferența dintre pasiune și poziționare','Cap. 2: Publicul tău real — nu cel imaginar','Cap. 3: Structura unei oferte clare'],
-    constructie: ['Introducere: De la ofertă la sistem vizibil','Cap. 1: Mesajul central','Cap. 2: Sistemul minim de promovare','Cap. 3: Testarea ofertei'],
-    conversie: ['Introducere: De la interes la decizie','Cap. 1: Psihologia deciziei de cumpărare','Cap. 2: Conversația de vânzare fără presiune','Cap. 3: Optimizarea conversiei în timp'],
-    trilogie: ['Vol. 1 — Claritate: Știi ce vinzi și pentru cine','Vol. 2 — Construcție: Oferta ta devine vizibilă','Vol. 3 — Conversie: Transformi interesul în venit','Bonus: Ghidul de implementare integrală']
-  };
-  const chapters = fallbackChapters[pdfCurrentBook] || [];
+  const pages = fallbackPages[pdfCurrentBook] || [];
+  const pg = pages[pageIndex];
+  if (!pg) return;
+
   const canvas = document.getElementById('pdfCanvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = 595; canvas.height = 842;
+  const W = 560, H = 792;
+  canvas.width = W; canvas.height = H;
 
-  // Desenează o pagina simplă
-  ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,595,842);
-  ctx.fillStyle = '#0a1e30'; ctx.fillRect(0,0,595,120);
-  ctx.fillStyle = '#f47b20'; ctx.fillRect(0,118,595,4);
-
+  // Fundal alb
   ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 14px sans-serif';
-  ctx.fillText(b.vol.toUpperCase(), 40, 55);
-  ctx.font = 'bold 28px serif';
-  ctx.fillText(b.title, 40, 88);
-  ctx.font = '12px sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.6)';
-  ctx.fillText('De la Pasiune la Profit — Previzualizare', 40, 108);
+  ctx.fillRect(0, 0, W, H);
 
-  ctx.fillStyle = '#0a1e30';
-  ctx.font = 'bold 16px sans-serif';
-  ctx.fillText('Cuprins', 40, 175);
-  ctx.fillStyle = '#f47b20'; ctx.fillRect(40, 185, 40, 2);
+  if (pg.type === 'cover') {
+    // Header colorat
+    ctx.fillStyle = '#0a1e30';
+    ctx.fillRect(0, 0, W, H);
+    // Accent portocaliu
+    ctx.fillStyle = '#f47b20';
+    ctx.fillRect(0, H - 6, W, 6);
+    ctx.fillRect(48, 200, 60, 5);
+    // Vol
+    ctx.fillStyle = 'rgba(244,123,32,0.8)';
+    ctx.font = 'bold 13px sans-serif';
+    ctx.fillText(b.vol.toUpperCase(), 48, 190);
+    // Titlu
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 48px serif';
+    ctx.fillText(b.title, 48, 270);
+    // Subtitle
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.font = '16px sans-serif';
+    ctx.fillText(b.subtitle, 48, 310);
+    // Linie
+    ctx.fillStyle = 'rgba(255,255,255,0.1)';
+    ctx.fillRect(48, 340, W - 96, 1);
+    // Academia
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = '13px sans-serif';
+    ctx.fillText('De la Pasiune la Profit · Metoda 3C', 48, 370);
+    // Previzualizare badge
+    ctx.fillStyle = 'rgba(244,123,32,0.2)';
+    ctx.beginPath(); ctx.roundRect(48, H - 90, 160, 34, 6); ctx.fill();
+    ctx.fillStyle = '#f47b20';
+    ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('PREVIZUALIZARE GRATUITĂ', 66, H - 68);
 
-  ctx.fillStyle = '#333';
-  ctx.font = '13px sans-serif';
-  chapters.forEach((ch, i) => {
-    ctx.fillText('• ' + ch, 50, 220 + i * 36);
-  });
+  } else if (pg.type === 'chapter') {
+    // Header simplu
+    ctx.fillStyle = '#0a1e30';
+    ctx.fillRect(0, 0, W, 56);
+    ctx.fillStyle = '#f47b20';
+    ctx.fillRect(0, 56, W, 3);
+    // Titlu header
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '11px sans-serif';
+    ctx.fillText((b.title + ' — ' + b.vol).toUpperCase(), 24, 34);
 
-  ctx.fillStyle = '#f5f5f5'; ctx.fillRect(40, 420, 515, 120);
-  ctx.fillStyle = '#666'; ctx.font = '12px sans-serif';
-  ctx.fillText('Aceasta este o previzualizare. Cumpără manualul pentru acces complet.', 60, 480);
+    // Nr capitol
+    ctx.fillStyle = '#f47b20';
+    ctx.font = 'bold 12px sans-serif';
+    ctx.fillText(pg.nr.toUpperCase(), 40, 110);
+    // Linie portocalie
+    ctx.fillStyle = '#f47b20';
+    ctx.fillRect(40, 118, 36, 3);
+
+    // Titlu capitol
+    ctx.fillStyle = '#0a1e30';
+    ctx.font = 'bold 26px serif';
+    const titleWords = pg.title.split(' ');
+    let line = '', y = 158, lineH = 36;
+    for (const word of titleWords) {
+      const test = line + (line ? ' ' : '') + word;
+      if (ctx.measureText(test).width > W - 80) {
+        ctx.fillText(line, 40, y); y += lineH; line = word;
+      } else { line = test; }
+    }
+    if (line) { ctx.fillText(line, 40, y); y += lineH; }
+
+    // Linie separator
+    y += 16;
+    ctx.fillStyle = '#e8ecf0';
+    ctx.fillRect(40, y, W - 80, 1);
+    y += 28;
+
+    // Text
+    ctx.fillStyle = '#445566';
+    ctx.font = '15px sans-serif';
+    const textWords = pg.text.split(' ');
+    let tLine = '', ty = y, tLineH = 26;
+    for (const word of textWords) {
+      const test = tLine + (tLine ? ' ' : '') + word;
+      if (ctx.measureText(test).width > W - 80) {
+        ctx.fillText(tLine, 40, ty); ty += tLineH; tLine = word;
+      } else { tLine = test; }
+    }
+    if (tLine) ctx.fillText(tLine, 40, ty);
+
+    // Footer pagina
+    ctx.fillStyle = '#e8ecf0';
+    ctx.fillRect(0, H - 36, W, 1);
+    ctx.fillStyle = '#aab';
+    ctx.font = '11px sans-serif';
+    ctx.fillText('Previzualizare · ' + b.title, 40, H - 14);
+    ctx.fillText(`${pageIndex + 1} / ${pages.length}`, W - 60, H - 14);
+
+  } else if (pg.type === 'cta') {
+    // Background gradient
+    ctx.fillStyle = '#fafbfc';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#0a1e30';
+    ctx.fillRect(0, 0, W, 56);
+    ctx.fillStyle = '#f47b20';
+    ctx.fillRect(0, 56, W, 3);
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.font = '11px sans-serif';
+    ctx.fillText((b.title + ' — ' + b.vol).toUpperCase(), 24, 34);
+
+    // Conținut CTA
+    ctx.fillStyle = '#0a1e30';
+    ctx.font = 'bold 28px serif';
+    ctx.fillText('Continuă lectura', 40, 160);
+    ctx.fillStyle = '#f47b20';
+    ctx.fillRect(40, 172, 50, 3);
+
+    ctx.fillStyle = '#556';
+    ctx.font = '15px sans-serif';
+    const ctaText = `Aceasta a fost previzualizarea gratuită a manualului "${b.title}". Cumpără acum pentru acces complet la toate capitolele, exercițiile practice și bonusurile incluse.`;
+    const ctaWords = ctaText.split(' ');
+    let cl = '', cy = 220, clH = 26;
+    for (const w of ctaWords) {
+      const t = cl + (cl ? ' ' : '') + w;
+      if (ctx.measureText(t).width > W - 80) { ctx.fillText(cl, 40, cy); cy += clH; cl = w; }
+      else cl = t;
+    }
+    if (cl) ctx.fillText(cl, 40, cy);
+
+    // Preț box
+    cy += 60;
+    ctx.fillStyle = '#f47b20';
+    ctx.beginPath(); ctx.roundRect(40, cy, W - 80, 80, 10); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 22px sans-serif';
+    ctx.fillText(`Obține accesul complet · ${b.price}`, 70, cy + 34);
+    ctx.font = '14px sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    ctx.fillText('Livrare imediată · Link securizat · Plată prin Stripe', 70, cy + 58);
+
+    // Footer
+    ctx.fillStyle = '#e8ecf0';
+    ctx.fillRect(0, H - 36, W, 1);
+    ctx.fillStyle = '#aab';
+    ctx.font = '11px sans-serif';
+    ctx.fillText('© De la Pasiune la Profit · D & M TAP BENEFICII S.R.L.', 40, H - 14);
+  }
+}
+
+function showPdfFallback() {
+  isFallbackMode = true;
+  fallbackCurrentPage = 0;
+  const pages = fallbackPages[pdfCurrentBook] || [];
+
+  drawFallbackPage(0);
 
   document.getElementById('pdfLoadingMsg').style.display = 'none';
   document.getElementById('pdfCanvasWrap').style.display = 'flex';
-  document.getElementById('pdfPageInfo').textContent = 'Previzualizare cuprins';
+  document.getElementById('pdfPageInfo').textContent = `Pagina 1 / ${pages.length}`;
   document.getElementById('pdfBtnPrev').disabled = true;
-  document.getElementById('pdfBtnNext').disabled = true;
+  document.getElementById('pdfBtnNext').disabled = pages.length <= 1;
 }
 
 function renderPdfPage(pageNum) {
@@ -2282,9 +2447,21 @@ function renderPdfPage(pageNum) {
 }
 
 function changePdfPage(dir) {
+  if (isFallbackMode) {
+    const pages = fallbackPages[pdfCurrentBook] || [];
+    const next = fallbackCurrentPage + dir;
+    if (next < 0 || next >= pages.length) return;
+    fallbackCurrentPage = next;
+    drawFallbackPage(next);
+    document.getElementById('pdfPageInfo').textContent = `Pagina ${next + 1} / ${pages.length}`;
+    document.getElementById('pdfBtnPrev').disabled = next <= 0;
+    document.getElementById('pdfBtnNext').disabled = next >= pages.length - 1;
+    return;
+  }
   if (!pdfDoc) return;
   const next = pdfCurrentPage + dir;
   if (next < 1 || next > pdfDoc.numPages) return;
+  pdfCurrentPage = next;
   renderPdfPage(next);
 }
 

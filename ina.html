@@ -831,9 +831,23 @@ REGULI ABSOLUTE:
 
   // ─── HELPERS ───
   function scrollToChat() {
+    // Asigură că chatul e construit
+    if (!document.getElementById('chat-input')) {
+      buildChatSection();
+      renderStageIndicator();
+      renderIdeasPanel();
+      updateUsesCounter();
+      if (!restoreConversation()) {
+        showEmptyState();
+        setTimeout(() => {
+          hideEmptyState();
+          addMessage('ina', 'Salut! Sunt INA, mentorul tău AI. 👋\n\nSpune-mi ideea ta de business și îți spun dacă are potențial, ce lipsește și care ar putea fi următorul pas.');
+          setTimeout(() => addMessage('ina', 'Poți să-mi scrii simplu, de exemplu: «Vreau să vând cursuri de engleză».'), 1200);
+        }, 300);
+      }
+    }
     const chatSection = document.getElementById('chat-section');
     if (chatSection) {
-      if (!document.getElementById('chat-input')) { buildChatSection(); }
       chatSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setTimeout(() => {
         const input = document.getElementById('chat-input');

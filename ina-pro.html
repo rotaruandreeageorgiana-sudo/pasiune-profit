@@ -339,7 +339,7 @@ REGULI ABSOLUTE:
 - Te comporți ca un mentor, nu ca un chatbot de vânzări
 - Linkul către resurse este întotdeauna: https://pasiune-profit.ro`;
 
-  const MODEL = 'claude-sonnet-4-6';
+  const MODEL = 'gpt-4o';
 
   // ─── State ─────────────────────────────────────────────────────────────────
   let messages      = [];
@@ -471,32 +471,35 @@ REGULI ABSOLUTE:
     addTyping();
 
     try {
-      const token = localStorage.getItem('ina_token');
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const token = localStorage.getItem('ina_token') || '';
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: {
-          'Content-Type':      'application/json',
-          'x-api-key':         window.__ANTHROPIC_KEY__ || '',
-          'anthropic-version': '2023-06-01'
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
-          model:      MODEL,
-          max_tokens: 1500,
-          system:     SYSTEM_PROMPT,
-          messages:   messages
+          systemPrompt: SYSTEM_PROMPT,
+          messages:     messages
         })
       });
 
       removeTyping();
 
+      if (res.status === 401) {
+        addMessage('ina', 'Sesiunea ta a expirat. Te rog reconectează-te.');
+        setTimeout(() => window.location.href = '/login.html', 2000);
+        return;
+      }
+
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
-        addMessage('ina', 'A apărut o eroare tehnică. Te rog încearcă din nou. (' + (err.error?.message || res.status) + ')');
+        addMessage('ina', 'A apărut o eroare tehnică. Te rog înceařcă din nou. (' + (err.error || res.status) + ')');
         return;
       }
 
       const data = await res.json();
-      const reply = data.content?.[0]?.text || '';
+      const reply = data.reply || '';
 
       addMessage('ina', reply);
       messages.push({ role: 'assistant', content: reply });

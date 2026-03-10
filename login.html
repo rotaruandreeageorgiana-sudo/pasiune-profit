@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autentificare — INA Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1D4ED8; --blue-dark: #1e3a8a; --blue-light: #dbeafe;
+      --orange: #F97316; --orange-light: #fff7ed;
+      --gray-50: #f8fafc; --gray-100: #f1f5f9; --gray-200: #e2e8f0;
+      --gray-400: #94a3b8; --gray-600: #475569; --gray-800: #1e293b; --gray-900: #0f172a;
+      --shadow-lg: 0 8px 48px rgba(29,78,216,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff 0%, #fff7f0 100%);
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .logo { font-family: 'Sora', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--blue); margin-bottom: 8px; text-decoration: none; }
+    .logo span { color: var(--orange); }
+    .logo-sub { font-size: 0.82rem; color: var(--gray-400); margin-bottom: 32px; text-align: center; }
+
+    .card {
+      background: white; border-radius: 24px; padding: 44px 40px;
+      max-width: 420px; width: 100%;
+      box-shadow: var(--shadow-lg); border: 1px solid var(--gray-200);
+    }
+
+    .card-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--orange-light); color: var(--orange);
+      border-radius: 50px; padding: 5px 14px;
+      font-size: 0.78rem; font-weight: 700; margin-bottom: 18px;
+      border: 1px solid rgba(249,115,22,0.2);
+    }
+    h1 { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
+    .subtitle { font-size: 0.9rem; color: var(--gray-600); margin-bottom: 28px; line-height: 1.6; }
+
+    .alert {
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 0.85rem; line-height: 1.5; margin-bottom: 18px; display: none;
+    }
+    .alert.error   { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
+    .alert.success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
+
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-size: 0.83rem; font-weight: 700; color: var(--gray-800); margin-bottom: 6px; }
+    .input-wrap { position: relative; }
+    input {
+      width: 100%; padding: 13px 16px; padding-right: 44px;
+      border: 1.5px solid var(--gray-200); border-radius: 12px;
+      font-family: 'Nunito', sans-serif; font-size: 0.95rem; color: var(--gray-800);
+      outline: none; background: var(--gray-50);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    input:focus { border-color: var(--blue); background: white; }
+    input.err { border-color: #f87171; }
+
+    /* Show/hide password toggle */
+    .toggle-pw {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: var(--gray-400); font-size: 1.1rem; padding: 4px;
+      transition: color 0.2s;
+    }
+    .toggle-pw:hover { color: var(--blue); }
+
+    .forgot-link { display: block; text-align: right; font-size: 0.8rem; color: var(--gray-400); text-decoration: none; margin-top: -10px; margin-bottom: 20px; }
+    .forgot-link:hover { color: var(--blue); }
+
+    .btn-primary {
+      width: 100%; padding: 15px;
+      background: var(--orange); color: white;
+      border: none; border-radius: 50px;
+      font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 16px rgba(249,115,22,0.3);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn-primary:hover:not(:disabled) { background: #ea6500; transform: translateY(-1px); }
+    .btn-primary:disabled { background: var(--gray-400); cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: white; border-radius: 50%;
+      animation: spin 0.75s linear infinite; display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .divider { display: flex; align-items: center; gap: 12px; margin: 24px 0; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
+    .divider span { font-size: 0.78rem; color: var(--gray-400); white-space: nowrap; }
+
+    .footer-link { text-align: center; font-size: 0.83rem; color: var(--gray-400); }
+    .footer-link a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    .footer-link a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="logo" href="/">INA<span>.</span></a>
+  <p class="logo-sub">Mentor AI · De la Pasiune la Profit</p>
+
+  <div class="card">
+    <div class="card-badge">✦ INA Premium</div>
+    <h1>Bine ai revenit</h1>
+    <p class="subtitle">Conectează-te cu adresa de email folosită la activarea contului.</p>
+
+    <div class="alert error" id="alert-error"></div>
+
+    <form id="login-form" novalidate>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="adresa@email.com" autocomplete="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Parolă</label>
+        <div class="input-wrap">
+          <input type="password" id="password" placeholder="Parola ta" autocomplete="current-password" required>
+          <button type="button" class="toggle-pw" onclick="togglePassword()" title="Arată/ascunde parola">👁</button>
+        </div>
+      </div>
+
+      <a href="/forgot-password.html" class="forgot-link">Ai uitat parola?</a>
+
+      <button type="submit" class="btn-primary" id="submit-btn">
+        <span id="btn-label">Intră în INA Premium</span>
+        <div class="spinner" id="spinner"></div>
+      </button>
+    </form>
+
+    <div class="divider"><span>sau</span></div>
+    <p class="footer-link">Nu ai cont? <a href="https://buy.stripe.com/aFa5kDaab3RD5g6eoH7EQ07" target="_blank">Activează INA Premium →</a></p>
+  </div>
+
+  <script>
+    // Redirect if already logged in
+    const token = localStorage.getItem('ina_token');
+    if (token) {
+      fetch('/api/auth/verify', { headers: { Authorization: 'Bearer ' + token } })
+        .then(r => r.ok ? window.location.href = '/ina-pro.html' : null)
+        .catch(() => null);
+    }
+
+    function togglePassword() {
+      const input = document.getElementById('password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorEl  = document.getElementById('alert-error');
+      const btn      = document.getElementById('submit-btn');
+      const spinner  = document.getElementById('spinner');
+      const btnLabel = document.getElementById('btn-label');
+
+      errorEl.style.display = 'none';
+
+      if (!email || !password) {
+        return showError('Completează emailul și parola.');
+      }
+
+      btn.disabled = true;
+      btnLabel.style.display = 'none';
+      spinner.style.display  = 'block';
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          showError(data.error || 'Email sau parolă incorectă.');
+          resetBtn();
+          return;
+        }
+
+        // Save session
+        localStorage.setItem('ina_token',   data.token);
+        localStorage.setItem('ina_refresh',  data.refresh_token);
+        localStorage.setItem('ina_email',    email);
+        localStorage.setItem('ina_expires',  data.expires_at);
+
+        window.location.href = '/ina-pro.html';
+
+      } catch (err) {
+        showError('Eroare de conexiune. Verifică internetul și încearcă din nou.');
+        resetBtn();
+      }
+    });
+
+    function showError(msg) {
+      const el = document.getElementById('alert-error');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+    function resetBtn() {
+      document.getElementById('submit-btn').disabled = false;
+      document.getElementById('btn-label').style.display = 'block';
+      document.getElementById('spinner').style.display   = 'none';
+    }
+  </script>
+</body>
+</html>

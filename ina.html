@@ -645,9 +645,12 @@ REGULI ABSOLUTE:
     if (!el) return;
     const stages = ['Claritate', 'Construcție', 'Conversie'];
     const colors = { 'Claritate': '#1D4ED8', 'Construcție': '#F97316', 'Conversie': '#16a34a' };
-    el.innerHTML = stages.map(s =>
-      `<span class="stage-pill ${s === stage3C ? 'active' : ''}" style="${s === stage3C ? `background:${colors[s]};color:white` : ''}">${s}</span>`
-    ).join('');
+    el.innerHTML = stages.map(s => {
+      const isActive = s === stage3C;
+      const cls = 'stage-pill' + (isActive ? ' active' : '');
+      const style = isActive ? 'background:' + colors[s] + ';color:white' : '';
+      return '<span class="' + cls + '" style="' + style + '">' + s + '</span>';
+    }).join('');
   }
 
   function updateUsesCounter() {

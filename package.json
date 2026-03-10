@@ -1,8 +1,10 @@
 {
-  "name": "pasiune-profit",
+  "name": "ina-pro-system",
   "version": "1.0.0",
-  "description": "Academia De la Pasiune la Profit",
+  "type": "module",
+  "engines": { "node": ">=18" },
   "dependencies": {
-    "stripe": "^14.0.0"
+    "@supabase/supabase-js": "^2.43.0",
+    "stripe": "^15.0.0"
   }
 }

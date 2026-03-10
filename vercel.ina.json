@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*\\.html)", "dest": "/public/$1" },
+    { "src": "/", "dest": "/public/index.html" }
+  ],
+  "env": {
+    "SUPABASE_URL":                  "@supabase_url",
+    "SUPABASE_ANON_KEY":             "@supabase_anon_key",
+    "SUPABASE_SERVICE_ROLE_KEY":     "@supabase_service_role_key",
+    "STRIPE_SECRET_KEY":             "@stripe_secret_key",
+    "STRIPE_WEBHOOK_SECRET":         "@stripe_webhook_secret",
+    "ANTHROPIC_API_KEY":             "@anthropic_api_key"
+  }
+}

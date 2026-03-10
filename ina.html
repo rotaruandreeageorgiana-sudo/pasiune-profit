@@ -690,7 +690,7 @@ REGULI ABSOLUTE:
     if (!panel) return;
     if (userIdeas.length === 0) { panel.style.display = 'none'; return; }
     panel.style.display = 'block';
-    panel.innerHTML = `<h4>💾 Ideile tale analizate</h4>${userIdeas.map(i => `<div class="idea-tag">${i}</div>`).join('')}`;
+    panel.innerHTML = '<h4>💾 Ideile tale analizate</h4>' + userIdeas.map(i => '<div class="idea-tag">' + i + '</div>').join('');
   }
 
   // ─── PAYWALL ───

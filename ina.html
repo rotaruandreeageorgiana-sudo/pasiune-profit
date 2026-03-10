@@ -534,7 +534,7 @@
 
   // ─── CONFIG ───
   const FREE_LIMIT = 10;
-  const API_URL = 'https://api.anthropic.com/v1/messages';
+  const API_URL = 'https:/const API_URL = 'http://localhost:3000/chat';
 
   // ─── STATE ───
   let conversationHistory = JSON.parse(localStorage.getItem('ina_conversation') || '[]');
@@ -928,20 +928,13 @@ REGULI ABSOLUTE:
     showTyping();
 
     try {
-      const messages = conversationHistory
-        .slice(0, -1)
-        .map(m => ({ role: m.role, content: m.content }));
-
       const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-6',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: [...messages, { role: 'user', content: text }]
-        })
-      });
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    message: text
+  })
+});
 
       hideTyping();
       isTyping = false;
@@ -952,8 +945,8 @@ REGULI ABSOLUTE:
       }
 
       const data = await response.json();
-      const reply = data.content?.[0]?.text || 'Nu am putut genera un răspuns.';
-      addMessage('ina', reply);
+const reply = data.reply || 'Nu am putut genera un răspuns.';
+addMessage('ina', reply);
 
       // Check if INA sent final message
       const finalKeywords = ['Etapa gratuită', 'INA PRO', 'Mult succes', 'pasiune-profit.ro'];

@@ -1,0 +1,102 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "outputDirectory": "public",
+  "rewrites": [
+    {
+      "source": "/api/chat-free",
+      "destination": "/api/chat-free.js"
+    },
+    {
+      "source": "/academia",
+      "destination": "/academia.html"
+    },
+    {
+      "source": "/metoda-3c",
+      "destination": "/metoda-3c.html"
+    },
+    {
+      "source": "/manuale",
+      "destination": "/manuale.html"
+    },
+    {
+      "source": "/mentorat",
+      "destination": "/mentorat.html"
+    },
+    {
+      "source": "/ina",
+      "destination": "/ina.html"
+    },
+    {
+      "source": "/digital-studio-3c",
+      "destination": "/digital-studio-3c.html"
+    },
+    {
+      "source": "/site-ul-care-vinde",
+      "destination": "/digital-studio-3c.html"
+    },
+    {
+      "source": "/comunitate",
+      "destination": "/comunitate.html"
+    },
+    {
+      "source": "/resurse",
+      "destination": "/resurse.html"
+    },
+    {
+      "source": "/aplica",
+      "destination": "/aplica.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/register.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/dashboard.html"
+    },
+    {
+      "source": "/termeni",
+      "destination": "/termeni.html"
+    },
+    {
+      "source": "/gdpr",
+      "destination": "/gdpr.html"
+    },
+    {
+      "source": "/multumim-manuale",
+      "destination": "/multumim-manuale.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}

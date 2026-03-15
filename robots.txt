@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Disallow auth and dashboard pages from indexing
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+
+# Allow all content pages
+Allow: /
+Allow: /academia
+Allow: /metoda-3c
+Allow: /manuale
+Allow: /mentorat
+Allow: /ina
+Allow: /site-ul-care-vinde
+Allow: /comunitate
+Allow: /resurse
+Allow: /aplica
+Allow: /contact
+Allow: /faq
+
+# Sitemap location
+Sitemap: https://pasiune-profit.ro/sitemap.xml

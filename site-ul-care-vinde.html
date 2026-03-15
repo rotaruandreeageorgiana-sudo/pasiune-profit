@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site-ul care vinde · Academia De la Pasiune la Profit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+.page-hero { padding-top: 64px; background: linear-gradient(155deg, var(--navy) 0%, #1a3f60 55%, var(--navy-mid) 100%); color: white; padding: 80px 6% 72px; }
+.page-hero h1 { color: white; margin-bottom: 14px; }
+.page-hero p { color: rgba(255,255,255,.68); font-size: 1.05rem; max-width: 560px; line-height: 1.75; margin-bottom: 28px; }
+.scv-intro { background: var(--off); padding: 72px 0; }
+.scv-tabs { display: flex; gap: 8px; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 6px; max-width: 420px; margin: 0 auto 56px; }
+.scv-tab { flex: 1; padding: 10px 16px; border-radius: 6px; border: none; background: none; cursor: pointer; font-family: "Inter",sans-serif; font-size: .82rem; font-weight: 600; color: var(--gray-lt); letter-spacing: .04em; text-transform: uppercase; transition: all .2s; }
+.scv-tab.active { background: var(--navy); color: white; }
+.scv-panel { display: none; }
+.scv-panel.active { display: block; }
+/* DIY */
+.diy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.diy-features { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-top: 24px; }
+.diy-feature { display: flex; gap: 12px; align-items: flex-start; font-size: .9rem; }
+.diy-feature::before { content: "✓"; color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.diy-pricing { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 56px; }
+.price-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 32px 24px; display: flex; flex-direction: column; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; position: relative; overflow: hidden; }
+.price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.price-card.featured { border-color: var(--orange); box-shadow: 0 0 0 2px var(--orange), var(--shadow-lg); }
+.price-popular { position: absolute; top: 18px; right: -30px; background: var(--orange); color: white; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 44px; transform: rotate(35deg); }
+.price-tier { font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.price-name { font-family: "Playfair Display",serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 6px; }
+.price-tagline { font-size: .82rem; color: var(--gray-lt); margin-bottom: 20px; }
+.price-amount-row { display: flex; align-items: baseline; gap: 3px; margin-bottom: 20px; }
+.price-eur { font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+.price-num { font-family: "Playfair Display",serif; font-size: 2.8rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.price-sep { height: 1px; background: var(--border); margin-bottom: 20px; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 24px; }
+.price-feature { display: flex; gap: 9px; font-size: .82rem; color: var(--gray); }
+.price-feature::before { content: "✓"; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+.price-feature.off { color: var(--gray-lt); }
+.price-feature.off::before { content: "–"; color: var(--border); }
+/* DFY */
+.dfy-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 56px; }
+.dfy-steps-card { background: var(--navy); border-radius: 10px; padding: 36px; color: white; }
+.dfy-steps-title { font-family: "Playfair Display",serif; font-size: 1.1rem; color: white; margin-bottom: 20px; }
+.dfy-step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; }
+.dfy-step:last-child { margin-bottom: 0; }
+.dfy-step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--orange); color: white; font-size: .75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.dfy-step-text strong { color: white; display: block; font-size: .85rem; margin-bottom: 2px; }
+.dfy-step-text span { font-size: .8rem; color: rgba(255,255,255,.6); line-height: 1.5; }
+.dfy-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 48px; }
+/* FORM */
+.apply-form-wrap { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 44px; max-width: 620px; margin: 0 auto; box-shadow: var(--shadow-md); }
+.apply-form-title { font-family: "Playfair Display",serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 6px; }
+.apply-form-sub { font-size: .82rem; color: var(--gray-lt); margin-bottom: 28px; }
+.apply-form { display: flex; flex-direction: column; gap: 18px; }
+.apply-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.apply-note { text-align: center; margin-top: 16px; font-size: .78rem; color: var(--gray-lt); }
+.apply-success { display: none; text-align: center; padding: 32px; }
+.apply-success-icon { font-size: 2.5rem; margin-bottom: 14px; }
+.apply-success h3 { color: var(--navy); margin-bottom: 8px; }
+.apply-success p { font-size: .875rem; color: var(--gray-lt); }
+@media (max-width:1024px) { .diy-grid,.dfy-intro-grid { grid-template-columns: 1fr; } .diy-pricing,.dfy-cards { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; } }
+@media (max-width:640px) { .apply-form-row { grid-template-columns: 1fr; } .apply-form-wrap { padding: 28px 20px; } }
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <a href="/" class="logo">
+    <span class="logo-sub">Academia</span>
+    <span class="logo-main">De la Pasiune la Profit</span>
+  </a>
+  <button class="nav-mobile-btn" onclick="toggleNav()" aria-label="Meniu">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/academia">Academia</a></li>
+    <li><a href="/metoda-3c">Metoda 3C</a></li>
+    <li><a href="/manuale">Manuale</a></li>
+    <li><a href="/mentorat">Mentorat</a></li>
+    <li><a href="/ina">INA</a></li>
+    <li><a href="/digital-studio-3c">Digital Studio 3C</a></li>
+    <li><a href="/resurse">Resurse</a></li>
+    <li><a href="/login" class="nav-login">Login</a></li>
+    <li><a href="/dashboard" class="nav-dashboard" style="display:none">Dashboard</a></li>
+    <li><a href="/aplica" class="nav-cta">Aplică</a></li>
+  </ul>
+</nav>
+<div style="padding-top:64px">
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="padding-top:80px">
+  <div class="container">
+    <span class="section-label">Sistem complet</span>
+    <h1>Site-ul care vinde</h1>
+    <p>Construiește un site care aduce clienți — singur, cu ghidare completă, sau implementat de echipa noastră pentru tine.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#diy" class="btn btn-orange">Vreau să fac singur →</a>
+      <a href="#dfy" class="btn btn-ghost">Vreau să faceți voi</a>
+    </div>
+  </div>
+</section>
+
+<!-- TABS SECTION -->
+<section class="scv-intro" id="sistem">
+  <div class="container">
+
+    <div class="scv-tabs">
+      <button class="scv-tab active" onclick="switchTab('diy',this)">DIY — Fac singur</button>
+      <button class="scv-tab" onclick="switchTab('dfy',this)">Done For You</button>
+    </div>
+
+    <!-- DIY PANEL -->
+    <div class="scv-panel active" id="panel-diy" id="diy">
+      <div class="diy-grid">
+        <div>
+          <span class="section-label">Do It Yourself</span>
+          <h2>Sistemul complet pe care îl implementezi singur</h2>
+          <p style="margin-top:14px;color:var(--gray-lt);margin-bottom:4px">Primești toate resursele, ghidarea pas cu pas și accesul la INA AI. Tu construiești, noi te ghidăm.</p>
+          <ul class="diy-features">
+            <li class="diy-feature">Template profesional gata de personalizat (4 pagini)</li>
+            <li class="diy-feature">Ghid de implementare complet — pas cu pas</li>
+            <li class="diy-feature">Structura ofertelor + texte model persuasive</li>
+            <li class="diy-feature">Prompturi specializate pentru INA AI</li>
+            <li class="diy-feature">Acces la comunitatea privată de antreprenori</li>
+          </ul>
+        </div>
+        <div style="background:var(--navy);border-radius:10px;padding:36px;color:white">
+          <div style="font-family:Playfair Display,serif;font-size:1.1rem;color:white;margin-bottom:20px">Rezultate reale</div>
+          <div style="padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1)">
+            <div style="font-family:Playfair Display,serif;font-size:2.6rem;color:var(--orange);font-weight:700;line-height:1">30 zile</div>
+            <div style="font-size:.82rem;color:rgba(255,255,255,.55);margin-top:4px">Timp mediu până la primul client nou</div>
+          </div>
+          <div style="padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.1)">
+            <div style="font-family:Playfair Display,serif;font-size:2.6rem;color:var(--orange);font-weight:700;line-height:1">4.2×</div>
+            <div style="font-size:.82rem;color:rgba(255,255,255,.55);margin-top:4px">Creștere medie a conversiei față de site-ul anterior</div>
+          </div>
+          <div>
+            <div style="font-family:Playfair Display,serif;font-size:2.6rem;color:var(--orange);font-weight:700;line-height:1">200+</div>
+            <div style="font-size:.82rem;color:rgba(255,255,255,.55);margin-top:4px">Antreprenori care folosesc sistemul</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIY PRICING -->
+      <div style="text-align:center;margin-bottom:40px;margin-top:56px">
+        <span class="section-label">Prețuri</span>
+        <h2>Alege pachetul potrivit</h2>
+      </div>
+      <div class="diy-pricing">
+        <div class="price-card">
+          <div class="price-tier">Pachet</div>
+          <div class="price-name">START</div>
+          <div class="price-tagline">Pornești cu structura corectă</div>
+          <div class="price-amount-row"><span class="price-eur">€</span><span class="price-num">197</span></div>
+          <div class="price-sep"></div>
+          <ul class="price-features">
+            <li class="price-feature">Template (4 pagini)</li>
+            <li class="price-feature">Ghid implementare complet</li>
+            <li class="price-feature">Structura ofertelor</li>
+            <li class="price-feature">Comunitate privată</li>
+            <li class="price-feature off">Acces INA AI</li>
+            <li class="price-feature off">Prompturi specializate</li>
+          </ul>
+          <a href="https://buy.stripe.com/https://buy.stripe.com/fZucN55TV87TdMC94n7EQ08" target="_blank" class="btn btn-outline btn-full">Cumpără START →</a>
+        </div>
+        <div class="price-card featured">
+          <div class="price-popular">Recomandat</div>
+          <div class="price-tier">Pachet</div>
+          <div class="price-name">BUILD</div>
+          <div class="price-tagline">Cu suport AI personalizat</div>
+          <div class="price-amount-row"><span class="price-eur">€</span><span class="price-num">297</span></div>
+          <div class="price-sep"></div>
+          <ul class="price-features">
+            <li class="price-feature">Template (4 pagini)</li>
+            <li class="price-feature">Ghid implementare complet</li>
+            <li class="price-feature">Structura ofertelor</li>
+            <li class="price-feature">Comunitate privată</li>
+            <li class="price-feature"><strong>Acces INA AI nelimitat</strong></li>
+            <li class="price-feature"><strong>30 prompturi specializate</strong></li>
+          </ul>
+          <a href="https://buy.stripe.com/https://buy.stripe.com/bJeeVdeqrewh5g6a8r7EQ09" target="_blank" class="btn btn-orange btn-full">Cumpără BUILD →</a>
+        </div>
+        <div class="price-card">
+          <div class="price-tier">Pachet</div>
+          <div class="price-name">PRO</div>
+          <div class="price-tagline">Cu ghidare personalizată</div>
+          <div class="price-amount-row"><span class="price-eur">€</span><span class="price-num">497</span></div>
+          <div class="price-sep"></div>
+          <ul class="price-features">
+            <li class="price-feature">Template (4 pagini)</li>
+            <li class="price-feature">Ghid implementare complet</li>
+            <li class="price-feature">Structura ofertelor</li>
+            <li class="price-feature">Comunitate privată</li>
+            <li class="price-feature"><strong>Acces INA AI nelimitat</strong></li>
+            <li class="price-feature"><strong>1h consultație cu Diana</strong></li>
+          </ul>
+          <a href="https://buy.stripe.com/https://buy.stripe.com/aFa8wP967ewhcIy1BV7EQ0a" target="_blank" class="btn btn-navy btn-full">Cumpără PRO →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DFY PANEL -->
+    <div class="scv-panel" id="panel-dfy" id="dfy">
+      <div class="dfy-intro-grid">
+        <div>
+          <span class="section-label">Done For You</span>
+          <h2>Vrei să construim site-ul pentru tine?</h2>
+          <p style="margin-top:14px;color:var(--gray-lt);margin-bottom:20px">Dacă nu vrei să pierzi timp cu implementarea, echipa noastră construiește pentru tine un site complet, gata să aducă clienți.</p>
+          <ul class="diy-features">
+            <li class="diy-feature">Clarificarea ofertei și a publicului țintă</li>
+            <li class="diy-feature">Copywriting complet — texte care vând</li>
+            <li class="diy-feature">Structură site optimizată pentru conversie</li>
+            <li class="diy-feature">Implementare tehnică completă</li>
+            <li class="diy-feature">Publicare site și configurare domeniu</li>
+          </ul>
+        </div>
+        <div class="dfy-steps-card">
+          <div class="dfy-steps-title">Procesul nostru</div>
+          <div class="dfy-step"><div class="dfy-step-num">1</div><div class="dfy-step-text"><strong>Aplici și ne cunoaștem</strong><span>Apel de 30 min pentru a înțelege business-ul tău</span></div></div>
+          <div class="dfy-step"><div class="dfy-step-num">2</div><div class="dfy-step-text"><strong>Strategie și aprobare</strong><span>Definim oferta, publicul și structura. Tu aprobezi.</span></div></div>
+          <div class="dfy-step"><div class="dfy-step-num">3</div><div class="dfy-step-text"><strong>Implementare și livrare</strong><span>Construim și publicăm în 10–14 zile lucrătoare</span></div></div>
+          <div class="dfy-step"><div class="dfy-step-num">4</div><div class="dfy-step-text"><strong>Site live + suport</strong><span>Predăm cu instrucțiuni și suport post-lansare</span></div></div>
+        </div>
+      </div>
+
+      <!-- DFY CARDS -->
+      <div class="dfy-cards">
+        <div class="price-card">
+          <div class="price-tier">Serviciu</div>
+          <div class="price-name">Site de prezentare</div>
+          <div class="price-tagline">Prezență online rapidă</div>
+          <div class="price-amount-row"><span class="price-eur">€</span><span class="price-num">1200</span></div>
+          <div class="price-sep"></div>
+          <ul class="price-features">
+            <li class="price-feature">Structură pagini (4)</li>
+            <li class="price-feature">Design personalizat</li>
+            <li class="price-feature">Implementare tehnică</li>
+            <li class="price-feature">Configurare domeniu</li>
+          </ul>
+          <a href="#aplica" class="btn btn-outline btn-full">Aplică pentru proiect →</a>
+        </div>
+        <div class="price-card featured">
+          <div class="price-popular">Recomandat</div>
+          <div class="price-tier">Serviciu</div>
+          <div class="price-name">Site care vinde</div>
+          <div class="price-tagline">Optimizat pentru conversie</div>
+          <div class="price-amount-row"><span class="price-eur">€</span><span class="price-num">1800</span></div>
+          <div class="price-sep"></div>
+          <ul class="price-features">
+            <li class="price-feature">Strategie ofertă</li>
+            <li class="price-feature"><strong>Copywriting complet</strong></li>
+            <li class="price-feature">Structură conversie</li>
+            <li class="price-feature">Implementare completă</li>
+            <li class="price-feature">Integrare email</li>
+          </ul>
+          <a href="#aplica" class="btn btn-orange btn-full">Aplică pentru proiect →</a>
+        </div>
+        <div class="price-card">
+          <div class="price-tier">Serviciu</div>
+          <div class="price-name">Ecosistem digital</div>
+          <div class="price-tagline">Sistem complet</div>
+          <div class="price-amount-row"><span class="price-eur">€</span><span class="price-num" style="font-size:2.2rem">2500+</span></div>
+          <div class="price-sep"></div>
+          <ul class="price-features">
+            <li class="price-feature">Strategie completă</li>
+            <li class="price-feature">Copywriting</li>
+            <li class="price-feature">Site multi-pagini</li>
+            <li class="price-feature">Automatizări</li>
+            <li class="price-feature"><strong>Integrare INA AI</strong></li>
+            <li class="price-feature">Consultanță 30 zile</li>
+          </ul>
+          <a href="#aplica" class="btn btn-navy btn-full">Aplică pentru proiect →</a>
+        </div>
+      </div>
+
+      <!-- APPLICATION FORM -->
+      <div id="aplica" class="apply-form-wrap">
+        <div id="apply-content">
+          <div class="apply-form-title">Aplică pentru proiect</div>
+          <div class="apply-form-sub">Completează și te contactăm în 24–48h.</div>
+          <form class="apply-form" onsubmit="handleApply(event)">
+            <div class="apply-form-row">
+              <div class="form-group"><label class="form-label">Nume</label><input type="text" class="form-input" required id="ap-name" placeholder="Maria Ionescu"></div>
+              <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" required id="ap-email" placeholder="email@exemplu.ro"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Business-ul tău</label><textarea class="form-input" rows="4" required id="ap-idea" placeholder="Descrie pe scurt ce faci și ce îți dorești de la site..."></textarea></div>
+            <div class="form-group"><label class="form-label">Pachet dorit</label>
+              <select class="form-input" id="ap-pkg">
+                <option value="">— Alege —</option>
+                <option>Site de prezentare (€1200)</option>
+                <option>Site care vinde (€1800)</option>
+                <option>Ecosistem digital (€2500+)</option>
+                <option>Nu știu încă</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-orange btn-full" id="ap-btn">Trimite aplicația →</button>
+          </form>
+        </div>
+        <div class="apply-success" id="apply-success">
+          <div class="apply-success-icon">🎉</div>
+          <h3>Aplicația ta a fost trimisă!</h3>
+          <p>Te contactăm în 24–48h pentru a stabili un apel de cunoaștere.</p>
+        </div>
+        <div class="apply-note">⏳ Maxim 4 proiecte pe lună pentru a păstra calitatea.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.scv-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.scv-panel').forEach(function(p) { p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+}
+async function handleApply(e) {
+  e.preventDefault();
+  var btn = document.getElementById('ap-btn');
+  btn.textContent = 'Se trimite...'; btn.disabled = true;
+  var data = {
+    name: document.getElementById('ap-name').value,
+    email: document.getElementById('ap-email').value,
+    idea: document.getElementById('ap-idea').value,
+    package: document.getElementById('ap-pkg').value
+  };
+  try {
+    await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch(ex) {}
+  document.getElementById('apply-content').style.display = 'none';
+  document.getElementById('apply-success').style.display = 'block';
+}
+// Read tab from URL hash
+(function() {
+  if (window.location.hash === '#dfy') {
+    var btn = document.querySelectorAll('.scv-tab')[1];
+    switchTab('dfy', btn);
+  }
+})();
+</script>
+<footer class="footer">
+  <div class="footer-social">
+    <a href="https://www.instagram.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
+  <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
+  <div class="footer-firma">
+    D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<br>
+    <a href="mailto:contact@pasiune-profit.ro">contact@pasiune-profit.ro</a><span class="f-sep">·</span><a href="/termeni">Termeni &amp; Condiții</a>
+  </div>
+</footer>
+<div id="toast" class="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>

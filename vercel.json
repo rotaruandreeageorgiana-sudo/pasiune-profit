@@ -1,8 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "outputDirectory": "public",
   "rewrites": [
-    { "source": "/api/chat-free", "destination": "/api/chat-free.js" }
+    {
+      "source": "/api/chat-free",
+      "destination": "/api/chat-free.js"
+    }
   ]
 }

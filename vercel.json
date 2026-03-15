@@ -2,9 +2,6 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/api/chat-free",
-      "destination": "/api/chat-free.js"
-    }
+    { "source": "/api/chat-free", "destination": "/api/chat-free.js" }
   ]
 }

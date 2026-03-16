@@ -1,4 +1,24 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/academia", "destination": "/academia.html", "permanent": false },
+    { "source": "/metoda-3c", "destination": "/metoda-3c.html", "permanent": false },
+    { "source": "/manuale", "destination": "/manuale.html", "permanent": false },
+    { "source": "/mentorat", "destination": "/mentorat.html", "permanent": false },
+    { "source": "/ina", "destination": "/ina.html", "permanent": false },
+    { "source": "/digital-studio-3c", "destination": "/digital-studio-3c.html", "permanent": false },
+    { "source": "/comunitate", "destination": "/comunitate.html", "permanent": false },
+    { "source": "/resurse", "destination": "/resurse.html", "permanent": false },
+    { "source": "/aplica", "destination": "/aplica.html", "permanent": false },
+    { "source": "/contact", "destination": "/contact.html", "permanent": false },
+    { "source": "/faq", "destination": "/faq.html", "permanent": false },
+    { "source": "/login", "destination": "/login.html", "permanent": false },
+    { "source": "/register", "destination": "/register.html", "permanent": false },
+    { "source": "/dashboard", "destination": "/dashboard.html", "permanent": false },
+    { "source": "/multumim-manual-1", "destination": "/multumim-manual-1.html", "permanent": false },
+    { "source": "/multumim-manual-2", "destination": "/multumim-manual-2.html", "permanent": false },
+    { "source": "/multumim-manual-3", "destination": "/multumim-manual-3.html", "permanent": false },
+    { "source": "/multumim-trilogie", "destination": "/multumim-trilogie.html", "permanent": false }
+  ]
 }

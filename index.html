@@ -326,25 +326,7 @@
   background: #4ade80; flex-shrink: 0;
 }
 
-/* ── FLOATING CTA — Digital Studio 3C ── */
-.float-studio-btn {
-  position: fixed; bottom: 24px; right: 24px; z-index: 7998;
-  background: var(--orange); color: white;
-  border-radius: 100px; padding: 13px 20px;
-  font-family: Inter,sans-serif; font-size: .78rem; font-weight: 700;
-  letter-spacing: .05em; text-transform: uppercase;
-  text-decoration: none; cursor: pointer;
-  display: flex; align-items: center; gap: 8px;
-  box-shadow: 0 4px 20px rgba(244,123,32,.4);
-  transition: background .2s, transform .2s, box-shadow .2s;
-  white-space: nowrap;
-}
-.float-studio-btn:hover {
-  background: var(--orange-dk);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(244,123,32,.45);
-}
-.float-studio-icon { font-size: 1rem; }
+
 
 @media(max-width:480px) {
   .ina-popup { width: calc(100vw - 32px); }
@@ -377,6 +359,7 @@
     <li><a href="/manuale">Manuale</a></li>
     <li><a href="/ina">INA</a></li>
     <li><a href="/mentorat">Mentorat</a></li>
+    <li><a href="/digital-studio-3c" style="color:var(--orange);font-weight:600">Digital Studio 3C</a></li>
     <li><a href="/comunitate">Comunitate</a></li>
     <li><a href="/resurse">Resurse</a></li>
     <li><a href="/aplica" class="nav-cta">Aplică</a></li>
@@ -653,13 +636,23 @@
     <p style="color:var(--gray-lt);margin-top:12px;max-width:520px">Structură și claritate în ofertă (Diana), conversație strategică și vânzare aliniată (Georgiana).</p>
     <div class="fondatori-grid">
       <div class="fondator-card">
-        <div class="fondator-avatar">D</div>
+        <div class="fondator-avatar" style="padding:0;overflow:hidden;background:none">
+          <img src="https://raw.githubusercontent.com/rotaruandreeageorgiana-sudo/pasiune-profit/main/diana.jpg"
+               alt="Diana Pătulea — Co-fondator Academia De la Pasiune la Profit"
+               style="width:100%;height:100%;object-fit:cover;border-radius:50%"
+               onerror="this.style.display='none';this.parentElement.textContent='D';this.parentElement.style.background='var(--navy)';this.parentElement.style.color='white';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.style.fontFamily='Playfair Display,serif';this.parentElement.style.fontSize='1.4rem'">
+        </div>
         <div class="fondator-name">Diana Pătulea</div>
         <div class="fondator-role">Co-fondator · Structură și claritate în ofertă</div>
         <p class="fondator-desc">Ajută creatorii să treacă de la idei vagi la oferte clare și structurate. Aduce în academie experiența practică de a construi sisteme de venit pornind de la pasiune, fără a pierde autenticitatea.</p>
       </div>
       <div class="fondator-card">
-        <div class="fondator-avatar">G</div>
+        <div class="fondator-avatar" style="padding:0;overflow:hidden;background:none">
+          <img src="https://raw.githubusercontent.com/rotaruandreeageorgiana-sudo/pasiune-profit/main/georgiana.jpg"
+               alt="Georgiana Rotaru — Co-fondator Academia De la Pasiune la Profit"
+               style="width:100%;height:100%;object-fit:cover;border-radius:50%"
+               onerror="this.style.display='none';this.parentElement.textContent='G';this.parentElement.style.background='var(--navy)';this.parentElement.style.color='white';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.style.fontFamily='Playfair Display,serif';this.parentElement.style.fontSize='1.4rem'">
+        </div>
         <div class="fondator-name">Georgiana Rotaru</div>
         <div class="fondator-role">Co-fondator · Conversație strategică și vânzare aliniată</div>
         <p class="fondator-desc">Specialist în vânzare care nu forțează și nu manipulează. Ghidează participanții să comunice valoarea în mod natural și să transforme conversațiile în clienți.</p>
@@ -762,7 +755,12 @@ function handleNewsletter(e) {
   <div class="ina-popup">
     <div class="ina-popup-header">
       <div class="ina-popup-agent">
-        <div class="ina-popup-avatar">INA</div>
+        <div class="ina-popup-avatar" style="padding:0;overflow:hidden;background:none">
+          <img src="https://raw.githubusercontent.com/rotaruandreeageorgiana-sudo/pasiune-profit/main/ina.jpg"
+               alt="INA Mentor AI"
+               style="width:100%;height:100%;object-fit:cover;border-radius:50%"
+               onerror="this.style.display='none';this.parentElement.textContent='INA';this.parentElement.style.background='var(--orange)';this.parentElement.style.color='white';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.style.fontWeight='800'">
+        </div>
         <div>
           <div class="ina-popup-name">INA · Mentor AI</div>
           <div class="ina-popup-status">Online acum</div>
@@ -801,11 +799,7 @@ function handleNewsletter(e) {
   INA · Mentor AI
 </button>
 
-<!-- FLOATING BUTTON — Digital Studio 3C -->
-<a href="/digital-studio-3c" class="float-studio-btn" aria-label="Digital Studio 3C">
-  <span class="float-studio-icon">🖥️</span>
-  <span class="label">Digital Studio 3C</span>
-</a>
+
 
 <script>
 // INA Popup

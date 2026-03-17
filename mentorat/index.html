@@ -467,14 +467,55 @@
     <h2 class="m-cta-title">Aplică pentru mentorat</h2>
     <p class="m-cta-sub">Programul nu este pentru oricine. Selectăm doar persoanele care sunt pregătite să aplice și să construiască un sistem real în 90 de zile.</p>
     <p class="m-cta-note">"Selecția se face pe baza potrivirii — nu a istoricului de succes."</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px">
-      <a href="/aplica" class="btn-m-primary" style="font-size:.85rem;padding:18px 36px">Aplică acum →</a>
-    </div>
-    <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap">
+
+    <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:48px">
       <div style="text-align:center"><div style="font-family:Playfair Display,serif;font-size:1.6rem;color:white;font-weight:700">90</div><div style="font-size:.75rem;color:rgba(255,255,255,.45)">zile program</div></div>
       <div style="text-align:center"><div style="font-family:Playfair Display,serif;font-size:1.6rem;color:white;font-weight:700">max 5</div><div style="font-size:.75rem;color:rgba(255,255,255,.45)">persoane/grupă</div></div>
       <div style="text-align:center"><div style="font-family:Playfair Display,serif;font-size:1.6rem;color:white;font-weight:700">3.460</div><div style="font-size:.75rem;color:rgba(255,255,255,.45)">lei sau 3 rate</div></div>
       <div style="text-align:center"><div style="font-family:Playfair Display,serif;font-size:1.6rem;color:white;font-weight:700">4.9★</div><div style="font-size:.75rem;color:rgba(255,255,255,.45)">rating mediu</div></div>
+    </div>
+
+    <!-- FORMULAR STANDARD HTML - funcționează garantat cu Formspree -->
+    <div id="aplica-form" style="background:white;border-radius:12px;padding:40px;max-width:540px;margin:0 auto;text-align:left;box-shadow:0 20px 60px rgba(0,0,0,.25)">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);margin-bottom:6px">Formularul de aplicare</h3>
+      <p style="font-size:.82rem;color:var(--gray-lt);margin-bottom:24px">Te contactăm în 24–48h pentru a stabili un apel.</p>
+      <form action="https://formspree.io/f/xwvrwvow" method="POST" style="display:flex;flex-direction:column;gap:16px">
+        <input type="hidden" name="_subject" value="Aplicatie Mentorat 3C">
+        <input type="hidden" name="_next" value="https://pasiune-profit.ro/multumim-manual-1">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="form-group">
+            <label class="form-label">Prenume</label>
+            <input type="text" class="form-input" name="prenume" required placeholder="Maria">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nume</label>
+            <input type="text" class="form-input" name="nume" required placeholder="Ionescu">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" name="email" required placeholder="email@exemplu.ro">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Descrie business-ul sau ideea ta</label>
+          <textarea class="form-input" name="business" rows="3" required placeholder="Spune-ne pe scurt ce faci sau ce vrei să construiești..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ce vrei să obții din mentorat?</label>
+          <textarea class="form-input" name="obiectiv" rows="3" required placeholder="Care este obiectivul tău principal în 90 de zile?"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cum ai aflat de noi?</label>
+          <select class="form-input" name="sursa">
+            <option value="instagram">Instagram</option>
+            <option value="facebook">Facebook</option>
+            <option value="recomandare">Recomandare</option>
+            <option value="google">Google</option>
+            <option value="altele">Altele</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-m-primary" style="justify-content:center;width:100%">Trimite aplicația →</button>
+      </form>
     </div>
   </div>
 </section>

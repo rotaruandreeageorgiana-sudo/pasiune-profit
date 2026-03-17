@@ -548,7 +548,7 @@ function handleNewsletter(e) {
   e.preventDefault();
   var email = document.getElementById('nl-email').value;
   // Connect to your email provider (Mailchimp, ConvertKit etc.)
-  fetch('https://formspree.io/f/xvzwpdbv', {
+  fetch('https://formspree.io/f/xwvrwvow', {
     method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
     body: JSON.stringify({email: email, _subject: 'Newsletter signup'})
   }).catch(function(){});
@@ -579,7 +579,7 @@ async function handleMentoratApply(e) {
     // Use FormData instead of JSON — works with Formspree Formshield
     var fd = new FormData();
     Object.keys(data).forEach(function(k){ fd.append(k, data[k]); });
-    var res = await fetch('https://formspree.io/f/xvzwpdbv', {
+    var res = await fetch('https://formspree.io/f/xwvrwvow', {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
       body: fd

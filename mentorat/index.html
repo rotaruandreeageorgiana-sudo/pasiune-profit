@@ -563,7 +563,9 @@ function handleNewsletter(e) {
 async function handleMentoratApply(e) {
   e.preventDefault();
   var btn = document.getElementById('ma-btn');
+  var errDiv = document.getElementById('ma-error');
   btn.textContent = 'Se trimite...'; btn.disabled = true;
+  if (errDiv) errDiv.style.display = 'none';
   var data = {
     first_name: document.getElementById('ma-first').value,
     last_name:  document.getElementById('ma-last').value,
@@ -574,16 +576,32 @@ async function handleMentoratApply(e) {
     _subject:   'Aplicatie Mentorat 3C — ' + document.getElementById('ma-first').value + ' ' + document.getElementById('ma-last').value
   };
   try {
-    await fetch('https://formspree.io/f/xvzwpdbv', {
+    // Use FormData instead of JSON — works with Formspree Formshield
+    var fd = new FormData();
+    Object.keys(data).forEach(function(k){ fd.append(k, data[k]); });
+    var res = await fetch('https://formspree.io/f/xvzwpdbv', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
+      headers: { 'Accept': 'application/json' },
+      body: fd
     });
-  } catch(ex) {}
-  document.getElementById('form-content').style.display = 'none';
-  document.getElementById('form-success').style.display  = 'block';
-  gtag && gtag('event', 'mentorat_apply', { email: data.email });
-  fbq  && fbq('track', 'Lead', { content_name: 'Mentorat 3C' });
+    var json = await res.json();
+    if (res.ok) {
+      document.getElementById('form-content').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      gtag && gtag('event', 'mentorat_apply', { email: data.email });
+      fbq  && fbq('track', 'Lead', { content_name: 'Mentorat 3C' });
+    } else {
+      var msg = (json && json.error) ? json.error : 'Eroare ' + res.status + '. Încearcă din nou sau scrie-ne la contact@pasiune-profit.ro';
+      if (errDiv) { errDiv.textContent = msg; errDiv.style.display = 'block'; }
+      console.error('Formspree error:', res.status, json);
+      btn.textContent = 'Trimite aplicația →'; btn.disabled = false;
+    }
+  } catch(ex) {
+    var msg = 'Eroare de conexiune. Încearcă din nou sau scrie-ne la contact@pasiune-profit.ro';
+    if (errDiv) { errDiv.textContent = msg; errDiv.style.display = 'block'; }
+    console.error('Fetch error:', ex);
+    btn.textContent = 'Trimite aplicația →'; btn.disabled = false;
+  }
 }
 </script>
 </body>

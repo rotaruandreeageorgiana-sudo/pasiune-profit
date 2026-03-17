@@ -548,7 +548,7 @@ function handleNewsletter(e) {
   e.preventDefault();
   var email = document.getElementById('nl-email').value;
   // Connect to your email provider (Mailchimp, ConvertKit etc.)
-  fetch('https://formspree.io/f/xvzwpdbv', {
+  fetch('https://formspree.io/f/YOUR_NEWSLETTER_FORM_ID', {
     method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
     body: JSON.stringify({email: email, _subject: 'Newsletter signup'})
   }).catch(function(){});
@@ -556,6 +556,34 @@ function handleNewsletter(e) {
   document.getElementById('nl-success').style.display = 'block';
   gtag && gtag('event','newsletter_signup',{email: email});
   fbq && fbq('track','Lead');
+}
+</script>
+
+<script>
+async function handleMentoratApply(e) {
+  e.preventDefault();
+  var btn = document.getElementById('ma-btn');
+  btn.textContent = 'Se trimite...'; btn.disabled = true;
+  var data = {
+    first_name: document.getElementById('ma-first').value,
+    last_name:  document.getElementById('ma-last').value,
+    email:      document.getElementById('ma-email').value,
+    business:   document.getElementById('ma-business').value,
+    goal:       document.getElementById('ma-goal').value,
+    source:     document.getElementById('ma-source').value,
+    _subject:   'Aplicatie Mentorat 3C — ' + document.getElementById('ma-first').value + ' ' + document.getElementById('ma-last').value
+  };
+  try {
+    await fetch('https://formspree.io/f/xvzwpdbv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch(ex) {}
+  document.getElementById('form-content').style.display = 'none';
+  document.getElementById('form-success').style.display  = 'block';
+  gtag && gtag('event', 'mentorat_apply', { email: data.email });
+  fbq  && fbq('track', 'Lead', { content_name: 'Mentorat 3C' });
 }
 </script>
 </body>

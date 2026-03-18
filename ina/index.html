@@ -535,6 +535,7 @@
   // ─── CONFIG ───
   const FREE_LIMIT = 10;
   const API_URL = '/api/chat-free';
+  const FINAL_PROMPT_APPEND = `\n\n[INSTRUCȚIUNE INTERNĂ: Aceasta este a 10-a și ultima întrebare gratuită. Răspunde acum cu un mesaj final structurat în limba română care să includă: 1) REZUMAT scurt al ideii discutate, 2) CONCLUZIE sinceră despre potențial, 3) următorul pas concret, 4) prezentarea etapelor viitoare: INA Pro, Trilogia 3C și mentoratul. Închide conversația elegant și fără ton agresiv de vânzare.]`;
 
   // ─── STATE ───
   let conversationHistory = JSON.parse(localStorage.getItem('ina_conversation') || '[]');
@@ -629,7 +630,7 @@ REGULI ABSOLUTE:
     const el = document.getElementById('uses-counter');
     if (!el) return;
     const remaining = Math.max(0, FREE_LIMIT - freeUses);
-    el.textContent = remaining > 0 ? `${remaining} mesaje gratuite rămase` : 'Limită atinsă';
+    el.textContent = remaining > 0 ? `${remaining} din ${FREE_LIMIT} întrebări gratuite rămase` : 'Ai folosit toate cele 10 întrebări gratuite';
   }
 
   function formatMessage(text) {
@@ -665,37 +666,51 @@ REGULI ABSOLUTE:
     panel.innerHTML = `<h4>💾 Ideile tale analizate</h4>${userIdeas.map(i => `<div class="idea-tag">${i}</div>`).join('')}`;
   }
 
-  // ─── PAYWALL ───
-  function showPaywall() {
+  // ─── FINAL CARD ───
+  function showNextStepsCard() {
     const messages = document.getElementById('messages');
-    if (document.getElementById('paywall-card')) return;
+    if (!messages || document.getElementById('paywall-card')) return;
+
     const card = document.createElement('div');
     card.id = 'paywall-card';
     card.className = 'paywall-card';
     card.innerHTML = `
-      <div class="paywall-badge">INA PRO</div>
-      <h3 class="paywall-title">Ești gata pentru pasul următor?</h3>
+      <div class="paywall-badge">ETAPELE URMĂTOARE</div>
+      <h3 class="paywall-title">Etapa gratuită de claritate s-a încheiat</h3>
       <ul class="paywall-features">
-        <li>🏗️ Construcția ofertei tale complete</li>
-        <li>💰 Calculul costurilor de pornire</li>
-        <li>🧪 Testarea ideii pe piață</li>
-        <li>🎯 Strategia pentru primii clienți</li>
-        <li>♾️ Conversații nelimitate cu INA</li>
+        <li><strong>INA Pro</strong> — conversații extinse, validare ofertă, structurare și pași concreți</li>
+        <li><strong>Trilogia 3C</strong> — claritate, construcție și conversie într-un proces ghidat cap-coadă</li>
+        <li><strong>Mentoratul</strong> — pentru cei care vor feedback aplicat și decizii mai rapide</li>
       </ul>
-      <div class="paywall-price">29€ <span>/ lună</span></div>
-      <div class="paywall-note">Anulezi oricând. Fără contracte.</div>
+      <div class="paywall-price">3 direcții <span>pentru următorul nivel</span></div>
+      <div class="paywall-note">Alege ce se potrivește etapei în care te afli acum.</div>
       <button class="btn-paywall" onclick="window.open('https://buy.stripe.com/aFa5kDaab3RD5g6eoH7EQ07','_blank')">
-        Activează INA Premium →
+        Vezi INA Pro
       </button>
-      <a href="https://pasiune-profit.ro" target="_blank" class="paywall-link">Află mai multe despre program</a>
+      <div style="display:grid;gap:10px;">
+        <button class="reset-btn" style="width:100%;padding:12px 18px;color:var(--blue);border-color:var(--blue);" onclick="window.open('https://pasiune-profit.ro','_blank')">
+          Descoperă Trilogia 3C
+        </button>
+        <button class="reset-btn" style="width:100%;padding:12px 18px;color:var(--orange);border-color:var(--orange);" onclick="window.open('https://pasiune-profit.ro','_blank')">
+          Aplică pentru mentorat
+        </button>
+      </div>
     `;
     messages.appendChild(card);
     card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
     const input = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
-    if (input) { input.disabled = true; input.placeholder = 'Deblochează INA PRO pentru a continua...'; }
+    if (input) {
+      input.disabled = true;
+      input.placeholder = 'Cele 10 întrebări gratuite au fost folosite.';
+    }
     if (sendBtn) sendBtn.disabled = true;
+  }
+
+  function addLocalFinalWrapUp() {
+    const latestIdea = userIdeas[userIdeas.length - 1] || 'ideea discutată';
+    addMessage('ina', `Concluzia etapei gratuite:\n\n• Ideea analizată: ${latestIdea}\n• Ai obținut claritate inițială despre potențial, direcție și monetizare.\n• Următorul pas este să transformi această claritate într-o ofertă concretă și să validezi piața.\n\nMai jos găsești cele 3 etape prin care poți continua: INA Pro, Trilogia 3C și mentoratul.`);
   }
 
   // ─── MESSAGES ───
@@ -903,7 +918,7 @@ REGULI ABSOLUTE:
   // ─── SEND MESSAGE ───
   async function sendMessage() {
     if (isTyping) return;
-    if (isBlocked()) { showPaywall(); return; }
+    if (isBlocked()) { showNextStepsCard(); return; }
 
     const input = document.getElementById('chat-input');
     if (!input) return;
@@ -924,17 +939,20 @@ REGULI ABSOLUTE:
     updateStage(userMsgCount);
     updateUsesCounter();
 
+    const isFinalFreeMessage = userMsgCount === FREE_LIMIT;
+    const apiMessage = isFinalFreeMessage ? text + FINAL_PROMPT_APPEND : text;
+
     isTyping = true;
     showTyping();
 
     try {
       const response = await fetch(API_URL, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    message: text
-  })
-});
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: apiMessage
+        })
+      });
 
       hideTyping();
       isTyping = false;
@@ -950,10 +968,12 @@ REGULI ABSOLUTE:
       const reply = data.content?.[0]?.text || 'Nu am putut genera un răspuns.';
       addMessage('ina', reply);
 
-      // Check if INA sent final message
-      const finalKeywords = ['Etapa gratuită', 'INA PRO', 'Mult succes', 'pasiune-profit.ro'];
-      if (finalKeywords.some(kw => reply.includes(kw)) || isBlocked()) {
-        setTimeout(showPaywall, 1500);
+      if (isFinalFreeMessage) {
+        const hasConclusion = /rezumat|concluzie|ina pro|trilogia 3c|mentorat/i.test(reply);
+        if (!hasConclusion) {
+          setTimeout(addLocalFinalWrapUp, 500);
+        }
+        setTimeout(showNextStepsCard, 1200);
       }
 
     } catch (err) {

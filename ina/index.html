@@ -528,86 +528,78 @@
   </div>
 </footer>
 
+
 <script>
+  window.INA_AVATAR_B64 = "./ina.jpg";
 
-  window.INA_AVATAR_B64 = "/ina.jpg";
-
-  // ─── CONFIG ───
   const FREE_LIMIT = 10;
   const API_URL = '/api/chat-free';
-  const FINAL_PROMPT_APPEND = `\n\n[INSTRUCȚIUNE INTERNĂ: Aceasta este a 10-a și ultima întrebare gratuită. Răspunde acum cu un mesaj final structurat în limba română care să includă: 1) REZUMAT scurt al ideii discutate, 2) CONCLUZIE sinceră despre potențial, 3) următorul pas concret, 4) prezentarea etapelor viitoare: INA Pro, Trilogia 3C și mentoratul. Închide conversația elegant și fără ton agresiv de vânzare.]`;
+  const REQUEST_TIMEOUT_MS = 12000;
+  const STORAGE_KEYS = {
+    conversation: 'ina_conversation',
+    ideas: 'ina_user_ideas'
+  };
 
-  // ─── STATE ───
-  let conversationHistory = JSON.parse(localStorage.getItem('ina_conversation') || '[]');
+  const FINAL_PROMPT_APPEND = `
+
+[INSTRUCȚIUNE INTERNĂ PENTRU MESAJUL FINAL]
+Aceasta este a 10-a și ultima întrebare gratuită.
+Răspunde acum cu:
+1. un REZUMAT scurt al ideii discutate,
+2. o CONCLUZIE sinceră despre potențial,
+3. următorii pași recomandați,
+4. o trecere naturală către: INA Pro, Trilogia 3C și mentoratul.
+Nu spune că urmează alt mesaj. Acesta trebuie să fie mesajul final din etapa gratuită.
+`;
+
+  let conversationHistory = safeLoadJSON(STORAGE_KEYS.conversation, []);
+  let userIdeas = safeLoadJSON(STORAGE_KEYS.ideas, []);
   let isTyping = false;
-  let freeUses = Number(localStorage.getItem('ina_free_uses') || '0');
-  let userIdeas = JSON.parse(localStorage.getItem('ina_user_ideas') || '[]');
-  let userMsgCount = 0;
+  let isRestoring = false;
   let stage3C = 'Claritate';
+  let userMsgCount = countUserMessages(conversationHistory);
 
-  // ─── SYSTEM PROMPT ───
-  const SYSTEM_PROMPT = `Ești INA, mentor AI specializat în transformarea pasiunilor în business reale. Anul curent este 2026.
-Folosești Metoda 3C: Claritate → Construcție → Conversie.
-Ești empatică, directă și echilibrată. Gândești în sisteme, vorbești în oameni.
-Ești un mentor, nu un agent de vânzări. Oferi valoare reală înainte de orice altceva.
+  function safeLoadJSON(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (err) {
+      console.warn('Storage read failed for', key, err);
+      return fallback;
+    }
+  }
 
-MISIUNEA TA: Ajuți oamenii să transforme pasiunile în business-uri reale. Fiecare răspuns = un pas concret.
+  function safeSaveJSON(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (err) {
+      console.warn('Storage write failed for', key, err);
+    }
+  }
 
-PERSONALITATE:
-- Caldă și prietenoasă, ca o mentore care chiar vrea să te vadă reușind
-- Directă și practică — dai exemple concrete, nu teorii
-- Încurajatoare dar realistă
-- Scrii corect gramatical în limba română, folosești diacritice
-- Vorbești natural și accesibil, fără jargon
+  function safeRemove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (err) {
+      console.warn('Storage remove failed for', key, err);
+    }
+  }
 
-STRUCTURA CONVERSAȚIEI (etapa CLARITATE — primele 10 replici ale utilizatorului):
-În primele 4-5 replici, focusul tău este să ÎNȚELEGI:
-1. Ce pasiune sau idee are utilizatorul
-2. Ce știe să facă concret
-3. Cât timp are disponibil
-4. Ce experiență sau rezultate a mai avut
+  function countUserMessages(history) {
+    return history.filter(item => item.role === 'user').length;
+  }
 
-Răspunsurile în etapa de Claritate:
-- Maxim 150-200 cuvinte per răspuns
-- Bullet points pentru claritate
-- O întrebare concretă la final pentru a aprofunda
-- Ton cald, fără grabă, fără presiune
+  function getFreeUses() {
+    return Math.min(FREE_LIMIT, userMsgCount);
+  }
 
-ANALIZA IDEII (după replica 5-6, când ai suficiente informații):
-Când ai înțeles bine ideea utilizatorului, trimite o analiză structurată astfel:
+  function isBlocked() {
+    return getFreeUses() >= FREE_LIMIT;
+  }
 
-"Pe baza a ce mi-ai spus, ideea ta are:
-
-📊 Potențial: [X] / 10
-📈 Cerere: [foarte bună / bună / medie / limitată]
-⚡ Dificultate: [mică / medie / mare]
-
-3 moduri rapide de monetizare:
-1️⃣ [primul mod concret, cu preț estimat]
-2️⃣ [al doilea mod concret, cu preț estimat]
-3️⃣ [al treilea mod concret, cu preț estimat]
-
-Vrei să vezi strategia completă pentru ideea ta?"
-
-Fii realist cu scorul — nu toate ideile sunt 9/10. Un scor de 6-7 cu explicație sinceră e mai valoros decât un 9 fals.
-
-MESAJUL FINAL (după replica 10 a utilizatorului):
-1. REZUMAT — scurtă sinteză a ideii discutate
-2. CONCLUZIE — potențialul ideii, sincer și echilibrat
-3. RESURSE GRATUITE: Ghidul "Primele 3 Întrebări" și Checklistul Monetizării — pasiune-profit.ro
-4. "Etapa gratuită de claritate se oprește aici."
-5. INA PRO — fără agresivitate: construcția ofertei, costuri start, testare piață, primii clienți.
-6. SESIUNE 1:1 — doar dacă situația e complexă.
-
-REGULI ABSOLUTE:
-- Nu menționezi limitele tehnice sau că ești un AI limitat
-- Nu pari agresiv comercial
-- Folosești întotdeauna diacritice corecte (ă, â, î, ș, ț)
-- Te comporți ca un mentor, nu ca un chatbot de vânzări
-- Linkul către resurse este întotdeauna: https://pasiune-profit.ro`;
-
-  // ─── UTILS ───
-  function isBlocked() { return freeUses >= FREE_LIMIT; }
+  function persistConversation() {
+    safeSaveJSON(STORAGE_KEYS.conversation, conversationHistory);
+  }
 
   function updateStage(count) {
     if (count <= 10) stage3C = 'Claritate';
@@ -629,12 +621,18 @@ REGULI ABSOLUTE:
   function updateUsesCounter() {
     const el = document.getElementById('uses-counter');
     if (!el) return;
-    const remaining = Math.max(0, FREE_LIMIT - freeUses);
-    el.textContent = remaining > 0 ? `${remaining} din ${FREE_LIMIT} întrebări gratuite rămase` : 'Ai folosit toate cele 10 întrebări gratuite';
+    const used = getFreeUses();
+    const remaining = Math.max(0, FREE_LIMIT - used);
+    el.textContent = remaining > 0
+      ? `${remaining} din ${FREE_LIMIT} întrebări gratuite rămase`
+      : 'Ai folosit toate cele 10 întrebări gratuite';
   }
 
   function formatMessage(text) {
-    return text
+    return String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       .replace(/\n/g, '<br>');
@@ -642,7 +640,7 @@ REGULI ABSOLUTE:
 
   function extractIdea(text) {
     const keywords = ['pasion', 'îmi place', 'fac', 'lucrez', 'hobby', 'vreau să', 'mă ocup'];
-    const lower = text.toLowerCase();
+    const lower = String(text).toLowerCase();
     if (keywords.some(k => lower.includes(k)) && text.length > 15) {
       return text.length > 60 ? text.substring(0, 60) + '...' : text;
     }
@@ -650,24 +648,38 @@ REGULI ABSOLUTE:
   }
 
   function saveIdea(idea) {
-    if (!userIdeas.includes(idea)) {
-      userIdeas.push(idea);
-      if (userIdeas.length > 10) userIdeas.shift();
-      localStorage.setItem('ina_user_ideas', JSON.stringify(userIdeas));
-      renderIdeasPanel();
-    }
+    if (!idea || userIdeas.includes(idea)) return;
+    userIdeas.push(idea);
+    if (userIdeas.length > 10) userIdeas.shift();
+    safeSaveJSON(STORAGE_KEYS.ideas, userIdeas);
+    renderIdeasPanel();
   }
 
   function renderIdeasPanel() {
     const panel = document.getElementById('ideas-panel');
     if (!panel) return;
-    if (userIdeas.length === 0) { panel.style.display = 'none'; return; }
+    if (userIdeas.length === 0) {
+      panel.style.display = 'none';
+      panel.innerHTML = '';
+      return;
+    }
     panel.style.display = 'block';
-    panel.innerHTML = `<h4>💾 Ideile tale analizate</h4>${userIdeas.map(i => `<div class="idea-tag">${i}</div>`).join('')}`;
+    panel.innerHTML = `<h4>💾 Ideile tale analizate</h4>${userIdeas.map(i => `<div class="idea-tag">${formatMessage(i)}</div>`).join('')}`;
   }
 
-  // ─── FINAL CARD ───
-  function showNextStepsCard() {
+  function updateInputState() {
+    const input = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    if (!input || !sendBtn) return;
+    const blocked = isBlocked();
+    input.disabled = blocked || isTyping;
+    sendBtn.disabled = blocked || isTyping;
+    input.placeholder = blocked
+      ? 'Etapa gratuită s-a încheiat. Vezi pașii următori mai jos.'
+      : 'Spune-i INA ce pasiune ai...';
+  }
+
+  function showFinalOptions() {
     const messages = document.getElementById('messages');
     if (!messages || document.getElementById('paywall-card')) return;
 
@@ -678,34 +690,21 @@ REGULI ABSOLUTE:
       <div class="paywall-badge">ETAPELE URMĂTOARE</div>
       <h3 class="paywall-title">Etapa gratuită de claritate s-a încheiat</h3>
       <ul class="paywall-features">
-        <li><strong>INA Pro</strong> — conversații extinse, validare ofertă, structurare și pași concreți</li>
-        <li><strong>Trilogia 3C</strong> — claritate, construcție și conversie într-un proces ghidat cap-coadă</li>
-        <li><strong>Mentoratul</strong> — pentru cei care vor feedback aplicat și decizii mai rapide</li>
+        <li><strong>INA Pro</strong> — pentru validare de ofertă, structurare, testare și conversații extinse</li>
+        <li><strong>Trilogia 3C</strong> — procesul complet de Claritate, Construcție și Conversie</li>
+        <li><strong>Mentoratul</strong> — feedback aplicat și ghidare directă pentru decizii mai rapide</li>
       </ul>
-      <div class="paywall-price">3 direcții <span>pentru următorul nivel</span></div>
-      <div class="paywall-note">Alege ce se potrivește etapei în care te afli acum.</div>
-      <button class="btn-paywall" onclick="window.open('https://buy.stripe.com/aFa5kDaab3RD5g6eoH7EQ07','_blank')">
-        Vezi INA Pro
-      </button>
+      <div class="paywall-price">3 pași <span>pentru nivelul următor</span></div>
+      <div class="paywall-note">Alege varianta potrivită pentru etapa în care te afli acum.</div>
+      <button class="btn-paywall" onclick="window.open('https://buy.stripe.com/aFa5kDaab3RD5g6eoH7EQ07','_blank')">Vezi INA Pro</button>
       <div style="display:grid;gap:10px;">
-        <button class="reset-btn" style="width:100%;padding:12px 18px;color:var(--blue);border-color:var(--blue);" onclick="window.open('https://pasiune-profit.ro','_blank')">
-          Descoperă Trilogia 3C
-        </button>
-        <button class="reset-btn" style="width:100%;padding:12px 18px;color:var(--orange);border-color:var(--orange);" onclick="window.open('https://pasiune-profit.ro','_blank')">
-          Aplică pentru mentorat
-        </button>
+        <button class="reset-btn" style="width:100%;padding:12px 18px;color:var(--blue);border-color:var(--blue);" onclick="window.open('https://pasiune-profit.ro','_blank')">Descoperă Trilogia 3C</button>
+        <button class="reset-btn" style="width:100%;padding:12px 18px;color:var(--orange);border-color:var(--orange);" onclick="window.open('https://pasiune-profit.ro','_blank')">Aplică pentru mentorat</button>
       </div>
     `;
     messages.appendChild(card);
-    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-    const input = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
-    if (input) {
-      input.disabled = true;
-      input.placeholder = 'Cele 10 întrebări gratuite au fost folosite.';
-    }
-    if (sendBtn) sendBtn.disabled = true;
+    updateInputState();
+    requestAnimationFrame(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
   }
 
   function addLocalFinalWrapUp() {
@@ -713,10 +712,9 @@ REGULI ABSOLUTE:
     addMessage('ina', `Concluzia etapei gratuite:\n\n• Ideea analizată: ${latestIdea}\n• Ai obținut claritate inițială despre potențial, direcție și monetizare.\n• Următorul pas este să transformi această claritate într-o ofertă concretă și să validezi piața.\n\nMai jos găsești cele 3 etape prin care poți continua: INA Pro, Trilogia 3C și mentoratul.`);
   }
 
-  // ─── MESSAGES ───
   function showEmptyState() {
     const messages = document.getElementById('messages');
-    if (!messages) return;
+    if (!messages || document.getElementById('empty-state')) return;
     const empty = document.createElement('div');
     empty.id = 'empty-state';
     empty.className = 'empty-state';
@@ -748,7 +746,11 @@ REGULI ABSOLUTE:
       copyBtn.className = 'action-btn';
       copyBtn.textContent = '📋';
       copyBtn.title = 'Copiază';
-      copyBtn.onclick = () => { navigator.clipboard.writeText(content); copyBtn.textContent = '✅'; setTimeout(() => copyBtn.textContent = '📋', 2000); };
+      copyBtn.onclick = () => {
+        navigator.clipboard.writeText(String(content || ''));
+        copyBtn.textContent = '✅';
+        setTimeout(() => copyBtn.textContent = '📋', 2000);
+      };
 
       const likeBtn = document.createElement('button');
       likeBtn.className = 'action-btn';
@@ -772,15 +774,15 @@ REGULI ABSOLUTE:
     messages.appendChild(row);
     messages.scrollTop = messages.scrollHeight;
 
-    if (persist) {
-      conversationHistory.push({ role: role === 'user' ? 'user' : 'assistant', content });
-      localStorage.setItem('ina_conversation', JSON.stringify(conversationHistory));
+    if (persist && !isRestoring) {
+      conversationHistory.push({ role: role === 'user' ? 'user' : 'assistant', content: String(content || '') });
+      persistConversation();
     }
   }
 
   function showTyping() {
     const messages = document.getElementById('messages');
-    if (!messages) return;
+    if (!messages || document.getElementById('typing-indicator')) return;
     const row = document.createElement('div');
     row.id = 'typing-indicator';
     row.className = 'message-row ina';
@@ -794,74 +796,75 @@ REGULI ABSOLUTE:
     if (el) el.remove();
   }
 
-  // ─── CHAT LOGIC ───
   function restoreConversation() {
-    if (conversationHistory.length === 0) return false;
-    const savedHistory = [...conversationHistory];
-    savedHistory.forEach(msg => {
-      addMessage(msg.role === 'user' ? 'user' : 'ina', msg.content, false);
-    });
-    userMsgCount = savedHistory.filter(m => m.role === 'user').length;
-    freeUses = Math.min(FREE_LIMIT, userMsgCount);
-    localStorage.setItem('ina_free_uses', String(freeUses));
+    if (!conversationHistory.length) return false;
+    isRestoring = true;
+    try {
+      conversationHistory.forEach(msg => {
+        addMessage(msg.role === 'user' ? 'user' : 'ina', msg.content, false);
+      });
+    } finally {
+      isRestoring = false;
+    }
+    userMsgCount = countUserMessages(conversationHistory);
     updateStage(userMsgCount);
     updateUsesCounter();
-    if (freeUses >= FREE_LIMIT) {
-      setTimeout(showFinalOptions, 400);
-    }
+    updateInputState();
+    if (isBlocked()) showFinalOptions();
     return true;
   }
 
   function resetChat() {
     conversationHistory = [];
+    userIdeas = [];
     userMsgCount = 0;
-    freeUses = 0;
-    localStorage.removeItem('ina_conversation');
-    localStorage.setItem('ina_free_uses', '0');
+    stage3C = 'Claritate';
+    safeRemove(STORAGE_KEYS.conversation);
+    safeRemove(STORAGE_KEYS.ideas);
+
     const messages = document.getElementById('messages');
     if (messages) messages.innerHTML = '';
+
     const paywall = document.getElementById('paywall-card');
     if (paywall) paywall.remove();
-    const input = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
-    if (input) { input.disabled = false; input.placeholder = 'Spune-i INA ce pasiune ai...'; }
-    if (sendBtn) sendBtn.disabled = false;
-    document.getElementById('quick-chips').style.display = 'block';
+
+    const quick = document.getElementById('quick-chips');
+    if (quick) quick.style.display = 'block';
+
+    renderIdeasPanel();
     updateStage(0);
     updateUsesCounter();
+    updateInputState();
     showEmptyState();
+
     setTimeout(() => {
       hideEmptyState();
       addMessage('ina', 'Salut! Sunt INA, mentorul tău AI. 👋\n\nSpune-mi ideea ta de business și îți spun dacă are potențial, ce lipsește și care ar putea fi următorul pas.');
-        setTimeout(() => addMessage('ina', 'Poți să-mi scrii simplu, de exemplu: «Vreau să vând cursuri de engleză».'), 1200);
-    }, 300);
+      setTimeout(() => addMessage('ina', 'Poți să-mi scrii simplu, de exemplu: «Vreau să vând cursuri de engleză».') , 600);
+    }, 200);
   }
 
-  // ─── HELPERS ───
   function scrollToChat() {
     const chatSection = document.getElementById('chat-section');
     if (chatSection) {
       chatSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setTimeout(() => {
         const input = document.getElementById('chat-input');
-        if (input) { input.focus(); input.placeholder = 'Scrie pasiunea ta aici...'; }
-      }, 800);
+        if (input && !input.disabled) input.focus();
+      }, 500);
     }
   }
-
 
   function fillFromQuickstart(el) {
     const text = el.innerText.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}]\s*/u, '').trim();
     scrollToChat();
     setTimeout(() => {
       const input = document.getElementById('chat-input');
-      if (!input) return;
+      if (!input || input.disabled) return;
       input.value = text;
       autoResize(input);
-      input.focus();
-      document.getElementById('quick-chips').style.display = 'none';
       sendMessage();
-    }, 900);
+    }, 500);
   }
 
   function fillFromQuestion(el) {
@@ -869,38 +872,24 @@ REGULI ABSOLUTE:
     scrollToChat();
     setTimeout(() => {
       const input = document.getElementById('chat-input');
-      if (!input) return;
+      if (!input || input.disabled) return;
       input.value = text;
       autoResize(input);
-      input.focus();
-      document.getElementById('quick-chips').style.display = 'none';
       sendMessage();
-    }, 900);
+    }, 500);
   }
 
   function fillInput(el) {
     const fullText = el.innerText.trim();
     const rawText = fullText.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27FF}\u{FE00}-\u{FEFF}\u{1F900}-\u{1FAFF}]\s*/u, '').trim();
-    const textToUse = rawText || fullText;
     const input = document.getElementById('chat-input');
-    if (!input) return;
-    input.value = textToUse;
+    if (!input || input.disabled) return;
+    input.value = rawText || fullText;
     autoResize(input);
     input.focus();
-    document.getElementById('quick-chips').style.display = 'none';
+    const quick = document.getElementById('quick-chips');
+    if (quick) quick.style.display = 'none';
     sendMessage();
-  }
-
-  function useExample(el) {
-    const text = el.innerText.trim();
-    scrollToChat();
-    setTimeout(() => {
-      const input = document.getElementById('chat-input');
-      if (!input) return;
-      input.value = text;
-      autoResize(input);
-      input.focus();
-    }, 900);
   }
 
   function handleKey(e) {
@@ -915,20 +904,37 @@ REGULI ABSOLUTE:
     el.style.height = Math.min(el.scrollHeight, 160) + 'px';
   }
 
-
-
   function resetAll() {
-    freeUses = 0;
-    localStorage.setItem('ina_free_uses', '0');
     resetChat();
   }
 
-  // ─── SEND MESSAGE ───
+  async function fetchWithTimeout(url, options = {}, timeout = REQUEST_TIMEOUT_MS) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+    try {
+      const response = await fetch(url, { ...options, signal: controller.signal });
+      return response;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  function parseApiReply(data) {
+    return data?.content?.[0]?.text
+      || data?.reply
+      || data?.message
+      || data?.text
+      || '';
+  }
+
   async function sendMessage() {
-    if (isTyping) return;
-    if (isBlocked()) { showNextStepsCard(); return; }
+    if (isTyping || isBlocked()) {
+      if (isBlocked()) showFinalOptions();
+      return;
+    }
 
     const input = document.getElementById('chat-input');
+    const quick = document.getElementById('quick-chips');
     if (!input) return;
     const text = input.value.trim();
     if (!text) return;
@@ -937,62 +943,62 @@ REGULI ABSOLUTE:
     addMessage('user', text);
     input.value = '';
     input.style.height = 'auto';
-    document.getElementById('quick-chips').style.display = 'none';
+    if (quick) quick.style.display = 'none';
 
     const idea = extractIdea(text);
     if (idea) saveIdea(idea);
 
-    freeUses++;
-    userMsgCount++;
+    userMsgCount += 1;
     updateStage(userMsgCount);
     updateUsesCounter();
+    updateInputState();
 
     const isFinalFreeMessage = userMsgCount === FREE_LIMIT;
     const apiMessage = isFinalFreeMessage ? text + FINAL_PROMPT_APPEND : text;
 
     isTyping = true;
+    updateInputState();
     showTyping();
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetchWithTimeout(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: apiMessage
-        })
+        body: JSON.stringify({ message: apiMessage })
       });
 
-      hideTyping();
-      isTyping = false;
-
       if (!response.ok) {
-        const errText = await response.text().catch(() => 'unknown');
-        addMessage('ina', 'Eroare server ' + response.status + ': ' + errText.substring(0, 100));
-        console.error('API error:', response.status, errText);
-        return;
+        const errText = await response.text().catch(() => 'Eroare necunoscută');
+        throw new Error(`Server ${response.status}: ${errText.slice(0, 120)}`);
       }
 
-      const data = await response.json();
-      const reply = data.content?.[0]?.text || 'Nu am putut genera un răspuns.';
+      const data = await response.json().catch(() => ({}));
+      const reply = parseApiReply(data) || 'Momentan nu am putut genera un răspuns complet.';
       addMessage('ina', reply);
 
       if (isFinalFreeMessage) {
         const hasConclusion = /rezumat|concluzie|ina pro|trilogia 3c|mentorat/i.test(reply);
-        if (!hasConclusion) {
-          setTimeout(addLocalFinalWrapUp, 500);
-        }
-        setTimeout(showNextStepsCard, 1200);
+        if (!hasConclusion) addLocalFinalWrapUp();
+        showFinalOptions();
       }
-
     } catch (err) {
+      console.error('INA fetch error:', err);
+      if (isFinalFreeMessage) {
+        addLocalFinalWrapUp();
+        showFinalOptions();
+      } else if (err.name === 'AbortError') {
+        addMessage('ina', 'Serverul răspunde prea greu momentan. Încearcă din nou peste câteva secunde.');
+      } else {
+        addMessage('ina', 'Momentan nu reușesc să răspund din cauza unei probleme de conexiune. Te rog încearcă din nou.');
+      }
+    } finally {
       hideTyping();
       isTyping = false;
-      addMessage('ina', 'Eroare: ' + err.message + '. Verifică consola pentru detalii.');
-      console.error('INA fetch error:', err);
+      updateInputState();
+      updateUsesCounter();
     }
   }
 
-  // ─── CHAT SECTION HTML ───
   function buildChatSection() {
     const section = document.getElementById('chat-section');
     if (!section) return;
@@ -1000,7 +1006,7 @@ REGULI ABSOLUTE:
       <div class="chat-wrapper">
         <div class="chat-header">
           <div style="display:flex;align-items:center;gap:12px;">
-            <img class="chat-header-avatar" src="${window.INA_AVATAR_B64}" alt="INA">
+            <img class="chat-header-avatar" src="${window.INA_AVATAR_B64}" alt="INA - mentor AI">
             <div>
               <div class="chat-header-name">INA</div>
               <div class="chat-header-status"><span class="status-dot"></span>disponibilă acum</div>
@@ -1014,7 +1020,6 @@ REGULI ABSOLUTE:
 
         <div class="chat-body">
           <div class="messages" id="messages"></div>
-          <p class="chat-hint" style="display:none">INA răspunde de obicei în câteva secunde.</p>
 
           <div class="quick-chips" id="quick-chips">
             <div class="chips-group">
@@ -1045,7 +1050,7 @@ REGULI ABSOLUTE:
                 onkeydown="handleKey(event)"
                 oninput="autoResize(this)"
               ></textarea>
-              <button class="send-btn" id="send-btn" onclick="sendMessage()">
+              <button class="send-btn" id="send-btn" onclick="sendMessage()" aria-label="Trimite mesajul">
                 <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
               </button>
             </div>
@@ -1058,12 +1063,12 @@ REGULI ABSOLUTE:
     `;
   }
 
-  // ─── INIT ───
   window.onload = () => {
     buildChatSection();
-    renderStageIndicator();
-    renderIdeasPanel();
+    updateStage(userMsgCount);
     updateUsesCounter();
+    renderIdeasPanel();
+    updateInputState();
 
     const restored = restoreConversation();
     if (!restored) {
@@ -1071,11 +1076,12 @@ REGULI ABSOLUTE:
       setTimeout(() => {
         hideEmptyState();
         addMessage('ina', 'Salut! Sunt INA, mentorul tău AI. 👋\n\nSpune-mi ideea ta de business și îți spun dacă are potențial, ce lipsește și care ar putea fi următorul pas.');
-        setTimeout(() => addMessage('ina', 'Poți să-mi scrii simplu, de exemplu: «Vreau să vând cursuri de engleză».'), 1200);
-      }, 300);
+        setTimeout(() => addMessage('ina', 'Poți să-mi scrii simplu, de exemplu: «Vreau să vând cursuri de engleză».'), 600);
+      }, 200);
     }
   };
 </script>
+
 </body>
 
 </html>

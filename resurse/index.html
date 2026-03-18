@@ -3,58 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resurse · Academia De la Pasiune la Profit</title>
+<title>Resurse gratuite și servicii · Academia De la Pasiune la Profit</title>
+<meta name="description" content="Descarcă gratuit Checklistul Monetizării și Ghidul Primele 3 Întrebări. Sau rezervă o sesiune 1:1 de claritate pentru 111 lei.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pasiune-profit.ro/resurse">
+<meta property="og:title" content="Resurse gratuite și servicii · Academia De la Pasiune la Profit">
+<meta property="og:description" content="Descarcă gratuit Checklistul Monetizării și Ghidul Primele 3 Întrebări. Sau rezervă o sesiune 1:1 de claritate pentru 111 lei.">
+<meta property="og:url" content="https://pasiune-profit.ro/resurse">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Academia De la Pasiune la Profit">
+<meta property="og:image" content="https://pasiune-profit.ro/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Resurse gratuite și servicii · Academia De la Pasiune la Profit">
+<meta name="twitter:description" content="Descarcă gratuit Checklistul Monetizării și Ghidul Primele 3 Întrebări. Sau rezervă o sesiune 1:1 de claritate pentru 111 lei.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Academia De la Pasiune la Profit","url":"https://pasiune-profit.ro","logo":"https://pasiune-profit.ro/logo.png","description":"Academia pentru antreprenori care transforma pasiunile in profit.","email":"contact@pasiune-profit.ro","sameAs":["https://www.instagram.com/pasiunelaprofit","https://www.facebook.com/pasiunelaprofit"]}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','FB_PIXEL_ID');fbq('track','PageView');</script>
 <style>
 .page-wrap { padding-top: 64px; }
-.inner-hero { background: linear-gradient(155deg, var(--navy) 0%, #1a3f60 55%, var(--navy-mid) 100%); color: white; padding: 72px 6%; }
-.inner-hero h1 { color: white; margin-bottom: 14px; }
-.inner-hero p { color: rgba(255,255,255,.68); font-size: 1rem; max-width: 520px; }
-.inner-content { padding: 72px 0; }
+
+/* HERO */
+.r-hero { background: var(--navy); background-image: radial-gradient(ellipse at 70% 50%, #1a3f60 0%, transparent 60%); color: white; padding: 72px 6% 80px; }
+.r-hero-inner { max-width: 1140px; margin: 0 auto; }
+.r-hero-kicker { font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.r-hero-kicker::before { content:''; width:28px; height:1px; background:var(--orange); }
+.r-hero h1 { color: white; font-size: clamp(2rem,4vw,3rem); line-height: 1.1; margin-bottom: 16px; }
+.r-hero p { color: rgba(255,255,255,.68); font-size: 1rem; max-width: 560px; line-height: 1.75; }
+
+/* CARDS GRID */
+.r-section { padding: 80px 0; }
+.r-inner { max-width: 1140px; margin: 0 auto; padding: 0 6%; }
+.r-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+
+/* FREE RESOURCE CARD */
+.r-card { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+.r-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.r-card-top { padding: 32px 28px 24px; flex: 1; }
+.r-card-badge { display: inline-flex; align-items: center; gap: 6px; font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 20px; }
+.r-card-badge.free { background: #e8f5e9; color: #2e7d32; }
+.r-card-badge.paid { background: var(--orange-lt); color: var(--orange-dk); }
+.r-card-icon { font-size: 2.2rem; margin-bottom: 16px; }
+.r-card-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+.r-card-desc { font-size: .875rem; color: var(--gray-lt); line-height: 1.75; margin-bottom: 20px; }
+.r-card-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.r-card-include { display: flex; gap: 9px; font-size: .82rem; color: var(--gray); }
+.r-card-include::before { content: '→'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+.r-card-bottom { padding: 20px 28px; border-top: 1px solid var(--border); background: var(--off); }
+.r-card-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); font-weight: 700; margin-bottom: 14px; }
+.r-card-price .free-label { font-family: Inter, sans-serif; font-size: .75rem; font-weight: 700; color: #2e7d32; text-transform: uppercase; letter-spacing: .1em; }
+.r-card-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px; border-radius: 6px; font-family: Inter, sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: background .2s, transform .15s; }
+.r-card-btn:hover { transform: translateY(-1px); }
+.r-card-btn.btn-free { background: var(--navy); color: white; }
+.r-card-btn.btn-free:hover { background: var(--navy-mid); }
+.r-card-btn.btn-paid { background: var(--orange); color: white; }
+.r-card-btn.btn-paid:hover { background: var(--orange-dk); }
+
+/* DOWNLOAD MODAL */
+.dl-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(15,23,42,.6); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .25s; }
+.dl-overlay.open { opacity: 1; pointer-events: all; }
+.dl-modal { background: white; border-radius: 16px; width: 100%; max-width: 440px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.2); transform: translateY(16px) scale(.98); transition: transform .25s; }
+.dl-overlay.open .dl-modal { transform: translateY(0) scale(1); }
+.dl-modal-header { background: var(--navy); padding: 24px 28px; position: relative; }
+.dl-modal-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; margin-bottom: 4px; }
+.dl-modal-sub { font-size: .82rem; color: rgba(255,255,255,.6); }
+.dl-modal-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,.15); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.dl-modal-body { padding: 28px; }
+.dl-form { display: flex; flex-direction: column; gap: 14px; }
+.dl-success { display: none; text-align: center; padding: 16px 0; }
+.dl-success-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.dl-success-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; }
+.dl-success-desc { font-size: .82rem; color: var(--gray-lt); margin-bottom: 20px; }
+
+/* CTA BAND */
+.r-cta { background: linear-gradient(155deg, var(--navy) 0%, #1a3f60 100%); padding: 80px 0; text-align: center; }
+.r-cta h2 { color: white; margin-bottom: 12px; }
+.r-cta p { color: rgba(255,255,255,.65); max-width: 480px; margin: 0 auto 32px; }
+
+/* SECTION LABELS */
+.r-section-label { font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; display: block; }
+.r-section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy); margin-bottom: 10px; }
+.r-section-sub { font-size: .95rem; color: var(--gray-lt); max-width: 520px; }
+
+@media(max-width: 1024px) { .r-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width: 640px) { .r-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
-<body>
+<body><!-- GDPR Cookie Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#091d30;color:rgba(255,255,255,.85);padding:16px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:2px solid var(--orange)">
+  <p style="font-size:.82rem;line-height:1.6;margin:0;flex:1;min-width:260px">🍪 Folosim cookie-uri pentru a îmbunătăți experiența pe site și a analiza traficul. Prin continuarea navigării, ești de acord cu <a href="/termeni" style="color:var(--orange)">Politica de cookies</a>.</p>
+  <div style="display:flex;gap:10px;flex-shrink:0">
+    <button onclick="acceptCookies()" style="background:var(--orange);color:white;border:none;padding:9px 20px;border-radius:4px;font-family:Inter,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Accept</button>
+    <button onclick="declineCookies()" style="background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.25);padding:9px 20px;border-radius:4px;font-family:Inter,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Refuz</button>
+  </div>
+</div>
 <nav class="nav" id="nav">
-  <a href="/" class="logo">
-    <span class="logo-sub">Academia</span>
-    <span class="logo-main">De la Pasiune la Profit</span>
-  </a>
+  <a href="/" class="logo"><span class="logo-sub">Academia</span><span class="logo-main">De la Pasiune la Profit</span></a>
   <button class="nav-mobile-btn" onclick="toggleNav()" aria-label="Meniu">☰</button>
   <ul class="nav-links" id="nav-links">
     <li><a href="/">Home</a></li>
     <li><a href="/academia">Academia</a></li>
     <li><a href="/metoda-3c">Metoda 3C</a></li>
     <li><a href="/manuale">Manuale</a></li>
-    <li><a href="/mentorat">Mentorat</a></li>
     <li><a href="/ina">INA</a></li>
+    <li><a href="/mentorat">Mentorat</a></li>
     <li><a href="/digital-studio-3c">Digital Studio 3C</a></li>
+    <li><a href="/comunitate">Comunitate</a></li>
     <li><a href="/resurse">Resurse</a></li>
-    <li><a href="/login" class="nav-login">Login</a></li>
-    <li><a href="/dashboard" class="nav-dashboard" style="display:none">Dashboard</a></li>
     <li><a href="/aplica" class="nav-cta">Aplică</a></li>
   </ul>
 </nav>
 <div class="page-wrap">
-  <div class="inner-hero">
-    <div class="container">
-      <span class="section-label">Gratuit</span>
-      <h1>Resurse pentru antreprenori</h1>
-      <p>Articole, ghiduri și unelte gratuite pentru cei care construiesc un business autentic.</p>
+
+<!-- HERO -->
+<section class="r-hero">
+  <div class="r-hero-inner">
+    <div class="r-hero-kicker">Resurse & Servicii</div>
+    <h1>Primești valoare înainte să investești</h1>
+    <p>Două resurse gratuite pentru a-ți clarifica ideea și o sesiune 1:1 pentru cei care vor să meargă mai departe cu suport direct.</p>
+  </div>
+</section>
+
+<!-- RESURSE -->
+<section class="r-section" style="background:var(--off)">
+  <div class="r-inner">
+    <span class="r-section-label">Toate resursele</span>
+    <h2 class="r-section-title">Alege ce ți se potrivește acum</h2>
+    <p class="r-section-sub">Începe cu resursele gratuite și continuă cu suport personalizat când ești pregătit.</p>
+
+    <div class="r-grid">
+
+      <!-- CHECKLIST MONETIZARE -->
+      <div class="r-card">
+        <div class="r-card-top">
+          <div class="r-card-badge free">✓ Gratuit</div>
+          <div class="r-card-icon">📋</div>
+          <h3 class="r-card-title">Checklistul Monetizării</h3>
+          <p class="r-card-desc">Verifică dacă ideea ta de business are potențial real de monetizare — înainte să investești timp și bani.</p>
+          <ul class="r-card-includes">
+            <li class="r-card-include">Lista completă de verificare a viabilității</li>
+            <li class="r-card-include">Întrebările cheie despre piața ta</li>
+            <li class="r-card-include">Criterii clare de validare a ideii</li>
+            <li class="r-card-include">Format PDF — aplicabil imediat</li>
+          </ul>
+        </div>
+        <div class="r-card-bottom">
+          <div class="r-card-price"><span class="free-label">Gratuit</span></div>
+          <a href="#" class="r-card-btn btn-free" onclick="openDownload('checklist-monetizare.pdf', 'Checklistul Monetizării'); return false;">
+            ↓ Descarcă gratuit
+          </a>
+        </div>
+      </div>
+
+      <!-- GHID PRIMELE 3 INTREBARI -->
+      <div class="r-card">
+        <div class="r-card-top">
+          <div class="r-card-badge free">✓ Gratuit</div>
+          <div class="r-card-icon">💡</div>
+          <h3 class="r-card-title">Ghid — Primele 3 Întrebări</h3>
+          <p class="r-card-desc">Cele 3 întrebări pe care orice antreprenor trebuie să și le pună înainte să construiască orice altceva.</p>
+          <ul class="r-card-includes">
+            <li class="r-card-include">Cele 3 întrebări fundamentale de claritate</li>
+            <li class="r-card-include">Explicații și exemple practice</li>
+            <li class="r-card-include">Exerciții de aplicat imediat</li>
+            <li class="r-card-include">Format PDF — citești în 15 minute</li>
+          </ul>
+        </div>
+        <div class="r-card-bottom">
+          <div class="r-card-price"><span class="free-label">Gratuit</span></div>
+          <a href="#" class="r-card-btn btn-free" onclick="openDownload('ghid-primele-3-intrebari.pdf', 'Ghid — Primele 3 Întrebări'); return false;">
+            ↓ Descarcă gratuit
+          </a>
+        </div>
+      </div>
+
+      <!-- SEDINTA 1:1 -->
+      <div class="r-card" style="border-color:var(--orange);box-shadow:0 0 0 2px var(--orange),var(--shadow-lg)">
+        <div class="r-card-top">
+          <div class="r-card-badge paid">⭐ Serviciu</div>
+          <div class="r-card-icon">🎯</div>
+          <h3 class="r-card-title">Sesiune 1:1 de Claritate</h3>
+          <p class="r-card-desc">O sesiune individuală cu Diana pentru a clarifica ideea, oferta sau direcția de business. Concentrat, practic, orientat spre un rezultat concret.</p>
+          <ul class="r-card-includes">
+            <li class="r-card-include">60 minute de sesiune individuală</li>
+            <li class="r-card-include">Clarificarea ideii sau ofertei tale</li>
+            <li class="r-card-include">Plan de acțiune pentru pasul următor</li>
+            <li class="r-card-include">Înregistrare sesiune inclusă</li>
+          </ul>
+        </div>
+        <div class="r-card-bottom">
+          <div class="r-card-price">111 lei</div>
+          <a href="https://buy.stripe.com/7sY00jbef87T0ZQbcv7EQ00"
+             target="_blank" rel="noopener"
+             class="r-card-btn btn-paid"
+             onclick="gtag&&gtag('event','purchase_intent',{item:'Sedinta 1:1'});fbq&&fbq('track','InitiateCheckout',{content_name:'Sedinta 1:1',value:111,currency:'RON'})">
+            Rezervă sesiunea →
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="inner-content">
-    <div class="container">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-        <div class="card" style="padding:28px 24px"><div style="font-size:1.5rem;margin-bottom:14px">📝</div><h3 style="margin-bottom:8px">Ghidul poziționării</h3><p style="font-size:.82rem;color:var(--gray-lt);line-height:1.7;margin-bottom:16px">Cum îți definești nișa și devii referința în domeniu.</p><a href="#" class="btn btn-outline btn-sm">Citește gratuit →</a></div>
-        <div class="card" style="padding:28px 24px"><div style="font-size:1.5rem;margin-bottom:14px">💡</div><h3 style="margin-bottom:8px">Workshopul ofertei</h3><p style="font-size:.82rem;color:var(--gray-lt);line-height:1.7;margin-bottom:16px">Creează o ofertă irezistibilă în 60 de minute.</p><a href="#" class="btn btn-outline btn-sm">Descarcă →</a></div>
-        <div class="card" style="padding:28px 24px"><div style="font-size:1.5rem;margin-bottom:14px">🤖</div><h3 style="margin-bottom:8px">INA — 10 întrebări gratuite</h3><p style="font-size:.82rem;color:var(--gray-lt);line-height:1.7;margin-bottom:16px">Testează mentorul AI și primești un diagnostic al ideii tale.</p><a href="/ina" class="btn btn-orange btn-sm">Testează INA →</a></div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="r-cta">
+  <div class="container-sm">
+    <h2>Vrei mai mult decât resurse?</h2>
+    <p>Descoperă programul complet de mentorat sau testează INA, mentorul AI disponibil 24/7.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="/mentorat" class="btn btn-orange">Descoperă mentoratul →</a>
+      <a href="/ina" class="btn btn-ghost" style="background:transparent;color:white;border:1px solid rgba(255,255,255,.3);padding:13px 26px;border-radius:4px;font-family:Inter,sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none">Testează INA gratuit</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- DOWNLOAD MODAL -->
+<div class="dl-overlay" id="dl-overlay" onclick="if(event.target===this)closeDownload()">
+  <div class="dl-modal">
+    <div class="dl-modal-header">
+      <div class="dl-modal-title" id="dl-title">Descarcă resursa</div>
+      <div class="dl-modal-sub">Lasă emailul și primești accesul imediat</div>
+      <button class="dl-modal-close" onclick="closeDownload()">✕</button>
+    </div>
+    <div class="dl-modal-body">
+      <div id="dl-form-wrap">
+        <form class="dl-form" onsubmit="handleDownload(event)">
+          <div class="form-group">
+            <label class="form-label">Prenume</label>
+            <input type="text" class="form-input" id="dl-name" placeholder="Maria" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" id="dl-email" placeholder="email@exemplu.ro" required>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <input type="checkbox" id="dl-consent" required style="margin-top:3px;flex-shrink:0">
+            <label for="dl-consent" style="font-size:.75rem;color:var(--gray-lt)">
+              Sunt de acord să primesc resurse și noutăți de la Academia De la Pasiune la Profit. Mă pot dezabona oricând.
+            </label>
+          </div>
+          <button type="submit" class="btn btn-orange btn-full" id="dl-btn">
+            Descarcă acum →
+          </button>
+          <p style="font-size:.72rem;color:var(--gray-lt);text-align:center">Nu trimitem spam. Respectăm GDPR.</p>
+        </form>
+      </div>
+      <div class="dl-success" id="dl-success">
+        <div class="dl-success-icon">🎉</div>
+        <h3 class="dl-success-title">Descărcarea începe acum!</h3>
+        <p class="dl-success-desc">Mulțumim! Dacă descărcarea nu pornește automat, apasă butonul de mai jos.</p>
+        <a id="dl-direct-link" href="#" class="btn btn-orange btn-full" style="margin-bottom:12px">
+          ↓ Descarcă PDF
+        </a>
+        <p style="font-size:.78rem;color:var(--gray-lt)">Verifică și emailul — trimitem și o copie acolo.</p>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+var currentFile = '';
+
+function openDownload(file, title) {
+  currentFile = file;
+  document.getElementById('dl-title').textContent = title;
+  document.getElementById('dl-form-wrap').style.display = 'block';
+  document.getElementById('dl-success').style.display = 'none';
+  document.getElementById('dl-btn').textContent = 'Descarcă acum →';
+  document.getElementById('dl-btn').disabled = false;
+  document.getElementById('dl-name').value = '';
+  document.getElementById('dl-email').value = '';
+  document.getElementById('dl-overlay').classList.add('open');
+  gtag && gtag('event', 'download_intent', {file: file});
+}
+
+function closeDownload() {
+  document.getElementById('dl-overlay').classList.remove('open');
+}
+
+async function handleDownload(e) {
+  e.preventDefault();
+  var name  = document.getElementById('dl-name').value;
+  var email = document.getElementById('dl-email').value;
+  var btn   = document.getElementById('dl-btn');
+  btn.textContent = 'Se procesează...';
+  btn.disabled = true;
+
+  // Save lead to Formspree newsletter
+  try {
+    await fetch('https://formspree.io/f/xqeykylv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        resource: currentFile,
+        _subject: 'Descărcare resursă: ' + currentFile
+      })
+    });
+  } catch(ex) {}
+
+  // Track
+  gtag && gtag('event', 'download_complete', {file: currentFile, email: email});
+  fbq  && fbq('track', 'Lead', {content_name: currentFile});
+
+  // Show success + trigger download
+  document.getElementById('dl-form-wrap').style.display = 'none';
+  var success = document.getElementById('dl-success');
+  success.style.display = 'block';
+
+  var link = document.getElementById('dl-direct-link');
+  link.href = '/' + currentFile;
+  link.setAttribute('download', currentFile);
+
+  // Auto-trigger download
+  var a = document.createElement('a');
+  a.href = '/' + currentFile;
+  a.download = currentFile;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+</script>
+<!-- NEWSLETTER STRIP -->
+<section style="background:var(--off);border-top:1px solid var(--border);padding:48px 6%">
+  <div style="max-width:560px;margin:0 auto;text-align:center">
+    <span class="section-label">Newsletter gratuit</span>
+    <h3 style="color:var(--navy);margin-bottom:8px;font-size:1.2rem">Sfaturi săptămânale pentru antreprenori</h3>
+    <p style="font-size:.875rem;color:var(--gray-lt);margin-bottom:20px">Strategii, inspirație și resurse direct în inbox-ul tău. Fără spam.</p>
+    <form id="newsletter-form" onsubmit="handleNewsletter(event)" style="display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap">
+      <input type="email" required placeholder="email@exemplu.ro" id="nl-email"
+        style="flex:1;min-width:200px;padding:12px 14px;border:1px solid var(--border);border-radius:4px;font-family:Inter,sans-serif;font-size:.9rem;outline:none">
+      <button type="submit" class="btn btn-orange" style="white-space:nowrap">Abonează-te →</button>
+    </form>
+    <p id="nl-success" style="display:none;color:var(--orange);font-size:.82rem;margin-top:12px;font-weight:600">✓ Te-ai abonat cu succes!</p>
+    <p style="font-size:.72rem;color:var(--gray-lt);margin-top:10px">Te poți dezabona oricând. Respectăm GDPR.</p>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="footer-social">
     <a href="https://www.instagram.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Instagram">
@@ -63,14 +359,59 @@
     <a href="https://www.facebook.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Facebook">
       <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
     </a>
+    <a href="https://www.tiktok.com/@pasiunelaprofit" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+    </a>
+  </div>
+  <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px">
+    <a href="/" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Home</a>
+    <a href="/academia" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Academia</a>
+    <a href="/manuale" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Manuale</a>
+    <a href="/ina" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">INA AI</a>
+    <a href="/contact" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Contact</a>
+    <a href="/termeni" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Termeni</a>
+    <a href="/gdpr" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">GDPR</a>
   </div>
   <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
   <div class="footer-firma">
-    D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<br>
-    <a href="mailto:contact@pasiune-profit.ro">contact@pasiune-profit.ro</a><span class="f-sep">·</span><a href="/termeni">Termeni &amp; Condiții</a>
+    D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+    <a href="mailto:contact@pasiune-profit.ro">contact@pasiune-profit.ro</a><span class="f-sep">·</span><a href="/termeni">Termeni &amp; Condiții</a><span class="f-sep">·</span><a href="/gdpr">GDPR</a>
   </div>
 </footer>
 <div id="toast" class="toast"></div>
 <script src="/app.js"></script>
+<script>
+// Cookie banner
+(function() {
+  var consent = localStorage.getItem('cookie_consent');
+  if (!consent) {
+    var banner = document.getElementById('cookie-banner');
+    if (banner) { banner.style.display = 'flex'; }
+  }
+})();
+function acceptCookies() {
+  localStorage.setItem('cookie_consent', 'accepted');
+  var b = document.getElementById('cookie-banner'); if(b) b.style.display='none';
+  gtag && gtag('consent','update',{'analytics_storage':'granted','ad_storage':'granted'});
+}
+function declineCookies() {
+  localStorage.setItem('cookie_consent', 'declined');
+  var b = document.getElementById('cookie-banner'); if(b) b.style.display='none';
+}
+// Newsletter
+function handleNewsletter(e) {
+  e.preventDefault();
+  var email = document.getElementById('nl-email').value;
+  // Connect to your email provider (Mailchimp, ConvertKit etc.)
+  fetch('https://formspree.io/f/YOUR_NEWSLETTER_FORM_ID', {
+    method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({email: email, _subject: 'Newsletter signup'})
+  }).catch(function(){});
+  document.getElementById('newsletter-form').style.display = 'none';
+  document.getElementById('nl-success').style.display = 'block';
+  gtag && gtag('event','newsletter_signup',{email: email});
+  fbq && fbq('track','Lead');
+}
+</script>
 </body>
 </html>

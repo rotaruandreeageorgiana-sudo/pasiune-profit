@@ -244,7 +244,90 @@
     .how-connector { width: 2px; height: 30px; min-width: 2px; max-width: 2px; margin: 0 auto; }
   }
 
-  </style>
+  
+/* ── AUTH OVERLAY ── */
+.ina-auth-bar {
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 24px 28px;
+  max-width: 780px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 12px rgba(29,78,216,.07);
+}
+.ina-auth-bar-left { display: flex; align-items: center; gap: 12px; }
+.ina-auth-bar-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #1D4ED8, #F97316); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: .9rem; flex-shrink: 0; }
+.ina-auth-bar-name { font-size: .9rem; font-weight: 700; color: var(--gray-800); }
+.ina-auth-bar-plan { font-size: .72rem; color: var(--gray-400); }
+.ina-auth-bar-plan.pro { color: var(--orange); font-weight: 700; }
+.ina-auth-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.ina-auth-btn-sm { padding: 7px 16px; border-radius: 50px; font-family: 'Nunito',sans-serif; font-size: .8rem; font-weight: 700; cursor: pointer; border: none; transition: all .2s; }
+.ina-auth-btn-logout { background: var(--gray-100); color: var(--gray-600); }
+.ina-auth-btn-logout:hover { background: var(--gray-200); }
+.ina-auth-btn-upgrade { background: var(--orange); color: white; }
+.ina-auth-btn-upgrade:hover { background: #ea6500; }
+
+/* AUTH MODAL */
+.ina-modal-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(15,23,42,.6); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.ina-modal-overlay.open { opacity: 1; pointer-events: all; }
+.ina-modal {
+  background: white; border-radius: 20px; width: 100%; max-width: 420px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.2);
+  overflow: hidden;
+  transform: translateY(16px) scale(.98);
+  transition: transform .25s;
+}
+.ina-modal-overlay.open .ina-modal { transform: translateY(0) scale(1); }
+.ina-modal-header { background: linear-gradient(135deg, #1D4ED8, #1e3a8a); padding: 24px 28px; }
+.ina-modal-header-title { font-family: 'Sora',sans-serif; font-size: 1.2rem; font-weight: 800; color: white; margin-bottom: 4px; }
+.ina-modal-header-sub { font-size: .82rem; color: rgba(255,255,255,.65); }
+.ina-modal-tabs { display: flex; border-bottom: 1px solid var(--gray-200); }
+.ina-modal-tab { flex: 1; padding: 14px; text-align: center; font-size: .85rem; font-weight: 700; cursor: pointer; border: none; background: none; color: var(--gray-400); transition: all .2s; font-family: 'Nunito',sans-serif; }
+.ina-modal-tab.active { color: var(--blue); border-bottom: 2px solid var(--blue); }
+.ina-modal-body { padding: 24px 28px; }
+.ina-modal-form { display: flex; flex-direction: column; gap: 14px; }
+.ina-form-group { display: flex; flex-direction: column; gap: 5px; }
+.ina-form-label { font-size: .75rem; font-weight: 700; color: var(--gray-700); text-transform: uppercase; letter-spacing: .05em; }
+.ina-form-input { padding: 11px 14px; border: 1.5px solid var(--gray-200); border-radius: 10px; font-family: 'Nunito',sans-serif; font-size: .9rem; outline: none; transition: border-color .2s; }
+.ina-form-input:focus { border-color: var(--blue); }
+.ina-form-error { font-size: .75rem; color: #dc2626; background: #fef2f2; padding: 8px 12px; border-radius: 8px; display: none; }
+.ina-form-btn { background: var(--orange); color: white; border: none; padding: 13px; border-radius: 50px; font-family: 'Nunito',sans-serif; font-size: .95rem; font-weight: 800; cursor: pointer; transition: background .2s, transform .15s; }
+.ina-form-btn:hover { background: #ea6500; transform: translateY(-1px); }
+.ina-form-btn:disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; transform: none; }
+.ina-modal-footer { text-align: center; padding: 0 28px 24px; font-size: .8rem; color: var(--gray-400); }
+.ina-modal-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,.2); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.ina-modal-header { position: relative; }
+
+/* Not logged in bar */
+.ina-guest-bar {
+  background: linear-gradient(135deg, #eff6ff, #fff7ed);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 20px 28px;
+  max-width: 780px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ina-guest-bar-text { font-size: .9rem; color: var(--gray-700); }
+.ina-guest-bar-text strong { color: var(--gray-900); }
+.ina-guest-btns { display: flex; gap: 8px; }
+
+</style>
 </head>
 <body>
 
@@ -324,6 +407,89 @@
 </section>
 
 <!-- ─── CHAT ─── -->
+
+<!-- ── INA AUTH BAR ── -->
+<div class="chat-section-wrapper" style="padding-bottom:0;padding-top:24px">
+
+  <!-- Guest bar (not logged in) -->
+  <div class="ina-guest-bar" id="ina-guest-bar" style="display:none">
+    <div class="ina-guest-bar-text">
+      <strong>Ai deja un cont INA Pro?</strong> Loghează-te pentru acces nelimitat.
+    </div>
+    <div class="ina-guest-btns">
+      <button class="ina-auth-btn-sm" style="background:white;border:1.5px solid var(--gray-200);color:var(--gray-700);padding:8px 18px;border-radius:50px;font-family:Nunito,sans-serif;font-size:.82rem;font-weight:700;cursor:pointer" onclick="openAuthModal('login')">Login</button>
+      <button class="ina-auth-btn-sm ina-auth-btn-upgrade" onclick="openAuthModal('register')">Creează cont →</button>
+    </div>
+  </div>
+
+  <!-- Logged in bar -->
+  <div class="ina-auth-bar" id="ina-auth-bar" style="display:none">
+    <div class="ina-auth-bar-left">
+      <div class="ina-auth-bar-avatar" id="ina-user-initial">U</div>
+      <div>
+        <div class="ina-auth-bar-name" id="ina-user-email">—</div>
+        <div class="ina-auth-bar-plan" id="ina-user-plan">Free</div>
+      </div>
+    </div>
+    <div class="ina-auth-btns">
+      <button class="ina-auth-btn-sm ina-auth-btn-upgrade" id="ina-upgrade-btn" style="display:none" onclick="window.open('https://buy.stripe.com/aFa5kDaab3RD5g6eoH7EQ07','_blank')">Activează INA Pro →</button>
+      <button class="ina-auth-btn-sm ina-auth-btn-logout" onclick="inaLogout()">Deconectare</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── AUTH MODAL ── -->
+<div class="ina-modal-overlay" id="ina-modal-overlay" onclick="closeAuthModal(event)">
+  <div class="ina-modal">
+    <div class="ina-modal-header">
+      <div class="ina-modal-header-title" id="modal-title">Intră în cont</div>
+      <div class="ina-modal-header-sub" id="modal-sub">Accesează INA Pro cu contul tău</div>
+      <button class="ina-modal-close" onclick="closeAuthModal()">✕</button>
+    </div>
+    <div class="ina-modal-tabs">
+      <button class="ina-modal-tab active" id="tab-login" onclick="switchAuthTab('login')">Login</button>
+      <button class="ina-modal-tab" id="tab-register" onclick="switchAuthTab('register')">Cont nou</button>
+    </div>
+    <div class="ina-modal-body">
+      <div class="ina-form-error" id="auth-error"></div>
+
+      <!-- LOGIN -->
+      <form class="ina-modal-form" id="login-form" onsubmit="handleLogin(event)">
+        <div class="ina-form-group">
+          <label class="ina-form-label">Email</label>
+          <input type="email" class="ina-form-input" id="login-email" placeholder="email@exemplu.ro" required>
+        </div>
+        <div class="ina-form-group">
+          <label class="ina-form-label">Parolă</label>
+          <input type="password" class="ina-form-input" id="login-pass" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="ina-form-btn" id="login-btn">Intră în cont →</button>
+      </form>
+
+      <!-- REGISTER -->
+      <form class="ina-modal-form" id="register-form" style="display:none" onsubmit="handleRegister(event)">
+        <div class="ina-form-group">
+          <label class="ina-form-label">Email</label>
+          <input type="email" class="ina-form-input" id="reg-email" placeholder="email@exemplu.ro" required>
+        </div>
+        <div class="ina-form-group">
+          <label class="ina-form-label">Parolă</label>
+          <input type="password" class="ina-form-input" id="reg-pass" placeholder="Minim 8 caractere" minlength="8" required>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-start">
+          <input type="checkbox" id="reg-terms" required style="margin-top:3px;flex-shrink:0">
+          <label for="reg-terms" style="font-size:.78rem;color:var(--gray-600)">Sunt de acord cu <a href="/termeni" style="color:var(--orange)">Termenii</a> și <a href="/gdpr" style="color:var(--orange)">GDPR</a></label>
+        </div>
+        <button type="submit" class="ina-form-btn" id="reg-btn">Creează contul →</button>
+      </form>
+    </div>
+    <div class="ina-modal-footer" id="auth-modal-footer">
+      Ai cont deja? <a href="#" onclick="switchAuthTab('login');return false" style="color:var(--orange);font-weight:700">Loghează-te</a>
+    </div>
+  </div>
+</div>
+
 <section class="chat-section-wrapper" id="chat-section"></section>
 
 <!-- ─── CUM TE AJUTĂ INA ─── -->
@@ -606,7 +772,7 @@ REGULI ABSOLUTE:
 - Linkul către resurse este întotdeauna: https://pasiune-profit.ro`;
 
   // ─── UTILS ───
-  function isBlocked() { return freeUses >= FREE_LIMIT; }
+  function isBlocked() { if (inaIsPro) return false; return freeUses >= FREE_LIMIT_ACTIVE; }
 
   function updateStage(count) {
     if (count <= 10) stage3C = 'Claritate';
@@ -1048,6 +1214,194 @@ REGULI ABSOLUTE:
       }, 300);
     }
   };
+
+
+// ── SUPABASE CONFIG ──────────────────────────────────
+const SUPABASE_URL = 'https://jeqxkxzckuabgeufiogv.supabase.co';
+const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+
+// ── AUTH STATE ───────────────────────────────────────
+let inaUser = null;
+let inaIsPro = false;
+
+function getStoredToken() { return localStorage.getItem('ina_sb_token'); }
+function getStoredUser()  { try { return JSON.parse(localStorage.getItem('ina_sb_user')); } catch(e) { return null; } }
+function setStoredAuth(token, user) { localStorage.setItem('ina_sb_token', token); localStorage.setItem('ina_sb_user', JSON.stringify(user)); }
+function clearStoredAuth() { localStorage.removeItem('ina_sb_token'); localStorage.removeItem('ina_sb_user'); }
+
+// ── INIT AUTH ────────────────────────────────────────
+async function initAuth() {
+  const token = getStoredToken();
+  const user  = getStoredUser();
+  if (token && user) {
+    inaUser = user;
+    await checkProStatus(token);
+    renderAuthBar();
+  } else {
+    renderGuestBar();
+  }
+}
+
+// ── CHECK PRO STATUS ─────────────────────────────────
+async function checkProStatus(token) {
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/ina_pro_users?select=email,is_active&email=eq.' + encodeURIComponent(inaUser.email), {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      inaIsPro = data && data.length > 0 && data[0].is_active === true;
+    }
+  } catch(e) { inaIsPro = false; }
+
+  if (inaIsPro) {
+    FREE_LIMIT_ACTIVE = 999999; // unlimited
+    freeUses = 0;
+  }
+}
+
+// ── RENDER BARS ──────────────────────────────────────
+function renderAuthBar() {
+  document.getElementById('ina-guest-bar').style.display = 'none';
+  const bar = document.getElementById('ina-auth-bar');
+  bar.style.display = 'flex';
+  const email = inaUser.email || '';
+  document.getElementById('ina-user-email').textContent = email;
+  document.getElementById('ina-user-initial').textContent = email.charAt(0).toUpperCase();
+  const planEl = document.getElementById('ina-user-plan');
+  const upgradeBtn = document.getElementById('ina-upgrade-btn');
+  if (inaIsPro) {
+    planEl.textContent = '✨ INA Pro — acces nelimitat';
+    planEl.className = 'ina-auth-bar-plan pro';
+    upgradeBtn.style.display = 'none';
+  } else {
+    planEl.textContent = 'Plan gratuit · 10 mesaje';
+    planEl.className = 'ina-auth-bar-plan';
+    upgradeBtn.style.display = 'inline-flex';
+  }
+}
+
+function renderGuestBar() {
+  document.getElementById('ina-guest-bar').style.display = 'flex';
+  document.getElementById('ina-auth-bar').style.display = 'none';
+}
+
+// ── MODAL ────────────────────────────────────────────
+function openAuthModal(tab) {
+  tab = tab || 'login';
+  switchAuthTab(tab);
+  document.getElementById('ina-modal-overlay').classList.add('open');
+}
+function closeAuthModal(e) {
+  if (e && e.target !== document.getElementById('ina-modal-overlay')) return;
+  document.getElementById('ina-modal-overlay').classList.remove('open');
+}
+function switchAuthTab(tab) {
+  document.getElementById('login-form').style.display    = tab === 'login' ? 'flex' : 'none';
+  document.getElementById('register-form').style.display = tab === 'register' ? 'flex' : 'none';
+  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+  document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+  document.getElementById('modal-title').textContent = tab === 'login' ? 'Intră în cont' : 'Cont nou';
+  document.getElementById('modal-sub').textContent   = tab === 'login' ? 'Accesează INA Pro cu contul tău' : 'Creează cont și activează INA Pro';
+  document.getElementById('auth-modal-footer').innerHTML = tab === 'login'
+    ? 'Nu ai cont? <a href="#" onclick="switchAuthTab('register');return false" style="color:var(--orange);font-weight:700">Creează cont</a>'
+    : 'Ai cont deja? <a href="#" onclick="switchAuthTab('login');return false" style="color:var(--orange);font-weight:700">Loghează-te</a>';
+  document.getElementById('auth-error').style.display = 'none';
+}
+
+function showAuthError(msg) {
+  const el = document.getElementById('auth-error');
+  el.textContent = msg; el.style.display = 'block';
+}
+
+// ── LOGIN ────────────────────────────────────────────
+async function handleLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById('login-email').value;
+  const pass  = document.getElementById('login-pass').value;
+  const btn   = document.getElementById('login-btn');
+  btn.textContent = 'Se conectează...'; btn.disabled = true;
+  document.getElementById('auth-error').style.display = 'none';
+  try {
+    const res = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass })
+    });
+    const data = await res.json();
+    if (!res.ok) { showAuthError(data.error_description || 'Email sau parolă incorectă'); btn.textContent = 'Intră în cont →'; btn.disabled = false; return; }
+    setStoredAuth(data.access_token, data.user);
+    inaUser = data.user;
+    await checkProStatus(data.access_token);
+    renderAuthBar();
+    document.getElementById('ina-modal-overlay').classList.remove('open');
+    if (inaIsPro) { freeUses = 0; updateUsesCounter(); }
+  } catch(ex) {
+    showAuthError('Eroare de conexiune. Încearcă din nou.');
+    btn.textContent = 'Intră în cont →'; btn.disabled = false;
+  }
+}
+
+// ── REGISTER ─────────────────────────────────────────
+async function handleRegister(e) {
+  e.preventDefault();
+  const email = document.getElementById('reg-email').value;
+  const pass  = document.getElementById('reg-pass').value;
+  const btn   = document.getElementById('reg-btn');
+  btn.textContent = 'Se creează contul...'; btn.disabled = true;
+  document.getElementById('auth-error').style.display = 'none';
+  try {
+    const res = await fetch(SUPABASE_URL + '/auth/v1/signup', {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass })
+    });
+    const data = await res.json();
+    if (!res.ok) { showAuthError(data.error_description || 'Eroare la creare cont'); btn.textContent = 'Creează contul →'; btn.disabled = false; return; }
+    if (data.access_token) {
+      setStoredAuth(data.access_token, data.user);
+      inaUser = data.user;
+      await checkProStatus(data.access_token);
+      renderAuthBar();
+      document.getElementById('ina-modal-overlay').classList.remove('open');
+    } else {
+      showAuthError('Cont creat! Verifică emailul pentru confirmare, apoi loghează-te.');
+      switchAuthTab('login');
+    }
+    btn.textContent = 'Creează contul →'; btn.disabled = false;
+  } catch(ex) {
+    showAuthError('Eroare de conexiune. Încearcă din nou.');
+    btn.textContent = 'Creează contul →'; btn.disabled = false;
+  }
+}
+
+// ── LOGOUT ───────────────────────────────────────────
+async function inaLogout() {
+  try {
+    await fetch(SUPABASE_URL + '/auth/v1/logout', {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + getStoredToken() }
+    });
+  } catch(e) {}
+  clearStoredAuth();
+  inaUser = null; inaIsPro = false;
+  FREE_LIMIT_ACTIVE = FREE_LIMIT;
+  renderGuestBar();
+}
+
+// Override isBlocked to check pro status
+let FREE_LIMIT_ACTIVE = 10;
+const _origIsBlocked = window.isBlocked;
+
+// Init on load
+document.addEventListener('DOMContentLoaded', function() {
+  initAuth();
+});
+
 </script>
 </body>
 

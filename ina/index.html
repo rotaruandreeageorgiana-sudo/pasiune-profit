@@ -1306,11 +1306,16 @@ function switchAuthTab(tab) {
   document.getElementById('register-form').style.display = tab === 'register' ? 'flex' : 'none';
   document.getElementById('tab-login').classList.toggle('active', tab === 'login');
   document.getElementById('tab-register').classList.toggle('active', tab === 'register');
-  document.getElementById('modal-title').textContent = tab === 'login' ? 'Intră în cont' : 'Cont nou';
-  document.getElementById('modal-sub').textContent   = tab === 'login' ? 'Accesează INA Pro cu contul tău' : 'Creează cont și activează INA Pro';
-  document.getElementById('auth-modal-footer').innerHTML = tab === 'login'
-    ? 'Nu ai cont? <a href="#" onclick="switchAuthTab('register');return false" style="color:var(--orange);font-weight:700">Creează cont</a>'
-    : 'Ai cont deja? <a href="#" onclick="switchAuthTab('login');return false" style="color:var(--orange);font-weight:700">Loghează-te</a>';
+  document.getElementById('modal-title').textContent = tab === 'login' ? 'Intr\u0103 \u00een cont' : 'Cont nou';
+  document.getElementById('modal-sub').textContent   = tab === 'login' ? 'Acceseaz\u0103 INA Pro cu contul t\u0103u' : 'Creeaz\u0103 cont \u015fi activeaz\u0103 INA Pro';
+  var footerEl = document.getElementById('auth-modal-footer');
+  if (footerEl) {
+    if (tab === 'login') {
+      footerEl.innerHTML = 'Nu ai cont? <a href="#" onclick="switchAuthTab(\"register\");return false" style="color:var(--orange);font-weight:700">Creeaz\u0103 cont</a>';
+    } else {
+      footerEl.innerHTML = 'Ai cont deja? <a href="#" onclick="switchAuthTab(\"login\");return false" style="color:var(--orange);font-weight:700">Logheaz\u0103-te</a>';
+    }
+  }
   document.getElementById('auth-error').style.display = 'none';
 }
 

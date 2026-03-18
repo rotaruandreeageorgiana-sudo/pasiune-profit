@@ -540,7 +540,7 @@
   // ─── STATE ───
   let conversationHistory = JSON.parse(localStorage.getItem('ina_conversation') || '[]');
   let isTyping = false;
-  let freeUses = 0;
+  let freeUses = Number(localStorage.getItem('ina_free_uses') || '0');
   let userIdeas = JSON.parse(localStorage.getItem('ina_user_ideas') || '[]');
   let userMsgCount = 0;
   let stage3C = 'Claritate';
@@ -729,7 +729,7 @@ REGULI ABSOLUTE:
     if (el) el.remove();
   }
 
-  function addMessage(role, content) {
+  function addMessage(role, content, persist = true) {
     const messages = document.getElementById('messages');
     if (!messages) return;
 
@@ -772,8 +772,10 @@ REGULI ABSOLUTE:
     messages.appendChild(row);
     messages.scrollTop = messages.scrollHeight;
 
-    conversationHistory.push({ role: role === 'user' ? 'user' : 'assistant', content });
-    localStorage.setItem('ina_conversation', JSON.stringify(conversationHistory));
+    if (persist) {
+      conversationHistory.push({ role: role === 'user' ? 'user' : 'assistant', content });
+      localStorage.setItem('ina_conversation', JSON.stringify(conversationHistory));
+    }
   }
 
   function showTyping() {
@@ -795,12 +797,18 @@ REGULI ABSOLUTE:
   // ─── CHAT LOGIC ───
   function restoreConversation() {
     if (conversationHistory.length === 0) return false;
-    conversationHistory.forEach(msg => {
-      addMessage(msg.role === 'user' ? 'user' : 'ina', msg.content);
+    const savedHistory = [...conversationHistory];
+    savedHistory.forEach(msg => {
+      addMessage(msg.role === 'user' ? 'user' : 'ina', msg.content, false);
     });
-    userMsgCount = conversationHistory.filter(m => m.role === 'user').length;
+    userMsgCount = savedHistory.filter(m => m.role === 'user').length;
+    freeUses = Math.min(FREE_LIMIT, userMsgCount);
+    localStorage.setItem('ina_free_uses', String(freeUses));
     updateStage(userMsgCount);
     updateUsesCounter();
+    if (freeUses >= FREE_LIMIT) {
+      setTimeout(showFinalOptions, 400);
+    }
     return true;
   }
 
@@ -1052,10 +1060,6 @@ REGULI ABSOLUTE:
 
   // ─── INIT ───
   window.onload = () => {
-    // Reset usage on fresh load
-    freeUses = 0;
-    localStorage.setItem('ina_free_uses', '0');
-
     buildChatSection();
     renderStageIndicator();
     renderIdeasPanel();

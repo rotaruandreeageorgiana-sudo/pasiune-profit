@@ -1,50 +1,47 @@
-// api/chat-free.js
-// Proxy securizat pentru INA chat — cheia OpenAI nu ajunge în browser
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { messages, systemPrompt, messageNumber } = req.body || {};
-
-  if (!messages || !Array.isArray(messages)) {
-    return res.status(400).json({ error: 'Date invalide.' });
-  }
-
-  // Max 20 mesaje în context
-  const trimmed = messages.slice(-20);
-
   try {
-    const openaiRes = await fetch('https://api.openai.com/v1/chat/completions', {
+    const { message } = req.body;
+
+    if (!message) {
+      return res.status(400).json({ error: 'Mesaj lipsă' });
+    }
+
+    const response = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'gpt-4o',
-        max_tokens: 1200,
-        messages: [
-          { role: 'system', content: systemPrompt || '' },
-          ...trimmed
-        ]
+        model: 'gpt-4.1-mini',
+        input: message
       })
     });
 
-    if (!openaiRes.ok) {
-      const err = await openaiRes.json().catch(() => ({}));
-      console.error('[chat-free] OpenAI error:', err);
-      return res.status(502).json({ error: 'Eroare tehnică. Încearcă din nou.' });
+    const data = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        error: 'OpenAI error',
+        details: data
+      });
     }
 
-    const data = await openaiRes.json();
-    const reply = data.choices?.[0]?.message?.content || '';
+    const text =
+      data.output?.[0]?.content?.[0]?.text ||
+      'Nu am putut genera un răspuns.';
 
-    return res.status(200).json({ reply });
-
+    return res.status(200).json({
+      content: [{ text }]
+    });
   } catch (err) {
-    console.error('[chat-free] Error:', err);
-    return res.status(500).json({ error: 'Eroare de conexiune.' });
+    return res.status(500).json({
+      error: 'Server error',
+      details: err.message
+    });
   }
 }

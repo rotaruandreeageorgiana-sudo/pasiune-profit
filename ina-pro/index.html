@@ -434,7 +434,7 @@ async function handleLogout() {
 async function checkIsPro(token, email) {
   try {
     var res = await fetch(
-      SUPABASE_URL + '/rest/v1/premium_users?email=eq.' + encodeURIComponent(email) + '&select=status',
+      SUPABASE_URL + '/rest/v1/premium_users?email=eq.' + encodeURIComponent(email) + '&select=email,status',
       {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
@@ -443,13 +443,19 @@ async function checkIsPro(token, email) {
       }
     );
 
-    if (res.ok) {
-      var data = await res.json();
-      return data && data.length > 0 && data[0].status === 'active';
+    if (!res.ok) {
+      console.error('checkIsPro HTTP error:', res.status);
+      return false;
     }
-  } catch (e) {}
 
-  return false;
+    var data = await res.json();
+    console.log('premium_users result:', data);
+
+    return data && data.length > 0 && data[0].status === 'active';
+  } catch (e) {
+    console.error('checkIsPro error:', e);
+    return false;
+  }
 }
 
 // ── SHOW PRO SECTION ──

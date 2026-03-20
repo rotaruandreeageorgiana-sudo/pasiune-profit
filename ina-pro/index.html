@@ -433,14 +433,22 @@ async function handleLogout() {
 // ── CHECK PRO STATUS ──
 async function checkIsPro(token, email) {
   try {
-    var res = await fetch(SUPABASE_URL + '/rest/v1/ina_pro_users?email=eq.' + encodeURIComponent(email) + '&select=is_active', {
-      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + token }
-    });
+    var res = await fetch(
+      SUPABASE_URL + '/rest/v1/premium_users?email=eq.' + encodeURIComponent(email) + '&select=status',
+      {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + token
+        }
+      }
+    );
+
     if (res.ok) {
       var data = await res.json();
-      return data && data.length > 0 && data[0].is_active === true;
+      return data && data.length > 0 && data[0].status === 'active';
     }
-  } catch(e) {}
+  } catch (e) {}
+
   return false;
 }
 

@@ -244,7 +244,10 @@ body { font-family: 'Inter', sans-serif; background: var(--off); color: var(--gr
         </div>
         <div class="pro-badge" id="pro-plan-badge">Free</div>
       </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="pro-logout" id="billing-btn" onclick="openBillingPortal()" style="display:none">Gestionează abonamentul</button>
       <button class="pro-logout" onclick="handleLogout()">Deconectare</button>
+    </div>
     </div>
 
     <div id="not-pro-notice" style="display:none;background:var(--orange-lt);border:1px solid rgba(244,123,32,.3);border-radius:10px;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
@@ -303,6 +306,39 @@ function getToken() { return localStorage.getItem('ina_pro_token'); }
 function getUser()  { try { return JSON.parse(localStorage.getItem('ina_pro_user')); } catch(e) { return null; } }
 function setAuth(token, user) { localStorage.setItem('ina_pro_token', token); localStorage.setItem('ina_pro_user', JSON.stringify(user)); }
 function clearAuth() { localStorage.removeItem('ina_pro_token'); localStorage.removeItem('ina_pro_user'); }
+
+async function openBillingPortal() {
+  try {
+    if (!currentUser || !currentUser.email) {
+      alert('Nu am găsit emailul contului.');
+      return;
+    }
+
+    var btn = document.getElementById('billing-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Se deschide...'; }
+
+    var res = await fetch('/api/create-portal-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: currentUser.email })
+    });
+
+    var data = await res.json().catch(function(){ return {}; });
+
+    if (!res.ok || !data.url) {
+      alert(data.error || 'Nu am putut deschide portalul de billing.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Gestionează abonamentul'; }
+      return;
+    }
+
+    window.location.href = data.url;
+  } catch (err) {
+    alert('Eroare de conexiune. Încearcă din nou.');
+    var btn = document.getElementById('billing-btn');
+    if (btn) { btn.disabled = false; btn.textContent = 'Gestionează abonamentul'; }
+  }
+}
+
 
 function showError(id, msg) {
   var el = document.getElementById(id);
@@ -386,6 +422,8 @@ async function handleLogout() {
   currentUser = null;
   document.getElementById('auth-section').style.display = 'block';
   document.getElementById('pro-section').style.display  = 'none';
+  var billingBtn = document.getElementById('billing-btn');
+  if (billingBtn) { billingBtn.style.display = 'none'; billingBtn.disabled = false; billingBtn.textContent = 'Gestionează abonamentul'; }
   document.getElementById('login-btn').textContent = 'Intră în cont →';
   document.getElementById('login-btn').disabled = false;
   document.getElementById('login-email').value = '';
@@ -421,14 +459,22 @@ async function showProSection() {
   var badge = document.getElementById('pro-plan-badge');
   var notice = document.getElementById('not-pro-notice');
 
+  var billingBtn = document.getElementById('billing-btn');
+
   if (isPro) {
     badge.textContent = '✨ INA Pro';
     badge.style.background = 'rgba(15,42,68,.08)';
     badge.style.color = 'var(--navy-mid)';
     if (notice) notice.style.display = 'none';
+    if (billingBtn) {
+      billingBtn.style.display = 'inline-flex';
+      billingBtn.disabled = false;
+      billingBtn.textContent = 'Gestionează abonamentul';
+    }
   } else {
     badge.textContent = 'Free';
     if (notice) notice.style.display = 'flex';
+    if (billingBtn) billingBtn.style.display = 'none';
   }
 
   initProChat();

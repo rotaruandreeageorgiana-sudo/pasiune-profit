@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INA Pro — Acces Nelimitat · Academia De la Pasiune la Profit</title>
+<meta name="description" content="INA Pro — conversații nelimitate cu mentorul AI. Loghează-te sau activează abonamentul.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0F2A44; --navy-mid: #1B4268;
+  --orange: #F47B20; --orange-dk: #D9660F; --orange-lt: #FEF3EA;
+  --white: #FFFFFF; --off: #FAFAF8;
+  --gray: #4A4A4A; --gray-lt: #8A8A8A;
+  --border: #E6E2D8;
+  --shadow: 0 2px 12px rgba(15,42,68,.08);
+  --shadow-lg: 0 8px 40px rgba(15,42,68,.15);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--off); color: var(--gray); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); height: 60px; display: flex; align-items: center; padding: 0 6%; justify-content: space-between; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: .03em; text-transform: uppercase; }
+.nav-logo span { font-size: .58rem; display: block; color: var(--orange); font-family: Inter, sans-serif; font-weight: 700; letter-spacing: .15em; margin-bottom: 1px; }
+.nav-links { display: flex; gap: 4px; list-style: none; }
+.nav-links a { font-size: .75rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; color: var(--gray); text-decoration: none; padding: 6px 10px; border-radius: 4px; }
+.nav-links a:hover { color: var(--navy); }
+.nav-links a.cta { background: var(--orange); color: white; padding: 8px 16px; border-radius: 4px; }
+
+/* PAGE */
+.page { padding-top: 60px; min-height: 100vh; }
+
+/* ─── STATE: NOT LOGGED IN ─── */
+.hero-split { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 60px); }
+.hero-left { background: linear-gradient(155deg, var(--navy) 0%, #1a3f60 100%); padding: 56px; display: flex; flex-direction: column; justify-content: center; color: white; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+.hero-left-inner { position: relative; z-index: 1; }
+.hl-kicker { font-size: .62rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.hl-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: white; margin-bottom: 14px; line-height: 1.15; }
+.hl-desc { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 32px; }
+.hl-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.hl-feature { display: flex; gap: 10px; font-size: .85rem; color: rgba(255,255,255,.75); }
+.hl-feature::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+.hl-price { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 10px; padding: 20px; }
+.hl-price-label { font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 6px; }
+.hl-price-val { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: white; font-weight: 700; }
+.hl-price-note { font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 4px; }
+
+/* RIGHT: AUTH FORM */
+.hero-right { display: flex; align-items: center; justify-content: center; padding: 40px; background: white; }
+.auth-box { width: 100%; max-width: 380px; }
+.auth-tabs { display: flex; background: var(--off); border: 1px solid var(--border); border-radius: 8px; padding: 4px; margin-bottom: 28px; }
+.auth-tab { flex: 1; padding: 10px; text-align: center; border: none; background: none; font-family: Inter, sans-serif; font-size: .82rem; font-weight: 600; color: var(--gray-lt); cursor: pointer; border-radius: 6px; transition: all .2s; }
+.auth-tab.active { background: white; color: var(--navy); box-shadow: var(--shadow); }
+.auth-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 4px; }
+.auth-sub { font-size: .82rem; color: var(--gray-lt); margin-bottom: 24px; }
+.auth-form { display: flex; flex-direction: column; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-label { font-size: .75rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .05em; }
+.form-input { padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: Inter, sans-serif; font-size: .9rem; outline: none; transition: border-color .2s; }
+.form-input:focus { border-color: var(--navy); }
+.auth-error { background: #fef2f2; color: #dc2626; padding: 10px 14px; border-radius: 6px; font-size: .8rem; display: none; }
+.auth-btn { background: var(--orange); color: white; border: none; padding: 13px; border-radius: 8px; font-family: Inter, sans-serif; font-size: .9rem; font-weight: 700; cursor: pointer; transition: background .2s; }
+.auth-btn:hover { background: var(--orange-dk); }
+.auth-btn:disabled { background: var(--border); cursor: not-allowed; }
+.auth-divider { text-align: center; font-size: .78rem; color: var(--gray-lt); position: relative; }
+.auth-divider::before, .auth-divider::after { content: ''; position: absolute; top: 50%; width: 38%; height: 1px; background: var(--border); }
+.auth-divider::before { left: 0; } .auth-divider::after { right: 0; }
+.stripe-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--navy); color: white; border: none; padding: 13px; border-radius: 8px; font-family: Inter, sans-serif; font-size: .88rem; font-weight: 700; cursor: pointer; transition: background .2s; text-decoration: none; }
+.stripe-btn:hover { background: var(--navy-mid); }
+
+/* ─── STATE: LOGGED IN ─── */
+.pro-page { display: none; padding: 32px 6%; max-width: 1000px; margin: 0 auto; }
+.pro-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 14px; }
+.pro-header-left { display: flex; align-items: center; gap: 14px; }
+.pro-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--orange); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0; }
+.pro-user-name { font-size: .9rem; font-weight: 700; color: var(--navy); }
+.pro-user-email { font-size: .75rem; color: var(--gray-lt); }
+.pro-badge { background: var(--orange-lt); color: var(--orange-dk); font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; border: 1px solid rgba(244,123,32,.2); }
+.pro-logout { background: var(--off); border: 1px solid var(--border); color: var(--gray); font-family: Inter, sans-serif; font-size: .78rem; font-weight: 600; padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: all .2s; }
+.pro-logout:hover { background: var(--border); }
+
+/* PRO CHAT */
+.pro-chat-card { background: white; border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; }
+.pro-chat-header { background: var(--navy); padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
+.chat-avatar-img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--orange); overflow: hidden; object-fit: cover; flex-shrink: 0; background: var(--orange); display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: .8rem; }
+.chat-avatar-img img { width: 100%; height: 100%; object-fit: cover; }
+.pro-chat-name { font-size: .9rem; font-weight: 700; color: white; }
+.pro-chat-status { font-size: .7rem; color: rgba(255,255,255,.55); display: flex; align-items: center; gap: 5px; }
+.pro-chat-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #4ade80; display: block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.pro-badge-header { background: var(--orange); color: white; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-left: auto; }
+
+.pro-messages { min-height: 420px; max-height: 520px; overflow-y: auto; padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; background: var(--off); scroll-behavior: smooth; }
+.msg-row { display: flex; gap: 8px; align-items: flex-end; }
+.msg-row.user { flex-direction: row-reverse; }
+.msg-av { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+.msg-av.ina { background: var(--orange); color: white; }
+.msg-av.ina img { width: 100%; height: 100%; object-fit: cover; }
+.msg-av.user { background: var(--navy); color: white; }
+.msg-bubble { max-width: 78%; padding: 11px 14px; border-radius: 16px; font-size: .875rem; line-height: 1.65; white-space: pre-wrap; }
+.msg-bubble.ina { background: white; color: var(--gray); border-bottom-left-radius: 4px; border: 1px solid var(--border); }
+.msg-bubble.user { background: var(--navy); color: white; border-bottom-right-radius: 4px; }
+.typing-dots { display: flex; gap: 4px; align-items: center; padding: 6px 2px; }
+.typing-dots span { width: 7px; height: 7px; background: var(--gray-lt); border-radius: 50%; animation: bounce 1.2s infinite; }
+.typing-dots span:nth-child(2) { animation-delay: .2s; }
+.typing-dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+.pro-input-row { display: flex; gap: 10px; padding: 14px 16px; border-top: 1px solid var(--border); background: white; }
+.pro-input { flex: 1; border: 1.5px solid var(--border); border-radius: 8px; padding: 10px 14px; font-family: Inter, sans-serif; font-size: .9rem; outline: none; resize: none; transition: border-color .2s; min-height: 42px; max-height: 100px; }
+.pro-input:focus { border-color: var(--navy); }
+.pro-send { width: 42px; height: 42px; border-radius: 50%; background: var(--orange); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s; }
+.pro-send:hover { background: var(--orange-dk); }
+.pro-send:disabled { background: var(--border); cursor: not-allowed; }
+.pro-send svg { width: 16px; height: 16px; fill: white; }
+.pro-bottom { padding: 10px 16px 14px; background: white; display: flex; align-items: center; justify-content: space-between; }
+.pro-new-chat { background: none; border: 1px solid var(--border); color: var(--gray-lt); font-family: Inter, sans-serif; font-size: .75rem; padding: 6px 14px; border-radius: 6px; cursor: pointer; }
+.pro-new-chat:hover { border-color: var(--navy); color: var(--navy); }
+.pro-info { font-size: .72rem; color: var(--gray-lt); }
+
+@media(max-width: 900px) { .hero-split { grid-template-columns: 1fr; } .hero-left { padding: 40px 32px; min-height: auto; } }
+@media(max-width: 640px) { .nav-links { display: none; } .hero-right { padding: 32px 20px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><span>Academia</span>De la Pasiune la Profit</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/ina">INA Gratuit</a></li>
+    <li><a href="/manuale">Manuale</a></li>
+    <li><a href="/aplica" class="cta">Aplică</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- ═══ NOT LOGGED IN ═══ -->
+  <div id="auth-section">
+    <div class="hero-split">
+      <!-- LEFT: INFO -->
+      <div class="hero-left">
+        <div class="hero-left-inner">
+          <div style="width:72px;height:72px;border-radius:50%;border:3px solid var(--orange);overflow:hidden;margin-bottom:20px;background:var(--orange)">
+            <img src="/ina.jpg" alt="INA Pro" style="width:100%;height:100%;object-fit:cover;object-position:center top" onerror="this.style.display='none'">
+          </div>
+          <div class="hl-kicker">INA Pro · Acces nelimitat</div>
+          <h1 class="hl-title">Mentorul tău AI<br>fără limite</h1>
+          <p class="hl-desc">Loghează-te cu contul tău INA Pro pentru acces nelimitat la mentorul AI de business.</p>
+          <ul class="hl-features">
+            <li class="hl-feature">Conversații nelimitate cu INA</li>
+            <li class="hl-feature">Analiză completă a ideii tale</li>
+            <li class="hl-feature">Strategie de monetizare personalizată</li>
+            <li class="hl-feature">Plan pas cu pas pentru business</li>
+            <li class="hl-feature">Disponibil 24/7</li>
+          </ul>
+          <div class="hl-price">
+            <div class="hl-price-label">Abonament lunar</div>
+            <div class="hl-price-val">29€ <span style="font-size:1rem;font-weight:400;color:rgba(255,255,255,.5)">/ lună</span></div>
+            <div class="hl-price-note">Anulezi oricând. Fără contracte.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div class="hero-right">
+        <div class="auth-box">
+          <div class="auth-tabs">
+            <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Login</button>
+            <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Cont nou</button>
+          </div>
+
+          <!-- LOGIN -->
+          <div id="form-login">
+            <div class="auth-title">Bun venit înapoi</div>
+            <div class="auth-sub">Intră în contul tău INA Pro</div>
+            <div class="auth-error" id="login-error"></div>
+            <form class="auth-form" onsubmit="handleLogin(event)">
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="login-email" placeholder="email@exemplu.ro" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Parolă</label>
+                <input type="password" class="form-input" id="login-pass" placeholder="••••••••" required>
+              </div>
+              <button type="submit" class="auth-btn" id="login-btn">Intră în cont →</button>
+            </form>
+            <div style="margin-top:20px">
+              <div class="auth-divider" style="margin-bottom:16px">sau</div>
+              <a href="https://buy.stripe.com/aFa5kDaab3RD5g6eoH7EQ07" target="_blank" class="stripe-btn">
+                ✨ Activează INA Pro — 29€/lună
+              </a>
+            </div>
+          </div>
+
+          <!-- REGISTER -->
+          <div id="form-register" style="display:none">
+            <div class="auth-title">Creează cont</div>
+            <div class="auth-sub">Înregistrează-te și activează INA Pro</div>
+            <div class="auth-error" id="reg-error"></div>
+            <form class="auth-form" onsubmit="handleRegister(event)">
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="reg-email" placeholder="email@exemplu.ro" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Parolă</label>
+                <input type="password" class="form-input" id="reg-pass" placeholder="Minim 8 caractere" minlength="8" required>
+              </div>
+              <div style="display:flex;gap:8px;align-items:flex-start">
+                <input type="checkbox" id="reg-terms" required style="margin-top:3px;flex-shrink:0">
+                <label for="reg-terms" style="font-size:.75rem;color:var(--gray-lt)">Sunt de acord cu <a href="/termeni" style="color:var(--orange)">Termenii</a> și <a href="/gdpr" style="color:var(--orange)">GDPR</a></label>
+              </div>
+              <button type="submit" class="auth-btn" id="reg-btn">Creează contul →</button>
+            </form>
+            <div style="margin-top:20px">
+              <div class="auth-divider" style="margin-bottom:16px">după creare cont</div>
+              <a href="https://buy.stripe.com/aFa5kDaab3RD5g6eoH7EQ07" target="_blank" class="stripe-btn">
+                ✨ Activează INA Pro — 29€/lună
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ LOGGED IN - PRO CHAT ═══ -->
+  <div class="pro-page" id="pro-section">
+    <div class="pro-header">
+      <div class="pro-header-left">
+        <div class="pro-avatar" id="pro-avatar">U</div>
+        <div>
+          <div class="pro-user-name" id="pro-name">—</div>
+          <div class="pro-user-email" id="pro-email">—</div>
+        </div>
+        <div class="pro-badge" id="pro-plan-badge">Free</div>
+      </div>
+      <button class="pro-logout" onclick="handleLogout()">Deconectare</button>
+    </div>
+
+    <div id="not-pro-notice" style="display:none;background:var(--orange-lt);border:1px solid rgba(244,123,32,.3);border-radius:10px;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="font-weight:700;color:var(--navy);margin-bottom:4px">Cont fără abonament activ</div>
+        <div style="font-size:.85rem;color:var(--gray-lt)">Activează INA Pro pentru acces nelimitat.</div>
+      </div>
+      <a href="https://buy.stripe.com/aFa5kDaab3RD5g6eoH7EQ07" target="_blank" style="background:var(--orange);color:white;padding:10px 20px;border-radius:6px;font-size:.82rem;font-weight:700;text-decoration:none;white-space:nowrap">Activează Pro →</a>
+    </div>
+
+    <div class="pro-chat-card">
+      <div class="pro-chat-header">
+        <div class="chat-avatar-img">
+          <img src="/ina.jpg" alt="INA" onerror="this.style.display='none';this.parentElement.textContent='INA'">
+        </div>
+        <div>
+          <div class="pro-chat-name">INA · Mentor AI Pro</div>
+          <div class="pro-chat-status">Online acum</div>
+        </div>
+        <div class="pro-badge-header">PRO · Nelimitat</div>
+      </div>
+
+      <div class="pro-messages" id="pro-messages"></div>
+
+      <div class="pro-input-row">
+        <textarea class="pro-input" id="pro-input" rows="1"
+          placeholder="Scrie-i INA orice întrebare despre business-ul tău..."
+          onkeydown="handleProKey(event)"
+          oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px'"></textarea>
+        <button class="pro-send" id="pro-send" onclick="sendProMessage()">
+          <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+        </button>
+      </div>
+
+      <div class="pro-bottom">
+        <button class="pro-new-chat" onclick="resetProChat()">↺ Conversație nouă</button>
+        <div class="pro-info">INA Pro · Conversații nelimitate</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var SUPABASE_URL = 'https://jeqxkxzckuabgeufiogv.supabase.co';
+var SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+
+var proHistory = [];
+var proTyping = false;
+var currentUser = null;
+
+var PRO_SYSTEM = 'Ești INA Pro, mentor AI avansat pentru Academia "De la Pasiune la Profit". Utilizatorul are abonament Pro — oferă suport complet, detaliat și personalizat.\n\nMetoda 3C: Claritate → Construcție → Conversie.\nRăspunzi întotdeauna în română cu diacritice corecte.\nEști empatică, directă, practică și orientată spre rezultate reale.';
+
+// ── AUTH HELPERS ──
+function getToken() { return localStorage.getItem('ina_pro_token'); }
+function getUser()  { try { return JSON.parse(localStorage.getItem('ina_pro_user')); } catch(e) { return null; } }
+function setAuth(token, user) { localStorage.setItem('ina_pro_token', token); localStorage.setItem('ina_pro_user', JSON.stringify(user)); }
+function clearAuth() { localStorage.removeItem('ina_pro_token'); localStorage.removeItem('ina_pro_user'); }
+
+function showError(id, msg) {
+  var el = document.getElementById(id);
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function switchTab(tab) {
+  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+  document.getElementById('tab-register').classList.toggle('active', tab === 'register');
+  document.getElementById('form-login').style.display    = tab === 'login' ? 'block' : 'none';
+  document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
+}
+
+// ── LOGIN ──
+async function handleLogin(e) {
+  e.preventDefault();
+  var email = document.getElementById('login-email').value;
+  var pass  = document.getElementById('login-pass').value;
+  var btn   = document.getElementById('login-btn');
+  btn.textContent = 'Se conectează...'; btn.disabled = true;
+  document.getElementById('login-error').style.display = 'none';
+
+  try {
+    var res = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, password: pass })
+    });
+    var data = await res.json();
+    if (!res.ok) { showError('login-error', data.error_description || 'Email sau parolă incorectă'); btn.textContent = 'Intră în cont →'; btn.disabled = false; return; }
+    setAuth(data.access_token, data.user);
+    currentUser = data.user;
+    showProSection();
+  } catch(ex) {
+    showError('login-error', 'Eroare de conexiune. Încearcă din nou.');
+    btn.textContent = 'Intră în cont →'; btn.disabled = false;
+  }
+}
+
+// ── REGISTER ──
+async function handleRegister(e) {
+  e.preventDefault();
+  var email = document.getElementById('reg-email').value;
+  var pass  = document.getElementById('reg-pass').value;
+  var btn   = document.getElementById('reg-btn');
+  btn.textContent = 'Se creează...'; btn.disabled = true;
+  document.getElementById('reg-error').style.display = 'none';
+
+  try {
+    var res = await fetch(SUPABASE_URL + '/auth/v1/signup', {
+      method: 'POST',
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, password: pass })
+    });
+    var data = await res.json();
+    if (!res.ok) { showError('reg-error', data.error_description || 'Eroare la creare cont'); btn.textContent = 'Creează contul →'; btn.disabled = false; return; }
+    if (data.access_token) {
+      setAuth(data.access_token, data.user);
+      currentUser = data.user;
+      showProSection();
+    } else {
+      showError('reg-error', 'Cont creat! Verifică emailul pentru confirmare, apoi loghează-te.');
+      switchTab('login');
+      btn.textContent = 'Creează contul →'; btn.disabled = false;
+    }
+  } catch(ex) {
+    showError('reg-error', 'Eroare de conexiune.');
+    btn.textContent = 'Creează contul →'; btn.disabled = false;
+  }
+}
+
+// ── LOGOUT ──
+async function handleLogout() {
+  try {
+    await fetch(SUPABASE_URL + '/auth/v1/logout', {
+      method: 'POST', headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + getToken() }
+    });
+  } catch(e) {}
+  clearAuth();
+  currentUser = null;
+  document.getElementById('auth-section').style.display = 'block';
+  document.getElementById('pro-section').style.display  = 'none';
+  document.getElementById('login-btn').textContent = 'Intră în cont →';
+  document.getElementById('login-btn').disabled = false;
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-pass').value  = '';
+}
+
+// ── CHECK PRO STATUS ──
+async function checkIsPro(token, email) {
+  try {
+    var res = await fetch(SUPABASE_URL + '/rest/v1/ina_pro_users?email=eq.' + encodeURIComponent(email) + '&select=is_active', {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + token }
+    });
+    if (res.ok) {
+      var data = await res.json();
+      return data && data.length > 0 && data[0].is_active === true;
+    }
+  } catch(e) {}
+  return false;
+}
+
+// ── SHOW PRO SECTION ──
+async function showProSection() {
+  document.getElementById('auth-section').style.display = 'none';
+  document.getElementById('pro-section').style.display  = 'block';
+
+  var email = currentUser.email || '';
+  var initial = email.charAt(0).toUpperCase();
+  document.getElementById('pro-avatar').textContent  = initial;
+  document.getElementById('pro-name').textContent    = email.split('@')[0];
+  document.getElementById('pro-email').textContent   = email;
+
+  var isPro = await checkIsPro(getToken(), email);
+  var badge = document.getElementById('pro-plan-badge');
+  var notice = document.getElementById('not-pro-notice');
+
+  if (isPro) {
+    badge.textContent = '✨ INA Pro';
+    badge.style.background = 'rgba(15,42,68,.08)';
+    badge.style.color = 'var(--navy-mid)';
+    if (notice) notice.style.display = 'none';
+  } else {
+    badge.textContent = 'Free';
+    if (notice) notice.style.display = 'flex';
+  }
+
+  initProChat();
+}
+
+// ── PRO CHAT ──
+function addProMsg(role, text) {
+  var msgs = document.getElementById('pro-messages');
+  var row  = document.createElement('div');
+  row.className = 'msg-row ' + role;
+
+  var av = document.createElement('div');
+  av.className = 'msg-av ' + role;
+  if (role === 'ina') {
+    av.innerHTML = '<img src="/ina.jpg" alt="INA" onerror="this.style.display=\'none\';this.parentElement.textContent=\'INA\'">';
+  } else {
+    av.textContent = (currentUser && currentUser.email) ? currentUser.email.charAt(0).toUpperCase() : 'Tu';
+  }
+
+  var bubble = document.createElement('div');
+  bubble.className = 'msg-bubble ' + role;
+  bubble.textContent = text;
+
+  row.appendChild(av);
+  row.appendChild(bubble);
+  msgs.appendChild(row);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showProTyping() {
+  var msgs = document.getElementById('pro-messages');
+  var row = document.createElement('div');
+  row.id = 'pro-typing';
+  row.className = 'msg-row ina';
+  var av = document.createElement('div');
+  av.className = 'msg-av ina';
+  av.innerHTML = '<img src="/ina.jpg" alt="INA" onerror="this.style.display=\'none\';this.parentElement.textContent=\'INA\'">';
+  var bubble = document.createElement('div');
+  bubble.className = 'msg-bubble ina';
+  bubble.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+  row.appendChild(av); row.appendChild(bubble);
+  msgs.appendChild(row);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function hideProTyping() { var t = document.getElementById('pro-typing'); if (t) t.remove(); }
+
+function handleProKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendProMessage(); } }
+
+async function sendProMessage() {
+  if (proTyping) return;
+  var input = document.getElementById('pro-input');
+  var text  = input.value.trim();
+  if (!text) return;
+
+  input.value = ''; input.style.height = 'auto';
+  addProMsg('user', text);
+  proHistory.push({ role: 'user', content: text });
+
+  proTyping = true;
+  document.getElementById('pro-send').disabled = true;
+  showProTyping();
+
+  try {
+    var res = await fetch('/api/chat-free', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: proHistory.slice(-30), systemPrompt: PRO_SYSTEM })
+    });
+    hideProTyping();
+    proTyping = false;
+    document.getElementById('pro-send').disabled = false;
+
+    if (!res.ok) {
+      var err = await res.json().catch(function(){ return {}; });
+      addProMsg('ina', 'Eroare: ' + (err.error || 'Status ' + res.status));
+      return;
+    }
+    var data = await res.json();
+    var reply = data.reply || 'Nu am putut genera un răspuns.';
+    addProMsg('ina', reply);
+    proHistory.push({ role: 'assistant', content: reply });
+
+  } catch(ex) {
+    hideProTyping();
+    proTyping = false;
+    document.getElementById('pro-send').disabled = false;
+    addProMsg('ina', 'Eroare: ' + ex.message);
+  }
+}
+
+function resetProChat() {
+  proHistory = [];
+  document.getElementById('pro-messages').innerHTML = '';
+  initProChat();
+}
+
+function initProChat() {
+  proHistory = [];
+  document.getElementById('pro-messages').innerHTML = '';
+  setTimeout(function() {
+    addProMsg('ina', 'Salut! Sunt INA Pro, mentorul tău AI complet. 🚀\n\nAi acces nelimitat — spune-mi orice despre business-ul tău și construim împreună strategia potrivită pentru tine.');
+  }, 300);
+}
+
+// ── INIT ──
+(function() {
+  var token = getToken();
+  var user  = getUser();
+  if (token && user) {
+    currentUser = user;
+    showProSection();
+  }
+})();
+</script>
+
+</body>
+</html>

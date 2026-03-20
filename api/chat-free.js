@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Mesaj lipsă' });
     }
 
-    const response = await fetch('https://api.openai.com/v1/responses', {
+    const openaiRes = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -18,14 +18,19 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: 'gpt-4.1-mini',
-        input: message
+        input: `Ești INA, mentor AI pentru idei de business.
+Răspunde clar, structurat, practic.
+
+User: ${message}`
       })
     });
 
-    const data = await response.json();
+    const data = await openaiRes.json();
 
-    if (!response.ok) {
-      return res.status(response.status).json({
+    // 🔴 IMPORTANT: vezi dacă OpenAI dă eroare
+    if (!openaiRes.ok) {
+      console.error('OpenAI error:', data);
+      return res.status(500).json({
         error: 'OpenAI error',
         details: data
       });
@@ -38,7 +43,10 @@ export default async function handler(req, res) {
     return res.status(200).json({
       content: [{ text }]
     });
+
   } catch (err) {
+    console.error('Server error:', err);
+
     return res.status(500).json({
       error: 'Server error',
       details: err.message

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bibliotecă Digitală · Academia De la Pasiune la Profit</title>
+<meta name="description" content="Toate resursele Academiei într-un singur loc: materiale gratuite, manuale digitale, sesiuni 1:1 și programe de mentorat.">
+<link rel="canonical" href="https://pasiune-profit.ro/biblioteca">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0F2A44; --navy-mid: #1B4268; --navy-lt: #1e3f61;
+  --orange: #F47B20; --orange-dk: #D9660F; --orange-lt: #FEF3EA;
+  --white: #FFFFFF; --off: #FAFAF8;
+  --gray: #4A4A4A; --gray-lt: #8A8A8A;
+  --border: #E6E2D8; --border-dk: #D0CABC;
+  --green: #2e7d32; --green-lt: #e8f5e9;
+  --shadow: 0 2px 12px rgba(15,42,68,.07);
+  --shadow-md: 0 4px 24px rgba(15,42,68,.1);
+  --shadow-lg: 0 8px 48px rgba(15,42,68,.15);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--off); color: var(--gray); -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(255,255,255,.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); height: 62px; display: flex; align-items: center; padding: 0 6%; justify-content: space-between; }
+.nav-logo { display: flex; flex-direction: column; text-decoration: none; }
+.nav-logo-sub { font-size: .55rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); line-height: 1; }
+.nav-logo-main { font-family: 'Playfair Display', serif; font-size: .95rem; font-weight: 700; color: var(--navy); letter-spacing: .02em; line-height: 1.3; }
+.nav-links { display: flex; gap: 2px; align-items: center; list-style: none; }
+.nav-links a { font-size: .72rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--gray); text-decoration: none; padding: 6px 10px; border-radius: 4px; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--navy); }
+.nav-links a.nav-cta { background: var(--orange); color: white; padding: 8px 16px; }
+.nav-links a.nav-cta:hover { background: var(--orange-dk); }
+.nav-mobile-btn { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--navy); }
+@media(max-width:900px) { .nav-links { display: none; } .nav-mobile-btn { display: block; } }
+
+/* ── PAGE ── */
+.page { padding-top: 62px; }
+
+/* ── HERO ── */
+.lib-hero { background: var(--navy); background-image: radial-gradient(ellipse at 75% 40%, #1a3f60 0%, transparent 60%); color: white; padding: 72px 6% 80px; }
+.lib-hero-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: center; }
+.lib-hero-kicker { font-size: .65rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.lib-hero-kicker::before { content:''; width: 24px; height: 1px; background: var(--orange); }
+.lib-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4.5vw,3.2rem); color: white; line-height: 1.1; margin-bottom: 16px; }
+.lib-hero h1 em { font-style: italic; color: #ffd49e; }
+.lib-hero-sub { font-size: 1rem; color: rgba(255,255,255,.65); line-height: 1.78; margin-bottom: 32px; max-width: 500px; }
+.lib-hero-guide { display: flex; flex-direction: column; gap: 10px; }
+.lib-hero-guide-item { display: flex; gap: 10px; align-items: flex-start; }
+.lib-hero-guide-arrow { font-size: .75rem; color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.lib-hero-guide-text { font-size: .82rem; color: rgba(255,255,255,.65); line-height: 1.5; }
+.lib-hero-guide-text strong { color: white; }
+.lib-hero-stats { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.lib-stat { text-align: center; }
+.lib-stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--orange); font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.lib-stat-lbl { font-size: .72rem; color: rgba(255,255,255,.5); letter-spacing: .05em; }
+
+/* ── SECTION SHARED ── */
+.lib-section { padding: 72px 0; }
+.lib-section-off { background: var(--off); }
+.lib-section-white { background: white; }
+.lib-section-navy { background: var(--navy); }
+.lib-inner { max-width: 1140px; margin: 0 auto; padding: 0 6%; }
+.lib-section-head { margin-bottom: 44px; }
+.lib-section-label { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 10px; }
+.lib-section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3vw,2.2rem); color: var(--navy); margin-bottom: 10px; line-height: 1.2; }
+.lib-section-title-white { color: white; }
+.lib-section-sub { font-size: .9rem; color: var(--gray-lt); max-width: 520px; line-height: 1.7; }
+.lib-sep { height: 1px; background: var(--border); }
+
+/* ── BOOK GRID ── */
+.book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+
+/* ── BOOK CARD ── */
+.book-card { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .28s, box-shadow .28s; cursor: pointer; }
+.book-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.book-cover-wrap { position: relative; height: 200px; overflow: hidden; background: var(--navy); flex-shrink: 0; }
+.book-cover { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform .4s; }
+.book-card:hover .book-cover { transform: scale(1.04); }
+.book-cover-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--navy); }
+.book-cover-fallback-inner { text-align: center; padding: 20px; }
+.book-cover-fallback-num { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: rgba(255,255,255,.12); font-weight: 700; }
+.book-cover-fallback-title { font-family: 'Playfair Display', serif; font-size: .9rem; color: rgba(255,255,255,.7); margin-top: 6px; }
+.book-badge { position: absolute; top: 10px; left: 10px; font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
+.book-badge-free { background: var(--green-lt); color: var(--green); }
+.book-badge-paid { background: var(--orange-lt); color: var(--orange-dk); }
+.book-badge-premium { background: var(--navy); color: white; }
+.book-preview-btn { position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,.92); color: var(--navy); font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 11px; border-radius: 100px; border: none; cursor: pointer; transition: background .2s; display: flex; align-items: center; gap: 5px; }
+.book-preview-btn:hover { background: white; }
+.book-preview-btn::before { content: '👁'; font-size: .75rem; }
+.book-body { padding: 18px 16px 16px; flex: 1; display: flex; flex-direction: column; }
+.book-vol { font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 5px; }
+.book-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+.book-desc { font-size: .78rem; color: var(--gray-lt); line-height: 1.6; flex: 1; margin-bottom: 14px; }
+.book-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--navy); font-weight: 700; margin-bottom: 10px; }
+.book-price .free-tag { font-family: Inter, sans-serif; font-size: .65rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .1em; }
+.book-btn { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 10px 14px; border-radius: 6px; font-family: Inter, sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .2s, transform .15s; }
+.book-btn:hover { transform: translateY(-1px); }
+.book-btn-free { background: var(--navy); color: white; }
+.book-btn-free:hover { background: var(--navy-mid); }
+.book-btn-paid { background: var(--orange); color: white; }
+.book-btn-paid:hover { background: var(--orange-dk); }
+
+/* ── PREVIEW MODAL ── */
+.preview-overlay { position: fixed; inset: 0; z-index: 9000; background: rgba(15,23,42,.75); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .25s; }
+.preview-overlay.open { opacity: 1; pointer-events: all; }
+.preview-modal { background: white; border-radius: 16px; width: 100%; max-width: 700px; max-height: 88vh; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.3); transform: translateY(20px) scale(.97); transition: transform .25s; display: flex; flex-direction: column; }
+.preview-overlay.open .preview-modal { transform: translateY(0) scale(1); }
+.preview-modal-header { background: var(--navy); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.preview-modal-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; }
+.preview-modal-close { background: rgba(255,255,255,.15); border: none; color: white; width: 30px; height: 30px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+.preview-modal-close:hover { background: rgba(255,255,255,.25); }
+.preview-modal-body { overflow-y: auto; padding: 32px; flex: 1; }
+.preview-grid { display: grid; grid-template-columns: 160px 1fr; gap: 28px; align-items: start; margin-bottom: 28px; }
+.preview-cover { width: 100%; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-md); }
+.preview-cover img { width: 100%; display: block; }
+.preview-cover-fallback { width: 100%; aspect-ratio: 3/4; background: var(--navy); display: flex; align-items: center; justify-content: center; border-radius: 8px; }
+.preview-info-label { font-size: .62rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.preview-info-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin-bottom: 12px; }
+.preview-info-desc { font-size: .875rem; color: var(--gray); line-height: 1.75; margin-bottom: 16px; }
+.preview-contents { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.preview-content-item { display: flex; gap: 8px; font-size: .82rem; color: var(--gray); }
+.preview-content-item::before { content: '→'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+.preview-modal-footer { padding: 20px 32px 24px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: var(--off); flex-shrink: 0; }
+.preview-price { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); font-weight: 700; }
+.preview-price .free-tag { font-family: Inter, sans-serif; font-size: .72rem; font-weight: 700; color: var(--green); text-transform: uppercase; }
+
+/* ── DOWNLOAD MODAL ── */
+.dl-overlay { position: fixed; inset: 0; z-index: 9100; background: rgba(15,23,42,.7); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .25s; }
+.dl-overlay.open { opacity: 1; pointer-events: all; }
+.dl-modal { background: white; border-radius: 16px; width: 100%; max-width: 420px; box-shadow: 0 24px 80px rgba(0,0,0,.2); transform: translateY(16px) scale(.98); transition: transform .25s; overflow: hidden; }
+.dl-overlay.open .dl-modal { transform: translateY(0) scale(1); }
+.dl-modal-header { background: var(--navy); padding: 22px 26px; position: relative; }
+.dl-modal-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; margin-bottom: 3px; }
+.dl-modal-sub { font-size: .8rem; color: rgba(255,255,255,.6); }
+.dl-modal-close { position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,.15); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; font-size: .9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.dl-modal-body { padding: 24px 26px; }
+.dl-form { display: flex; flex-direction: column; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-label { font-size: .72rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .06em; }
+.form-input { padding: 10px 13px; border: 1.5px solid var(--border); border-radius: 8px; font-family: Inter, sans-serif; font-size: .88rem; outline: none; transition: border-color .2s; }
+.form-input:focus { border-color: var(--navy); }
+.dl-success { display: none; text-align: center; padding: 24px 0; }
+.dl-success-icon { font-size: 2.2rem; margin-bottom: 10px; }
+.dl-success-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; }
+.dl-success-desc { font-size: .8rem; color: var(--gray-lt); margin-bottom: 18px; }
+
+/* ── SESSIONS GRID ── */
+.sessions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.session-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 32px 28px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.session-card.featured { border-color: var(--orange); box-shadow: 0 0 0 2px var(--orange), var(--shadow-lg); }
+.session-icon { font-size: 2rem; margin-bottom: 16px; }
+.session-label { font-size: .62rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.session-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--navy); margin-bottom: 10px; }
+.session-desc { font-size: .875rem; color: var(--gray-lt); line-height: 1.75; flex: 1; margin-bottom: 20px; }
+.session-includes { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 24px; }
+.session-include { display: flex; gap: 8px; font-size: .8rem; color: var(--gray); }
+.session-include::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+.session-price { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); font-weight: 700; margin-bottom: 16px; }
+.session-price small { font-family: Inter, sans-serif; font-size: .75rem; font-weight: 400; color: var(--gray-lt); }
+.session-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 13px; border-radius: 6px; font-family: Inter, sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background .2s; }
+.session-btn-primary { background: var(--orange); color: white; }
+.session-btn-primary:hover { background: var(--orange-dk); }
+.session-btn-navy { background: var(--navy); color: white; }
+.session-btn-navy:hover { background: var(--navy-mid); }
+
+/* ── GUIDE ── */
+.guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.guide-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 28px 22px; box-shadow: var(--shadow); }
+.guide-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--orange); opacity: .3; font-weight: 700; line-height: 1; margin-bottom: 12px; }
+.guide-label { font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gray-lt); margin-bottom: 6px; }
+.guide-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 8px; }
+.guide-desc { font-size: .82rem; color: var(--gray-lt); line-height: 1.6; margin-bottom: 16px; }
+.guide-link { font-size: .75rem; font-weight: 700; color: var(--orange); text-decoration: none; display: flex; align-items: center; gap: 5px; }
+.guide-link:hover { color: var(--orange-dk); }
+
+/* ── FINAL CTA ── */
+.final-cta { background: linear-gradient(155deg, var(--navy) 0%, #1a3f60 100%); padding: 80px 6%; text-align: center; }
+.final-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: white; margin-bottom: 12px; }
+.final-cta p { font-size: .95rem; color: rgba(255,255,255,.65); max-width: 480px; margin: 0 auto 32px; line-height: 1.75; }
+.final-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ── BUTTONS ── */
+.btn-orange { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: white; padding: 14px 28px; border-radius: 4px; font-family: Inter, sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; transition: background .2s, transform .15s; border: none; cursor: pointer; }
+.btn-orange:hover { background: var(--orange-dk); transform: translateY(-1px); }
+.btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: white; padding: 14px 28px; border-radius: 4px; font-family: Inter, sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,.3); transition: border-color .2s; }
+.btn-ghost:hover { border-color: white; }
+.btn-full { width: 100%; justify-content: center; }
+.btn-navy { background: var(--navy); color: white; }
+.btn-navy:hover { background: var(--navy-mid); }
+
+@media(max-width:1024px) {
+  .lib-hero-inner { grid-template-columns: 1fr; }
+  .lib-hero-stats { display: none; }
+  .sessions-grid { grid-template-columns: 1fr; }
+  .guide-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:640px) {
+  .book-grid { grid-template-columns: repeat(2, 1fr); }
+  .preview-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:400px) {
+  .book-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#091d30;color:rgba(255,255,255,.85);padding:14px 6%;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:2px solid var(--orange)">
+  <p style="font-size:.8rem;line-height:1.6;margin:0;flex:1;min-width:240px">🍪 Folosim cookie-uri pentru a îmbunătăți experiența. <a href="/termeni" style="color:var(--orange)">Politica de cookies</a>.</p>
+  <div style="display:flex;gap:10px">
+    <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookies','1')" style="background:var(--orange);color:white;border:none;padding:8px 18px;border-radius:4px;font-family:Inter,sans-serif;font-size:.75rem;font-weight:700;cursor:pointer">Accept</button>
+    <button onclick="document.getElementById('cookie-banner').style.display='none'" style="background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.2);padding:8px 18px;border-radius:4px;font-family:Inter,sans-serif;font-size:.75rem;font-weight:700;cursor:pointer">Refuz</button>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-sub">Academia</span>
+    <span class="nav-logo-main">De la Pasiune la Profit</span>
+  </a>
+  <button class="nav-mobile-btn" onclick="var nl=document.getElementById('nav-links');nl.style.display=nl.style.display==='flex'?'none':'flex'">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/academia">Academia</a></li>
+    <li><a href="/metoda-3c">Metoda 3C</a></li>
+    <li><a href="/biblioteca" class="active">Bibliotecă</a></li>
+    <li><a href="/ina">INA</a></li>
+    <li><a href="/mentorat">Mentorat</a></li>
+    <li><a href="/aplica" class="nav-cta">Aplică</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+<!-- ══ HERO ══ -->
+<section class="lib-hero">
+  <div class="lib-hero-inner">
+    <div>
+      <div class="lib-hero-kicker">Bibliotecă Digitală</div>
+      <h1>Transformă ideile<br>în <em>rezultate reale.</em></h1>
+      <p class="lib-hero-sub">Toate resursele Academiei într-un singur loc. De la materiale gratuite până la programe de mentorat, alege nivelul de suport de care ai nevoie acum.</p>
+      <div class="lib-hero-guide">
+        <div class="lib-hero-guide-item">
+          <span class="lib-hero-guide-arrow">→</span>
+          <span class="lib-hero-guide-text"><strong>Ești la început?</strong> Descarcă gratuitele și testează cu INA.</span>
+        </div>
+        <div class="lib-hero-guide-item">
+          <span class="lib-hero-guide-arrow">→</span>
+          <span class="lib-hero-guide-text"><strong>Vrei structură?</strong> Manualele 3C te ghidează pas cu pas.</span>
+        </div>
+        <div class="lib-hero-guide-item">
+          <span class="lib-hero-guide-arrow">→</span>
+          <span class="lib-hero-guide-text"><strong>Vrei rezultate rapide?</strong> Sesiunile 1:1 sau mentoratul.</span>
+        </div>
+      </div>
+    </div>
+    <div class="lib-hero-stats">
+      <div class="lib-stat"><div class="lib-stat-num">2</div><div class="lib-stat-lbl">Resurse gratuite</div></div>
+      <div class="lib-stat"><div class="lib-stat-num">3</div><div class="lib-stat-lbl">Manuale digitale</div></div>
+      <div class="lib-stat"><div class="lib-stat-num">1:1</div><div class="lib-stat-lbl">Sesiuni individuale</div></div>
+      <div class="lib-stat"><div class="lib-stat-num">90</div><div class="lib-stat-lbl">Zile mentorat</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="lib-sep"></div>
+
+<!-- ══ GRATUITE ══ -->
+<section class="lib-section lib-section-off" id="gratuite">
+  <div class="lib-inner">
+    <div class="lib-section-head">
+      <span class="lib-section-label">✓ Gratuit · Începe de aici</span>
+      <h2 class="lib-section-title">Materiale gratuite</h2>
+      <p class="lib-section-sub">Două resurse practice pe care le poți descărca imediat, fără niciun cost. Testează claritatea ideii tale înainte să investești.</p>
+    </div>
+    <div class="book-grid">
+
+      <!-- CHECKLIST -->
+      <div class="book-card">
+        <div class="book-cover-wrap">
+          <div class="book-cover-fallback">
+            <div class="book-cover-fallback-inner">
+              <div style="font-size:2.5rem">📋</div>
+              <div class="book-cover-fallback-title">Checklistul<br>Monetizării</div>
+            </div>
+          </div>
+          <span class="book-badge book-badge-free">Gratuit</span>
+          <button class="book-preview-btn" onclick="openPreview('checklist')">Răsfoiește</button>
+        </div>
+        <div class="book-body">
+          <div class="book-vol">Resursă gratuită</div>
+          <div class="book-title">Checklistul Monetizării</div>
+          <p class="book-desc">Verifică dacă ideea ta de business are potențial real de monetizare înainte să investești timp și bani.</p>
+          <div class="book-price"><span class="free-tag">Gratuit</span></div>
+          <button class="book-btn book-btn-free" onclick="openDownload('checklist-monetizare.pdf', 'Checklistul Monetizării')">↓ Descarcă gratuit</button>
+        </div>
+      </div>
+
+      <!-- GHID 3 INTREBARI -->
+      <div class="book-card">
+        <div class="book-cover-wrap">
+          <div class="book-cover-fallback">
+            <div class="book-cover-fallback-inner">
+              <div style="font-size:2.5rem">💡</div>
+              <div class="book-cover-fallback-title">Ghid<br>Primele 3 Întrebări</div>
+            </div>
+          </div>
+          <span class="book-badge book-badge-free">Gratuit</span>
+          <button class="book-preview-btn" onclick="openPreview('ghid3')">Răsfoiește</button>
+        </div>
+        <div class="book-body">
+          <div class="book-vol">Resursă gratuită</div>
+          <div class="book-title">Ghid — Primele 3 Întrebări</div>
+          <p class="book-desc">Cele 3 întrebări fundamentale pe care orice antreprenor trebuie să și le pună înainte să construiască orice altceva.</p>
+          <div class="book-price"><span class="free-tag">Gratuit</span></div>
+          <button class="book-btn book-btn-free" onclick="openDownload('ghid-primele-3-intrebari.pdf', 'Ghid — Primele 3 Întrebări')">↓ Descarcă gratuit</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="lib-sep"></div>
+
+<!-- ══ MANUALE ══ -->
+<section class="lib-section lib-section-white" id="manuale">
+  <div class="lib-inner">
+    <div class="lib-section-head">
+      <span class="lib-section-label">Manuale digitale · Metoda 3C</span>
+      <h2 class="lib-section-title">Seria educațională 3C</h2>
+      <p class="lib-section-sub">Trei volume care acoperă complet drumul de la claritatea ofertei până la un sistem de vânzare stabil și predictibil.</p>
+    </div>
+    <div class="book-grid">
+
+      <!-- VOL 1 -->
+      <div class="book-card">
+        <div class="book-cover-wrap">
+          <img class="book-cover" src="/manuale/coperta-vol1.jpg" alt="De la Idee la Ofertă Clară"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="book-cover-fallback" style="display:none">
+            <div class="book-cover-fallback-inner">
+              <div class="book-cover-fallback-num">1</div>
+              <div class="book-cover-fallback-title">De la Idee la Ofertă Clară</div>
+            </div>
+          </div>
+          <span class="book-badge book-badge-paid">33 lei</span>
+          <button class="book-preview-btn" onclick="openPreview('vol1')">Răsfoiește</button>
+        </div>
+        <div class="book-body">
+          <div class="book-vol">Volumul 1 · Claritate</div>
+          <div class="book-title">De la Idee la Ofertă Clară</div>
+          <p class="book-desc">Definești publicul ideal, construiești propunerea de valoare și validezi ideea înainte să investești.</p>
+          <div class="book-price">33 lei</div>
+          <a href="https://buy.stripe.com/dRm8wP1DFfAlcIy2FZ7EQ01" target="_blank" rel="noopener" class="book-btn book-btn-paid"
+             onclick="gtag&&gtag('event','purchase_intent',{item:'Vol1'})">Cumpără acum →</a>
+        </div>
+      </div>
+
+      <!-- VOL 2 -->
+      <div class="book-card">
+        <div class="book-cover-wrap">
+          <img class="book-cover" src="/manuale/coperta-vol2.jpg" alt="Construirea Sistemului"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="book-cover-fallback" style="display:none">
+            <div class="book-cover-fallback-inner">
+              <div class="book-cover-fallback-num">2</div>
+              <div class="book-cover-fallback-title">Construirea Sistemului</div>
+            </div>
+          </div>
+          <span class="book-badge book-badge-paid">77 lei</span>
+          <button class="book-preview-btn" onclick="openPreview('vol2')">Răsfoiește</button>
+        </div>
+        <div class="book-body">
+          <div class="book-vol">Volumul 2 · Construcție</div>
+          <div class="book-title">Construirea Sistemului</div>
+          <p class="book-desc">Construiești oferta, site-ul și sistemele care susțin vânzările fără haos și fără să depinzi de inspirație.</p>
+          <div class="book-price">77 lei</div>
+          <a href="https://buy.stripe.com/3cIdR91DFdsd8si94n7EQ02" target="_blank" rel="noopener" class="book-btn book-btn-paid"
+             onclick="gtag&&gtag('event','purchase_intent',{item:'Vol2'})">Cumpără acum →</a>
+        </div>
+      </div>
+
+      <!-- VOL 3 -->
+      <div class="book-card">
+        <div class="book-cover-wrap">
+          <img class="book-cover" src="/manuale/coperta-vol3.jpg" alt="Conversie"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="book-cover-fallback" style="display:none">
+            <div class="book-cover-fallback-inner">
+              <div class="book-cover-fallback-num">3</div>
+              <div class="book-cover-fallback-title">Conversie</div>
+            </div>
+          </div>
+          <span class="book-badge book-badge-paid">97 lei</span>
+          <button class="book-preview-btn" onclick="openPreview('vol3')">Răsfoiește</button>
+        </div>
+        <div class="book-body">
+          <div class="book-vol">Volumul 3 · Conversie</div>
+          <div class="book-title">Conversie</div>
+          <p class="book-desc">Construiești un sistem de vânzare repetabil care funcționează consistent și aduce venit previzibil.</p>
+          <div class="book-price">97 lei</div>
+          <a href="https://buy.stripe.com/dRm6oH1DFfAlbEu94n7EQ03" target="_blank" rel="noopener" class="book-btn book-btn-paid"
+             onclick="gtag&&gtag('event','purchase_intent',{item:'Vol3'})">Cumpără acum →</a>
+        </div>
+      </div>
+
+      <!-- TRILOGIE -->
+      <div class="book-card" style="border-color:var(--orange);box-shadow:0 0 0 2px var(--orange),var(--shadow-lg)">
+        <div class="book-cover-wrap" style="height:200px;background:var(--navy)">
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;gap:6px;padding:16px">
+            <img src="/manuale/coperta-vol1.jpg" style="width:30%;border-radius:4px;box-shadow:2px 2px 8px rgba(0,0,0,.4)" onerror="this.style.display='none'">
+            <img src="/manuale/coperta-vol2.jpg" style="width:30%;border-radius:4px;box-shadow:2px 2px 8px rgba(0,0,0,.4);margin-top:-12px" onerror="this.style.display='none'">
+            <img src="/manuale/coperta-vol3.jpg" style="width:30%;border-radius:4px;box-shadow:2px 2px 8px rgba(0,0,0,.4)" onerror="this.style.display='none'">
+          </div>
+          <span class="book-badge book-badge-premium" style="background:var(--orange)">Economie 30 lei</span>
+          <button class="book-preview-btn" onclick="openPreview('trilogie')">Răsfoiește</button>
+        </div>
+        <div class="book-body">
+          <div class="book-vol">Pachet complet · Toate 3 volumele</div>
+          <div class="book-title">Trilogia 3C</div>
+          <p class="book-desc">Toate cele 3 volume, acces la comunitate și actualizări gratuite pe viață. Cel mai complet pachet.</p>
+          <div class="book-price">177 lei <span style="font-size:.72rem;color:var(--gray-lt);font-family:Inter,sans-serif;font-weight:400">față de 207 lei separat</span></div>
+          <a href="https://buy.stripe.com/4gM9AT967fAldMC1BV7EQ04" target="_blank" rel="noopener" class="book-btn book-btn-paid"
+             onclick="gtag&&gtag('event','purchase_intent',{item:'Trilogie'})">Cumpără Trilogia →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="lib-sep"></div>
+
+<!-- ══ SESIUNI & MENTORAT ══ -->
+<section class="lib-section lib-section-off" id="sesiuni">
+  <div class="lib-inner">
+    <div class="lib-section-head">
+      <span class="lib-section-label">Suport personalizat · Premium</span>
+      <h2 class="lib-section-title">Sesiuni & Programe</h2>
+      <p class="lib-section-sub">Când ai nevoie de mai mult decât o resursă — ai nevoie de însoțire reală, cu feedback direct pe situația ta specifică.</p>
+    </div>
+    <div class="sessions-grid">
+
+      <!-- SEDINTA 1:1 -->
+      <div class="session-card">
+        <div class="session-icon">🎯</div>
+        <div class="session-label">Sesiune individuală</div>
+        <div class="session-title">Sesiune 1:1 de Claritate</div>
+        <p class="session-desc">O întâlnire individuală concentrată pe situația ta specifică. Pleci cu claritate despre ce urmează și un plan concret de acțiune.</p>
+        <ul class="session-includes">
+          <li class="session-include">60 minute de sesiune individuală</li>
+          <li class="session-include">Clarificarea ideii sau ofertei tale</li>
+          <li class="session-include">Plan de acțiune pentru pasul următor</li>
+          <li class="session-include">Înregistrare sesiune inclusă</li>
+        </ul>
+        <div class="session-price">111 lei <small>/ sesiune</small></div>
+        <a href="https://buy.stripe.com/7sY00jbef87T0ZQbcv7EQ00" target="_blank" rel="noopener" class="session-btn session-btn-primary"
+           onclick="gtag&&gtag('event','purchase_intent',{item:'Sedinta1:1'})">Rezervă sesiunea →</a>
+      </div>
+
+      <!-- MENTORAT -->
+      <div class="session-card featured">
+        <div class="session-icon">🚀</div>
+        <div class="session-label">Program intensiv · 90 zile</div>
+        <div class="session-title">Mentoratul 3C</div>
+        <p class="session-desc">Programul complet de implementare în grup restrâns (max. 5 persoane). 90 de zile de construcție reală cu Diana și Georgiana alături.</p>
+        <ul class="session-includes">
+          <li class="session-include">Sesiuni săptămânale de grup (12 sesiuni)</li>
+          <li class="session-include">4 sesiuni individuale 1:1</li>
+          <li class="session-include">Acces complet Trilogia 3C</li>
+          <li class="session-include">Mentor AI INA inclus</li>
+          <li class="session-include">Comunitate privată + suport constant</li>
+        </ul>
+        <div class="session-price">3.460 lei <small>sau 3 rate × 1.154 lei</small></div>
+        <a href="/aplica" class="session-btn session-btn-navy">Aplică pentru mentorat →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="lib-sep"></div>
+
+<!-- ══ GHID UTILIZATOR ══ -->
+<section class="lib-section lib-section-white">
+  <div class="lib-inner">
+    <div class="lib-section-head" style="text-align:center;max-width:560px;margin:0 auto 44px">
+      <span class="lib-section-label">Ghid de navigare</span>
+      <h2 class="lib-section-title">Unde ești acum?</h2>
+      <p class="lib-section-sub">Alege punctul de intrare potrivit etapei tale actuale.</p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <div class="guide-num">01</div>
+        <div class="guide-label">Dacă ești la început</div>
+        <div class="guide-title">Descarcă gratuitele</div>
+        <p class="guide-desc">Testează claritatea ideii tale cu Checklistul Monetizării și Ghidul celor 3 întrebări. Fără niciun cost.</p>
+        <a href="#gratuite" class="guide-link">Mergi la resurse gratuite →</a>
+      </div>
+      <div class="guide-card">
+        <div class="guide-num">02</div>
+        <div class="guide-label">Dacă vrei structură</div>
+        <div class="guide-title">Alege manualele 3C</div>
+        <p class="guide-desc">Urmează Metoda 3C pas cu pas: Claritate, Construcție, Conversie. Fiecare manual e un pas concret înainte.</p>
+        <a href="#manuale" class="guide-link">Mergi la manuale →</a>
+      </div>
+      <div class="guide-card">
+        <div class="guide-num">03</div>
+        <div class="guide-label">Dacă vrei rezultate rapid</div>
+        <div class="guide-title">Sesiuni sau mentorat</div>
+        <p class="guide-desc">O sesiune 1:1 pentru claritate imediată sau mentoratul complet pentru transformare în 90 de zile.</p>
+        <a href="#sesiuni" class="guide-link">Mergi la sesiuni →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="final-cta">
+  <div style="max-width:620px;margin:0 auto">
+    <h2>Nu știi de unde să începi?</h2>
+    <p>Testează INA gratuit — mentorul AI care analizează ideea ta și îți arată primul pas concret. Fără cont, fără plată.</p>
+    <div class="final-cta-btns">
+      <a href="/ina" class="btn-orange">Testează INA gratuit →</a>
+      <a href="/aplica" class="btn-ghost">Aplică la Academie</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ══ PREVIEW MODAL ══ -->
+<div class="preview-overlay" id="preview-overlay" onclick="if(event.target===this)closePreview()">
+  <div class="preview-modal">
+    <div class="preview-modal-header">
+      <div class="preview-modal-title" id="preview-title">Preview</div>
+      <button class="preview-modal-close" onclick="closePreview()">✕</button>
+    </div>
+    <div class="preview-modal-body" id="preview-body"></div>
+    <div class="preview-modal-footer">
+      <div class="preview-price" id="preview-price"></div>
+      <div id="preview-cta-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DOWNLOAD MODAL ══ -->
+<div class="dl-overlay" id="dl-overlay" onclick="if(event.target===this)closeDl()">
+  <div class="dl-modal">
+    <div class="dl-modal-header">
+      <div class="dl-modal-title" id="dl-title">Descarcă resursa</div>
+      <div class="dl-modal-sub">Lasă emailul pentru acces imediat</div>
+      <button class="dl-modal-close" onclick="closeDl()">✕</button>
+    </div>
+    <div class="dl-modal-body">
+      <div id="dl-form-wrap">
+        <form class="dl-form" onsubmit="handleDownload(event)">
+          <div class="form-group">
+            <label class="form-label">Prenume</label>
+            <input type="text" class="form-input" id="dl-name" placeholder="Maria" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" id="dl-email" placeholder="email@exemplu.ro" required>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <input type="checkbox" id="dl-consent" required style="margin-top:3px;flex-shrink:0">
+            <label for="dl-consent" style="font-size:.73rem;color:var(--gray-lt)">Sunt de acord să primesc resurse și noutăți de la Academia De la Pasiune la Profit.</label>
+          </div>
+          <button type="submit" class="btn-orange btn-full" id="dl-btn">Descarcă acum →</button>
+          <p style="font-size:.7rem;color:var(--gray-lt);text-align:center">Nu trimitem spam. Respectăm GDPR.</p>
+        </form>
+      </div>
+      <div class="dl-success" id="dl-success">
+        <div class="dl-success-icon">🎉</div>
+        <h3 class="dl-success-title">Descărcarea începe!</h3>
+        <p class="dl-success-desc">Dacă nu pornește automat, apasă butonul de mai jos.</p>
+        <a id="dl-direct-link" href="#" class="btn-orange btn-full" style="margin-bottom:10px;display:flex;align-items:center;justify-content:center">↓ Descarcă PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── PREVIEW DATA ──────────────────────────────────────────
+var PREVIEWS = {
+  checklist: {
+    title: 'Checklistul Monetizării',
+    label: 'Resursă gratuită',
+    cover: null,
+    icon: '📋',
+    desc: 'O listă completă de verificare care te ajută să evaluezi potențialul real al ideii tale de business înainte să investești timp și bani. Răspunzi la întrebările cheie și afli rapid dacă merită să continui.',
+    contents: ['Lista completă de verificare a viabilității', 'Întrebările cheie despre piața ta', 'Criterii clare de validare a ideii', 'Format PDF aplicabil imediat'],
+    price: '<span class="free-tag">GRATUIT</span>',
+    cta: '<button class="btn-orange" onclick="closePrev();openDownload(\'checklist-monetizare.pdf\',\'Checklistul Monetizării\')">↓ Descarcă gratuit</button>',
+    vol: 'PDF · Descărcare gratuită'
+  },
+  ghid3: {
+    title: 'Ghid — Primele 3 Întrebări',
+    label: 'Resursă gratuită',
+    cover: null,
+    icon: '💡',
+    desc: 'Cele 3 întrebări fundamentale pe care orice antreprenor trebuie să și le pună înainte să construiască orice altceva. Cu explicații detaliate și exerciții practice.',
+    contents: ['Cele 3 întrebări fundamentale de claritate', 'Explicații și exemple concrete', 'Exerciții de aplicat imediat', 'Citești în 15 minute'],
+    price: '<span class="free-tag">GRATUIT</span>',
+    cta: '<button class="btn-orange" onclick="closePrev();openDownload(\'ghid-primele-3-intrebari.pdf\',\'Ghid Primele 3 Întrebări\')">↓ Descarcă gratuit</button>',
+    vol: 'PDF · Descărcare gratuită'
+  },
+  vol1: {
+    title: 'De la Idee la Ofertă Clară',
+    label: 'Volumul 1 · Claritate',
+    cover: '/manuale/coperta-vol1.jpg',
+    desc: 'Primul pas din Metoda 3C. Înveți să îți clarifici ideea de business, să îți definești publicul ideal și să construiești o propunere de valoare autentică și diferențiatoare.',
+    contents: ['Cum îți clarifici ideea de business', 'Definirea publicului ideal cu avatar detaliat', 'Propunerea unică de valoare', 'Poziționarea pe piață', 'Validarea ideii înainte să investești'],
+    price: '33 lei',
+    cta: '<a href="https://buy.stripe.com/dRm8wP1DFfAlcIy2FZ7EQ01" target="_blank" class="btn-orange">Cumpără acum — 33 lei →</a>',
+    vol: 'Manual digital · PDF'
+  },
+  vol2: {
+    title: 'Construirea Sistemului',
+    label: 'Volumul 2 · Construcție',
+    cover: '/manuale/coperta-vol2.jpg',
+    desc: 'Al doilea pas din Metoda 3C. Construiești oferta, site-ul, conținutul și procesele care susțin vânzările fără haos și fără să depinzi de inspirație.',
+    contents: ['Structura ofertei irezistibile', 'Site-ul care convertește', 'Sistemul de conținut care atrage clienți', 'Procesele care susțin business-ul', 'Instrumentele și tool-urile recomandate'],
+    price: '77 lei',
+    cta: '<a href="https://buy.stripe.com/3cIdR91DFdsd8si94n7EQ02" target="_blank" class="btn-orange">Cumpără acum — 77 lei →</a>',
+    vol: 'Manual digital · PDF'
+  },
+  vol3: {
+    title: 'Conversie',
+    label: 'Volumul 3 · Conversie',
+    cover: '/manuale/coperta-vol3.jpg',
+    desc: 'Al treilea pas din Metoda 3C. Construiești un model de vânzare repetabil care funcționează consistent și îți aduce venit previzibil.',
+    contents: ['Strategia de atragere clienți potriviți', 'Procesul de vânzare natural și eficient', 'Mesajul de vânzare clar', 'Optimizarea și scalarea', 'Sistem de venituri recurente'],
+    price: '97 lei',
+    cta: '<a href="https://buy.stripe.com/dRm6oH1DFfAlbEu94n7EQ03" target="_blank" class="btn-orange">Cumpără acum — 97 lei →</a>',
+    vol: 'Manual digital · PDF'
+  },
+  trilogie: {
+    title: 'Trilogia 3C — Ediție Completă',
+    label: 'Pachet complet · Toate 3 volumele',
+    cover: null,
+    icon: '📚',
+    desc: 'Toate cele 3 volume ale Metodei 3C într-un singur pachet cu economie de 30 lei față de cumpărarea separată. Plus acces la comunitate și actualizări gratuite.',
+    contents: ['Vol. 1 De la Idee la Ofertă Clară', 'Vol. 2 Construirea Sistemului', 'Vol. 3 Conversie', 'Acces comunitate privată', 'Actualizări gratuite pe viață'],
+    price: '177 lei <span style="font-size:.75rem;color:var(--gray-lt);font-family:Inter,sans-serif;font-weight:400">față de 207 lei separat</span>',
+    cta: '<a href="https://buy.stripe.com/4gM9AT967fAldMC1BV7EQ04" target="_blank" class="btn-orange">Cumpără Trilogia — 177 lei →</a>',
+    vol: 'Pachet digital · 3 volume PDF'
+  }
+};
+
+// ── PREVIEW ──────────────────────────────────────────────
+function openPreview(id) {
+  var p = PREVIEWS[id];
+  if (!p) return;
+  document.getElementById('preview-title').textContent = p.title;
+  document.getElementById('preview-price').innerHTML = p.price;
+  document.getElementById('preview-cta-wrap').innerHTML = p.cta;
+
+  var coverHtml = p.cover
+    ? '<div class="preview-cover"><img src="' + p.cover + '" alt="' + p.title + '" onerror="this.parentElement.innerHTML=\'<div class=preview-cover-fallback><div style=font-size:3rem>' + (p.icon || '📖') + '</div></div>\'"></div>'
+    : '<div class="preview-cover"><div class="preview-cover-fallback"><div style="font-size:3rem">' + (p.icon || '📖') + '</div></div></div>';
+
+  var contentsHtml = p.contents.map(function(c) {
+    return '<li class="preview-content-item">' + c + '</li>';
+  }).join('');
+
+  document.getElementById('preview-body').innerHTML =
+    '<div class="preview-grid">' +
+      coverHtml +
+      '<div>' +
+        '<div class="preview-info-label">' + p.label + '</div>' +
+        '<div class="preview-info-title">' + p.title + '</div>' +
+        '<p class="preview-info-desc">' + p.desc + '</p>' +
+        '<ul class="preview-contents">' + contentsHtml + '</ul>' +
+      '</div>' +
+    '</div>' +
+    '<p style="font-size:.75rem;color:var(--gray-lt);font-style:italic">' + (p.vol || '') + '</p>';
+
+  document.getElementById('preview-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePreview() {
+  document.getElementById('preview-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closePrev() { closePreview(); }
+
+// ── DOWNLOAD ─────────────────────────────────────────────
+var currentFile = '';
+
+function openDownload(file, title) {
+  currentFile = file;
+  document.getElementById('dl-title').textContent = title;
+  document.getElementById('dl-form-wrap').style.display = 'block';
+  document.getElementById('dl-success').style.display  = 'none';
+  document.getElementById('dl-btn').textContent = 'Descarcă acum →';
+  document.getElementById('dl-btn').disabled = false;
+  document.getElementById('dl-name').value  = '';
+  document.getElementById('dl-email').value = '';
+  document.getElementById('dl-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDl() {
+  document.getElementById('dl-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+async function handleDownload(e) {
+  e.preventDefault();
+  var name  = document.getElementById('dl-name').value;
+  var email = document.getElementById('dl-email').value;
+  var btn   = document.getElementById('dl-btn');
+  btn.textContent = 'Se procesează...'; btn.disabled = true;
+
+  try {
+    await fetch('https://formspree.io/f/xqeykylv', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, resource: currentFile, _subject: 'Descărcare: ' + currentFile })
+    });
+  } catch(ex) {}
+
+  gtag && gtag('event', 'download', { file: currentFile });
+  fbq  && fbq('track', 'Lead', { content_name: currentFile });
+
+  document.getElementById('dl-form-wrap').style.display = 'none';
+  document.getElementById('dl-success').style.display   = 'block';
+  var link = document.getElementById('dl-direct-link');
+  link.href = '/' + currentFile;
+  link.setAttribute('download', currentFile);
+  var a = document.createElement('a');
+  a.href = '/' + currentFile; a.download = currentFile;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+// ── INIT ─────────────────────────────────────────────────
+if (!localStorage.getItem('cookies')) {
+  document.getElementById('cookie-banner').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>

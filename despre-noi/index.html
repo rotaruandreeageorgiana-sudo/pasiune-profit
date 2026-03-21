@@ -202,7 +202,7 @@
             <span class="founder-tag">Strategie vânzare</span>
             <span class="founder-tag">Leadership</span>
             <span class="founder-tag">Business development</span>
-            <span class="founder-tag">Drept comercial</span>
+            <span class="founder-tag">Sisteme digitale</span>
           </div>
         </div>
       </div>
@@ -304,8 +304,8 @@
     <h2>Dacă ești pregătit să treci de la idee la sistem, suntem aici.</h2>
     <p>Nu pentru oricine. Doar pentru cei care vor să construiască ceva real, cu claritate, structură și acțiune susținută. Dacă asta ești tu, pasul următor este simplu.</p>
     <div class="about-cta-btns">
-      <a href="/aplica" class="btn btn-orange">Aplică la Academie →</a>
-      <a href="/contact" class="btn btn-outline">Hai să ne cunoaștem</a>
+      <a href="https://formspree.io/f/xvzwpdbv" target="_blank" rel="noopener" class="btn btn-orange">Aplică la Academie →</a>
+      <a href="https://formspree.io/f/xqeyznpn" target="_blank" rel="noopener" class="btn btn-outline">Hai să ne cunoaștem</a>
     </div>
   </div>
 </section>
@@ -379,7 +379,7 @@ function handleNewsletter(e) {
   e.preventDefault();
   var email = document.getElementById('nl-email').value;
   // Connect to your email provider (Mailchimp, ConvertKit etc.)
-  fetch('https://formspree.io/f/YOUR_NEWSLETTER_FORM_ID', {
+  fetch('https://formspree.io/f/xqeykylv', {
     method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
     body: JSON.stringify({email: email, _subject: 'Newsletter signup'})
   }).catch(function(){});

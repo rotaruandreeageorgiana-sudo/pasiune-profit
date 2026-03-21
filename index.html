@@ -202,15 +202,15 @@
 /* ── FONDATORI ── */
 .fondatori { background: #FAFAF7; padding: 88px 0; }
 .fondatori-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
-.fondator-card { background: white; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
-.fondator-photo-wrap { width: 100%; height: 260px; overflow: hidden; background: var(--off); display: flex; align-items: center; justify-content: center; }
-.fondator-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-.fondator-photo-initials { font-family: 'Playfair Display',serif; font-size: 3rem; font-weight: 700; color: var(--navy); opacity: 0.2; }
-.fondator-body { padding: 28px 28px 32px; }
+.fondator-card { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 32px 28px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.fondator-photo-wrap { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid var(--orange); margin-bottom: 20px; flex-shrink: 0; background: var(--off); display: flex; align-items: center; justify-content: center; }
+.fondator-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fondator-photo-initials { font-family: 'Playfair Display',serif; font-size: 2.4rem; font-weight: 700; color: var(--navy); opacity: 0.3; }
+.fondator-body { display: flex; flex-direction: column; align-items: center; }
 .fondator-avatar { display: none; }
 .fondator-name { font-family: 'Playfair Display',serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 4px; font-weight: 700; }
 .fondator-role { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; line-height: 1.5; }
-.fondator-desc { font-size: .875rem; color: var(--gray); line-height: 1.75; }
+.fondator-desc { font-size: .875rem; color: var(--gray); line-height: 1.75; text-align: left; }
 
 /* ── CTA FINAL ── */
 .cta-final { background: var(--navy); padding: 88px 0; text-align: center; }
@@ -639,6 +639,7 @@
         <div class="fondator-photo-wrap">
           <img src="/diana.jpg"
                alt="Diana Pătulea — Co-fondator Academia De la Pasiune la Profit"
+               style="object-position: center top;"
                onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\'fondator-photo-initials\'>D</span>'">
         </div>
         <div class="fondator-body">

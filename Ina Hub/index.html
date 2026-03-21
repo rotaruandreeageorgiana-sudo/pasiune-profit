@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INA Hub · Comunitatea ta de business · Academia De la Pasiune la Profit</title>
+<meta name="description" content="INA Hub este spațiul construit pentru antreprenoare care vor claritate, sprijin real și o comunitate cu care să crească. Intră acum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --navy:      #0F2A44;
+  --navy-mid:  #1B4268;
+  --navy-lite: #243B55;
+  --navy-foot: #091D30;
+  --orange:    #F47B20;
+  --orange-dk: #D9660F;
+  --orange-lt: #FEF3EA;
+  --white:     #FFFFFF;
+  --off:       #FAFAF8;
+  --gray:      #4A4A4A;
+  --gray-lt:   #8A8A8A;
+  --border:    #E6E2D8;
+  --wa:        #25D366;
+  --wa-dk:     #1DA851;
+  --shadow:    0 2px 12px rgba(15,42,68,.07), 0 1px 3px rgba(15,42,68,.05);
+  --shadow-md: 0 4px 24px rgba(15,42,68,.10), 0 1px 6px rgba(15,42,68,.06);
+  --r:         4px;
+  --tr:        .22s cubic-bezier(.4,0,.2,1);
+  --max:       1100px;
+  --pad:       62px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  color: var(--gray);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+/* ─── LABELS ─── */
+.label {
+  display: inline-block;
+  font-size: 10.88px; font-weight: 700;
+  letter-spacing: 1.96px; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 12px;
+}
+
+/* ─── BUTTONS ─── */
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--wa); color: white;
+  font-family: Inter, sans-serif;
+  font-size: 13.12px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 15px 28px; border-radius: var(--r);
+  transition: background var(--tr), transform var(--tr), box-shadow var(--tr);
+  border: none; cursor: pointer;
+}
+.btn-wa:hover {
+  background: var(--wa-dk);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,211,102,.35);
+}
+.btn-wa svg { flex-shrink: 0; }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--navy);
+  font-family: Inter, sans-serif;
+  font-size: 13.12px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 13px 26px; border-radius: var(--r);
+  border: 1.5px solid var(--navy);
+  transition: background var(--tr), color var(--tr);
+}
+.btn-outline:hover { background: var(--navy); color: white; }
+
+.btn-ghost-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: white;
+  font-family: Inter, sans-serif;
+  font-size: 13.12px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 13px 26px; border-radius: var(--r);
+  border: 1.5px solid rgba(255,255,255,.35);
+  transition: border-color var(--tr), background var(--tr);
+}
+.btn-ghost-white:hover { border-color: white; background: rgba(255,255,255,.08); }
+
+/* WhatsApp icon */
+.wa-icon { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  height: 64px;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad);
+}
+.nav-logo { display: flex; flex-direction: column; gap: 1px; }
+.nav-logo .ac {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 2.2px; text-transform: uppercase; color: var(--orange);
+}
+.nav-logo .br {
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 1.1px; text-transform: uppercase;
+  color: var(--navy); line-height: 1.35;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 2px; list-style: none;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--navy);
+  padding: 8px 11px; border-radius: var(--r);
+  transition: color var(--tr);
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--orange); }
+.nav-links a.active { color: var(--orange); font-weight: 600; }
+.nav-links a.nav-cta {
+  background: var(--orange); color: white;
+  font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; padding: 9px 20px;
+}
+.nav-links a.nav-cta:hover { background: var(--orange-dk); }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  padding-top: 64px;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 85% 15%, rgba(244,123,32,.10) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 10% 85%, rgba(27,66,104,.55) 0%, transparent 65%);
+  pointer-events: none;
+}
+/* subtle grid */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none;
+}
+/* decorative circle */
+.hero-circle {
+  position: absolute;
+  right: -120px; top: 50%;
+  transform: translateY(-50%);
+  width: 560px; height: 560px;
+  border-radius: 50%;
+  border: 1px solid rgba(244,123,32,.12);
+  pointer-events: none;
+}
+.hero-circle::before {
+  content: '';
+  position: absolute; inset: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(244,123,32,.08);
+}
+.hero-circle::after {
+  content: '';
+  position: absolute; inset: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(244,123,32,.05);
+}
+
+.hero-inner {
+  position: relative; z-index: 1;
+  padding: 88px 0 80px;
+  max-width: 680px;
+}
+.hero-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 28px;
+}
+.hero-kicker .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--orange);
+}
+.hero-kicker span {
+  font-size: 10.88px; font-weight: 700;
+  letter-spacing: 1.96px; text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(38px, 5.5vw, 68px);
+  font-weight: 700; color: white;
+  line-height: 1.07; margin-bottom: 24px;
+}
+.hero h1 em { font-style: italic; color: var(--orange); }
+.hero-sub {
+  font-size: 17px; line-height: 1.72;
+  color: rgba(255,255,255,.6);
+  max-width: 500px; margin-bottom: 44px;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+
+.hero-trust {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.hero-trust .dots {
+  display: flex; gap: -4px;
+}
+.trust-dot {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--navy-mid);
+  border: 2px solid rgba(255,255,255,.2);
+  margin-left: -8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.trust-dot:first-child { margin-left: 0; }
+.hero-trust p {
+  font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.5;
+}
+.hero-trust p strong { color: rgba(255,255,255,.75); font-weight: 600; }
+
+/* ─────────────────────────────────────────
+   SECTIONS
+───────────────────────────────────────── */
+.s-white { background: var(--white); padding: 88px 0; }
+.s-off   { background: var(--off);   padding: 88px 0; }
+.s-navy  { background: var(--navy);  padding: 88px 0; }
+
+.sec-hdr { margin-bottom: 56px; }
+.sec-hdr.center { text-align: center; }
+.sec-hdr h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 700; color: var(--navy);
+  line-height: 1.18; margin-bottom: 14px;
+}
+.sec-hdr h2 em { font-style: italic; }
+.sec-hdr p {
+  font-size: 15px; line-height: 1.7; color: var(--gray-lt);
+  max-width: 500px;
+}
+.sec-hdr.center p { margin: 0 auto; }
+.s-navy .sec-hdr h2 { color: white; }
+.s-navy .sec-hdr p { color: rgba(255,255,255,.5); }
+
+/* ─────────────────────────────────────────
+   CE ESTE INA HUB — 2 col
+───────────────────────────────────────── */
+.ce-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.ce-left h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700; color: var(--navy);
+  line-height: 1.18; margin-bottom: 20px;
+}
+.ce-left h2 em { font-style: italic; }
+.ce-left p {
+  font-size: 15px; line-height: 1.78; color: var(--gray);
+  margin-bottom: 16px;
+}
+.ce-left p strong { color: var(--navy); font-weight: 600; }
+.ce-left p:last-of-type { margin-bottom: 0; }
+.divider { width: 40px; height: 2px; background: var(--orange); margin: 24px 0; }
+
+.ce-right {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 36px;
+  position: relative; overflow: hidden;
+}
+.ce-right::before {
+  content: '';
+  position: absolute; top: -50px; right: -50px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(244,123,32,.12), transparent 70%);
+}
+.ce-stat {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.ce-stat:last-child { border-bottom: none; padding-bottom: 0; }
+.ce-stat:first-child { padding-top: 0; }
+.ce-icon {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(244,123,32,.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 18px;
+}
+.ce-stat-text h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 700;
+  color: white; margin-bottom: 4px;
+}
+.ce-stat-text p {
+  font-size: 13px; line-height: 1.6;
+  color: rgba(255,255,255,.5);
+}
+
+/* ─────────────────────────────────────────
+   PENTRU CINE — cards
+───────────────────────────────────────── */
+.cine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.cine-card {
+  background: white;
+  border: 0.8px solid var(--border);
+  border-radius: var(--r);
+  padding: 32px 28px;
+  transition: box-shadow var(--tr), transform var(--tr);
+}
+.cine-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.cine-num {
+  font-size: 10.88px; font-weight: 700;
+  letter-spacing: 1.96px; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 16px;
+}
+.cine-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18.4px; font-weight: 700;
+  color: var(--navy); line-height: 1.3; margin-bottom: 10px;
+}
+.cine-desc {
+  font-size: 14px; line-height: 1.75; color: var(--gray);
+}
+
+/* ─────────────────────────────────────────
+   CE PRIMEȘTI — beneficii grid
+───────────────────────────────────────── */
+.beneficii-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+.ben-item {
+  background: white;
+  padding: 28px 24px;
+  transition: background var(--tr);
+}
+.ben-item:hover { background: var(--off); }
+.ben-emoji { font-size: 28px; margin-bottom: 14px; display: block; }
+.ben-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--navy); margin-bottom: 8px; line-height: 1.3;
+}
+.ben-desc {
+  font-size: 13px; line-height: 1.65; color: var(--gray-lt);
+}
+
+/* ─────────────────────────────────────────
+   DE CE E DIFERIT — split
+───────────────────────────────────────── */
+.diferit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.diferit-col {
+  border-radius: var(--r);
+  padding: 36px 32px;
+}
+.diferit-col.regular {
+  background: var(--off);
+  border: 0.8px solid var(--border);
+}
+.diferit-col.hub {
+  background: var(--navy);
+}
+.diferit-col-label {
+  font-size: 10.88px; font-weight: 700;
+  letter-spacing: 1.96px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.diferit-col.regular .diferit-col-label { color: var(--gray-lt); }
+.diferit-col.hub .diferit-col-label { color: var(--orange); }
+.diferit-col h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  margin-bottom: 24px; line-height: 1.25;
+}
+.diferit-col.regular h3 { color: var(--navy); }
+.diferit-col.hub h3 { color: white; }
+.diferit-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 0.8px solid;
+}
+.diferit-col.regular .diferit-item { border-color: var(--border); }
+.diferit-col.hub .diferit-item { border-color: rgba(255,255,255,.08); }
+.diferit-item:last-child { border-bottom: none; padding-bottom: 0; }
+.diferit-icon {
+  font-size: 16px; flex-shrink: 0; margin-top: 1px;
+}
+.diferit-text {
+  font-size: 14px; line-height: 1.65;
+}
+.diferit-col.regular .diferit-text { color: var(--gray-lt); }
+.diferit-col.hub .diferit-text { color: rgba(255,255,255,.7); }
+.diferit-col.hub .diferit-text strong { color: white; font-weight: 600; }
+
+/* ─────────────────────────────────────────
+   CUM INTRI — steps
+───────────────────────────────────────── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.step-card {
+  background: white;
+  border: 0.8px solid var(--border);
+  border-radius: var(--r);
+  padding: 32px 28px;
+  position: relative;
+  transition: box-shadow var(--tr);
+}
+.step-card:hover { box-shadow: var(--shadow); }
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px; font-weight: 700;
+  color: var(--border); line-height: 1;
+  margin-bottom: 16px;
+  transition: color var(--tr);
+}
+.step-card:hover .step-num { color: rgba(244,123,32,.18); }
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--navy); margin-bottom: 8px;
+}
+.step-desc {
+  font-size: 14px; line-height: 1.72; color: var(--gray);
+}
+/* connector arrow between steps */
+.step-arrow {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: var(--orange);
+  margin-top: 28px;
+}
+
+/* ─────────────────────────────────────────
+   CTA FINAL
+───────────────────────────────────────── */
+.cta-final {
+  text-align: center; max-width: 640px; margin: 0 auto;
+}
+.cta-final h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700; color: white;
+  line-height: 1.12; margin-bottom: 20px;
+}
+.cta-final h2 em { font-style: italic; color: var(--orange); }
+.cta-final p {
+  font-size: 16px; line-height: 1.72;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 40px;
+}
+.cta-btns {
+  display: flex; gap: 14px;
+  justify-content: center; flex-wrap: wrap;
+}
+.cta-note {
+  display: block; margin-top: 16px;
+  font-size: 12px; color: rgba(255,255,255,.25);
+  letter-spacing: .5px;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.footer {
+  background: var(--navy-foot);
+  padding: 40px var(--pad) 28px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.footer-inner {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.footer-logo .ac {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--orange);
+}
+.footer-logo .br {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(255,255,255,.5); line-height: 1.4;
+}
+.footer-links {
+  display: flex; gap: 20px; list-style: none; flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 12.5px; color: rgba(255,255,255,.35);
+  transition: color var(--tr);
+}
+.footer-links a:hover { color: rgba(255,255,255,.6); }
+.footer-copy {
+  font-size: 11.5px; color: rgba(255,255,255,.2);
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 960px) {
+  :root { --pad: 32px; }
+  .nav-links { display: none; }
+  .ce-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cine-grid { grid-template-columns: 1fr 1fr; }
+  .beneficii-grid { grid-template-columns: repeat(2, 1fr); }
+  .diferit-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .hero-circle { display: none; }
+}
+@media (max-width: 600px) {
+  :root { --pad: 20px; }
+  .cine-grid { grid-template-columns: 1fr; }
+  .beneficii-grid { grid-template-columns: 1fr; }
+  .hero-btns { flex-direction: column; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .footer-inner { flex-direction: column; gap: 12px; }
+}
+
+/* ─────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-inner > * { animation: fadeUp .7s ease both; }
+.hero-kicker    { animation-delay: .05s; }
+.hero h1        { animation-delay: .18s; }
+.hero-sub       { animation-delay: .3s; }
+.hero-btns      { animation-delay: .42s; }
+.hero-trust     { animation-delay: .54s; }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav">
+  <a href="/" class="nav-logo">
+    <span class="ac">Academia</span>
+    <span class="br">De la Pasiune la Profit</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/metoda-3c">Metoda 3C</a></li>
+    <li><a href="/comunitate" class="active">Comunitate INA</a></li>
+    <li><a href="/ina">Mentor AI</a></li>
+    <li><a href="/manuale">Biblioteca</a></li>
+    <li><a href="/rezultate">Rezultate</a></li>
+    <li><a href="/despre-noi">Despre noi</a></li>
+    <li><a href="/aplica" class="nav-cta">Aplică</a></li>
+  </ul>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-circle"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-kicker">
+        <div class="dot"></div>
+        <span>Academia De la Pasiune la Profit</span>
+      </div>
+      <h1>Un spațiu construit<br>pentru a <em>construi<br>împreună.</em></h1>
+      <p class="hero-sub">INA Hub este comunitatea în care claritatea înlocuiește confuzia, sprijinul real înlocuiește singurătatea, iar acțiunea înlocuiește amânarea.</p>
+      <div class="hero-btns">
+        <a href="https://chat.whatsapp.com/HuT0W7uwSngGL9HvKSSYn0"
+           class="btn-wa" target="_blank" rel="noopener">
+          <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Intră în INA Hub
+        </a>
+        <a href="#ce-este" class="btn-ghost-white">Descoperă mai mult</a>
+      </div>
+      <div class="hero-trust">
+        <div class="dots">
+          <div class="trust-dot">👩</div>
+          <div class="trust-dot">👩</div>
+          <div class="trust-dot">👩</div>
+          <div class="trust-dot">+</div>
+        </div>
+        <p><strong>Antreprenoare active</strong> deja în hub.<br>Fiecare cu povestea ei. Toate cu același obiectiv.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CE ESTE INA HUB ══════════ -->
+<section class="s-white" id="ce-este">
+  <div class="wrap">
+    <div class="ce-grid">
+      <div class="ce-left">
+        <span class="label">Ce este INA Hub</span>
+        <h2>Mai mult decât un grup.<br><em>Un spațiu cu intenție.</em></h2>
+        <div class="divider"></div>
+        <p>INA Hub este comunitatea construită de Academia De la Pasiune la Profit pentru antreprenoarele care vor mai mult decât informație — vor <strong>direcție, energie bună și oameni care înțeleg</strong> prin ce treci.</p>
+        <p>Nu este un chat aleatoriu. Este un spațiu deliberat, cu conversații utile, resurse aplicate și o energie colectivă orientată spre acțiune și creștere reală.</p>
+        <p>INA este mentorul AI al Academiei — și hubul poartă numele ei pentru că aduce exact ce aduce INA: <strong>claritate, structură și sprijin fără clișee.</strong></p>
+      </div>
+      <div class="ce-right">
+        <div class="ce-stat">
+          <div class="ce-icon">🎯</div>
+          <div class="ce-stat-text">
+            <h4>Claritate, nu zgomot</h4>
+            <p>Fiecare mesaj, resursă sau conversație are un scop. Fără conținut aleatoriu.</p>
+          </div>
+        </div>
+        <div class="ce-stat">
+          <div class="ce-icon">🤝</div>
+          <div class="ce-stat-text">
+            <h4>Sprijin real, nu teorie</h4>
+            <p>Oameni care au trecut prin ce treci tu și știu cum să te ghideze concret.</p>
+          </div>
+        </div>
+        <div class="ce-stat">
+          <div class="ce-icon">⚡</div>
+          <div class="ce-stat-text">
+            <h4>Energie orientată spre acțiune</h4>
+            <p>Hubul nu este un loc de plâns pe umăr. Este un loc de construit.</p>
+          </div>
+        </div>
+        <div class="ce-stat">
+          <div class="ce-icon">🌱</div>
+          <div class="ce-stat-text">
+            <h4>Creștere constantă</h4>
+            <p>Resurse, idei și conversații care te duc un pas mai departe în fiecare săptămână.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PENTRU CINE ══════════ -->
+<section class="s-off">
+  <div class="wrap">
+    <div class="sec-hdr center">
+      <span class="label">Pentru cine este</span>
+      <h2>Dacă te regăsești<br>în oricare dintre acestea —<br><em>ești acasă.</em></h2>
+    </div>
+    <div class="cine-grid">
+      <div class="cine-card">
+        <div class="cine-num">01</div>
+        <div class="cine-title">Ești la început și nu știi de unde să pornești.</div>
+        <p class="cine-desc">Ai o idee, poate chiar mai multe. Dar nu știi care e primul pas concret. INA Hub îți oferă direcție fără să te copleșească cu informație.</p>
+      </div>
+      <div class="cine-card">
+        <div class="cine-num">02</div>
+        <div class="cine-title">Ai idei bune, dar le ții în cap prea mult.</div>
+        <p class="cine-desc">Visezi la business-ul tău de ceva timp. Ai resurse, energie, dorință. Îți lipsește structura și oamenii care să te țină în mișcare.</p>
+      </div>
+      <div class="cine-card">
+        <div class="cine-num">03</div>
+        <div class="cine-title">Lucrezi deja, dar te simți singură în proces.</div>
+        <p class="cine-desc">Ești activă, postezi, creezi — dar lipsa unui grup care te înțelege cu adevărat te costă energie. Vrei oameni cu care să vorbești real.</p>
+      </div>
+      <div class="cine-card">
+        <div class="cine-num">04</div>
+        <div class="cine-title">Cauți motivație sustenabilă, nu motivație de moment.</div>
+        <p class="cine-desc">Nu ai nevoie de un citat frumos. Ai nevoie de un mediu care să te mențină consecventă, chiar și în zilele grele.</p>
+      </div>
+      <div class="cine-card">
+        <div class="cine-num">05</div>
+        <div class="cine-title">Vrei feedback real, nu validare goală.</div>
+        <p class="cine-desc">Ești gata să primești o perspectivă sinceră despre ceea ce construiești. Vrei să crești, nu să fii aplaudată fără noimă.</p>
+      </div>
+      <div class="cine-card">
+        <div class="cine-num">06</div>
+        <div class="cine-title">Simți că poți mai mult și cauți un spațiu care să te susțină.</div>
+        <p class="cine-desc">Nu îți lipsește talentul. Îți lipsește mediul potrivit. INA Hub este exact acel mediu — construit intenționat pentru oameni ca tine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CE PRIMEȘTI ══════════ -->
+<section class="s-white">
+  <div class="wrap">
+    <div class="sec-hdr center">
+      <span class="label">Beneficii concrete</span>
+      <h2>Ce primești în<br><em>INA Hub</em></h2>
+      <p>Nu promisiuni vagi. Beneficii reale, pe care le simți din prima zi.</p>
+    </div>
+    <div class="beneficii-grid">
+      <div class="ben-item">
+        <span class="ben-emoji">🧭</span>
+        <div class="ben-title">Claritate</div>
+        <p class="ben-desc">Răspunsuri la întrebările care te blochează. Direcție concretă, nu teorie abstractă.</p>
+      </div>
+      <div class="ben-item">
+        <span class="ben-emoji">💡</span>
+        <div class="ben-title">Idei aplicabile</div>
+        <p class="ben-desc">Resurse și conversații care generează idei pe care le poți folosi imediat în businessul tău.</p>
+      </div>
+      <div class="ben-item">
+        <span class="ben-emoji">🤍</span>
+        <div class="ben-title">Apartenența</div>
+        <p class="ben-desc">Sentimentul că nu ești singură. Un grup care te înțelege pentru că trece prin același drum.</p>
+      </div>
+      <div class="ben-item">
+        <span class="ben-emoji">📣</span>
+        <div class="ben-title">Feedback real</div>
+        <p class="ben-desc">Perspective sincere de la oameni care vor să te vadă crescând, nu să te facă să te simți bine fără motiv.</p>
+      </div>
+      <div class="ben-item">
+        <span class="ben-emoji">⚙️</span>
+        <div class="ben-title">Structură</div>
+        <p class="ben-desc">Acces la Metoda 3C și la principiile Academiei, aplicate direct în conversațiile din hub.</p>
+      </div>
+      <div class="ben-item">
+        <span class="ben-emoji">🔋</span>
+        <div class="ben-title">Energie constantă</div>
+        <p class="ben-desc">Un mediu care te menține motivată și consecventă chiar și când lucrezi singură.</p>
+      </div>
+      <div class="ben-item">
+        <span class="ben-emoji">🗺️</span>
+        <div class="ben-title">Direcție</div>
+        <p class="ben-desc">Nu te pierzi în opțiuni. Hubul te ajută să prioritizezi și să rămâi pe drumul tău.</p>
+      </div>
+      <div class="ben-item">
+        <span class="ben-emoji">🌐</span>
+        <div class="ben-title">Conexiuni valoroase</div>
+        <p class="ben-desc">Oameni cu care poți colabora, schimba experiențe și crește reciproc, dincolo de rețelele de socializare.</p>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <a href="https://chat.whatsapp.com/HuT0W7uwSngGL9HvKSSYn0"
+         class="btn-wa" target="_blank" rel="noopener">
+        <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Vreau să intru în hub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DE CE E DIFERIT ══════════ -->
+<section class="s-off">
+  <div class="wrap">
+    <div class="sec-hdr">
+      <span class="label">De ce este diferit</span>
+      <h2>Nu un grup obișnuit.<br><em>Un spațiu cu scop.</em></h2>
+      <p>INA Hub este construit cu intenție, nu asamblat întâmplător.</p>
+    </div>
+    <div class="diferit-grid">
+      <div class="diferit-col regular">
+        <div class="diferit-col-label">Un grup obișnuit de WhatsApp</div>
+        <h3>Zgomot fără direcție</h3>
+        <div class="diferit-item">
+          <span class="diferit-icon">😶</span>
+          <p class="diferit-text">Sute de mesaje pe zi, fără nicio valoare reală</p>
+        </div>
+        <div class="diferit-item">
+          <span class="diferit-icon">😶</span>
+          <p class="diferit-text">Conversații care se pierd în haos și anunțuri irelevante</p>
+        </div>
+        <div class="diferit-item">
+          <span class="diferit-icon">😶</span>
+          <p class="diferit-text">Nimeni nu știe cu adevărat ce vrea sau de ce e acolo</p>
+        </div>
+        <div class="diferit-item">
+          <span class="diferit-icon">😶</span>
+          <p class="diferit-text">Validare goală și entuziasm fără substanță</p>
+        </div>
+        <div class="diferit-item">
+          <span class="diferit-icon">😶</span>
+          <p class="diferit-text">Intri, te plictisești, ieși după două săptămâni</p>
+        </div>
+      </div>
+      <div class="diferit-col hub">
+        <div class="diferit-col-label">INA Hub</div>
+        <h3 style="color:white;">Claritate și acțiune</h3>
+        <div class="diferit-item">
+          <span class="diferit-icon">✦</span>
+          <p class="diferit-text"><strong>Conversații cu scop</strong> — fiecare schimb adaugă valoare reală</p>
+        </div>
+        <div class="diferit-item">
+          <span class="diferit-icon">✦</span>
+          <p class="diferit-text"><strong>Structură și direcție</strong> — bazate pe Metoda 3C a Academiei</p>
+        </div>
+        <div class="diferit-item">
+          <span class="diferit-icon">✦</span>
+          <p class="diferit-text"><strong>Oameni cu intenție</strong> — toți sunt acolo să construiască ceva real</p>
+        </div>
+        <div class="diferit-item">
+          <span class="diferit-icon">✦</span>
+          <p class="diferit-text"><strong>Feedback autentic</strong> — onest, constructiv, orientat spre creștere</p>
+        </div>
+        <div class="diferit-item">
+          <span class="diferit-icon">✦</span>
+          <p class="diferit-text"><strong>Un spațiu în care rămâi</strong> pentru că îți aduce valoare săptămână după săptămână</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CUM INTRI ══════════ -->
+<section class="s-white">
+  <div class="wrap">
+    <div class="sec-hdr center">
+      <span class="label">Procesul de intrare</span>
+      <h2>Trei pași.<br><em>Un singur click.</em></h2>
+      <p>Intrarea în INA Hub este simplă. Nu ai nevoie de formulare, aprobări sau așteptare.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Apasă pe buton</div>
+        <p class="step-desc">Click pe oricare dintre butoanele „Intră în INA Hub" de pe această pagină. Vei fi redirecționată direct către invitația de WhatsApp.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title">Intră în grupul WhatsApp</div>
+        <p class="step-desc">Acceptă invitația și alătură-te grupului. Prezintă-te scurt — cine ești, ce construiești, de ce ai venit.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">Fă parte din hub</div>
+        <p class="step-desc">Intri imediat în conversații, resurse și energia comunității. Nu există perioadă de așteptare. Ești parte din hub din primul moment.</p>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <a href="https://chat.whatsapp.com/HuT0W7uwSngGL9HvKSSYn0"
+         class="btn-wa" target="_blank" rel="noopener">
+        <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Intră în INA Hub acum
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<section class="s-navy">
+  <div class="wrap">
+    <div class="cta-final">
+      <span class="label" style="display:block;text-align:center;margin-bottom:20px;">Locul tău te așteaptă</span>
+      <h2>Ești la un click<br>distanță de <em>comunitatea<br>ta.</em></h2>
+      <p>Nu mai amâna. Nu există momentul perfect. Există decizia de a intra și a fi parte din ceva construit cu intenție — pentru tine.</p>
+      <div class="cta-btns">
+        <a href="https://chat.whatsapp.com/HuT0W7uwSngGL9HvKSSYn0"
+           class="btn-wa" target="_blank" rel="noopener" style="font-size:14.5px;padding:17px 34px;">
+          <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Alătură-te INA Hub
+        </a>
+        <a href="/academia" class="btn-ghost-white">Descoperă Academia →</a>
+      </div>
+      <span class="cta-note">Acces gratuit · WhatsApp · Fără obligații</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="ac">Academia</div>
+      <div class="br">De la Pasiune la Profit · pasiune-profit.ro</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/metoda-3c">Metoda 3C</a></li>
+      <li><a href="/manuale">Biblioteca</a></li>
+      <li><a href="/ina">Mentor AI</a></li>
+      <li><a href="/aplica">Aplică</a></li>
+      <li><a href="/termeni">Termeni</a></li>
+      <li><a href="/gdpr">GDPR</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 D & M TAP BENEFICII S.R.L.</p>
+  </div>
+</footer>
+
+</body>
+</html>

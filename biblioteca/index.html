@@ -479,7 +479,7 @@ body { font-family: 'Inter', sans-serif; background: var(--off); color: var(--gr
           <li class="session-include">Comunitate privată + suport constant</li>
         </ul>
         <div class="session-price">3.460 lei <small>sau 3 rate × 1.154 lei</small></div>
-        <a href="/aplica" class="session-btn session-btn-navy">Aplică pentru mentorat →</a>
+        <a href="https://formspree.io/f/xvzwpdbv" target="_blank" rel="noopener" class="session-btn session-btn-navy">Aplică pentru mentorat →</a>
       </div>
 
     </div>
@@ -529,7 +529,7 @@ body { font-family: 'Inter', sans-serif; background: var(--off); color: var(--gr
     <p>Testează INA gratuit — mentorul AI care analizează ideea ta și îți arată primul pas concret. Fără cont, fără plată.</p>
     <div class="final-cta-btns">
       <a href="/ina" class="btn-orange">Testează INA gratuit →</a>
-      <a href="/aplica" class="btn-ghost">Aplică la Academie</a>
+      <a href="https://formspree.io/f/xvzwpdbv" target="_blank" rel="noopener" class="btn-ghost">Aplică la Academie</a>
     </div>
   </div>
 </section>
@@ -720,27 +720,34 @@ async function handleDownload(e) {
   var name  = document.getElementById('dl-name').value;
   var email = document.getElementById('dl-email').value;
   var btn   = document.getElementById('dl-btn');
-  btn.textContent = 'Se procesează...'; btn.disabled = true;
+  btn.textContent = 'Se descarca...'; btn.disabled = true;
 
-  try {
-    await fetch('https://formspree.io/f/xqeykylv', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, resource: currentFile, _subject: 'Descărcare: ' + currentFile })
-    });
-  } catch(ex) {}
+  // Descarca imediat - nu asteapta Formspree
+  var a = document.createElement('a');
+  a.href = '/' + currentFile;
+  a.download = currentFile;
+  a.target = '_blank';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  // Trimite email in background
+  fetch('https://formspree.io/f/xqeykylv', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, resursa: currentFile, _subject: 'Descarcare: ' + currentFile })
+  }).catch(function() {});
 
   gtag && gtag('event', 'download', { file: currentFile });
   fbq  && fbq('track', 'Lead', { content_name: currentFile });
 
+  // Arata mesajul de succes
   document.getElementById('dl-form-wrap').style.display = 'none';
   document.getElementById('dl-success').style.display   = 'block';
   var link = document.getElementById('dl-direct-link');
   link.href = '/' + currentFile;
   link.setAttribute('download', currentFile);
-  var a = document.createElement('a');
-  a.href = '/' + currentFile; a.download = currentFile;
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  link.setAttribute('target', '_blank');
 }
 
 // ── INIT ─────────────────────────────────────────────────

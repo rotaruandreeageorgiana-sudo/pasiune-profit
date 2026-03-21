@@ -1,841 +1,1059 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transformă pasiunea într-un sistem de venit · Academia De la Pasiune la Profit</title>
-<meta name="description" content="Academia De la Pasiune la Profit îi ajută pe creatori să transforme ideile în oferte clare și modele de venit stabile prin Metoda 3C.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://pasiune-profit.ro/">
-<meta property="og:title" content="Transformă pasiunea într-un sistem de venit · Academia De la Pasiune la Profit">
-<meta property="og:description" content="Academia De la Pasiune la Profit îi ajută pe creatori să transforme ideile în oferte clare și modele de venit stabile prin Metoda 3C.">
-<meta property="og:url" content="https://pasiune-profit.ro/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Academia De la Pasiune la Profit">
-<meta property="og:image" content="https://pasiune-profit.ro/og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Transformă pasiunea într-un sistem de venit · Academia De la Pasiune la Profit">
-<meta name="twitter:description" content="Academia De la Pasiune la Profit îi ajută pe creatori să transforme ideile în oferte clare și modele de venit stabile prin Metoda 3C.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Academia De la Pasiune la Profit","url":"https://pasiune-profit.ro","logo":"https://pasiune-profit.ro/logo.png","description":"Academia pentru antreprenori care transforma pasiunile in profit.","email":"contact@pasiune-profit.ro","sameAs":["https://www.instagram.com/pasiunelaprofit","https://www.facebook.com/pasiunelaprofit"]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Academia De la Pasiune la Profit","url":"https://pasiune-profit.ro","description":"Academia pentru creatori care transformă pasiunile în sisteme de venit stabile prin Metoda 3C.","email":"contact@pasiune-profit.ro","founders":[{"@type":"Person","name":"Diana Pătulea"},{"@type":"Person","name":"Georgiana Rotaru"}]}
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','FB_PIXEL_ID');fbq('track','PageView');</script>
-<style>
-/* ── NAV SOCIAL ── */
-.nav-social a { color: var(--navy); display:flex; align-items:center; transition: color .2s; }
-.nav-social a:hover { color: var(--orange); }
-.nav-links .nav-social { padding: 0 4px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De la Pasiune la Profit · Transformă ideile în venit</title>
+  <meta name="description" content="De la Pasiune la Profit te ajută să transformi ideile în oferte clare, sisteme simple și venituri reale prin Metoda 3C, mentorat, resurse și implementare ghidată.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pasiune-profit.ro/">
+  <meta property="og:title" content="De la Pasiune la Profit · Transformă ideile în venit">
+  <meta property="og:description" content="Claritate, structură și conversie pentru antreprenorii care vor să construiască un business real, nu doar să aibă idei bune.">
+  <meta property="og:url" content="https://pasiune-profit.ro/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="De la Pasiune la Profit">
+  <meta property="og:image" content="https://pasiune-profit.ro/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="De la Pasiune la Profit · Transformă ideile în venit">
+  <meta name="twitter:description" content="Metoda 3C, Biblioteca, Mentor AI, comunitate și implementare pentru antreprenori care vor rezultate reale.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
 
-/* ── HERO ── */
-.hero {
-  padding-top: 64px;
-  background: var(--navy);
-  background-image: radial-gradient(ellipse at 70% 50%, #1a3f60 0%, transparent 60%);
-  color: white; overflow: hidden; position: relative;
-}
-.hero-inner {
-  display: grid; grid-template-columns: 1fr 420px;
-  gap: 64px; align-items: center;
-  padding: 80px 6% 100px;
-  max-width: 1200px; margin: 0 auto;
-}
-.hero-kicker {
-  display: flex; align-items: center; gap: 10px;
-  font-size: .7rem; font-weight: 700; letter-spacing: .2em;
-  text-transform: uppercase; color: var(--orange); margin-bottom: 24px;
-}
-.hero-kicker::before { content:''; width:32px; height:1px; background:var(--orange); }
-.hero h1 { color: white; font-size: clamp(2.4rem,5vw,3.8rem); line-height: 1.08; margin-bottom: 24px; }
-.hero h1 em { font-style: italic; color: var(--orange); }
-.hero-sub { font-size: 1rem; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 40px; max-width: 480px; }
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.btn-hero-primary {
-  background: var(--orange); color: white;
-  padding: 16px 28px; border-radius: 4px;
-  font-family: Inter,sans-serif; font-size: .78rem;
-  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  text-decoration: none; transition: background .2s, transform .2s;
-  display: inline-flex; align-items: center;
-}
-.btn-hero-primary:hover { background: var(--orange-dk); transform: translateY(-1px); }
-.btn-hero-secondary {
-  background: transparent; color: white;
-  padding: 16px 28px; border-radius: 4px;
-  font-family: Inter,sans-serif; font-size: .78rem;
-  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  text-decoration: none; border: 1px solid rgba(255,255,255,.35);
-  transition: border-color .2s, transform .2s; display: inline-flex; align-items: center;
-}
-.btn-hero-secondary:hover { border-color: white; transform: translateY(-1px); }
-
-/* METODA 3C VISUAL */
-.m3c-visual { display: flex; flex-direction: column; gap: 0; }
-.m3c-header {
-  text-align: center; font-size: .68rem; font-weight: 700;
-  letter-spacing: .2em; text-transform: uppercase;
-  color: rgba(255,255,255,.5); margin-bottom: 16px;
-}
-.m3c-card {
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 8px; padding: 20px 22px; margin-bottom: 6px;
-  position: relative;
-}
-.m3c-card.active { background: var(--orange); border-color: var(--orange); }
-.m3c-etapa {
-  font-size: .62rem; font-weight: 700; letter-spacing: .18em;
-  text-transform: uppercase; color: rgba(255,255,255,.5);
-  margin-bottom: 6px;
-}
-.m3c-card.active .m3c-etapa { color: rgba(255,255,255,.7); }
-.m3c-title { font-family: 'Playfair Display',serif; font-size: 1.2rem; color: white; font-weight: 700; margin-bottom: 10px; }
-.m3c-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.m3c-tag {
-  background: rgba(255,255,255,.1); color: rgba(255,255,255,.8);
-  font-size: .7rem; padding: 4px 10px; border-radius: 100px;
-  font-family: Inter,sans-serif;
-}
-.m3c-card.active .m3c-tag { background: rgba(255,255,255,.2); color: white; }
-.m3c-arrow {
-  text-align: center; color: var(--orange);
-  font-size: 1rem; margin: 4px 0; line-height: 1;
-}
-
-/* ── PROBLEME ── */
-.probleme { background: #FAFAF7; padding: 88px 0; }
-.prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 56px; }
-.prob-card { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 32px 28px; }
-.prob-card.highlight { border-top: 3px solid var(--orange); }
-.prob-num { font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-bottom: 18px; }
-.prob-title { font-family: 'Playfair Display',serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 12px; line-height: 1.3; }
-.prob-desc { font-size: .875rem; color: var(--gray); line-height: 1.75; }
-
-/* ── METODA SECTION ── */
-.metoda-section { background: white; padding: 88px 0; }
-.metoda-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.metoda-list { display: flex; flex-direction: column; gap: 0; }
-.metoda-item { display: flex; gap: 20px; align-items: flex-start; padding: 28px 0; border-bottom: 1px solid var(--border); }
-.metoda-item:last-child { border-bottom: none; }
-.metoda-circle {
-  width: 44px; height: 44px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display',serif; font-size: 1.1rem;
-  font-weight: 700; flex-shrink: 0;
-}
-.metoda-circle.c1 { background: var(--navy); color: white; }
-.metoda-circle.c2 { background: var(--navy); color: white; }
-.metoda-circle.c3 { background: var(--orange); color: white; }
-.metoda-item-title { font-family: 'Playfair Display',serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
-.metoda-item-desc { font-size: .875rem; color: var(--gray-lt); line-height: 1.7; margin-bottom: 12px; }
-.metoda-item-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.metoda-tag { background: var(--off); border: 1px solid var(--border); color: var(--gray); font-size: .72rem; padding: 5px 12px; border-radius: 100px; }
-.metoda-visual-wrap {
-  background: var(--navy);
-  border-radius: 8px; padding: 32px; position: sticky; top: 88px;
-}
-.fw-header { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 20px; }
-.fw-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 18px 20px; margin-bottom: 8px; }
-.fw-card.active { background: var(--orange); border-color: var(--orange); }
-.fw-etapa { font-size: .6rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 5px; }
-.fw-card.active .fw-etapa { color: rgba(255,255,255,.75); }
-.fw-title { font-family: 'Playfair Display',serif; font-size: 1.15rem; color: white; font-weight: 700; margin-bottom: 10px; }
-.fw-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.fw-tag { background: rgba(255,255,255,.1); color: rgba(255,255,255,.8); font-size: .68rem; padding: 4px 10px; border-radius: 100px; }
-.fw-card.active .fw-tag { background: rgba(255,255,255,.2); color: white; }
-.fw-arrow { text-align: center; color: var(--orange); margin: 4px 0; }
-.fw-cta { display: block; background: var(--orange); color: white; text-align: center; padding: 14px; border-radius: 4px; font-family: Inter,sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; margin-top: 16px; transition: background .2s; }
-.fw-cta:hover { background: var(--orange-dk); }
-
-/* ── PRODUSE ── */
-.produse { background: #FAFAF7; padding: 88px 0; }
-.produse-header { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 48px; }
-.produse-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-.produs-card { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 32px 28px; }
-.produs-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 14px; border-radius: 3px; margin-bottom: 20px;
-  font-family: Inter,sans-serif; font-size: .68rem; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-}
-.produs-badge.dark { background: var(--navy); color: white; }
-.produs-badge.orange { background: var(--orange); color: white; }
-.produs-title { font-family: 'Playfair Display',serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 12px; }
-.produs-desc { font-size: .875rem; color: var(--gray); line-height: 1.75; margin-bottom: 24px; }
-.produs-prices { display: flex; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
-.produs-price-item { }
-.produs-price-val { font-family: 'Playfair Display',serif; font-size: 1rem; font-weight: 700; color: var(--navy); }
-.produs-price-val.highlight { color: var(--orange); font-size: 1.1rem; }
-.produs-price-lbl { font-size: .7rem; color: var(--gray-lt); margin-top: 2px; }
-.produs-price-divider { width: 1px; background: var(--border); align-self: stretch; }
-.btn-produs-dark { display: block; background: var(--navy); color: white; text-align: center; padding: 14px; border-radius: 4px; font-family: Inter,sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
-.btn-produs-dark:hover { background: var(--navy-mid); }
-.btn-produs-orange { display: block; background: var(--orange); color: white; text-align: center; padding: 14px; border-radius: 4px; font-family: Inter,sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
-.btn-produs-orange:hover { background: var(--orange-dk); }
-.mentorat-price { font-family: 'Playfair Display',serif; font-size: 2.8rem; color: var(--navy); font-weight: 700; line-height: 1; margin-bottom: 4px; }
-.mentorat-rate { font-size: .875rem; color: var(--orange); margin-bottom: 24px; }
-
-/* ── PROGRAM ── */
-.program { background: white; padding: 88px 0; }
-.program-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.program-check { display: flex; align-items: center; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--border); font-size: .9rem; color: var(--gray); }
-.program-check::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
-.program-check:last-of-type { border-bottom: none; }
-.program-price-box { background: var(--off); border: 1px solid var(--border); border-radius: 4px; padding: 24px; margin-top: 28px; }
-.program-price-big { font-family: 'Playfair Display',serif; font-size: 2.6rem; color: var(--navy); font-weight: 700; }
-.program-price-rate { color: var(--orange); font-size: .9rem; margin-top: 4px; }
-.program-price-note { font-size: .78rem; color: var(--gray-lt); font-style: italic; margin-top: 4px; }
-.timeline { display: flex; flex-direction: column; gap: 24px; }
-.tl-item { display: flex; gap: 20px; align-items: flex-start; }
-.tl-circle { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--orange); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display',serif; font-size: 1rem; font-weight: 700; color: var(--navy); flex-shrink: 0; }
-.tl-title { font-family: 'Playfair Display',serif; font-size: 1rem; color: var(--navy); margin-bottom: 4px; }
-.tl-desc { font-size: .875rem; color: var(--gray-lt); line-height: 1.6; }
-
-/* ── FONDATORI ── */
-.fondatori { background: #FAFAF7; padding: 88px 0; }
-.fondatori-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; }
-.fondator-card { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 32px; }
-.fondator-avatar { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--orange); background: var(--navy); overflow: hidden; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display',serif; font-size: 1.4rem; color: white; font-weight: 700; }
-.fondator-name { font-family: 'Playfair Display',serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 4px; }
-.fondator-role { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; line-height: 1.5; }
-.fondator-desc { font-size: .875rem; color: var(--gray); line-height: 1.75; }
-
-/* ── CTA FINAL ── */
-.cta-final { background: var(--navy); padding: 88px 0; text-align: center; }
-.cta-final-label { font-size: .7rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
-.cta-final h2 { color: white; font-size: clamp(2rem,4vw,3rem); margin-bottom: 14px; }
-.cta-final p { color: rgba(255,255,255,.65); font-size: 1rem; max-width: 520px; margin: 0 auto 36px; }
-
-/* ── RESPONSIVE ── */
-@media(max-width:1024px) {
-  .hero-inner,.metoda-inner,.program-inner { grid-template-columns: 1fr; }
-  .m3c-visual,.metoda-visual-wrap { display: none; }
-  .produse-header { grid-template-columns: 1fr; }
-  .produse-cards,.fondatori-grid { grid-template-columns: 1fr; }
-  .prob-grid { grid-template-columns: 1fr; }
-}
-@media(max-width:640px) {
-  .hero h1 { font-size: 2.4rem; }
-  .nav-social { display: none; }
-}
-
-/* ── INA POPUP ── */
-.ina-popup-overlay {
-  position: fixed; inset: 0; z-index: 8000;
-  background: rgba(0,0,0,.45); backdrop-filter: blur(3px);
-  display: flex; align-items: flex-end; justify-content: flex-end;
-  padding: 24px; opacity: 0; pointer-events: none;
-  transition: opacity .3s ease;
-}
-.ina-popup-overlay.visible { opacity: 1; pointer-events: all; }
-
-.ina-popup {
-  background: white; border-radius: 14px;
-  width: 360px; max-width: calc(100vw - 48px);
-  box-shadow: 0 20px 60px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.12);
-  overflow: hidden;
-  transform: translateY(20px) scale(.97);
-  transition: transform .3s ease;
-}
-.ina-popup-overlay.visible .ina-popup {
-  transform: translateY(0) scale(1);
-}
-
-.ina-popup-header {
-  background: var(--navy);
-  padding: 16px 18px;
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-}
-.ina-popup-agent { display: flex; align-items: center; gap: 10px; }
-.ina-popup-avatar {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--orange);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 800; color: white; font-size: .85rem; flex-shrink: 0;
-}
-.ina-popup-name { font-size: .85rem; font-weight: 700; color: white; }
-.ina-popup-status { font-size: .68rem; color: rgba(255,255,255,.5); }
-.ina-popup-status::before {
-  content: '●'; color: #4ade80; margin-right: 4px; font-size: .55rem;
-}
-.ina-popup-actions { display: flex; gap: 6px; }
-.ina-popup-btn {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(255,255,255,.1); border: none; cursor: pointer;
-  color: rgba(255,255,255,.7); font-size: .85rem;
-  display: flex; align-items: center; justify-content: center;
-  transition: background .2s;
-}
-.ina-popup-btn:hover { background: rgba(255,255,255,.2); }
-
-.ina-popup-body { padding: 20px 18px; }
-.ina-popup-bubble {
-  background: var(--off); border-radius: 12px 12px 12px 4px;
-  padding: 13px 15px; margin-bottom: 14px;
-  font-size: .875rem; color: var(--gray); line-height: 1.65;
-}
-.ina-popup-bubble strong { color: var(--navy); }
-.ina-popup-input-row {
-  display: flex; gap: 8px; align-items: flex-end;
-}
-.ina-popup-input {
-  flex: 1; border: 1px solid var(--border); border-radius: 8px;
-  padding: 10px 13px; font-family: Inter,sans-serif; font-size: .875rem;
-  outline: none; resize: none; transition: border-color .2s;
-  min-height: 42px; max-height: 90px;
-}
-.ina-popup-input:focus { border-color: var(--navy); }
-.ina-popup-send {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--orange); border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; transition: background .2s;
-}
-.ina-popup-send:hover { background: var(--orange-dk); }
-.ina-popup-send svg { width: 16px; height: 16px; fill: white; }
-.ina-popup-footer {
-  padding: 10px 18px 16px;
-  text-align: center;
-  font-size: .72rem; color: var(--gray-lt);
-}
-.ina-popup-footer a { color: var(--orange); font-weight: 600; }
-
-/* MINIMIZED STATE */
-.ina-mini-btn {
-  position: fixed; bottom: 24px; right: 88px; z-index: 7999;
-  background: var(--navy); color: white;
-  border-radius: 100px; padding: 11px 18px;
-  font-family: Inter,sans-serif; font-size: .78rem; font-weight: 600;
-  cursor: pointer; border: none;
-  display: none; align-items: center; gap: 8px;
-  box-shadow: 0 4px 20px rgba(15,42,68,.3);
-  transition: background .2s, transform .2s;
-}
-.ina-mini-btn:hover { background: var(--navy-mid); transform: translateY(-2px); }
-.ina-mini-btn.show { display: flex; }
-.ina-mini-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #4ade80; flex-shrink: 0;
-}
-
-
-
-@media(max-width:480px) {
-  .ina-popup { width: calc(100vw - 32px); }
-  .ina-mini-btn { right: 24px; }
-}
-
-</style>
-</head>
-<body><!-- GDPR Cookie Banner -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#091d30;color:rgba(255,255,255,.85);padding:16px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:2px solid var(--orange)">
-  <p style="font-size:.82rem;line-height:1.6;margin:0;flex:1;min-width:260px">🍪 Folosim cookie-uri pentru a îmbunătăți experiența pe site și a analiza traficul. Prin continuarea navigării, ești de acord cu <a href="/termeni" style="color:var(--orange)">Politica de cookies</a>.</p>
-  <div style="display:flex;gap:10px;flex-shrink:0">
-    <button onclick="acceptCookies()" style="background:var(--orange);color:white;border:none;padding:9px 20px;border-radius:4px;font-family:Inter,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Accept</button>
-    <button onclick="declineCookies()" style="background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.25);padding:9px 20px;border-radius:4px;font-family:Inter,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Refuz</button>
-  </div>
-</div>
-
-<nav class="nav" id="nav">
-  <a href="/" class="logo">
-    <span class="logo-sub">Academia</span>
-    <span class="logo-main">De la Pasiune la Profit</span>
-  </a>
-  <button class="nav-mobile-btn" onclick="toggleNav()" aria-label="Meniu">☰</button>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/academia">Academia</a></li>
-    <li><a href="/metoda-3c">Metoda 3C</a></li>
-    <li><a href="/manuale">Manuale</a></li>
-    <li><a href="/ina">INA</a></li>
-    <li><a href="/ina-pro" class="nav-cta">INA Pro</a></li>
-    <li><a href="/mentorat">Mentorat</a></li>
-    <li><a href="/digital-studio-3c">Digital Studio 3C</a></li>
-    <li><a href="/comunitate">Comunitate</a></li>
-    <li><a href="/resurse">Resurse</a></li>
-    <li><a href="/aplica" class="nav-cta">Aplică</a></li>
-    <li class="nav-social"><a href="https://www.instagram.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    </a></li>
-    <li class="nav-social"><a href="https://www.facebook.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a></li>
-    <li class="nav-social"><a href="https://www.tiktok.com/@pasiunelaprofit" target="_blank" rel="noopener" aria-label="TikTok">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-    </a></li>
-  </ul>
-</nav>
-
-<!-- ══ HERO ══ -->
-<section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-kicker">Academia de la Pasiune la Profit</div>
-      <h1>Transformă pasiunea<br>într-un <em>sistem de<br>venit.</em></h1>
-      <p class="hero-sub">Academia De la Pasiune la Profit îi ajută pe creatori să transforme ideile în oferte clare și modele de venit stabile prin Metoda 3C.</p>
-      <div class="hero-btns">
-        <a href="/manuale" class="btn-hero-primary">Începe cu Manualul 3C</a>
-        <a href="/aplica" class="btn-hero-secondary">Aplică pentru mentorat</a>
-      </div>
-    </div>
-    <div class="m3c-visual">
-      <div class="m3c-header">Metoda 3C</div>
-      <div class="m3c-card">
-        <div class="m3c-etapa">Etapa 1</div>
-        <div class="m3c-title">Claritate</div>
-        <div class="m3c-tags">
-          <span class="m3c-tag">Ofertă</span>
-          <span class="m3c-tag">Public</span>
-          <span class="m3c-tag">Poziționare</span>
-        </div>
-      </div>
-      <div class="m3c-arrow">▾</div>
-      <div class="m3c-card">
-        <div class="m3c-etapa">Etapa 2</div>
-        <div class="m3c-title">Construcție</div>
-        <div class="m3c-tags">
-          <span class="m3c-tag">Structură ofertă</span>
-          <span class="m3c-tag">Strategie</span>
-          <span class="m3c-tag">Promovare</span>
-        </div>
-      </div>
-      <div class="m3c-arrow">▾</div>
-      <div class="m3c-card active">
-        <div class="m3c-etapa">Etapa 3</div>
-        <div class="m3c-title">Conversie</div>
-        <div class="m3c-tags">
-          <span class="m3c-tag">Testare</span>
-          <span class="m3c-tag">Optimizare</span>
-          <span class="m3c-tag">Vânzare</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ DE CE NU MERGE ══ -->
-<section class="probleme">
-  <div class="container">
-    <span class="section-label">Realitatea pieței</span>
-    <h2 style="max-width:600px">De ce majoritatea ideilor<br>nu devin venit stabil</h2>
-    <div class="prob-grid">
-      <div class="prob-card">
-        <div class="prob-num">01, Idei</div>
-        <h3 class="prob-title">Mulți creatori au idei bune.</h3>
-        <p class="prob-desc">Există talent real, dorință autentică și energie. Ideile sunt acolo, adesea mai valoroase decât par.</p>
-      </div>
-      <div class="prob-card">
-        <div class="prob-num">02, Creație</div>
-        <h3 class="prob-title">Postează, creează, învață constant.</h3>
-        <p class="prob-desc">Efortul este real. Orele investite zilnic în conținut, în producție, în a deveni mai bun.</p>
-      </div>
-      <div class="prob-card highlight">
-        <div class="prob-num">03, Lipsă de sistem</div>
-        <h3 class="prob-title">Fără structură, venitul rămâne instabil.</h3>
-        <p class="prob-desc">Problema nu este talentul. Este absența unui sistem care transformă munca în venit previzibil.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ METODA 3C ══ -->
-<section class="metoda-section">
-  <div class="container">
-    <div class="metoda-inner">
-      <div>
-        <span class="section-label">Metoda 3C</span>
-        <h2 style="margin-bottom:40px">Cele trei etape ale unui business funcțional</h2>
-        <div class="metoda-list">
-          <div class="metoda-item">
-            <div class="metoda-circle c1">C</div>
-            <div>
-              <div class="metoda-item-title">Claritate</div>
-              <p class="metoda-item-desc">Știi exact ce vinzi, cui vinzi și de ce ești relevant. Claritatea este fundamentul oricărui sistem de venit funcțional.</p>
-              <div class="metoda-item-tags">
-                <span class="metoda-tag">Ofertă</span>
-                <span class="metoda-tag">Public țintă</span>
-                <span class="metoda-tag">Poziționare</span>
-              </div>
-            </div>
-          </div>
-          <div class="metoda-item">
-            <div class="metoda-circle c2">C</div>
-            <div>
-              <div class="metoda-item-title">Construcție</div>
-              <p class="metoda-item-desc">Construiești oferta, sistemul de promovare și structura care susține vânzările fără haos.</p>
-              <div class="metoda-item-tags">
-                <span class="metoda-tag">Structură ofertă</span>
-                <span class="metoda-tag">Strategie</span>
-                <span class="metoda-tag">Promovare</span>
-              </div>
-            </div>
-          </div>
-          <div class="metoda-item">
-            <div class="metoda-circle c3">C</div>
-            <div>
-              <div class="metoda-item-title">Conversie</div>
-              <p class="metoda-item-desc">Testezi, optimizezi și construiești un model de vânzare repetabil care funcționează consistent.</p>
-              <div class="metoda-item-tags">
-                <span class="metoda-tag">Testare</span>
-                <span class="metoda-tag">Optimizare</span>
-                <span class="metoda-tag">Vânzare repetabilă</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="metoda-visual-wrap">
-          <div class="fw-header">Framework vizual</div>
-          <div class="fw-card">
-            <div class="fw-etapa">Etapa 1</div>
-            <div class="fw-title">Claritate</div>
-            <div class="fw-tags">
-              <span class="fw-tag">Ofertă</span>
-              <span class="fw-tag">Public</span>
-              <span class="fw-tag">Poziționare</span>
-            </div>
-          </div>
-          <div class="fw-arrow">▾</div>
-          <div class="fw-card">
-            <div class="fw-etapa">Etapa 2</div>
-            <div class="fw-title">Construcție</div>
-            <div class="fw-tags">
-              <span class="fw-tag">Structură</span>
-              <span class="fw-tag">Strategie</span>
-              <span class="fw-tag">Promovare</span>
-            </div>
-          </div>
-          <div class="fw-arrow">▾</div>
-          <div class="fw-card active">
-            <div class="fw-etapa">Etapa 3</div>
-            <div class="fw-title">Conversie</div>
-            <div class="fw-tags">
-              <span class="fw-tag">Testare</span>
-              <span class="fw-tag">Optimizare</span>
-              <span class="fw-tag">Vânzare</span>
-            </div>
-          </div>
-          <a href="/metoda-3c" class="fw-cta">Descoperă Metoda completă</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ ALEGE PUNCTUL DE INTRARE ══ -->
-<section class="produse">
-  <div class="container">
-    <div class="produse-header">
-      <div>
-        <h2>Alege punctul tău de intrare</h2>
-        <p style="color:var(--gray-lt);margin-top:12px">Fie că ești la început de drum sau gata de implementare intensivă, există o opțiune potrivită pentru tine.</p>
-      </div>
-    </div>
-    <div class="produse-cards">
-      <!-- TRILOGIE -->
-      <div class="produs-card">
-        <div class="produs-badge dark">Seria educațională</div>
-        <div class="produs-title">Trilogia 3C</div>
-        <p class="produs-desc">Seria educațională completă: trei volume care acoperă fiecare etapă a Metodei 3C, de la claritatea ofertei până la conversia în venit stabil.</p>
-        <div class="produs-prices">
-          <div class="produs-price-item">
-            <div class="produs-price-val">33 lei</div>
-            <div class="produs-price-lbl">Vol. 1, Claritate</div>
-          </div>
-          <div class="produs-price-item">
-            <div class="produs-price-val">77 lei</div>
-            <div class="produs-price-lbl">Vol. 2, Construcție</div>
-          </div>
-          <div class="produs-price-item">
-            <div class="produs-price-val">97 lei</div>
-            <div class="produs-price-lbl">Vol. 3, Conversie</div>
-          </div>
-          <div class="produs-price-divider"></div>
-          <div class="produs-price-item">
-            <div class="produs-price-val highlight">177 lei</div>
-            <div class="produs-price-lbl">Trilogie completă</div>
-          </div>
-        </div>
-        <a href="/manuale" class="btn-produs-dark">Descoperă Seria</a>
-      </div>
-      <!-- MENTORAT -->
-      <div class="produs-card">
-        <div class="produs-badge orange">Program complet</div>
-        <div class="produs-title">Mentoratul 3C</div>
-        <p class="produs-desc">90 de zile de implementare reală în grup restrâns. Sesiuni săptămânale, taskuri aplicate și 4 sesiuni individuale 1:1.</p>
-        <div class="mentorat-price">3.460 lei</div>
-        <div class="mentorat-rate">sau 3 rate × 1.154 lei</div>
-        <a href="/aplica" class="btn-produs-orange">Aplică pentru mentorat</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PROGRAM 90 ZILE ══ -->
-<section class="program">
-  <div class="container">
-    <div class="program-inner">
-      <div>
-        <span class="section-label">Program de implementare</span>
-        <h2 style="font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:20px">90 de zile.<br>Rezultate reale.</h2>
-        <p style="color:var(--gray-lt);margin-bottom:32px">Un program structurat în trei etape pentru creatorii care vor să treacă de la teorie la un sistem de venit funcțional.</p>
-        <div class="program-check">Sesiuni săptămânale de grup</div>
-        <div class="program-check">Grup restrâns, maximum 5 participanți</div>
-        <div class="program-check">Taskuri aplicate, nu exerciții teoretice</div>
-        <div class="program-check">4 sesiuni individuale 1:1</div>
-        <div class="program-price-box">
-          <div class="program-price-big">3.460 lei</div>
-          <div class="program-price-rate">sau 3 rate × 1.154 lei</div>
-          <div class="program-price-note">Plată integrală sau în 3 tranșe lunare.</div>
-        </div>
-      </div>
-      <div>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-circle">30</div>
-            <div>
-              <div class="tl-title">Zile 1–30: Claritate</div>
-              <p class="tl-desc">Definești oferta, publicul și poziționarea cu precizie deplină.</p>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-circle">60</div>
-            <div>
-              <div class="tl-title">Zile 31–60: Construcție</div>
-              <p class="tl-desc">Construiești sistemul de promovare și structura de vânzare.</p>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-circle">90</div>
-            <div>
-              <div class="tl-title">Zile 61–90: Conversie</div>
-              <p class="tl-desc">Testezi, corectezi și stabilizezi modelul de venit.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FONDATORI ══ -->
-<section class="fondatori">
-  <div class="container">
-    <span class="section-label">Cine suntem</span>
-    <h2>Fondatorii Academiei</h2>
-    <p style="color:var(--gray-lt);margin-top:12px;max-width:520px">Structură și claritate în ofertă (Diana), conversație strategică și vânzare aliniată (Georgiana).</p>
-    <div class="fondatori-grid">
-      <div class="fondator-card">
-        <div class="fondator-avatar" style="padding:0;overflow:hidden;background:none">
-          <img src="/diana.jpg"
-               alt="Diana Pătulea — Co-fondator Academia De la Pasiune la Profit"
-               style="width:100%;height:100%;object-fit:cover;border-radius:50%;object-position:center top"
-               onerror="this.parentElement.innerHTML='D';Object.assign(this.parentElement.style,{background:'var(--navy)',color:'white',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:'Playfair Display,serif',fontSize:'1.4rem',fontWeight:'700'})">
-        </div>
-        <div class="fondator-name">Diana Pătulea</div>
-        <div class="fondator-role">Co-fondator · Structură și claritate în ofertă</div>
-        <p class="fondator-desc">Ajută creatorii să treacă de la idei vagi la oferte clare și structurate. Aduce în academie experiența practică de a construi sisteme de venit pornind de la pasiune, fără a pierde autenticitatea.</p>
-      </div>
-      <div class="fondator-card">
-        <div class="fondator-avatar" style="padding:0;overflow:hidden;background:none">
-          <img src="/georgiana.jpg"
-               alt="Georgiana Rotaru — Co-fondator Academia De la Pasiune la Profit"
-               style="width:100%;height:100%;object-fit:cover;border-radius:50%;object-position:center top"
-               onerror="this.parentElement.innerHTML='G';Object.assign(this.parentElement.style,{background:'var(--navy)',color:'white',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:'Playfair Display,serif',fontSize:'1.4rem',fontWeight:'700'})">
-        </div>
-        <div class="fondator-name">Georgiana Rotaru</div>
-        <div class="fondator-role">Co-fondator · Conversație strategică și vânzare aliniată</div>
-        <p class="fondator-desc">Specialist în vânzare care nu forțează și nu manipulează. Ghidează participanții să comunice valoarea în mod natural și să transforme conversațiile în clienți.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CTA FINAL ══ -->
-<section class="cta-final">
-  <div class="container-sm">
-    <div class="cta-final-label">Primul pas</div>
-    <h2>Începe cu claritatea.</h2>
-    <p>Manualul 3C îți dă structura de care ai nevoie pentru a transforma pasiunea în venit real.</p>
-    <a href="/manuale" class="btn-hero-primary" style="display:inline-flex">Accesează Manualul 3C</a>
-  </div>
-</section>
-
-<!-- NEWSLETTER STRIP -->
-<section style="background:var(--off);border-top:1px solid var(--border);padding:48px 6%">
-  <div style="max-width:560px;margin:0 auto;text-align:center">
-    <span class="section-label">Newsletter gratuit</span>
-    <h3 style="color:var(--navy);margin-bottom:8px;font-size:1.2rem">Sfaturi săptămânale pentru antreprenori</h3>
-    <p style="font-size:.875rem;color:var(--gray-lt);margin-bottom:20px">Strategii, inspirație și resurse direct în inbox-ul tău. Fără spam.</p>
-    <form id="newsletter-form" onsubmit="handleNewsletter(event)" style="display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap">
-      <input type="email" required placeholder="email@exemplu.ro" id="nl-email"
-        style="flex:1;min-width:200px;padding:12px 14px;border:1px solid var(--border);border-radius:4px;font-family:Inter,sans-serif;font-size:.9rem;outline:none">
-      <button type="submit" class="btn btn-orange" style="white-space:nowrap">Abonează-te →</button>
-    </form>
-    <p id="nl-success" style="display:none;color:var(--orange);font-size:.82rem;margin-top:12px;font-weight:600">✓ Te-ai abonat cu succes!</p>
-    <p style="font-size:.72rem;color:var(--gray-lt);margin-top:10px">Te poți dezabona oricând. Respectăm GDPR.</p>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-social">
-    <a href="https://www.instagram.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    </a>
-    <a href="https://www.facebook.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a>
-    <a href="https://www.tiktok.com/@pasiunelaprofit" target="_blank" rel="noopener" aria-label="TikTok">
-      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-    </a>
-  </div>
-  <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:16px">
-    <a href="/" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Home</a>
-    <a href="/academia" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Academia</a>
-    <a href="/manuale" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Manuale</a>
-    <a href="/ina" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">INA AI</a>
-    <a href="/contact" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Contact</a>
-    <a href="/termeni" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">Termeni</a>
-    <a href="/gdpr" style="font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none">GDPR</a>
-  </div>
-  <p><strong>Academia De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2025</p>
-  <div class="footer-firma">
-    D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
-    <a href="mailto:contact@pasiune-profit.ro">contact@pasiune-profit.ro</a><span class="f-sep">·</span><a href="/termeni">Termeni &amp; Condiții</a><span class="f-sep">·</span><a href="/gdpr">GDPR</a>
-  </div>
-</footer>
-<div id="toast" class="toast"></div>
-<script src="/app.js"></script>
-<script>
-// Cookie banner
-(function() {
-  var consent = localStorage.getItem('cookie_consent');
-  if (!consent) {
-    var banner = document.getElementById('cookie-banner');
-    if (banner) { banner.style.display = 'flex'; }
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"De la Pasiune la Profit",
+    "url":"https://pasiune-profit.ro",
+    "logo":"https://pasiune-profit.ro/logo.png",
+    "description":"Platformă educațională și de implementare pentru antreprenori care vor să transforme ideile în venit.",
+    "email":"contact@pasiune-profit.ro",
+    "sameAs":[
+      "https://www.instagram.com/pasiunelaprofit",
+      "https://www.facebook.com/pasiunelaprofit",
+      "https://www.tiktok.com/@pasiunelaprofit"
+    ]
   }
-})();
-function acceptCookies() {
-  localStorage.setItem('cookie_consent', 'accepted');
-  var b = document.getElementById('cookie-banner'); if(b) b.style.display='none';
-  gtag && gtag('consent','update',{'analytics_storage':'granted','ad_storage':'granted'});
-}
-function declineCookies() {
-  localStorage.setItem('cookie_consent', 'declined');
-  var b = document.getElementById('cookie-banner'); if(b) b.style.display='none';
-}
-// Newsletter
-function handleNewsletter(e) {
-  e.preventDefault();
-  var email = document.getElementById('nl-email').value;
-  // Connect to your email provider (Mailchimp, ConvertKit etc.)
-  fetch('https://formspree.io/f/xqeykylv', {
-    method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body: JSON.stringify({email: email, _subject: 'Newsletter signup'})
-  }).catch(function(){});
-  document.getElementById('newsletter-form').style.display = 'none';
-  document.getElementById('nl-success').style.display = 'block';
-  gtag && gtag('event','newsletter_signup',{email: email});
-  fbq && fbq('track','Lead');
-}
-</script>
+  </script>
 
-<!-- ══ INA POPUP ══ -->
-<div class="ina-popup-overlay" id="ina-popup-overlay" role="dialog" aria-label="INA Mentor AI">
-  <div class="ina-popup">
-    <div class="ina-popup-header">
-      <div class="ina-popup-agent">
-        <div class="ina-popup-avatar" style="padding:0;overflow:hidden;background:none">
-          <img src="/ina.jpg"
-               alt="INA Mentor AI"
-               style="width:100%;height:100%;object-fit:cover;border-radius:50%"
-               onerror="this.parentElement.innerHTML='INA';Object.assign(this.parentElement.style,{background:'var(--orange)',color:'white',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'.85rem',fontWeight:'800'})">
-        </div>
-        <div>
-          <div class="ina-popup-name">INA · Mentor AI</div>
-          <div class="ina-popup-status">Online acum</div>
-        </div>
-      </div>
-      <div class="ina-popup-actions">
-        <button class="ina-popup-btn" onclick="minimizeIna()" title="Minimizează" aria-label="Minimizează">—</button>
-        <button class="ina-popup-btn" onclick="closeIna()" title="Închide" aria-label="Închide">✕</button>
-      </div>
-    </div>
-    <div class="ina-popup-body">
-      <div class="ina-popup-bubble">
-        Salut! Sunt <strong>INA</strong>, mentorul tău AI de business. 👋<br><br>
-        Spune-mi ideea ta — ce pasiune sau competență ai vrea să transformi în business?
-      </div>
-      <div class="ina-popup-input-row">
-        <textarea class="ina-popup-input" id="ina-popup-input"
-          placeholder="Descrie ideea ta..."
-          rows="1"
-          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();goToIna();}"
-          oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,90)+'px'"></textarea>
-        <button class="ina-popup-send" onclick="goToIna()" aria-label="Trimite">
-          <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="ina-popup-footer">
-      10 întrebări gratuite · <a href="/ina">Deschide INA complet →</a>
-    </div>
-  </div>
-</div>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);t.async=!0;t.src=v;
+      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','FB_PIXEL_ID');
+    fbq('track','PageView');
+  </script>
 
-<!-- MINIMIZED BUTTON -->
-<button class="ina-mini-btn" id="ina-mini-btn" onclick="restoreIna()" aria-label="Deschide INA">
-  <div class="ina-mini-dot"></div>
-  INA · Mentor AI
-</button>
-
-
-
-<script>
-// INA Popup
-var inaShown = sessionStorage.getItem('ina_popup_shown');
-if (!inaShown) {
-  setTimeout(function() {
-    var overlay = document.getElementById('ina-popup-overlay');
-    if (overlay) {
-      overlay.classList.add('visible');
-      sessionStorage.setItem('ina_popup_shown', '1');
+  <style>
+    .hero-new {
+      background: linear-gradient(135deg, var(--navy) 0%, #143b5d 55%, #1e4c72 100%);
+      color: white;
+      padding: 70px 0 92px;
+      position: relative;
+      overflow: hidden;
     }
-  }, 5000);
-}
+    .hero-new::before {
+      content: '';
+      position: absolute;
+      inset: auto -120px -120px auto;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(246,127,46,.28) 0%, rgba(246,127,46,0) 72%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 6%;
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(320px,.8fr);
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 22px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--orange);
+    }
+    .hero-new h1 {
+      color: white;
+      font-size: clamp(2.5rem, 5vw, 4.6rem);
+      line-height: 1.02;
+      margin-bottom: 20px;
+      max-width: 760px;
+    }
+    .hero-new h1 em {
+      color: var(--orange);
+      font-style: italic;
+    }
+    .hero-lead {
+      max-width: 620px;
+      color: rgba(255,255,255,.78);
+      font-size: 1.04rem;
+      line-height: 1.85;
+      margin-bottom: 30px;
+    }
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+    .hero-proof span {
+      padding: 8px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      font-size: .78rem;
+      color: rgba(255,255,255,.88);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .btn-main, .btn-alt {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 15px 24px;
+      border-radius: 6px;
+      font-size: .79rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .btn-main {
+      background: var(--orange);
+      color: white;
+    }
+    .btn-main:hover { background: var(--orange-dk); transform: translateY(-1px); }
+    .btn-alt {
+      color: white;
+      border: 1px solid rgba(255,255,255,.24);
+      background: transparent;
+    }
+    .btn-alt:hover { border-color: rgba(255,255,255,.6); transform: translateY(-1px); }
 
-function closeIna() {
-  document.getElementById('ina-popup-overlay').classList.remove('visible');
-}
-function minimizeIna() {
-  document.getElementById('ina-popup-overlay').classList.remove('visible');
-  document.getElementById('ina-mini-btn').classList.add('show');
-}
-function restoreIna() {
-  document.getElementById('ina-popup-overlay').classList.add('visible');
-  document.getElementById('ina-mini-btn').classList.remove('show');
-}
-function goToIna() {
-  var txt = document.getElementById('ina-popup-input').value.trim();
-  if (txt) {
-    sessionStorage.setItem('ina_initial_msg', txt);
-  }
-  window.location.href = '/ina';
-}
-// Close on overlay click (outside popup)
-document.getElementById('ina-popup-overlay').addEventListener('click', function(e) {
-  if (e.target === this) minimizeIna();
-});
-</script>
+    .hero-panel {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(8,20,34,.2);
+      backdrop-filter: blur(4px);
+    }
+    .hero-panel-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.56);
+      margin-bottom: 18px;
+    }
+    .hero-steps {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .hero-step {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .hero-step.active {
+      background: rgba(246,127,46,.95);
+      border-color: rgba(246,127,46,.95);
+    }
+    .hero-step small {
+      display: block;
+      font-size: .64rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.58);
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+    .hero-step.active small { color: rgba(255,255,255,.82); }
+    .hero-step strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.22rem;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .hero-step p {
+      margin: 0;
+      color: rgba(255,255,255,.82);
+      font-size: .84rem;
+      line-height: 1.65;
+    }
+    .hero-panel .mini-cta {
+      display: block;
+      text-align: center;
+      background: white;
+      color: var(--navy);
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: .77rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
 
+    .trust-strip {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    .trust-row {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 6%;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .trust-row span {
+      color: var(--gray-lt);
+      font-size: .82rem;
+    }
+
+    .pain-section, .path-section, .offers-section, .results-preview, .about-preview, .cta-band {
+      padding: 88px 0;
+    }
+    .pain-section { background: #fafaf7; }
+    .path-section { background: white; }
+    .offers-section { background: #fafaf7; }
+    .results-preview { background: white; }
+    .about-preview { background: #fafaf7; }
+    .cta-band { background: var(--navy); text-align: center; }
+
+    .section-intro {
+      max-width: 720px;
+      margin-bottom: 46px;
+    }
+    .section-intro p {
+      color: var(--gray-lt);
+      margin-top: 12px;
+      line-height: 1.8;
+    }
+
+    .pain-grid, .offer-grid, .result-grid, .about-grid {
+      display: grid;
+      gap: 24px;
+    }
+    .pain-grid { grid-template-columns: repeat(3, 1fr); }
+    .pain-card, .offer-card, .result-card, .about-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .pain-card strong,
+    .offer-card strong,
+    .result-card strong,
+    .about-card strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .pain-card p,
+    .offer-card p,
+    .result-card p,
+    .about-card p {
+      color: var(--gray);
+      font-size: .92rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+    .pain-kicker {
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+
+    .path-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.15fr) minmax(300px,.85fr);
+      gap: 36px;
+      align-items: start;
+    }
+    .path-list {
+      display: grid;
+      gap: 18px;
+    }
+    .path-item {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .path-item:last-child { border-bottom: none; }
+    .path-badge {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+    }
+    .path-item:last-child .path-badge { background: var(--orange); }
+    .path-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.32rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .path-item p {
+      color: var(--gray);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+    .path-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .path-tags span {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 12px;
+      font-size: .75rem;
+      color: var(--gray);
+    }
+    .path-sidebar {
+      background: var(--navy);
+      color: white;
+      border-radius: 16px;
+      padding: 30px;
+      position: sticky;
+      top: 88px;
+    }
+    .path-sidebar h3 {
+      color: white;
+      margin-bottom: 16px;
+    }
+    .path-sidebar p {
+      color: rgba(255,255,255,.74);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .path-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: grid;
+      gap: 12px;
+    }
+    .path-sidebar li {
+      position: relative;
+      padding-left: 22px;
+      color: rgba(255,255,255,.84);
+      font-size: .9rem;
+      line-height: 1.65;
+    }
+    .path-sidebar li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .offer-grid { grid-template-columns: repeat(4, 1fr); }
+    .offer-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 16px;
+    }
+    .offer-label {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      border-radius: 100px;
+      background: var(--off);
+      border: 1px solid var(--border);
+      color: var(--orange);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .offer-card p { margin-bottom: 20px; }
+    .offer-card a {
+      margin-top: auto;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .result-grid { grid-template-columns: repeat(3, 1fr); }
+    .result-card {
+      background: linear-gradient(180deg, #fff 0%, #fcfbf8 100%);
+    }
+    .result-card .metric {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--orange);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .about-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-card .mini-role {
+      display: block;
+      color: var(--orange);
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .cta-band h2 {
+      color: white;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 14px;
+    }
+    .cta-band p {
+      max-width: 620px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,.74);
+      line-height: 1.8;
+    }
+
+    .footer-links-custom {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .footer-links-custom a {
+      font-size: .78rem;
+      color: rgba(255,255,255,.4);
+      text-decoration: none;
+    }
+
+    /* INA POPUP */
+    .ina-popup-overlay {
+      position: fixed; inset: 0; z-index: 8000;
+      background: rgba(0,0,0,.45); backdrop-filter: blur(3px);
+      display: flex; align-items: flex-end; justify-content: flex-end;
+      padding: 24px; opacity: 0; pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .ina-popup-overlay.visible { opacity: 1; pointer-events: all; }
+    .ina-popup {
+      background: white; border-radius: 14px;
+      width: 360px; max-width: calc(100vw - 48px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.12);
+      overflow: hidden;
+      transform: translateY(20px) scale(.97);
+      transition: transform .3s ease;
+    }
+    .ina-popup-overlay.visible .ina-popup { transform: translateY(0) scale(1); }
+    .ina-popup-header {
+      background: var(--navy);
+      padding: 16px 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .ina-popup-agent { display: flex; align-items: center; gap: 10px; }
+    .ina-popup-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: white; font-size: .85rem; flex-shrink: 0;
+    }
+    .ina-popup-name { font-size: .85rem; font-weight: 700; color: white; }
+    .ina-popup-status { font-size: .68rem; color: rgba(255,255,255,.5); }
+    .ina-popup-status::before { content: '●'; color: #4ade80; margin-right: 4px; font-size: .55rem; }
+    .ina-popup-actions { display: flex; gap: 6px; }
+    .ina-popup-btn {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,.1); border: none; cursor: pointer;
+      color: rgba(255,255,255,.7); font-size: .85rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .ina-popup-btn:hover { background: rgba(255,255,255,.2); }
+    .ina-popup-body { padding: 20px 18px; }
+    .ina-popup-bubble {
+      background: var(--off); border-radius: 12px 12px 12px 4px;
+      padding: 13px 15px; margin-bottom: 14px;
+      font-size: .875rem; color: var(--gray); line-height: 1.65;
+    }
+    .ina-popup-bubble strong { color: var(--navy); }
+    .ina-popup-input-row { display: flex; gap: 8px; align-items: flex-end; }
+    .ina-popup-input {
+      flex: 1; border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 13px; font-family: Inter,sans-serif; font-size: .875rem;
+      outline: none; resize: none; transition: border-color .2s;
+      min-height: 42px; max-height: 90px;
+    }
+    .ina-popup-input:focus { border-color: var(--navy); }
+    .ina-popup-send {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--orange); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background .2s;
+    }
+    .ina-popup-send:hover { background: var(--orange-dk); }
+    .ina-popup-send svg { width: 16px; height: 16px; fill: white; }
+    .ina-popup-footer {
+      padding: 10px 18px 16px;
+      text-align: center;
+      font-size: .72rem; color: var(--gray-lt);
+    }
+    .ina-popup-footer a { color: var(--orange); font-weight: 600; }
+    .ina-mini-btn {
+      position: fixed; bottom: 24px; right: 88px; z-index: 7999;
+      background: var(--navy); color: white;
+      border-radius: 100px; padding: 11px 18px;
+      font-family: Inter,sans-serif; font-size: .78rem; font-weight: 600;
+      cursor: pointer; border: none;
+      display: none; align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px rgba(15,42,68,.3);
+      transition: background .2s, transform .2s;
+    }
+    .ina-mini-btn:hover { background: var(--navy-mid); transform: translateY(-2px); }
+    .ina-mini-btn.show { display: flex; }
+    .ina-mini-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #4ade80; flex-shrink: 0;
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid, .path-grid { grid-template-columns: 1fr; }
+      .offer-grid { grid-template-columns: repeat(2, 1fr); }
+      .pain-grid, .result-grid, .about-grid { grid-template-columns: 1fr; }
+      .path-sidebar { position: static; }
+    }
+    @media (max-width: 720px) {
+      .offer-grid { grid-template-columns: 1fr; }
+      .hero-new { padding-top: 46px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-main, .btn-alt { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .ina-popup { width: calc(100vw - 32px); }
+      .ina-mini-btn { right: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#091d30;color:rgba(255,255,255,.85);padding:16px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:2px solid var(--orange)">
+    <p style="font-size:.82rem;line-height:1.6;margin:0;flex:1;min-width:260px">🍪 Folosim cookie-uri pentru a îmbunătăți experiența pe site și a analiza traficul. Prin continuarea navigării, ești de acord cu <a href="/termeni" style="color:var(--orange)">Politica de cookies</a>.</p>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="acceptCookies()" style="background:var(--orange);color:white;border:none;padding:9px 20px;border-radius:4px;font-family:Inter,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Accept</button>
+      <button onclick="declineCookies()" style="background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.25);padding:9px 20px;border-radius:4px;font-family:Inter,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">Refuz</button>
+    </div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <a href="/" class="logo">
+      <span class="logo-sub">Academia</span>
+      <span class="logo-main">De la Pasiune la Profit</span>
+    </a>
+    <button class="nav-mobile-btn" onclick="toggleNav()" aria-label="Meniu">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/metoda-3c">Metoda 3C</a></li>
+      <li><a href="/comunitate">Comunitate INA</a></li>
+      <li><a href="/ina">Mentor AI</a></li>
+      <li><a href="/biblioteca">Biblioteca</a></li>
+      <li><a href="/rezultate">Rezultate</a></li>
+      <li><a href="/despre-noi">Despre noi</a></li>
+      <li><a href="/aplica" class="nav-cta">Aplică</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-new">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Claritate. Structură. Conversie.</div>
+        <h1>Nu ai nevoie de încă o idee bună. Ai nevoie de un <em>sistem</em> care o transformă în venit.</h1>
+        <p class="hero-lead">La De la Pasiune la Profit te ajutăm să treci de la confuzie, amânare și conținut fără rezultat la o ofertă clară, o direcție simplă și pași concreți care duc către clienți și venit real.</p>
+        <div class="hero-proof">
+          <span>Metoda 3C</span>
+          <span>Bibliotecă digitală</span>
+          <span>Mentor AI</span>
+          <span>Comunitate + implementare</span>
+        </div>
+        <div class="hero-actions">
+          <a href="/aplica" class="btn-main">Aplică acum</a>
+          <a href="/metoda-3c" class="btn-alt">Descoperă metoda</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="hero-panel-label">Cum lucrăm</div>
+        <div class="hero-steps">
+          <div class="hero-step">
+            <small>Etapa 1</small>
+            <strong>Claritate</strong>
+            <p>Definim ce vinzi, cui te adresezi și de ce ar cumpăra cineva de la tine.</p>
+          </div>
+          <div class="hero-step">
+            <small>Etapa 2</small>
+            <strong>Construcție</strong>
+            <p>Organizăm oferta, mesajul, resursele și ecosistemul digital care susține vânzarea.</p>
+          </div>
+          <div class="hero-step active">
+            <small>Etapa 3</small>
+            <strong>Conversie</strong>
+            <p>Optimizăm pașii care transformă interesul în acțiune, aplicații și plăți reale.</p>
+          </div>
+        </div>
+        <a href="/biblioteca" class="mini-cta">Intră în Bibliotecă</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="trust-strip">
+    <div class="trust-row">
+      <span>Pentru antreprenori aflați la început sau în etapa de restructurare</span>
+      <span>Fără rețete magice, fără zgomot inutil, fără improvizații scumpe</span>
+      <span>Doar claritate, structură și implementare</span>
+    </div>
+  </section>
+
+  <section class="pain-section">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">De ce nu se leagă lucrurile</span>
+        <h2>Mulți au potențial. Puțini au un traseu clar.</h2>
+        <p>Problema nu este lipsa de talent. Nici lipsa de motivație. De cele mai multe ori, problema este că ideile rămân neorganizate, mesajul e neclar, iar oferta nu e construită astfel încât să poată fi cumpărată ușor. Tragic, știu. Oamenii au pasiune, dar nu și sistem.</p>
+      </div>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <span class="pain-kicker">01 · Claritate</span>
+          <strong>Ai idei bune, dar nu știi ce să vinzi prima dată.</strong>
+          <p>Te învârți între prea multe direcții, proiecte și impulsuri. Fără o alegere clară, totul rămâne la nivel de intenție.</p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-kicker">02 · Structură</span>
+          <strong>Muncești mult, dar ecosistemul tău nu susține vânzarea.</strong>
+          <p>Conținutul, paginile, resursele și mesajul nu lucrează împreună. Rezultatul: oboseală multă, conversie puțină.</p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-kicker">03 · Conversie</span>
+          <strong>Oamenii te urmăresc, dar nu trec la acțiune.</strong>
+          <p>Interes există. Încredere poate exista. Dar fără o ofertă și un traseu clar către decizie, vânzarea nu se întâmplă constant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="path-section">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Metoda 3C</span>
+        <h2>Un cadru simplu pentru business-uri care vor să funcționeze, nu doar să arate bine pe internet.</h2>
+        <p>Metoda 3C organizează drumul dintre idee și monetizare. Nu te îngropăm în teorie. Te ajutăm să vezi clar, să construiești inteligent și să convertești mai bine.</p>
+      </div>
+
+      <div class="path-grid">
+        <div class="path-list">
+          <div class="path-item">
+            <div class="path-badge">C</div>
+            <div>
+              <h3>Claritate</h3>
+              <p>Identifici oferta potrivită, publicul relevant și mesajul care te poziționează corect. Aici se termină haosul și începe direcția.</p>
+              <div class="path-tags">
+                <span>Ofertă</span>
+                <span>Public</span>
+                <span>Poziționare</span>
+              </div>
+            </div>
+          </div>
+          <div class="path-item">
+            <div class="path-badge">C</div>
+            <div>
+              <h3>Construcție</h3>
+              <p>Îți construiești resursele, paginile, mecanismele și materialele care susțin un business coerent și credibil.</p>
+              <div class="path-tags">
+                <span>Structură</span>
+                <span>Ecosistem</span>
+                <span>Implementare</span>
+              </div>
+            </div>
+          </div>
+          <div class="path-item">
+            <div class="path-badge">C</div>
+            <div>
+              <h3>Conversie</h3>
+              <p>Optimizezi drumul dintre interes și acțiune: aplicații, sesiuni, vânzări și decizii mai rapide, fără presiune inutilă.</p>
+              <div class="path-tags">
+                <span>Mesaj</span>
+                <span>Testare</span>
+                <span>Vânzare</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="path-sidebar">
+          <h3>Ce obții concret</h3>
+          <p>Un business nu crește doar pentru că ai ambiție. Crește când ai claritate, structură și un traseu de conversie care nu sabotează tot ce faci.</p>
+          <ul>
+            <li>Știi ce produs sau serviciu merită împins în față</li>
+            <li>Ai o bibliotecă de resurse și pagini care susțin vânzarea</li>
+            <li>Înțelegi cum trece cineva de la interes la client</li>
+            <li>Nu mai construiești la întâmplare, pe nervi și cafea</li>
+          </ul>
+          <a href="/metoda-3c" class="btn-main" style="width:100%;">Vezi metoda completă</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="offers-section">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Puncte de intrare</span>
+        <h2>Alege formatul care se potrivește etapei tale.</h2>
+        <p>Nu toată lumea are nevoie de același lucru. Unii au nevoie de claritate rapidă. Alții au nevoie de resurse. Alții au nevoie de ghidare și implementare. Da, viața e grea și nu vine cu instrucțiuni, așa că le-am pus noi aici.</p>
+      </div>
+
+      <div class="offer-grid">
+        <article class="offer-card">
+          <span class="offer-label">Metodă</span>
+          <strong>Metoda 3C</strong>
+          <p>Înțelege structura care transformă ideile în oferte clare, sisteme simple și pași de vânzare aplicabili.</p>
+          <a href="/metoda-3c">Descoperă metoda →</a>
+        </article>
+        <article class="offer-card">
+          <span class="offer-label">Resurse</span>
+          <strong>Biblioteca</strong>
+          <p>Accesează materiale gratuite, manuale digitale, resurse plătite și instrumente construite pentru claritate și implementare.</p>
+          <a href="/biblioteca">Intră în bibliotecă →</a>
+        </article>
+        <article class="offer-card">
+          <span class="offer-label">AI</span>
+          <strong>Mentor AI</strong>
+          <p>Primești ghidare rapidă pentru idei, direcții, blocaje și întrebări punctuale atunci când ai nevoie de claritate imediată.</p>
+          <a href="/ina">Vorbește cu INA →</a>
+        </article>
+        <article class="offer-card">
+          <span class="offer-label">Implementare</span>
+          <strong>Comunitate + Aplicare</strong>
+          <p>Intră într-un spațiu unde ideile sunt testate, rafinate și transformate în acțiune prin conversații și feedback real.</p>
+          <a href="/aplica">Aplică acum →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="results-preview">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Dovezi, nu doar promisiuni</span>
+        <h2>Rezultatele există atunci când ideile sunt tratate ca proiecte reale.</h2>
+        <p>Pagina de rezultate este locul unde vizitatorii văd că nu vorbim doar frumos. Acolo merg când vor confirmarea că metoda, resursele și ghidarea chiar produc schimbări. Genul ăla de detaliu care ajută enorm înainte să scoată cardul.</p>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card">
+          <span class="metric">Claritate</span>
+          <strong>Oameni care și-au definit pentru prima dată oferta într-un mod simplu.</strong>
+          <p>Când știi exact ce vinzi și cui te adresezi, scade rezistența și crește viteza deciziilor.</p>
+        </article>
+        <article class="result-card">
+          <span class="metric">Structură</span>
+          <strong>Pagini, resurse și ecosisteme digitale puse în ordine.</strong>
+          <p>Un business începe să pară profesionist atunci când toate elementele lui spun aceeași poveste și duc către aceeași acțiune.</p>
+        </article>
+        <article class="result-card">
+          <span class="metric">Conversie</span>
+          <strong>Mai puțin haos în comunicare, mai multă acțiune din partea clientului.</strong>
+          <p>Nu promitem minuni. Promitem claritate strategică și sisteme care cresc șansa de conversie.</p>
+        </article>
+      </div>
+
+      <div style="margin-top:32px;">
+        <a href="/rezultate" class="btn-main">Vezi pagina de rezultate</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-preview">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Despre noi</span>
+        <h2>Două perspective complementare. O singură direcție: de la pasiune la profit.</h2>
+        <p>Brandul este construit de Georgiana și Diana — două fondatoare cu experiențe diferite și complementare: vânzări, strategie, structură, training, ecosisteme digitale și lucru real cu oamenii. Nu, nu e încă un proiect „fă-ți visul realitate” scris cu glitter. E muncă serioasă, dar bine făcută.</p>
+      </div>
+
+      <div class="about-grid">
+        <article class="about-card">
+          <span class="mini-role">Georgiana</span>
+          <strong>Conversație strategică, vânzare aliniată și revenire după fiecare etapă grea.</strong>
+          <p>Experiența ei în juridic, antreprenoriat și vânzări o ajută să vadă direcția clar, să pună ordine în ofertă și să construiască încredere înainte de vânzare.</p>
+        </article>
+        <article class="about-card">
+          <span class="mini-role">Diana</span>
+          <strong>Structură, claritate, training și construcție practică de ecosisteme digitale.</strong>
+          <p>Îmbină gândirea analitică cu înțelegerea oamenilor și transformă ideile bune în sisteme coerente, cu logică, profunzime și aplicabilitate reală.</p>
+        </article>
+      </div>
+
+      <div style="margin-top:32px;">
+        <a href="/despre-noi" class="btn-main">Citește povestea noastră</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container-sm">
+      <span class="section-label" style="color:var(--orange);">Primul pas</span>
+      <h2>Ai deja o idee. Acum îi trebuie direcție.</h2>
+      <p>Poți începe cu Metoda 3C, poți intra în Bibliotecă sau poți aplica direct dacă vrei implementare și ghidare mai aproape. Important e să nu mai lași ideea să stea pe loc până „vine momentul perfect”, această creatură mitologică foarte ocupată.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="/aplica" class="btn-main">Aplică acum</a>
+        <a href="/biblioteca" class="btn-alt">Intră în bibliotecă</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--off);border-top:1px solid var(--border);padding:48px 6%;">
+    <div style="max-width:560px;margin:0 auto;text-align:center;">
+      <span class="section-label">Newsletter gratuit</span>
+      <h3 style="color:var(--navy);margin-bottom:8px;font-size:1.2rem;">Sfaturi săptămânale pentru antreprenori</h3>
+      <p style="font-size:.875rem;color:var(--gray-lt);margin-bottom:20px;">Strategii, claritate și resurse direct în inbox-ul tău. Fără spam, fără predici obosite, fără zgomot inutil.</p>
+      <form id="newsletter-form" onsubmit="handleNewsletter(event)" style="display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;">
+        <input type="email" required placeholder="email@exemplu.ro" id="nl-email"
+          style="flex:1;min-width:200px;padding:12px 14px;border:1px solid var(--border);border-radius:4px;font-family:Inter,sans-serif;font-size:.9rem;outline:none;">
+        <button type="submit" class="btn btn-orange" style="white-space:nowrap;">Abonează-te →</button>
+      </form>
+      <p id="nl-success" style="display:none;color:var(--orange);font-size:.82rem;margin-top:12px;font-weight:600;">✓ Te-ai abonat cu succes!</p>
+      <p style="font-size:.72rem;color:var(--gray-lt);margin-top:10px;">Te poți dezabona oricând. Respectăm GDPR.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-social">
+      <a href="https://www.instagram.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/pasiunelaprofit" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@pasiunelaprofit" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-links-custom">
+      <a href="/">Home</a>
+      <a href="/metoda-3c">Metoda 3C</a>
+      <a href="/biblioteca">Biblioteca</a>
+      <a href="/ina">Mentor AI</a>
+      <a href="/rezultate">Rezultate</a>
+      <a href="/despre-noi">Despre noi</a>
+      <a href="/aplica">Aplică</a>
+      <a href="/termeni">Termeni</a>
+      <a href="/gdpr">GDPR</a>
+    </div>
+
+    <p><strong>De la Pasiune la Profit</strong><span class="f-sep">·</span>Metoda 3C<span class="f-sep">·</span>© 2026</p>
+    <div class="footer-firma">
+      D &amp; M TAP BENEFICII S.R.L.<span class="f-sep">·</span>CUI: 39751305<span class="f-sep">·</span>J20/1171/3402<br>
+      <a href="mailto:contact@pasiune-profit.ro">contact@pasiune-profit.ro</a><span class="f-sep">·</span><a href="/termeni">Termeni &amp; Condiții</a><span class="f-sep">·</span><a href="/gdpr">GDPR</a>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="/app.js"></script>
+  <script>
+    (function() {
+      var consent = localStorage.getItem('cookie_consent');
+      if (!consent) {
+        var banner = document.getElementById('cookie-banner');
+        if (banner) { banner.style.display = 'flex'; }
+      }
+    })();
+
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      var b = document.getElementById('cookie-banner');
+      if (b) b.style.display = 'none';
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted',
+          'ad_storage': 'granted'
+        });
+      }
+    }
+
+    function declineCookies() {
+      localStorage.setItem('cookie_consent', 'declined');
+      var b = document.getElementById('cookie-banner');
+      if (b) b.style.display = 'none';
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      var email = document.getElementById('nl-email').value;
+      fetch('https://formspree.io/f/xqeykylv', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ email: email, _subject: 'Newsletter signup' })
+      }).catch(function(){});
+
+      document.getElementById('newsletter-form').style.display = 'none';
+      document.getElementById('nl-success').style.display = 'block';
+      if (typeof gtag === 'function') gtag('event', 'newsletter_signup', { email: email });
+      if (typeof fbq === 'function') fbq('track', 'Lead');
+    }
+  </script>
+
+  <div class="ina-popup-overlay" id="ina-popup-overlay" role="dialog" aria-label="INA Mentor AI">
+    <div class="ina-popup">
+      <div class="ina-popup-header">
+        <div class="ina-popup-agent">
+          <div class="ina-popup-avatar" style="padding:0;overflow:hidden;background:none;">
+            <img src="/ina.jpg"
+                 alt="INA Mentor AI"
+                 style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
+                 onerror="this.parentElement.innerHTML='INA';Object.assign(this.parentElement.style,{background:'var(--orange)',color:'white',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'.85rem',fontWeight:'800'})">
+          </div>
+          <div>
+            <div class="ina-popup-name">INA · Mentor AI</div>
+            <div class="ina-popup-status">Online acum</div>
+          </div>
+        </div>
+        <div class="ina-popup-actions">
+          <button class="ina-popup-btn" onclick="minimizeIna()" title="Minimizează" aria-label="Minimizează">—</button>
+          <button class="ina-popup-btn" onclick="closeIna()" title="Închide" aria-label="Închide">✕</button>
+        </div>
+      </div>
+      <div class="ina-popup-body">
+        <div class="ina-popup-bubble">
+          Salut! Sunt <strong>INA</strong>, mentorul tău AI de business. 👋<br><br>
+          Spune-mi ideea ta — ce pasiune, competență sau proiect ai vrea să transformi în business?
+        </div>
+        <div class="ina-popup-input-row">
+          <textarea class="ina-popup-input" id="ina-popup-input"
+            placeholder="Descrie ideea ta..."
+            rows="1"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();goToIna();}"
+            oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,90)+'px'"></textarea>
+          <button class="ina-popup-send" onclick="goToIna()" aria-label="Trimite">
+            <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="ina-popup-footer">
+        10 întrebări gratuite · <a href="/ina">Deschide INA complet →</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="ina-mini-btn" id="ina-mini-btn" onclick="restoreIna()" aria-label="Deschide INA">
+    <div class="ina-mini-dot"></div>
+    INA · Mentor AI
+  </button>
+
+  <script>
+    var inaShown = sessionStorage.getItem('ina_popup_shown');
+    if (!inaShown) {
+      setTimeout(function() {
+        var overlay = document.getElementById('ina-popup-overlay');
+        if (overlay) {
+          overlay.classList.add('visible');
+          sessionStorage.setItem('ina_popup_shown', '1');
+        }
+      }, 5000);
+    }
+
+    function closeIna() {
+      document.getElementById('ina-popup-overlay').classList.remove('visible');
+    }
+
+    function minimizeIna() {
+      document.getElementById('ina-popup-overlay').classList.remove('visible');
+      document.getElementById('ina-mini-btn').classList.add('show');
+    }
+
+    function restoreIna() {
+      document.getElementById('ina-popup-overlay').classList.add('visible');
+      document.getElementById('ina-mini-btn').classList.remove('show');
+    }
+
+    function goToIna() {
+      var txt = document.getElementById('ina-popup-input').value.trim();
+      if (txt) {
+        sessionStorage.setItem('ina_initial_msg', txt);
+      }
+      window.location.href = '/ina';
+    }
+
+    document.getElementById('ina-popup-overlay').addEventListener('click', function(e) {
+      if (e.target === this) minimizeIna();
+    });
+  </script>
 </body>
 </html>
